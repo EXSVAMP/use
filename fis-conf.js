@@ -55,6 +55,16 @@ fis.match('**/*.less', {
 });
 
 
+//scss 编译
+fis.match('*.scss', {
+    rExt: '.css',
+    parser: fis.plugin('node-sass', {
+        include_paths: [
+            './lib/scss',
+            './node_modules/compass-mixins/lib'
+        ]
+    })
+});
 
 //打包与css sprite基础配置
 fis.match('::packager', {
