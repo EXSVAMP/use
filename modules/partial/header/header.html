@@ -1,0 +1,61 @@
+<div class="row header" ng-init="headers_drop1=false;headers_drop2=false">
+    <div class="col-xs-12">
+        <div class="user pull-right">
+            <!--<div class="item" style="position: relative">-->
+                <!--<p id="user-name">用户名</p>-->
+            <!--</div>-->
+            <div class="item dropdown" dropdown ng-class="{true:'open'}[headers_drop1]" ng-click="headers_drop2=false;headers_drop1=!headers_drop1">
+                <a class="dropdown-toggle" dropdown-toggle>
+                    <img src="./img/avatar.jpg">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <!--账户信息暂停使用-->
+                    <!--<li class=" link">-->
+                        <!--<a href="#">-->
+                            <!--<span class="fa fa-user" aria-hidden="true"></span> 账号信息-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="divider"></li>-->
+
+                    <li class="link">
+                        <a href="#" ng-click="repassword()">
+                            <span class="fa fa-key" aria-hidden="true"></span> 修改密码
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="link">
+                        <a class="btn" ng-click="logout()">
+                            <span class="fa fa-sign-out" aria-hidden="true"></span> 登出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--<divider class="item dropdown" dropdown ng-class="{true:'open'}[headers_drop2]" ng-click="headers_drop1=false;headers_drop2=!headers_drop2">-->
+                <!--<a class="dropdown-toggle" dropdown-toggle>-->
+                    <!--<i class="fa fa-bell-o"></i>-->
+                <!--</a>-->
+                <!--<ul class="dropdown-menu dropdown-menu-right">-->
+                    <!--<li class="dropdown-header">-->
+                        <!--Notifications-->
+                    <!--</li>-->
+                    <!--<li class="divider"></li>-->
+                    <!--<li>-->
+                        <!--<a href="#">Server Down!</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</divider>-->
+        </div>
+        <div class="meta">
+            <div class="page">
+                Iot 智能仓储系统
+            </div>
+            <div class="breadcrumb-links">
+                IOT仓储 / <span ng-bind="current_addr"></span>
+            </div>
+            <!--<div class="breadcrumb-links" style="color: #666;margin-left: 10px">-->
+                <!--Home / Dashboard-->
+            <!--</div>-->
+        </div>
+        <div></div>
+    </div>
+</div>

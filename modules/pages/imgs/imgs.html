@@ -1,0 +1,90 @@
+<style>
+        .clr{
+            font-size: 50px;
+            width: 20px;
+            display: inline-block;
+            background-color: #003300;
+            margin-right: 2px;
+            float: left;
+        }
+        #app{
+            transform: rotate(180deg);
+            height: 410px;
+        }
+        .axis path,
+        .axis line{
+            fill: none;
+            stroke: black;
+            shape-rendering: crispEdges;
+        }
+
+        .axis text {
+            font-family: sans-serif;
+            font-size: 11px;
+        }
+        #asdf{
+            width: 20%;
+            height: 20%;
+        }
+        .aaa{
+            width: 10%;
+            height: 10%;
+        }
+        .block{
+            display: inline-block;
+            width: 100px;
+            border: 1px solid #777;
+        }
+        .svgview{
+            /*height: 120px;*/
+            width:50%;
+        }
+        .warming{
+            fill: red;
+            stroke:#520
+        }
+        .instore{
+            fill:rgb(67,110,158);
+            stroke:#520
+        }
+        .empty{
+            fill: #999;
+            stroke:#520
+        }
+    </style>
+<div ng-controller="store">
+   
+<h2>test</h2>
+    <h2> <helloWorld></helloWorld></h2>
+
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+    <ddd></ddd>
+</div>
+<script type="text/javascript">
+var app=angular.module('RDash', []);
+app.directive('helloWorld', function() {
+  return {
+    scope: true,  // use a child scope that inherits from parent
+    restrict: 'AE',
+    replace: 'true',
+    template: '<h3>Hello World!!</h3>'
+  };
+});
+      
+</script>

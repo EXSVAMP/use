@@ -1,0 +1,54 @@
+
+.mgNavigator {
+    background-color: #fff;
+    border: 2px solid #aaa;
+    border-radius: 3px;
+    box-shadow: 2px 2px 19px #aaa;
+    height: 200px;
+    position: fixed;
+    right: 10px;
+    top: 30px;
+    width: 200px;
+    z-index: 30;
+}
+.mgNavigator .mgViewport {
+    background-color: #aaa;
+    border: 1px solid red;
+    border-radius: 3px;
+    cursor: move;
+    opacity: 0.4;
+    position: absolute;
+    z-index: 31;
+}
+.mgResizing {
+    border: 1px dotted blue;
+}
+.mgNavigator .mgHandle {
+    background-color: #aaa;
+    border-radius: 3px;
+    cursor: move;
+    height: 15px;
+    position: absolute;
+    top: -15px;
+    width: 100%;
+}
+.mgElement {
+    background-color: #eeeeef;
+    border: 2px solid #346789;
+    color: black;
+    font-size: 11px;
+    height: 100px;
+    position: absolute;
+    text-align: center;
+    width: 100px;
+    z-index: 20;
+}
+.mgNavigator .mgCanvasDom {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+.mgNavigator .mgCanvasDom div {
+    position: absolute;
+    z-index: 20;
+}

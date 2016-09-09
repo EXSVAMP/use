@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" ng-app="RDash">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>仓储后台管理系统</title>
+        <script type="text/javascript" src="/lib/mod.js"></script>
+        <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/less/bootstrap.less">
+        <link rel="stylesheet" type="text/css" href="/bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/bower_components/rdash-ui/dist/css/rdash.min.css">
+        <link rel="stylesheet" type="text/css" href="/bower_components/ng-dialog/css/ngDialog.min.css">
+        <link rel="stylesheet" type="text/css" href="/bower_components/ng-dialog/css/ngDialog-theme-default.min.css">
+        <link rel="stylesheet" type="text/css" href="/lib/css/main.css">
+        <link rel="stylesheet" type="text/css" href="/lib/css/login.css">
+        <link rel="stylesheet" type="text/css" href="/lib/css/location.css">
+        <link rel="stylesheet" type="text/css" href="/bower_components/angular-busy/dist/angular-busy.min.css">
+        <script src="/lib/jquery.js"></script>
+        <script src="/lib/jquery-ui.min.js"></script>
+        <script src="/lib/mgMiniMap-1.3.0-min.js"></script>
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-cookies/angular-cookies.min.js"></script>
+        <script type="text/javascript" src="/bower_components/ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="/bower_components/ng-dialog/js/ngDialog.min.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-animate/angular-animate.min.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-busy/dist/angular-busy.min.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-truncate/src/truncate.js"></script>
+        <script type="text/javascript" src="/bower_components/d3/d3.js"></script>
+        <!--<script type="text/javascript" src="http://cdn.aodianyun.com/lss/aodianplay/player.js"></script>-->
+        <script type="text/javascript" src="http://cdn.aodianyun.com/mps/v1/lssplayer.js"></script>
+
+        <link rel="stylesheet" href="/lib/css/mgMiniMap-1.3.0.css">
+
+    </head>
+    <body ng-controller="MasterCtrl">
+        <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak ng-click="toggleE($event)">
+            <!-- Sidebar -->
+            <link rel="import" href="/modules/partial/sidebar/sidebar.html?__inline"/>
+            <!-- End Sidebar -->
+            <div id="content-wrapper" style="min-height: 600px;">
+                <div class="page-content">
+                    <!-- Header Bar -->
+                    <link rel="import" href="/modules/partial/header/header.html?__inline"/>
+                    <!-- End Header Bar -->
+                    <!-- Main Content -->
+                    <div ui-view></div>
+                </div><!-- End Page Content -->
+            </div><!-- End Content Wrapper -->
+        </div><!-- End Page Wrapper -->
+    </body>
+
+    <script type="text/javascript">
+        require('main');
+    </script>
+    <script type="text/ng-template" id="test.html">
+        <p>确定要放弃更改密码吗？</p>
+        <div class="ngdialog-buttons">
+            <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">No</button>
+            <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(1)">Yes</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="repassword.html">
+        <div class="container-fluid" style="padding-top: 20px;font-size: 12px">
+            <form name="register" method="post" class="form-horizontal" novalidate="">
+                <div class="form-group height50">
+                    <label class="col-md-3 control-label"><span class="redFont">*</span>旧密码：</label>
+                    <div class="col-md-9">
+                        <input class="form-control input-sm" type="password" name="old_password" ng-model="old_password" ng-maxlength="20" placeholder="原密码" required/>
+                        <span class="errorInfo step1" ng-show="register.old_password.$touched&&register.old_password.$error.required">必填</span>
+                        <span class="errorInfo step1" ng-show="register.old_password.$touched&&register.old_password.$invalid">密码长度有误</span>
+                    </div>
+                </div>
+                <div class="form-group height50">
+                    <label class="col-md-3 control-label"><span class="redFont">*</span>新密码：</label>
+                    <div class="col-md-9">
+                        <input class="form-control input-sm" name="password" type="password" ng-model="password" ng-maxlength="20" ng-minlength="6" placeholder="新密码" required/>
+                        <span class="errorInfo step1" ng-show="register.password.$touched&&register.password.$error.required">必填</span>
+                        <span class="errorInfo step1" ng-show="register.password.$touched&&register.password.$invalid">密码的设置为6-20位</span>
+                    </div>
+                </div>
+                <div class="form-group height50">
+                    <label class="col-md-3 control-label"><span class="redFont">*</span>重复新密码：</label>
+                    <div class="col-md-9">
+                        <input class="form-control input-sm" name="re_password" type="password" ng-model="re_password" ng-maxlength="20" ng-minlength="6" placeholder="重复新密码" required/>
+                        <span class="errorInfo step1" ng-show="register.re_password.$touched&&register.re_password.$error.required">必填</span>
+                        <span class="errorInfo step1" ng-show="register.re_password.$touched&&register.re_password.$invalid">密码的设置为6-20位</span>
+                        <span class="errorInfo step1" ng-if="register.re_password.$touched" ng-show="re_password!=password">两次密码不一致</span>
+                    </div>
+                </div>
+                <button type="button" class="ngdialog-button" ng-class="{false:'ngdialog-button-default',true:'ngdialog-button-primary'}[register.old_password.$valid&&register.password.$valid&&register.re_password.$valid&&(register.password!=register.re_password)]" ng-disabled="!(register.old_password.$valid&&register.password.$valid&&register.re_password.$valid&&(register.password!=register.re_password))" ng-click="submit()">Yes</button>
+            </form>
+        </div>
+    </script>
+    <!--<script type="text/ng-template" id="firstDialogId">-->
+           <!--<div><p>text in dialog</p></div>-->
+    <!--</script>-->
+
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Login">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>仓储后台管理系统</title>
+        <script type="text/javascript" src="/lib/mod.js"></script>
+        <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/less/bootstrap.less">
+        <link rel="stylesheet" type="text/css" href="/bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/lib/css/main.css">
+        <link rel="stylesheet" type="text/css" href="/lib/css/login.css">
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-cookies/angular-cookies.min.js"></script>
+        <script type="text/javascript" src="/bower_components/ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="/bower_components/ng-dialog/js/ngDialog.min.js"></script>
+        <script src="/lib/jquery.js"></script>
+        
+    </head>
+    <body ng-controller="MasterCtrl" class="body-bg">
+        <div ng-cloak>
+            <div ui-view class="login"></div>
+        </div>
+    </body>
+<script type="text/javascript">
+    require('login_main');
+</script>
+
+</html>

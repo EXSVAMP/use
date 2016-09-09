@@ -1,0 +1,183 @@
+
+<script type="text/ng-template" id="myModalContent.html">
+  <div class="modal-header">
+      <h3 class="modal-title">{{item.title}}</h3>
+  </div>
+  <div class="modal-body row">
+      <div class="row col-md-12">
+          <form class="form-inline">
+              <div class="form-group col-md-12">
+                  <label class="label-md-4">处理类型:</label>
+                  <select class="form-control search-md-8" ng-model="selectValue">
+                      <option ng-repeat="(key, value) in modalSelect" value="{{key}}">{{value}}</option>
+                  </select>
+              </div>
+          </form>
+
+      </div>
+      <div class="row col-md-12">
+          <form class="form-inline">
+              <div class="form-group col-md-12">
+                  <label class="label-md-4">描述:</label>
+                  <textarea ng-model="modaldesc"  class=" form-control desc-md-8" rows="6"></textarea>
+              </div>
+          </form>
+
+      </div>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-primary" type="button" ng-click="ok()">确定</button>
+      <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+  </div>
+</script>
+
+
+<div class="row-fluid">
+    <div class="row col-md-12 search-board">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <div class="form-group col-md-12">
+                        <label class="label-md-4">事件类型：</label>
+                        <select class="form-control search-md-8" ng-model="event_type">
+                            <option value="-1">----------</option>
+                            <option ng-repeat="(key, value) in choice.data.event_type" value="{{key}}">{{value}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <div class="form-group col-md-12">
+                        <label class="label-md-4">RFID序列号：</label>
+                        <input type="text" class="form-control search-md-8" ng-model="rfid_id" placeholder="RFID内容序列号"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <div class="form-group col-md-12">
+                        <label class="label-md-4">读写器：</label>
+                        <select class="form-control search-md-8" ng-model="reader_id">
+                            <option value="-1">----------</option>
+                            <option ng-repeat="item in reader.data" value="{{item.id}}">{{item.serial_number}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <div class="form-group col-md-12">
+                        <label class="label-md-4">摄像头：</label>
+                        <select class="form-control search-md-8" ng-model="camera_id">
+                            <option value="-1">-----------</option>
+                            <option ng-repeat="item in camera.data" value="{{item.id}}">{{item.serial_number}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <div class="form-group col-md-12">
+                        <label class="label-md-4">事件反馈：</label>
+                        <select class="form-control search-md-8" ng-model="event_feedback_type">
+                            <option value="-1">-----------</option>
+                            <option ng-repeat="(key, value) in choice.data.event_feedback_type" value="{{key}}">{{value}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <div class="form-group col-md-12">
+                        <label class="label-md-4">处理类型:</label>
+                        <select class="form-control search-md-8" ng-model="handle_id">
+                            <option value="-1">-----------</option>
+                            <option ng-repeat="(key, value) in choice.data.handle_result" value="{{key}}">{{value}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-10"></div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-success" ng-click="submit_search(0,0)">搜索</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="row col-md-12 add-board">
+        <div class="col-md-2" style="margin-top: 10px;">
+            <span ng-if="query_result.length">共:{{bigTotalItems}}条记录</span>
+        </div>
+    </div>
+    <div class="row col-md-12 result-board">
+        <div class="col-md-12">
+            <table class="table table-condensed table-hover table-striped table-bordered constrain">
+                <thead>
+                <tr>
+                    <th ng-class="{false:'dwn-arw-af',true:'up-arw-af'}[order.id]" ng-click="switch_order('id')">编号</th>
+                    <th ng-class="{false:'dwn-arw-af',true:'up-arw-af'}[order.event_feedback_type]" ng-click="switch_order('event_feedback_type')">事件反馈类型</th>
+                    <th ng-class="{false:'dwn-arw-af',true:'up-arw-af'}[order.event_type]" ng-click="switch_order('event_type')">事件类型</th>
+                    <th ng-class="{false:'dwn-arw-af',true:'up-arw-af'}[order.event_feedback_detail]" ng-click="switch_order('event_feedback_detail')">事件反馈简述</th>
+                    <th>RFID列表</th>
+                    <th>视频地址</th>
+                    <th>照片地址</th>
+                    <th>摄像头</th>
+                    <th>RFID读写器</th>
+                    <th>事件描述</th>
+                    <th ng-class="{false:'dwn-arw-af',true:'up-arw-af'}[order.event_datetime]" ng-click="switch_order('event_datetime')">事件发生时间</th>
+                    <th ng-class="{false:'dwn-arw-af',true:'up-arw-af'}[order.handle_result]" ng-click="switch_order('handle_result')">处理结果</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="items in query_result">
+                    <td>{{items.id}}</td>
+                    <td>{{items.event_feedback_type_display}}</td>
+                    <td>{{items.event_type_display}}</td>
+                    <td>{{items.event_feedback_detail_display}}</td>
+                    <td>
+                        <li ng-repeat="item in items.rfid_list">{{item.rfid_id}}</li>
+                    </td>
+                    <td><a class="btn btn-success btn-xs" ng-show="items.video_url" ng-class="{'':'disabled'}[items.video_url]" target="_blank" href="{{items.video_url}}">视频</a></td>
+                    <td><a class="btn btn-success btn-xs" ng-show="items.photo_url" ng-class="{'':'disabled'}[items.photo_url]" target="_blank"href="{{items.photo_url}}">照片</a></td>
+                    <td>{{items.camera.serial_number}}</td>
+                    <td>{{items.rfid_reader.serial_number}}</td>
+                    <td>{{items.description}}</td>
+                    <td>{{items.event_datetime}}
+                    <td><span tooltip-placement="bottom" uib-tooltip="{{items.handle_description}}">{{items.handle_result_display}}</span></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" ng-click="open('md',$index)">处理</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <uib-pagination items-per-page="number" total-items="bigTotalItems" ng-change="changePage()" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true" num-pages="numPages"></uib-pagination>
+                </div>
+                <div class="col-md-6 num_per_page">
+                    <form class="form-inline">
+                        <div class="form-group col-md-12">
+                            <label class="label-md-4">每页条数：</label>
+                            <select class="form-control search-md-8" ng-model="number" ng-change="setPage()">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

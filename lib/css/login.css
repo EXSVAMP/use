@@ -1,0 +1,192 @@
+.logo{
+    padding: 15px;
+    margin: 60px auto 0;
+}
+.body-bg{
+    background:url("/lib/img/bg.jpg") no-repeat top center;
+}
+.logo-window{
+    width: 400px;
+    /*text-align: center;*/
+    margin: 40px auto 10px;
+    padding: 10px 30px 30px;
+    overflow: hidden;
+    position: relative;
+    background-color: #eceef1;
+}
+.login .logo-window .form-title {
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+label {
+    max-width: none!important;
+}
+.login .logo-window .form-control {
+    background-color: #dde3ec;
+    height: 43px;
+    color: #8290a3;
+    border: 1px solid #dde3ec;
+}
+.login .logo-window .form-actions {
+    clear: both;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    padding: 25px 30px;
+    margin-left: -30px;
+    margin-right: -30px;
+}
+.login .logo-window .form-actions .btn {
+    margin-top: 1px;
+    font-weight: 600;
+    padding: 10px 20px!important;
+}
+.login .logo-window .rememberme {
+    margin-left: 8px;
+    margin-top: 10px;
+}
+.login .logo-window .check {
+    color: #8290a3;
+}
+div.checker{
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+}
+div.checker span {
+    display: -moz-inline-box;
+    display: inline-block;
+    zoom: 1;
+    text-align: center;
+    background-position: 0 -260px;
+}
+.login .logo-window .forget-password {
+    font-size: 14px;
+    float: right;
+    display: inline-block;
+    margin-top: 10px;
+}
+.login .logo-window .create-account {
+    margin: 0 -40px -30px;
+    padding: 15px 0 17px;
+    text-align: center;
+    background-color: #6c7a8d;
+    -webkit-border-radius: 0 0 7px 7px;
+    -moz-border-radius: 0 0 7px 7px;
+    -ms-border-radius: 0 0 7px 7px;
+    -o-border-radius: 0 0 7px 7px;
+    border-radius: 0 0 7px 7px;
+}
+.login .logo-window .create-account>p {
+    margin: 0;
+}
+.login .logo-window .create-account p a {
+    font-weight: 600;
+    font-size: 14px;
+    color: #c3cedd;
+}
+.login .logo-window .create-account a {
+    display: inline-block;
+    margin-top: 5px;
+}
+.errorInfo {
+    line-height: 24px;
+    color: red;
+}
+#register{
+    width: 500px;
+    padding: 10px 0 5px;
+}
+#register .form-title{
+    text-align: center;
+}
+
+#wizard {
+    font-size: 12px;
+    height: 350px;
+    width: 500px;
+    overflow: hidden;
+    position: relative;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+#wizard #status {
+    height: 35px;
+    background: #123;
+    padding-left: 15px !important;
+}
+#status li {
+    float: left;
+    color: #fff;
+    padding: 10px 25px;
+    list-style: none;
+}
+#status li.active {
+    background-color: #369;
+    font-weight: normal;
+}
+#wizard .items {
+    width: 15000px;
+    clear: both;
+    position: absolute;
+    transition: all 400ms ease-out;
+    left: 0px;
+}
+.page {
+    padding: 25px 10px 20px 30px;
+    width: 480px;
+    float: left;
+}
+.form-horizontal .form-group {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.form-horizontal .form-group {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.height50 {
+    height: 50px;
+}
+label[class*=col-] {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.control-label {
+    margin-top: 1px;
+    font-weight: 400;
+}
+.redFont {
+    color: red;
+}
+#register .form-control {
+    background-color: #ffffff;
+    height: 32px;
+    color: #000;
+    border: 1px solid #dde3ec;
+}
+.btn_nav {
+    height: 36px;
+    line-height: 36px;
+    margin: 20px auto;
+}
+#wizard .right {
+    float: right;
+}
+.wid280 {
+    width: 280px;
+}
+.login .logo-window h3 {
+    color: #4db3a5;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 400!important;
+}
+.page h3 {
+    height: 42px;
+    font-size: 16px;
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 5px;
+}
+
+
+

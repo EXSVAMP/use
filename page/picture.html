@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="bower_components/d3/d3.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js" ></script>
+    <!--<link rel="stylesheet" href="lib/css/weui.css"/>-->
+    <style>
+        .clr{
+            font-size: 50px;
+            width: 20px;
+            display: inline-block;
+            background-color: #003300;
+            margin-right: 2px;
+            float: left;
+        }
+        #app{
+            transform: rotate(180deg);
+            height: 410px;
+        }
+        .axis path,
+        .axis line{
+            fill: none;
+            stroke: black;
+            shape-rendering: crispEdges;
+        }
+
+
+        .axis text {
+            font-family: sans-serif;
+            font-size: 11px;
+        }
+        #asdf{
+            width: 20%;
+            height: 20%;
+        }
+        .aaa{
+            width: 10%;
+            height: 10%;
+        }
+        .block{
+            display: inline-block;
+            width: 200px;
+            border: 1px solid #777;
+        }
+        .svgview{
+            /*height: 120px;*/
+            width:50%;
+        }
+        .warming{
+            fill: red;
+            stroke:#520
+        }
+        .instore{
+            fill:rgb(67,110,158);
+            stroke:#520
+        }
+        .empty{
+            fill: #999;
+            stroke:#520
+        }
+    </style>
+</head>
+<body ng-app="d3">
+<div ng-controller="store">
+    <ddd></ddd>
+ 
+   
+</div>
+<script type="text/javascript">
+    var app = angular.module('d3',[]);
+    app.controller("store",['$scope',function($scope){
+        $scope.$broadcast("aaaa")
+    }]);
+    app.controller("cind",['$scope',function($scope){
+        $scope.$on('aaaa',function(){
+            console.log('234234')
+        })
+    }])
+    app.directive("ddd",function(){
+        return {
+            restrict:"E",
+            replace:true,
+            template:"<div class=\"block\"></div>",
+            controller:"cind",
+            link:function(scope, element, attrs){
+                scope.colors = ['red','green','blue','grey'];
+                var clrss = 0;
+                var data = [
+                    [150,180,210,240],
+                    [150,180,210,240],
+                    [150,180,210,240],
+                    [150,180,210,240],
+                    [150,180,210,240],
+                
+                ];
+                var a = d3.select(element[0]).selectAll("svg");
+                var b = a.data(data)
+                        .enter()
+                        .append("svg").attr({
+                            x:0,
+                            y:0,
+                            viewBox:'0 0 360 360',
+                            class:"svgview"
+                        })
+                        .selectAll("polygon");
+
+                var c = b.data(function(d,i){
+                            return d.reverse()
+                        })
+                        .enter()
+                        .append("polygon")
+                        .attr("points",function(d,i){
+                            var p0 = [120-100, d+60],
+                                    p1 = [120+100, d+60],
+                                    p2 = [120+70, d-60],
+                                    p3 = [120-70, d-60];
+                            var arrset = [p0,p1,p2,p3]
+                            return arrset.join(' ')
+                        })
+                c.attr("class", function(d,i){
+                    var sx = parseInt(3*Math.random())
+                    if(sx==0){
+                        return "empty"
+                    }else if(sx==1){
+                        return 'instore'
+                    }else{
+                        return 'warming'
+                    }
+                });
+                var aa=function(){
+                    c.attr('class', function(d,i){
+                        var sx = parseInt(3*Math.random())
+                        if(sx==0){
+                            return "empty"
+                        }else if(sx==1){
+                            return 'instore'
+                        }else{
+                            return 'warming'
+                        }
+                    })
+                };
+                aa();
+                // window.setInterval(function(){
+                //     c.attr('class', function(d,i){
+                //         var sx = parseInt(3*Math.random())
+                //         if(sx==0){
+                //             return "empty"
+                //         }else if(sx==1){
+                //             return 'instore'
+                //         }else{
+                //             return 'warming'
+                //         }
+                //     })
+                // },3000)
+            }
+        }
+    });
+   
+</script>
+</body>
+</html>

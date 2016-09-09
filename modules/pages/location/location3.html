@@ -1,0 +1,755 @@
+
+<style>
+    .containYin{
+      width: 4100px;
+      height:950px;
+      border: solid 2px #000;
+    }
+    .containYin .containGood{
+        position: relative;
+        left:100px;
+        width:4000px;
+        height: 800px;
+        /*border: solid 1px #00ff00;*/
+
+    }
+    .containYin .goods{
+        width:120px;
+        height: 710px;
+        border: solid 1px #000;
+        margin-left: 65px;
+        float: left;
+        border-top:none;
+        border-right: none;
+        border-bottom: none;
+    }
+    .containYin .goods_dash{
+        width: 120px;
+        height:695px;
+        margin-top: 15px;;
+        border: solid 1px #9a9a9a;
+        border-left: none;
+        border-top:dashed 1px #9a9a9a;
+        border-right:dashed 1px #9a9a9a;
+        border-bottom: dashed 1px #9a9a9a;
+
+    }
+    .containYin .goodsBoard{
+        width: 100px;
+        height: 125px;
+        border: solid 1px #9a9a9a;
+        border-left: none;
+        margin-top: 10px;
+    }
+    .containYin .goodsBoard_1{
+        position: relative;
+        top:15px;
+    }
+    .containYin .goodsBoard_1 div{
+        width: 70px;
+        margin: auto;
+    }
+    .containYin .goodsBoard_1 div:nth-child(1){
+        position: relative;
+        top: 10px;
+        z-index: 5;
+    }
+    .containYin .goodsBoard_1 div:nth-child(2){
+        position: relative;
+        top: -16px;
+        z-index:4;
+    }
+    .containYin .goodsBoard_1 div:nth-child(3){
+        position: relative;
+        top: -42px;
+        z-index:3;
+    }
+    .containYin .goodsBoard_1 .tip_1{
+        width: 50px;
+        position: relative;
+        top: -50px;
+        left: -30px;
+    }
+    .containYin .goodsBoard_1 span{
+        width: 50px;
+        position: relative;
+        top: -50px;
+        left: -78px;
+        z-index: 10;
+    }
+
+    .containYin .warn_1 {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        top: -135px;
+        left: 89px;
+    }
+    .containYin .warnInfo_1 img {
+        width: 20px;
+        position: relative;
+        top: 27px;
+        left: 12px;
+    }
+    .containYin .warnDesc{
+        top: -4px;
+        left: 31px;
+    }
+     .mgNavigator{
+        height: 100px!important;
+    }
+    .containYin .passage{
+        position: relative;
+        top: -52px;
+        width: 4100px;
+        height: 200px;
+        /*border: solid 1px #000;*/
+    }
+    .containYin .passage1{
+        position: relative;
+
+        width: 1400px;
+        height: 200px;
+        text-align: center;
+        color: #8c8888;
+        font-size: 36px;
+        margin-top: 30px;
+        /*border: solid 1px #000;*/
+
+    }
+    .containYin .passage .DownCamera{
+        position: relative;
+        width: 4100px;
+        height: 100px;
+        /*border: solid 2px green;*/
+        top: -131px;
+    }
+
+    .containYin .downCamera1{
+        width: 50px;
+        position: relative;
+        top: 61px;
+        left: 295px;
+    }
+    .containYin .downCamera2{
+        width: 50px;
+        position: relative;
+        top: 61px;
+        left: 980px;
+    }
+    .containYin .downCamera3{
+        width: 50px;
+        position: relative;
+        top: 61px;
+        left: 1470px;
+    }
+    .containYin .downCamera4{
+        width: 50px;
+        position: relative;
+        top: 61px;
+        left: 1980px;
+    }
+    .containYin .downCamera5{
+        width: 50px;
+        position: relative;
+        top: 61px;
+        left: 2480px
+    }
+    .containYin .downCamera6{
+        width: 50px;
+        position: relative;
+        top: 61px;
+        left: 2980px
+    }
+    .containYin .downCamera7{
+        width: 50px;
+        position: relative;
+        top: 61px;
+        left: 3480px;
+    }
+</style>
+
+<div class="containYin">
+    <div class="containGood">
+       <div class="goods">
+        <div class="goods_dash">
+            <div class="goodsBoard" ng-repeat="obj in dataList[0].piple_list">
+                <div class="goodsBoard_1">
+                    <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                        <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                        <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                        <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                    </div>
+                    <img class="tip_1" src="icon-07.svg"/>
+                    <span>{{obj.pile_name}}</span>
+                </div>
+                <!--警告-->
+                <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                    <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                    <div class="warnInfo_1" ng-show="obj.warnflag">
+                        <img src="icon-20.svg" />
+                        <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                    </div>
+                </div>
+                <!--警告信息-->
+            </div>
+
+
+        </div>
+    </div>
+       <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[1].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[2].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[3].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[4].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[5].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[6].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[7].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[8].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[9].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[10].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[11].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[12].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[13].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[14].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[15].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[16].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[17].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[18].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[19].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="goods">
+            <div class="goods_dash">
+                <div class="goodsBoard" ng-repeat="obj in dataList[20].piple_list">
+                    <div class="goodsBoard_1">
+                        <div ng-repeat="img in obj.goods_list.slice().reverse() ">
+                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" />
+                        </div>
+                        <img class="tip_1" src="icon-07.svg"/>
+                        <span>{{obj.pile_name}}</span>
+                    </div>
+                    <!--警告-->
+                    <div ng-if="warn(obj.goods_list.slice().reverse())" >
+
+                        <img class="warn_1" src="icon-16.svg" ng-mouseenter="warnShow(obj)" ng-mouseleave="warnhide(obj)"/>
+                        <div class="warnInfo_1" ng-show="obj.warnflag">
+                            <img src="icon-20.svg" />
+                            <div class="warnDesc" ng-bind-html="info(obj.goods_list.slice().reverse())"></div>
+                        </div>
+                    </div>
+                    <!--警告信息-->
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+    <div class="passage">
+        <div class="passage1">叉车道</div>
+        <div class="DownCamera">
+            <img class="downCamera1" src="icon-10.svg"/>
+            <img class="downCamera2" src="icon-10.svg"/>
+            <img class="downCamera3" src="icon-10.svg"/>
+            <img class="downCamera4" src="icon-10.svg"/>
+            <img class="downCamera5" src="icon-10.svg"/>
+            <img class="downCamera6" src="icon-10.svg"/>
+            <img class="downCamera7" src="icon-10.svg"/>
+        </div>
+    </div>
+</div>
