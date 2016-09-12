@@ -13,10 +13,12 @@
     "client-side"
   ],
   "dependencies": {
-    "fis3-hook-module": "*",
-    "fis3-postpackager-loader": "*",
+    "compass-mixins": "^0.12.10",
     "fis-parser-less": "*",
-    "fis-preprocessor-annotate": "*"
+    "fis-parser-node-sass": "^0.2.1",
+    "fis-preprocessor-annotate": "*",
+    "fis3-hook-module": "*",
+    "fis3-postpackager-loader": "*"
   },
   "author": "zhangtao07",
   "license": "MIT",

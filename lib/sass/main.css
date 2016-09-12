@@ -1,0 +1,48 @@
+.login .center {
+  width: 600px;
+  height: 600px;
+  border: solid 1px #000000;
+  margin: auto;
+  margin-top: 127px; }
+  .login .center .companyIcon {
+    text-align: center; }
+  .login .center .welcome {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    color: #3e4d68;
+    margin-top: 20px;
+    margin-bottom: 20px; }
+  .login .center .userName, .login .center .password {
+    margin-left: 120px;
+    margin-bottom: 10px; }
+    .login .center .userName span, .login .center .password span {
+      height: 48px;
+      width: 48px;
+      -moz-border-radius-topleft: 4px;
+      -moz-border-radius-bottomleft: 4px;
+      background-color: #ffffff; }
+    .login .center .userName input, .login .center .password input {
+      height: 48px;
+      width: 312px; }
+  .login .center .loginBtn {
+    width: 360px;
+    height: 48px;
+    border: none;
+    border-radius: 4px;
+    background-color: #5f9bdb;
+    color: #ffffff;
+    margin-left: 120px; }
+
+body, div, dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6, label, form, input, button,
+textarea, p, section, strong, a, th, td, tr {
+  padding: 0;
+  margin: 0; }
+
+.body-bg {
+  background: #f5f5f5;
+  margin: 0px;
+  padding: 0px; }
+
+/*# sourceMappingURL=main.css.map */
