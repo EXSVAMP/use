@@ -1,16 +1,28 @@
-<div ng-controller="loginCtr" class="center" >
-      <div class="companyIcon">
-          <img src="/lib/img/use_color.png"/>
-      </div>
-      <p class="welcome">欢迎使用,IOT智能仓储系统!</p>
+<div ng-controller="loginCtr" class="center">
+    <div class="companyIcon">
+        <img src="/lib/img/use_color.png"/>
+    </div>
+    <p class="welcome">欢迎使用,IOT智能仓储系统!</p>
     <div class="input-group userName">
         <span class="input-group-addon">@</span>
-        <input type="text" class="form-control" placeholder="Username">
+        <input type="text" class="form-control" placeholder="用户名" ng-click="showError=false" autocomplete="on"
+               name="loginName" required ng-model="person.username">
     </div>
     <div class="input-group password">
         <span class="input-group-addon">@</span>
-        <input type="text" class="form-control" placeholder="Username">
+        <input type="password" class="form-control" placeholder="密码" ng-click="showError=false" autocomplete="on"
+               placeholder="密码" name="loginPwd" required ng-model="person.password">
     </div>
-    <button type="submit" class="loginBtn">登入</button>
+    <div>
+        <span class="errorInfo" ng-bind="loginResponse" ng-if="showError"></span>
+    </div>
+    <div class="remember">
+        <input class="rememberCheck" type="checkbox">&nbsp;&nbsp;记住我
+        <a class="forget_password" href="#">忘记密码</a>
+    </div>
+    <button type="submit" class="loginBtn" ng-click="login()">登录</button>
+    <div class="register">
+        <a>注册一个新账号</a>
+    </div>
 
 </div>
