@@ -3,6 +3,10 @@
     text-decoration: none;
     cursor: pointer;
   };
+
+
+
+
   .center {
     width: 600px;
     height: 600px;
@@ -95,5 +99,7 @@
       display: inline-block;
     }
   };
-
+  @media screen and (min-height:935px) {
+    .center{margin-top: 140px;}
+  };
 }
