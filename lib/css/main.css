@@ -368,12 +368,21 @@ td,th{
     margin-right:10px;
 }
 
+.header-menu-pos{
+    width: 150px;
+    height: 144px;
+    border-radius: 4px !important;
+    border: 0 none;
+    top: 50px;
+    background :#3e4d68;
+    font-size: 14px;
+    color: #5f9bdb;
+    padding: 0;
+}
 
-
-
-
-
-
-
-
-
+.header-menu-pos li a{
+    font-size: 14px;
+    color: #5f9bdb;
+    height: 48px;
+    line-height: 3;
+}
