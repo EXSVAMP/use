@@ -1,0 +1,76 @@
+<div class="center">
+    <div class="companyIcon">
+        <img src="/lib/img/use_color.png"/>
+    </div>
+    <p class="welcome">欢迎注册,IOT智能仓储系统!</p>
+
+    <ul class="reg-step">
+    	<li ng-class="regstep1"><div><p>1</p></div><p>创建账户</p></li>
+    	<li class="reg-step-arrow"><img ng-src="{{regarrow1}}" /></li>
+    	<li ng-class="regstep2"><div><p>2</p></div><p>填写联系信息</p></li>
+    	<li class="reg-step-arrow"><img ng-src="{{regarrow2}}" /></li>
+    	<li ng-class="regstep3"><div><p>3</p></div><p>完成</p></li>
+    </ul>
+
+    <form role="form" name="register">
+    	<div ng-show="register_success==1">
+    		<div class="form-group">
+    			<label for="regUsername"><span>*</span>用户名</label>	
+    			<input type="text" class="form-control" name="regUsername" placeholder="用户名不宜超过20个字符" required ng-maxlength="20" ng-model="information.username"/>
+    			<span class="errorInfoReg" ng-show="register.regUsername.$touched&&register.regUsername.$error.required">必填</span>
+            	<span class="errorInfoReg" ng-show="register.regUsername.$touched&&register.regUsername.$invalid">用户名不宜超过20个字符</span>
+    		</div>
+    		<div class="form-group">
+    			<label for="regUserpass"><span>*</span>密码</label>	
+    			<input type="text" class="form-control" name="regUserpass" placeholder="密码设置为6-20位" required ng-maxlength="20" ng-minlength="6" ng-model="information.password"/>
+    			<span class="errorInfoReg" ng-show="register.regUserpass.$touched&&register.regUserpass.$error.required">必填</span>
+            	<span class="errorInfoReg" ng-show="register.regUserpass.$touched&&register.regUserpass.$invalid">密码设置为6-20位</span>
+    		</div>
+    		<div class="form-group">
+    			<label for="regUserrepass"><span>*</span>确认密码</label>	
+    			<input type="text" class="form-control" name="regUserrepass" placeholder="确认一遍密码" required ng-model="information.re_password"/>
+    			<span class="errorInfoReg" ng-show="register.regUserrepass.$touched&&register.regUserrepass.$error.required">必填</span>
+            	<span class="errorInfoReg" ng-show="register.regUserrepass.$touched&&register.regUserrepass.$invalid">确认密码跟密码不一致</span>
+    		</div>
+    		<div class="btns-group">
+    			<a href="#/login" class="btn pull-left btn-backlogin">返回登录</a>
+    			<button type="button" class="btn pull-right btn-next" ng-click="goNext(2)">下一步</button>
+    		</div>
+    	</div>
+    	<div ng-show="register_success==2">
+    		<div class="form-group">
+    			<label for="regCompName"><span>*</span>仓库名称</label>	
+    			<input type="text" class="form-control" name="regCompName" placeholder="仓库名称" required ng-model="information.name"/>
+    			<span class="errorInfoReg" ng-show="register.regCompName.$touched&&register.regCompName.$error.required">必填</span>
+    		</div>
+    		<div class="form-group">
+    			<label for="regCompAddress"><span>*</span>仓库地址</label>	
+    			<input type="text" class="form-control" name="regCompAddress" placeholder="仓库地址" required ng-model="information.address"/>
+    			<span class="errorInfoReg" ng-show="register.regCompAddress.$touched&&register.regCompAddress.$error.required">必填</span>
+    		</div>
+    		<div class="form-group">
+    			<label for="regCompContact"><span>*</span>仓库联系人</label>	
+    			<input type="text" class="form-control" name="regCompContact" placeholder="仓库联系人" required ng-model="information.connect_username"/>
+    			<span class="errorInfoReg" ng-show="register.regCompContact.$touched&&register.regCompContact.$error.required">必填</span>
+    		</div>
+    		<div class="form-group">
+    			<label for="regCompPhone"><span>*</span>仓库联系方式</label>	
+    			<input type="text" class="form-control" name="regCompPhone" placeholder="仓库联系方式" required ng-model="information.connect_info"/>
+    			<span class="errorInfoReg" ng-show="register.regCompPhone.$touched&&register.regCompPhone.$error.required">必填</span>
+    		</div>
+    		<div class="btns-group">
+    			<button type="button" class="btn pull-left btn-backlogin" ng-click="goPre(1)">上一步</button>
+    			<button type="button" class="btn pull-right btn-next" ng-click="goNext(3)">下一步</button>
+    		</div>
+    	</div>
+    	<div ng-show="register_success==3">
+    		<div ng-show="register_ok" class="register_ok"><img src="/statics/lib/img/icon_ok_160_160.png" /></div>
+    		<div class="register_res"><p>{{register_res}}</p></div>
+    		<div ng-show="register_ok" class="register_ok_skip"><p>{{countdown1}}秒后，跳转到主页，请耐心等待...</p></div>
+    		<div ng-show="register_fail" class="register_fail_skip"><p>{{countdown2}}秒后，跳转到注册首页，请耐心等待...</p></div>
+    	</div>
+    </form>
+
+
+
+</div>

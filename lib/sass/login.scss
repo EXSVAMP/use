@@ -98,6 +98,135 @@
       margin-bottom: 5px;
       display: inline-block;
     }
+    .reg-step{
+      width: 360px;
+      margin: 0 auto 10px auto;
+      height: auto;
+      overflow :hidden;
+      .reg-step-i{
+        float:  left;
+        width:  72px;
+        height: auto;
+        overflow: hidden;
+        text-align: center;
+        div{
+          border: 1px solid #c3ccdb;
+          width: 32px;
+          height :32px;
+          border-radius :32px;
+          margin: 0 auto 10px auto;
+          display: table;
+          p{
+            display: table-cell;
+            vertical-align: middle;
+            color: #c3ccdb;
+            font-size :14px;
+          }
+        }
+        p{
+          color: #c3ccdb;
+          font-size :12px;
+        }
+
+      }
+
+      .reg-step-i-active{
+        div{
+          border: 1px solid #5f9bdb;
+          p{
+            color: #5f9bdb;
+          }
+        }
+        p{
+          color: #3e4d68;
+        }
+      }
+
+      .reg-step-arrow{
+        float: left;
+        width: 72px;
+        text-align: center;
+        list-style-type :none;
+        img{
+          width: 32px;
+          height: 32px;
+        }
+      }
+      &:after{
+        content: "";
+        display: block;
+        clear: both;
+        height: 0;
+      }
+    }
+
+    form{
+      width: 360px;
+      margin:auto;
+      label{
+        color: #3e4d68;
+        font-size: 12px;
+        margin-bottom:8px;
+        span{
+          color: #ff6b6b;
+          padding-right: 5px;
+        }
+      }
+      input{
+        font-size: 12px;
+      }
+      .errorInfoReg{
+        color: red;
+        display: inline-block;
+        font-size: 12px;
+        margin-left: 0;
+      }
+      .btns-group{
+        height: auto;
+        overflow: hidden;
+        margin-bottom:20px;
+        .btn-backlogin{
+          width: 80px;
+          height: 34px;
+          border-radius: 4px;
+          background-color: #ffffff;
+          border: solid 1px #5f9bdb;
+          font-size: 12px;
+          text-align: center;
+          color: #5f9bdb;
+          line-height: 1.8;
+        }
+        .btn-next{
+          width: 80px;
+          height: 34px;
+          border-radius: 4px;
+          background-color: #5f9bdb;
+          font-size: 12px;
+          text-align: center;
+          color: #ffffff;
+          line-height: 1.8;
+        }
+      }
+      
+      .register_ok{
+        width: 160px;
+        height: 160px;
+        margin:10px auto;
+      }
+      .register_res{
+        font-size: 14px;
+        text-align: center;
+        color: #45b6b0;
+        padding-bottom:8px;
+      }
+      .register_ok_skip,.register_fail_skip{
+        font-size: 14px;
+        text-align: center;
+        color: #808ca0;
+        padding-bottom:8px;
+      }
+    }
+
   };
   @media screen and (min-height:935px) {
     .center{margin-top: 140px;}
