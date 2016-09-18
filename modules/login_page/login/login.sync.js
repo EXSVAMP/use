@@ -14,6 +14,7 @@ app.register.controller("loginCtr", function ($scope, $http, $location, $uibModa
                      loginName: $scope.person.username,
                      token: data.data.token
                  });
+                 $cookieStore.put("passlen",$scope.person.password);
                  localStorage.setItem("storeMap",data.data.storehouse.storehouse_type);
                  window.location.href = "/";
 

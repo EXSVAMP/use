@@ -33,3 +33,43 @@
     	<button ng-click="logout_cancel()" class="btn pull-right btn_cancel" type="button">取消</button>
     </div>
 </div>
+<div class="header-com-repass-pop" ng-show="header_com_repass_pop">
+	<div class="header-com-repass-pop-h"><span></span>修改密码</div>
+	<div class="header-com-repass-pop-m">
+		<form role="form" name="repass" id="repass_form" name="repass_form">
+			<div class="form-group repass-form-group">
+				<label for="repass_old_password" class="repass_label"><span>*</span>旧密码</label>
+				<input class="form-control repass_in" type="password" id="repass_old_password" name="repass_old_password" ng-model="repass_old_password" ng-maxlength="20" placeholder="请输入旧密码" ng-click="repass_in_click()" ng-keyup="repass_in_click()" ng-blur="repass_in_blur()" required/>
+				<div class="repass_error" ng-show="repass_test&&repass.repass_old_password.$touched&&repass.repass_old_password.$error.required&&repass.repass_old_password.$invalid" ng-click="repass_click()">
+					<span class="errorInfoRepass" ng-show="repass.repass_old_password.$touched&&repass.repass_old_password.$error.required">必填</span>
+            		<span class="errorInfoRepass" ng-show="repass.repass_old_password.$touched&&repass.repass_old_password.$invalid">密码长度有误</span>
+				</div>
+			</div>
+
+			<div class="form-group repass-form-group">
+				<label for="repass_re_password" class="repass_label"><span>*</span>新密码</label>
+				<input class="form-control repass_in" type="password" id="repass_re_password" name="repass_re_password" ng-model="repass_re_password" ng-maxlength="20" placeholder="请输入新密码" ng-click="re_in_click()" ng-keyup="re_in_click()" ng-blur="re_in_blur()" required/>
+				<div class="repass_error" ng-show="repass_new&&repass.repass_re_password.$touched&&repass.repass_re_password.$error.required&&repass.repass_re_password.$invalid" ng-click="re_click()">
+					<span class="errorInfoRepass" ng-show="repass.repass_re_password.$touched&&repass.repass_re_password.$error.required">必填</span>
+            		<span class="errorInfoRepass" ng-show="repass.repass_re_password.$touched&&repass.repass_re_password.$invalid">密码的设置为6-20位</span>
+				</div>
+			</div>
+
+			<div class="form-group repass-form-group">
+				<label for="repass_reconfirm_password" class="repass_label"><span>*</span>重复新密码</label>
+				<input class="form-control repass_in" type="password" id="repass_reconfirm_password" name="repass_reconfirm_password" ng-model="repass_reconfirm_password" ng-maxlength="20" placeholder="请重复新密码" ng-click="reconfirm_in_click()" ng-keyup="reconfirm_in_click()" ng-blur="reconfirm_in_blur()" required/>
+				<div class="repass_error" ng-show="repass_reconfirm&&repass.repass_reconfirm_password.$touched&&repass.repass_reconfirm_password.$error.required&&repass.repass_reconfirm_password.$invalid" ng-click="reconfirm_click()">
+					<span class="errorInfoRepass" ng-show="repass.repass_reconfirm_password.$touched&&repass.repass_reconfirm_password.$error.required">必填</span>
+            		<span class="errorInfoRepass" ng-show="repass.repass_reconfirm_password.$touched&&repass.repass_reconfirm_password.$invalid">重复新密码与新密码不一致</span>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<div class="header-com-repass-pop-b">
+    	<button class="btn pull-left btn_ok {{btn_ok_fail}}" ng-click="repass_ok()">确定</button>
+    	<button ng-click="repass_cancel()" class="btn pull-right btn_cancel" type="button">取消</button>
+    </div>
+</div>
+
+
