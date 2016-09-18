@@ -12,13 +12,24 @@
             	<a role="menuitem" tabindex="-1" href="javascript:;"><span class="header-menu-tag header-menu-tag-user"></span>我的帐号</a>
         	</li>
         	<li role="presentation">
-            	<a role="menuitem" tabindex="-1" href="javascript:;"><span class="header-menu-tag header-menu-tag-pass"></span>修改密码</a>
+            	<a role="menuitem" tabindex="-1" href="javascript:;" ng-click="repassword()"><span class="header-menu-tag header-menu-tag-pass"></span>修改密码</a>
         	</li>
         	<li role="presentation">
-            	<a role="menuitem" tabindex="-1" href="javascript:;"><span class="header-menu-tag header-menu-tag-logout"></span>退出</a>
+            	<a role="menuitem" tabindex="-1" href="javascript:;" ng-click="logout()"><span class="header-menu-tag header-menu-tag-logout"></span>退出</a>
         	</li>
         	
     	</ul>
 	</div>
 	<div class="header_com_portrait"><img src="/lib/img/header.png" /></div>
+</div>
+<div class="header-com-mask" ng-show="header_com_mask">
+	
+</div>
+<div class="header-com-logout-pop" ng-show="header_com_logout_pop">
+	<div class="header-com-logout-pop-h"><span></span>退出IOT智能仓储系统</div>
+	<div class="header-com-logout-pop-m"><span></span>确定要退出吗？</div>	
+	<div class="header-com-logout-pop-b">
+    	<button class="btn pull-left btn_ok" ng-click="logout_ok()">确定</button>
+    	<button ng-click="logout_cancel()" class="btn pull-right btn_cancel" type="button">取消</button>
+    </div>
 </div>

@@ -422,3 +422,90 @@ td,th{
 .header-menu-pos li a:hover .header-menu-tag-logout{
     background: url(/lib/img/icon_logout_16_16_02.png);
 }
+
+.header-com-mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    border-radius: 2px;
+    background-color: #0c1016;
+}
+
+.header-com-logout-pop{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 227px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    margin-left: -200px;
+    margin-top: -113.5px;
+}
+
+.header-com-logout-pop-h{
+    width: 100%;
+    height: 41px;
+    border-bottom: 1px solid #e8ebf0;
+    font-size: 18px;
+    color: #3e4d68;
+    margin-top:15px;
+}
+
+.header-com-logout-pop-h span{
+    float: left;
+    display: block;
+    width :16px;
+    height: 16px;
+    background: url(/lib/img/icon_logout_16_16_01.png);
+    margin-right: 9px;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.header-com-logout-pop-m{
+    margin-top: 25px;
+    margin-bottom: 33px;
+    font-size: 14px;
+    color: #3e4d68;
+    line-height: 3;
+}
+
+.header-com-logout-pop-m span{
+    float: left;
+    display: block;
+    width :48px;
+    height: 48px;
+    background: url(/lib/img/icon_warning_48_48.png);
+    margin-right: 6px;
+    margin-left: 124px;
+}
+
+.header-com-logout-pop-b{
+    width: 190px;
+    margin: auto;
+}
+
+.header-com-logout-pop-b .btn_ok{
+    width: 80px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: solid 1px #ff6b6b;
+    cursor: pointer;
+    font-size: 12px;
+    color: #ff6b6b;
+}
+
+.header-com-logout-pop-b .btn_cancel{
+    width: 80px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #5f9bdb;
+    cursor: pointer;
+    font-size: 12px;
+    color: #ffffff;
+}
