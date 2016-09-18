@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="/bower_components/ng-dialog/css/ngDialog.min.css">
         <link rel="stylesheet" type="text/css" href="/bower_components/ng-dialog/css/ngDialog-theme-default.min.css">
         <link rel="stylesheet" type="text/css" href="/lib/css/main.css">
-        <link rel="stylesheet" type="text/css" href="/lib/css/login.css">
+        <link rel="stylesheet" type="text/css" href="/lib/sass/main.scss">
         <link rel="stylesheet" type="text/css" href="/lib/css/location.css">
         <link rel="stylesheet" type="text/css" href="/bower_components/angular-busy/dist/angular-busy.min.css">
         <script src="/lib/jquery.js"></script>
@@ -36,15 +36,17 @@
     </head>
     <body ng-controller="MasterCtrl">
         <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak ng-click="toggleE($event)">
-            <!-- Sidebar -->
+            <link rel="import" href="/modules/partial/header/header.html?__inline"/>
             <link rel="import" href="/modules/partial/sidebar/sidebar.html?__inline"/>
-            <!-- End Sidebar -->
             <div id="content-wrapper" style="min-height: 600px;">
                 <div class="page-content">
                     <!-- Header Bar -->
-                    <link rel="import" href="/modules/partial/header/header.html?__inline"/>
+
                     <!-- End Header Bar -->
                     <!-- Main Content -->
+                    <!-- Sidebar -->
+
+                    <!-- End Sidebar -->
                     <div ui-view></div>
                 </div><!-- End Page Content -->
             </div><!-- End Content Wrapper -->

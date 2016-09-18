@@ -170,6 +170,12 @@
   .login .center {
     margin-top: 140px; } }
 
+.sideBar {
+  width: 100px;
+  height: 100px;
+  background: green;
+  margin-top: 48px; }
+
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6, label, form, input, button,
 textarea, p, section, strong, a, th, td, tr {
