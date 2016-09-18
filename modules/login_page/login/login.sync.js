@@ -11,7 +11,7 @@ app.register.controller("loginCtr", function ($scope, $http, $location, $uibModa
              console.log(data);
              if(data.code=='200'){
                  $cookieStore.put("iotcloud-token",{
-                     loginName: $scope.person.loginName,
+                     loginName: $scope.person.username,
                      token: data.data.token
                  });
                  localStorage.setItem("storeMap",data.data.storehouse.storehouse_type);

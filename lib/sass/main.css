@@ -67,6 +67,105 @@
     color: red;
     margin-bottom: 5px;
     display: inline-block; }
+  .login .center .reg-step {
+    width: 360px;
+    margin: 0 auto 10px auto;
+    height: auto;
+    overflow: hidden; }
+    .login .center .reg-step .reg-step-i {
+      float: left;
+      width: 72px;
+      height: auto;
+      overflow: hidden;
+      text-align: center; }
+      .login .center .reg-step .reg-step-i div {
+        border: 1px solid #c3ccdb;
+        width: 32px;
+        height: 32px;
+        border-radius: 32px;
+        margin: 0 auto 10px auto;
+        display: table; }
+        .login .center .reg-step .reg-step-i div p {
+          display: table-cell;
+          vertical-align: middle;
+          color: #c3ccdb;
+          font-size: 14px; }
+      .login .center .reg-step .reg-step-i p {
+        color: #c3ccdb;
+        font-size: 12px; }
+    .login .center .reg-step .reg-step-i-active div {
+      border: 1px solid #5f9bdb; }
+      .login .center .reg-step .reg-step-i-active div p {
+        color: #5f9bdb; }
+    .login .center .reg-step .reg-step-i-active p {
+      color: #3e4d68; }
+    .login .center .reg-step .reg-step-arrow {
+      float: left;
+      width: 72px;
+      text-align: center;
+      list-style-type: none; }
+      .login .center .reg-step .reg-step-arrow img {
+        width: 32px;
+        height: 32px; }
+    .login .center .reg-step:after {
+      content: "";
+      display: block;
+      clear: both;
+      height: 0; }
+  .login .center form {
+    width: 360px;
+    margin: auto; }
+    .login .center form label {
+      color: #3e4d68;
+      font-size: 12px;
+      margin-bottom: 8px; }
+      .login .center form label span {
+        color: #ff6b6b;
+        padding-right: 5px; }
+    .login .center form input {
+      font-size: 12px; }
+    .login .center form .errorInfoReg {
+      color: red;
+      display: inline-block;
+      font-size: 12px;
+      margin-left: 0; }
+    .login .center form .btns-group {
+      height: auto;
+      overflow: hidden;
+      margin-bottom: 20px; }
+      .login .center form .btns-group .btn-backlogin {
+        width: 80px;
+        height: 34px;
+        border-radius: 4px;
+        background-color: #ffffff;
+        border: solid 1px #5f9bdb;
+        font-size: 12px;
+        text-align: center;
+        color: #5f9bdb;
+        line-height: 1.8; }
+      .login .center form .btns-group .btn-next {
+        width: 80px;
+        height: 34px;
+        border-radius: 4px;
+        background-color: #5f9bdb;
+        font-size: 12px;
+        text-align: center;
+        color: #ffffff;
+        line-height: 1.8; }
+    .login .center form .register_ok {
+      width: 160px;
+      height: 160px;
+      margin: 10px auto; }
+    .login .center form .register_res {
+      font-size: 14px;
+      text-align: center;
+      color: #45b6b0;
+      padding-bottom: 8px; }
+    .login .center form .register_ok_skip, .login .center form .register_fail_skip {
+      font-size: 14px;
+      text-align: center;
+      color: #808ca0;
+      padding-bottom: 8px; }
 @media screen and (min-height: 935px) {
   .login .center {
     margin-top: 140px; } }
