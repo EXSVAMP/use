@@ -373,6 +373,7 @@ td,th{
     height: 144px;
     border-radius: 4px !important;
     border: 0 none;
+    right: 30px;
     top: 50px;
     background :#3e4d68;
     font-size: 14px;
@@ -385,4 +386,39 @@ td,th{
     color: #5f9bdb;
     height: 48px;
     line-height: 3;
+}
+
+.header-menu-pos li a:hover{
+    background: #313d53;
+    color: #fff;
+}
+
+.header-menu-tag{
+    display: block;
+    float: left;
+    height: 14px;
+    margin-right: 8px;
+    margin-top: 13px;
+    width: 14px;
+}
+
+.header-menu-tag-user{
+    background: url(/lib/img/icon_user_16_16_03.png);
+}
+.header-menu-pos li a:hover .header-menu-tag-user{
+    background: url(/lib/img/icon_user_16_16_02.png);
+}
+
+.header-menu-tag-pass{
+    background: url(/lib/img/icon_password_16_16_03.png);
+}
+.header-menu-pos li a:hover .header-menu-tag-pass{
+    background: url(/lib/img/icon_password_16_16_02.png);
+}
+
+.header-menu-tag-logout{
+    background: url(/lib/img/icon_logout_16_16_03.png);
+}
+.header-menu-pos li a:hover .header-menu-tag-logout{
+    background: url(/lib/img/icon_logout_16_16_02.png);
 }
