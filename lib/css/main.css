@@ -325,6 +325,13 @@ td,th{
     padding-left: 200px;
 }
 
+.page-wrapper-head{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}
+
 .header_com{
     height: 48px;
     background: #3e4d68;

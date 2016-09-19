@@ -34,10 +34,8 @@
         <!--<link rel="stylesheet" href="/lib/css/mgMiniMap-1.3.0.css">-->
 
     </head>
-    <body ng-controller="MasterCtrl">
-        <link rel="import" href="/modules/partial/header/header.html?__inline"/>
+    <body ng-controller="MasterCtrl" ng-init="header_com_mask = false;header_com_logout_pop = false;header_com_repass_pop = false;">
         <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak ng-click="toggleE($event)">
-            
             <link rel="import" href="/modules/partial/sidebar/sidebar.html?__inline"/>
             <div id="content-wrapper" style="min-height: 600px;">
                 <div class="page-content">
@@ -52,6 +50,9 @@
                 </div><!-- End Page Content -->
             </div><!-- End Content Wrapper -->
         </div><!-- End Page Wrapper -->
+
+        <link rel="import" href="/modules/partial/header/header.html?__inline"/>
+    
     </body>
 
     <script type="text/javascript">
