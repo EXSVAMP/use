@@ -28,6 +28,9 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
 	$scope.header_com_mask = false;
 	$scope.header_com_logout_pop = false;
 	$scope.header_com_repass_pop = false;
+    $scope.header_com_mask_show = "";
+    $scope.header_com_logout_pop_show = "";
+    $scope.header_com_repass_pop_show = "";
 	$scope.repass_test=false;
     $scope.repass_new=false;
     $scope.repass_reconfirm=false;
@@ -38,6 +41,8 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
 	$scope.logout = function(){
 		$scope.header_com_mask = true;
 		$scope.header_com_logout_pop = true;
+        $scope.header_com_mask_show = "header-com-mask-show";
+        $scope.header_com_logout_pop_show = "header-com-logout-pop-show";
 	};
 
 	$scope.logout_ok = function(){
@@ -52,6 +57,8 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
     $scope.logout_cancel = function(){
 		$scope.header_com_mask = false;
 		$scope.header_com_logout_pop = false;
+        $scope.header_com_mask_show = "";
+        $scope.header_com_logout_pop_show = "";
 	};
 
 	$scope.repassword = function(){
@@ -65,6 +72,8 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
 		$scope.btn_ok_fail = "btn_ok_fail";
         $scope.header_com_mask = true;
 		$scope.header_com_repass_pop = true;
+        $scope.header_com_mask_show = "header-com-mask-show";
+        $scope.header_com_repass_pop_show = "header-com-repass-pop-show";
     };
 
     $scope.repass_click = function(){
@@ -144,6 +153,8 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
     $scope.repass_cancel = function(){
 		$scope.header_com_mask = false;
 		$scope.header_com_repass_pop = false;
+        $scope.header_com_mask_show = "";
+        $scope.header_com_repass_pop_show = "";
 	};
   
     function alert_pop(alert_info){

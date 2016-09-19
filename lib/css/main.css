@@ -434,6 +434,7 @@ td,th{
 }
 
 .header-com-mask{
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -459,6 +460,10 @@ td,th{
 .header-com-repass-pop{
     height: 359px;
     margin-top: -179.5px;
+}
+
+.header-com-mask-show,.header-com-logout-pop-show,.header-com-repass-pop-show{
+    display: block;
 }
 
 .header-com-logout-pop-h,.header-com-repass-pop-h{

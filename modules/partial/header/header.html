@@ -22,10 +22,10 @@
 	</div>
 	<div class="header_com_portrait"><img src="/lib/img/header.png" /></div>
 </div>
-<div class="header-com-mask" ng-show="header_com_mask">
+<div class="header-com-mask {{header_com_mask_show}}" ng-show="header_com_mask">
 	
 </div>
-<div class="header-com-logout-pop" ng-show="header_com_logout_pop">
+<div class="header-com-logout-pop {{header_com_logout_pop_show}}" ng-show="header_com_logout_pop">
 	<div class="header-com-logout-pop-h"><span></span>退出IOT智能仓储系统</div>
 	<div class="header-com-logout-pop-m"><span></span>确定要退出吗？</div>	
 	<div class="header-com-logout-pop-b">
@@ -33,7 +33,7 @@
     	<button ng-click="logout_cancel()" class="btn pull-right btn_cancel" type="button">取消</button>
     </div>
 </div>
-<div class="header-com-repass-pop" ng-show="header_com_repass_pop">
+<div class="header-com-repass-pop {{header_com_repass_pop_show}}" ng-show="header_com_repass_pop">
 	<div class="header-com-repass-pop-h"><span></span>修改密码</div>
 	<div class="header-com-repass-pop-m">
 		<form role="form" name="repass" id="repass_form" name="repass_form">
