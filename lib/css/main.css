@@ -1,3 +1,6 @@
+body{
+    background: #f5f5f5;
+}
 .search-board{
     background-color: #D4D4D4;
     padding-top: 15px;
@@ -319,7 +322,7 @@ td,th{
 }
 
 #page-wrapper{
-    padding-left: 0;
+    padding-left: 200px;
 }
 
 .header_com{

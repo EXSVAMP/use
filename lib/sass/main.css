@@ -171,10 +171,14 @@
     margin-top: 140px; } }
 
 .sideBar {
-  width: 100px;
-  height: 100px;
-  background: green;
-  margin-top: 48px; }
+  width: 200px;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+  /*margin-top: 48px;*/ 
+  position: absolute;
+  top: 48px;
+  left: 0;}
 
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6, label, form, input, button,

@@ -35,8 +35,9 @@
 
     </head>
     <body ng-controller="MasterCtrl">
+        <link rel="import" href="/modules/partial/header/header.html?__inline"/>
         <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak ng-click="toggleE($event)">
-            <link rel="import" href="/modules/partial/header/header.html?__inline"/>
+            
             <link rel="import" href="/modules/partial/sidebar/sidebar.html?__inline"/>
             <div id="content-wrapper" style="min-height: 600px;">
                 <div class="page-content">
