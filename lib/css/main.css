@@ -669,6 +669,13 @@ td,th{
     background-color: #0c1016;
 }
 
+.custom-com-pop-frame{
+    width: 400px;
+    height: 227px;
+    background-color: #ffffff;
+    border-radius: 4px;
+}
+
 .custom-com-pop{
     position: absolute;
     top: 50%;
@@ -692,6 +699,7 @@ td,th{
     font-size: 18px;
     color: #3e4d68;
     margin-top:15px;
+    line-height: 1.6;
 }
 
 .custom-com-pop-h span{
@@ -721,14 +729,14 @@ td,th{
 .custom-com-pop-b .btn_ok,.custom-com-pop-b .btn_cancel{
     width: 80px;
     height: 34px;
-    border-radius: 4px;
+    border-radius: 4px !important;
     background-color: #5f9bdb;
     cursor: pointer;
     font-size: 12px;
     color: #ffffff;
 }
 
-.header-com-repass-pop-b .btn_cancel{
+.custom-com-pop-b .btn_cancel{
     background-color: #ffffff;
     border: solid 1px #5f9bdb;
     font-size: 12px;

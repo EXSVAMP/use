@@ -108,13 +108,13 @@
           </div>
     </script>
     <script type="text/ng-template" id="commonCustomPop.html"> 
-    <div class="alert-frame"  ng-controller="CustomPopCtrl">
-        <div class="custom-com-mask {{custom_com_mask_show}}">
+    <div class="custom-com-pop-frame" style="{{custom_com_pop_frame}}" ng-controller="CustomPopCtrl">
+        <!-- <div class="custom-com-mask {{custom_com_mask_show}}">
     
-        </div>
+        </div> -->
         <div class="custom-com-pop {{custom_com_pop_show}}" style="{{custom_com_pop_size}}">
             <div class="custom-com-pop-h"><span style="{{custom_com_pop_title_icon}}"></span>{{custom_com_pop_title}}</div>
-            <div class="custom-com-pop-m"><span></span>确定要退出吗？</div> 
+            <div class="custom-com-pop-m"><my-directive></my-directive></div> 
             <div class="custom-com-pop-b">
                 <button class="btn pull-left btn_ok" ng-click="custom_com_pop_ok()">确定</button>
                 <button ng-click="custom_com_pop_cancel()" class="btn pull-right btn_cancel" type="button">取消</button>

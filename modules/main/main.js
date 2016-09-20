@@ -24,7 +24,14 @@ app.service("baseUrl",function(){
     }
 })
 app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDialog, $rootScope){
+   // $rootScope.stateEdit = [
+   //      { name: '未使用', flag: 0},
+   //      { name: '正在使用', flag: 1},
+   //      { name: '损坏', flag: 2},
+   //      { name: '已删除停用', flag:3}
+   //  ];
 	var baseUrl = baseUrl.getUrl();
+    $rootScope.$scopeMasterCtrl = $scope;
 	$scope.header_com_mask = false;
 	$scope.header_com_logout_pop = false;
 	$scope.header_com_repass_pop = false;
@@ -168,27 +175,50 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
         })
     }
 
-    $rootScope.custom_pop = function(custom_com_pop_size,custom_com_pop_title,custom_com_pop_title_icon){
+    $rootScope.custom_pop = function(custom_com_pop_size,custom_com_pop_title,custom_com_pop_title_icon,custom_com_pop_m_content,custom_com_pop_ok_func){
+        //$rootScope.ngDialog = ngDialog;
         $rootScope.custom_com_pop_title = custom_com_pop_title;
         if(custom_com_pop_size){
             var w = custom_com_pop_size.w;
             var h = custom_com_pop_size.h;
             $rootScope.custom_com_pop_size = "width:"+w+"px;height:"+h+"px;margin-top:-"+(h/2)+"px;margin-left:-"+(w/2)+"px";
+            $rootScope.custom_com_pop_frame = "width:"+w+"px;height:"+h+"px;";
         }
-        $rootScope.custom_com_mask_show = "custom-com-mask-show";
+        //$rootScope.custom_com_mask_show = "custom-com-mask-show";
         $rootScope.custom_com_pop_show = "custom-com-pop-show";
         if(custom_com_pop_title_icon){
             $rootScope.custom_com_pop_title_icon = "background:url("+custom_com_pop_title_icon+");";
 
         }else
             $rootScope.custom_com_pop_title_icon = "background:none;";
+
+        $rootScope.custom_com_pop_m_content = custom_com_pop_m_content;
+
+        $rootScope.custom_com_pop_cancel = function(){
+            //$rootScope.custom_com_mask_show = "";
+            $rootScope.custom_com_pop_show = "";
+            ngDialog.close();
+        }
+
+        $rootScope.custom_com_pop_ok = function(){
+            custom_com_pop_ok_func();
+        }
+
         ngDialog.open({
-            template:"alert.html",
+            template:"commonCustomPop.html",
             //className:'ngDialog-theme-default',
+            closeByEscape: false,
+            closeByDocument:false,
             preCloseCallback: function() {
-               
+                //$rootScope.custom_com_mask_show = "";
+                $rootScope.custom_com_pop_show = "";
             }
         })
+
+        //if(defaultSelVal){ 
+           //$rootScope.$scope2.stateEdit.flag = $rootScope.$scope2.stateEdit[2];
+           //$rootScope.defaultSelVal = defaultSelVal;
+        //}
     }
 
 })
@@ -218,5 +248,36 @@ app.controller("AlertCtrl",function($scope, $rootScope){
 })
 
 app.controller("CustomPopCtrl",function($scope, $rootScope){
+    //alert("12345");
      $scope.custom_com_pop_title = $rootScope.custom_com_pop_title;
+     $scope.custom_com_pop_m_content = $rootScope.custom_com_pop_m_content;
+     $scope.custom_com_pop_size = $rootScope.custom_com_pop_size;
+     $scope.custom_com_pop_frame = $rootScope.custom_com_pop_frame;
+     $scope.custom_com_pop_show = $rootScope.custom_com_pop_show;
+     $scope.custom_com_pop_title_icon = $rootScope.custom_com_pop_title_icon;
+     $rootScope.$scope2 = $scope;
+     $scope.stateEdit = [
+        { name: '未使用', flag: 0},
+        { name: '正在使用', flag: 1},
+        { name: '损坏', flag: 2},
+        { name: '已删除停用', flag:3}
+    ];
+    $rootScope.$scope2.stateEdit.flag = $rootScope.$scope2.stateEdit[$rootScope.defaultSelVal];
+    $rootScope.$scope2.edit_serial = $rootScope.defaultSerialVal;
+
+    
+})
+
+app.directive('myDirective', function ($rootScope) {
+
+    alert($rootScope.custom_com_pop_m_content);
+    return { 
+        restrict: 'ECMA',
+        template: $rootScope.custom_com_pop_m_content, 
+  
+ 　　replace: false, 
+  
+ 　　transclude: false,
+    scope:false
+    };
 })
