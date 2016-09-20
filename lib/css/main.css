@@ -655,3 +655,82 @@ td,th{
 .ngdialog.ngdialog-theme-default .ngdialog-content{
     background: #fff;
 }
+
+/*common custom pop*/
+.custom-com-mask{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    border-radius: 2px;
+    background-color: #0c1016;
+}
+
+.custom-com-pop{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 227px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    margin-left: -200px;
+    margin-top: -113.5px;
+}
+
+.custom-com-mask-show,.custom-com-pop-show{
+    display: block;
+}
+
+.custom-com-pop-h{
+    width: 100%;
+    height: 41px;
+    border-bottom: 1px solid #e8ebf0;
+    font-size: 18px;
+    color: #3e4d68;
+    margin-top:15px;
+}
+
+.custom-com-pop-h span{
+    float: left;
+    display: block;
+    width :16px;
+    height: 16px;
+    /*background: url(/lib/img/group.png);*/
+    margin-right: 9px;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.custom-com-pop-m{
+    margin-top: 25px;
+    margin-bottom: 33px;
+    font-size: 14px;
+    color: #3e4d68;
+}
+
+.custom-com-pop-b{
+    width: 190px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.custom-com-pop-b .btn_ok,.custom-com-pop-b .btn_cancel{
+    width: 80px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #5f9bdb;
+    cursor: pointer;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.header-com-repass-pop-b .btn_cancel{
+    background-color: #ffffff;
+    border: solid 1px #5f9bdb;
+    font-size: 12px;
+    color: #5f9bdb;
+}

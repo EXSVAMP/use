@@ -167,6 +167,30 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
             }
         })
     }
+
+    $rootScope.custom_pop = function(custom_com_pop_size,custom_com_pop_title,custom_com_pop_title_icon){
+        $rootScope.custom_com_pop_title = custom_com_pop_title;
+        if(custom_com_pop_size){
+            var w = custom_com_pop_size.w;
+            var h = custom_com_pop_size.h;
+            $rootScope.custom_com_pop_size = "width:"+w+"px;height:"+h+"px;margin-top:-"+(h/2)+"px;margin-left:-"+(w/2)+"px";
+        }
+        $rootScope.custom_com_mask_show = "custom-com-mask-show";
+        $rootScope.custom_com_pop_show = "custom-com-pop-show";
+        if(custom_com_pop_title_icon){
+            $rootScope.custom_com_pop_title_icon = "background:url("+custom_com_pop_title_icon+");";
+
+        }else
+            $rootScope.custom_com_pop_title_icon = "background:none;";
+        ngDialog.open({
+            template:"alert.html",
+            //className:'ngDialog-theme-default',
+            preCloseCallback: function() {
+               
+            }
+        })
+    }
+
 })
 app.controller("sideBarCtrl",function($scope, $rootScope){
      $scope.open={
@@ -191,4 +215,8 @@ app.controller("sideBarCtrl",function($scope, $rootScope){
 
 app.controller("AlertCtrl",function($scope, $rootScope){
 	 $scope.alert_info = $rootScope.alert_info;
+})
+
+app.controller("CustomPopCtrl",function($scope, $rootScope){
+     $scope.custom_com_pop_title = $rootScope.custom_com_pop_title;
 })
