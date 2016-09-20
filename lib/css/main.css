@@ -325,6 +325,10 @@ td,th{
     padding-left: 200px;
 }
 
+#page-wrapper #content-wrapper{
+    padding-top: 48px;
+}
+
 .page-wrapper-head{
     position: absolute;
     top:0;

@@ -1,4 +1,4 @@
-angular.module("RDash",['ui.bootstrap','ui.router','ngCookies','ngDialog','cgBusy','truncate']);
+angular.module("RDash",['ui.bootstrap','ui.router','ngCookies','ngDialog','cgBusy','truncate','ui.select','ngSanitize']);
 require('router');
 require('interceptor/captainlnterceptor');
 
