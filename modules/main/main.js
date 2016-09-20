@@ -168,6 +168,26 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
         })
     }
 })
+app.controller("sideBarCtrl",function($scope, $rootScope){
+     $scope.open={
+         open1:false,
+         open2:false,
+         open3:false
+         
+     }
+    $scope.openSide=function(status){
+        console.log("123");
+        if(status==1){
+            $scope.open.open1=!$scope.open.open1;
+        }
+        if(status==2){
+            $scope.open.open2=!$scope.open.open2;
+        }
+
+
+    };
+
+});
 
 app.controller("AlertCtrl",function($scope, $rootScope){
 	 $scope.alert_info = $rootScope.alert_info;
