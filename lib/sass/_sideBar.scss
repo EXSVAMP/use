@@ -6,8 +6,12 @@
   position: absolute;
   top: 48px;
   left: 0;
+  a {
+    color:#3e4d68;
+
+  }
   li{
-    text-align: center;
+    text-align: left;
     width:200px;
     //height: 48px;
     padding: 0px;
@@ -17,16 +21,21 @@
     width:200px;
     height: 58px;
     margin: 0px;
-    margin-top: -2px;
+    margin-top: 0px;
     padding: 0px;
     line-height: 58px;
 
   };
-.nav_head+ul>li{
-
+.nav_head+ul>li a{
+display: inline-block;
+  width: 200px;
   height: 48px;
-
+  line-height: 32px;
 };
+  .nav-stacked > li + li {
+    margin-top:0px;
+    margin-left: 0;
+  }
   .nav .nav-divider {
     height: 2px;
     margin-top: 0px;
@@ -40,9 +49,61 @@
     color: #ffffff;
 
   };
+
   .openRotate{
     color:red;
+  };
+  span{
+    font-size: 16px;
+  };
+  .deco{
+    border-top:solid 2px #5F9BDB;
+    border-bottom:solid 2px #5F9BDB;
+    a {color:#5F9BDB}
+  };
+  .deco2{
+    border-bottom:none;
+    color:#5F9BDB ;
+  };
+.icon-icon_data,.icon-icon_alert{
+  margin-left: 50px;
+  margin-right: 5px;
+};
+  .icon-icon_up_open{
+    margin-left: 22px;
+    margin-right: 6px;
+  };
+.icon-icon_right_open{
+  margin-left: 22px;
+  margin-right: 6px;
+};
+.icon-icon_equipment{
+  margin-right: 2px;
+  position: relative;
+  top:2px;
+};
+  .icon-icon_RFIDcard,.icon-icon_RFIDcardcontent,.icon-icon_camera,.icon-icon_cardreader,
+  .icon-icon_eventlog,.icon-icon_userlist,.icon-icon_user,
+  .icon-icon_warehouse_eyesmap,.icon-icon_gear{
+    position: relative;
+    top:2px;
+    margin-left: 45px;
+    margin-right: 5px;
+  };
+  .icon-icon_user,.icon-icon_userlist,.icon-icon_gear{
+    top:1px;
+  };
+
+  .showout {
+    transition: all linear 200ms;
   }
+  .showout.ng-hide {
+    opacity: 0;
+  }
+ a:hover{
+   background:#5F9BDB!important; ;
+   color: #ffffff;
+ }
 }
 
 

@@ -2,53 +2,97 @@
     <ul class="nav nav-pills nav-stacked">
         <li >
             <a href="#" class="nav-header collapsed nav_head" data-toggle="collapse">
-                <img src="/lib/img/icon_data_16_16_01.png"/> 统计数据
+               <span class="icon-icon_data"></span>统计数据
             </a>
 
         </li>
-        <!--<li class="nav-divider"></li>-->
-        <li>
+
+        <li ng-class="{true:'deco'}[open.open1]">
             <a href="#device" class="nav-header nav_head" ng-click="openSide(1)" >
-                <i class="fa  trant" ng-class="{true:'fa-chevron-down',false:'fa-chevron-right'}[open.open1]" ></i> 设备管理
+                <span  ng-class="{true:'icon-icon_up_open',false:'icon-icon_right_open'}[open.open1]"></span>
+                <span class="icon-icon_equipment"></span>
+                设备管理
 
-                <span  class="icon-icon_download"></span>
             </a>
-            <ul id="device" class="nav nav-list " ng-show="open.open1">
-                <li><a href="#"><i class="icon-user"></i> RFID卡</a></li>
-                <li><a href="#"><i class="icon-edit"></i> RFID卡数据</a></li>
-                <li><a href="#"><i class="icon-trash"></i> 摄像头</a></li>
-                <li><a href="#"><i class="icon-list"></i> 读写器</a></li>
-                <li><a href="#"><i class="icon-list"></i> 事件日志</a></li>
+            <ul id="device" class="nav nav-list "  ng-show="open.open1" >
+                <li>
+                    <a href="#">
+                    <span class="icon-icon_RFIDcard"></span>RFID卡
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon-icon_RFIDcardcontent"></span>RFID卡数据
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon-icon_camera"></span> 摄像头
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon-icon_cardreader"></span>读写器
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon-icon_eventlog"></span>事件日志
+                    </a>
+                </li>
             </ul>
 
         </li>
-        <!--<li class="nav-divider"></li>-->
+
         <li >
-            <a href="#warn" class="nav-header  nav_head" ng-click="openSide(2)">
-                <i class="icon-user-md icon-large"></i>警报管理
+            <a href="#warn" class="nav-header  nav_head" >
+                <span class="icon-icon_alert"></span>警报管理
             </a>
-            <ul id="warn" class="nav nav-list" ng-show="open.open2">
-                <li><a href="#"><i class="icon-user"></i> RFID卡</a></li>
-                <li><a href="#"><i class="icon-edit"></i> RFID卡数据</a></li>
-                <li><a href="#"><i class="icon-trash"></i> 摄像头</a></li>
-                <li><a href="#"><i class="icon-list"></i> 读写器</a></li>
-                <li><a href="#"><i class="icon-list"></i> 事件日志</a></li>
+
+        </li>
+
+        <li ng-class="{'deco':open.open2,'deco2':open.open2&&open.open3}">
+            <a href="#user" class="nav-header  nav_head" ng-click="openSide(2)">
+                <span  ng-class="{true:'icon-icon_up_open',false:'icon-icon_right_open'}[open.open2]"></span>
+                <span class="icon-icon_users"></span>
+                用户管理
+            </a>
+            <ul id="user" class="nav nav-list " ng-show="open.open2">
+                <li>
+                    <a href="#">
+                        <span class="icon-icon_userlist"></span>用户列表
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon-icon_user"></span>我的账号
+                    </a>
+                </li>
+
             </ul>
 
         </li>
-        <!--<li class="nav-divider"></li>-->
-        <li >
-            <a href="#" class="nav-header collapsed nav_head" data-toggle="collapse">
-                <i class="icon-user-md icon-large"></i>用户管理
+
+        <li ng-class="{true:'deco'}[open.open3]">
+            <a href="#" class="nav-header nav_head"  ng-click="openSide(3)">
+                <span  ng-class="{true:'icon-icon_up_open',false:'icon-icon_right_open'}[open.open3]"></span>
+                <span class="icon-icon_warehouse"></span>我的仓库
             </a>
+            <ul  class="nav nav-list " ng-show="open.open3" >
+                <li>
+                    <a href="#">
+                        <span class="icon-icon_warehouse_eyesmap"></span>仓库平面图
+                    </a>
+                </li>
+                <li >
+                    <a href="#" >
+                        <span class="icon-icon_gear"></span>仓库设置
+                    </a>
+                </li>
+
+            </ul>
 
         </li>
-        <!--<li class="nav-divider"></li>-->
-        <li >
-            <a href="#" class="nav-header collapsed nav_head" data-toggle="collapse">
-                <i class="icon-user-md icon-large"></i>我的仓库
-            </a>
 
-        </li>
     </ul>
 </div>

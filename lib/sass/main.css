@@ -178,8 +178,10 @@
   position: absolute;
   top: 48px;
   left: 0; }
+  .sideBar a {
+    color: #3e4d68; }
   .sideBar li {
-    text-align: center;
+    text-align: left;
     width: 200px;
     padding: 0px;
     margin: 0px; }
@@ -187,11 +189,17 @@
     width: 200px;
     height: 58px;
     margin: 0px;
-    margin-top: -2px;
+    margin-top: 0px;
     padding: 0px;
     line-height: 58px; }
-  .sideBar .nav_head + ul > li {
-    height: 48px; }
+  .sideBar .nav_head + ul > li a {
+    display: inline-block;
+    width: 200px;
+    height: 48px;
+    line-height: 32px; }
+  .sideBar .nav-stacked > li + li {
+    margin-top: 0px;
+    margin-left: 0; }
   .sideBar .nav .nav-divider {
     height: 2px;
     margin-top: 0px;
@@ -204,6 +212,45 @@
     color: #ffffff; }
   .sideBar .openRotate {
     color: red; }
+  .sideBar span {
+    font-size: 16px; }
+  .sideBar .deco {
+    border-top: solid 2px #5F9BDB;
+    border-bottom: solid 2px #5F9BDB; }
+    .sideBar .deco a {
+      color: #5F9BDB; }
+  .sideBar .deco2 {
+    border-bottom: none;
+    color: #5F9BDB; }
+  .sideBar .icon-icon_data, .sideBar .icon-icon_alert {
+    margin-left: 50px;
+    margin-right: 5px; }
+  .sideBar .icon-icon_up_open {
+    margin-left: 22px;
+    margin-right: 6px; }
+  .sideBar .icon-icon_right_open {
+    margin-left: 22px;
+    margin-right: 6px; }
+  .sideBar .icon-icon_equipment {
+    margin-right: 2px;
+    position: relative;
+    top: 2px; }
+  .sideBar .icon-icon_RFIDcard, .sideBar .icon-icon_RFIDcardcontent, .sideBar .icon-icon_camera, .sideBar .icon-icon_cardreader,
+  .sideBar .icon-icon_eventlog, .sideBar .icon-icon_userlist, .sideBar .icon-icon_user,
+  .sideBar .icon-icon_warehouse_eyesmap, .sideBar .icon-icon_gear {
+    position: relative;
+    top: 2px;
+    margin-left: 45px;
+    margin-right: 5px; }
+  .sideBar .icon-icon_user, .sideBar .icon-icon_userlist, .sideBar .icon-icon_gear {
+    top: 1px; }
+  .sideBar .showout {
+    transition: all linear 200ms; }
+  .sideBar .showout.ng-hide {
+    opacity: 0; }
+  .sideBar a:hover {
+    background: #5F9BDB !important;
+    color: #ffffff; }
 
 .card-bar {
   display: table;

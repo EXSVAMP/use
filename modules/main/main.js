@@ -1,4 +1,4 @@
-angular.module("RDash",['ui.bootstrap','ui.router','ngCookies','ngDialog','cgBusy','truncate','ui.select','ngSanitize']);
+angular.module("RDash",['ui.bootstrap','ui.router','ngCookies','ngDialog','cgBusy','truncate','ui.select','ngSanitize','ngAnimate']);
 require('router');
 require('interceptor/captainlnterceptor');
 
@@ -193,6 +193,7 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
 
 })
 app.controller("sideBarCtrl",function($scope, $rootScope){
+
      $scope.open={
          open1:false,
          open2:false,
@@ -203,11 +204,19 @@ app.controller("sideBarCtrl",function($scope, $rootScope){
         console.log("123");
         if(status==1){
             $scope.open.open1=!$scope.open.open1;
-        }
+            $scope.open.open2=false;
+            $scope.open.open3=false;
+        };
         if(status==2){
             $scope.open.open2=!$scope.open.open2;
+            $scope.open.open1=false;
+            $scope.open.open3=false;
+        };
+        if(status==3){
+            $scope.open.open3=!$scope.open.open3;
+            $scope.open.open1=false;
+            $scope.open.open2=false;
         }
-
 
     };
 
