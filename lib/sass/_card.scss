@@ -93,6 +93,7 @@
 					height: 48px;
 					background-color: #ffffff;
 					border: solid 1px #e8ebf0;
+					cursor: pointer;
 					p{
 						line-height: 2;
 						text-align: center;
@@ -159,6 +160,39 @@
 			}
 		}
 
+	}
+
+	.emptyDataList{
+		display: none;
+		/*width: 406px;*/
+		height: 80px;
+		/*text-align: center;*/
+		margin: 100px auto 0 auto;
+		p{
+			font-size: 19px;
+			color: #3e4d68;
+			display: table-cell;
+			vertical-align: middle;
+			span{
+				&:first-child{
+					display: block;
+					float: left;
+					width: 112px;
+					height: 80px; 
+					background: url(/lib/img/Group.png);
+					margin-right: 12px;
+				}
+				&:last-child{
+					display: block;
+					float: left;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+
+	.emptyDataListShow{
+		display: table;
 	}
 
 }

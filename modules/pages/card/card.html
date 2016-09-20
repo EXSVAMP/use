@@ -20,7 +20,7 @@
 			</div>
 			<div class="btns-group">
 				<button type="button" class="btn btn-rfid-search" ng-click="queryRFIDList()"><span></span>搜索</button>
-				<button type="button" class="btn btn-rfid-add"><span></span>增加</button>
+				<button type="button" class="btn btn-rfid-add" ng-click="addRFID()"><span></span>增加</button>
 			</div>
 		</form>
 
@@ -44,15 +44,20 @@
       				<td><p>2019.8.1</p></td>
       				<td><p><span class="rfid-edit"></span><span class="rfid-delete"></span></p></td>
     			</tr> -->
-    			<tr repeat="item in dataList">
-    				<td><p>item.id</p></td>
-      				<td><p>item.serial_number</p></td>
-      				<td><p>item.status_display</p></td>
-      				<td><p>item.updated_at</p></td>
-      				<td><p>item.created_at</p></td>
-      				<td><p><span class="rfid-edit" ng-click="edit("+item.id+")"></span><span class="rfid-delete" ng-click="delete("+item.id+")"></span></p></td>
+    			<tr ng-repeat="item in dataList">
+    				<td><p>{{item.id}}</p></td>
+      				<td><p>{{item.serial_number}}</p></td>
+      				<td><p>{{item.status_display}}</p></td>
+      				<td><p>{{item.updated_at}}</p></td>
+      				<td><p>{{item.created_at}}</p></td>
+      				<td><p><span class="rfid-edit" ng-click="edit(item)"></span><span class="rfid-delete" ng-click="delete(item)"></span></p></td>
     			</tr>
     		</tbody>
     	</table>
+
+    	<div class="emptyDataList {{emptyDataListShow}}">
+    		<p><span></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
+    		
+    	</div>
 	</div>
 </div>

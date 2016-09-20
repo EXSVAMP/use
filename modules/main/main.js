@@ -50,7 +50,7 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
             if(data.code=="200"){
                 window.location.href = "/login.html"
             }else
-            	alert_pop("退出出错:"+data.description);
+            	$rootScope.alert_pop("退出出错:"+data.description);
         });
     };
 
@@ -144,7 +144,7 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
                 if(res.code=='200'){
                     window.location.href = "/login.html"
                 }else
-                	alert_pop("密码修改出错:"+res.description);
+                	$rootScope.alert_pop("密码修改出错:"+res.description);
             })
     	}
        
@@ -157,7 +157,7 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
         $scope.header_com_repass_pop_show = "";
 	};
   
-    function alert_pop(alert_info){
+     $rootScope.alert_pop = function(alert_info){
         $rootScope.alert_info = alert_info;
     	ngDialog.open({
             template:"alert.html",
