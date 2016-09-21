@@ -397,6 +397,67 @@
   .card-content .emptyDataListShow {
     display: table; }
 
+.add_form {
+  width: 360px;
+  margin-left: auto;
+  margin-right: auto; }
+  .add_form label {
+    font-size: 12px;
+    color: #3e4d68;
+    margin-bottom: 8px; }
+  .add_form input {
+    width: 360px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: solid 1px #e6e6e6;
+    font-size: 12px;
+    color: #888888; }
+
+.edit_form {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto; }
+  .edit_form label {
+    font-size: 12px;
+    color: #3e4d68;
+    margin-bottom: 8px; }
+  .edit_form input {
+    width: 360px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: solid 1px #e6e6e6;
+    font-size: 12px;
+    color: #888888; }
+  .edit_form .form-group-selin {
+    width: 360px; }
+    .edit_form .form-group-selin label {
+      font-size: 12px;
+      color: #3e4d68; }
+    .edit_form .form-group-selin ui-select, .edit_form .form-group-selin .ui-select-container, .edit_form .form-group-selin input {
+      width: 360px;
+      height: 34px; }
+    .edit_form .form-group-selin input {
+      font-size: 12px;
+      color: #888888; }
+
+.deleteCardInfo {
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+  text-align: center;
+  font-size: 14px;
+  color: #3e4d68; }
+  .deleteCardInfo p span {
+    display: block;
+    float: left;
+    width: 48px;
+    height: 48px;
+    background: url(/lib/img/icon_warning_48_48.png);
+    margin-right: 6px;
+    margin-top: -2px; }
+
 .ui-select-search, .ui-select-match {
   /* Because of the inclusion of Bootstrap */ }
   .ui-select-search span, .ui-select-match span {
@@ -422,6 +483,41 @@ ul.ui-select-choices {
       padding: 0;
       position: relative;
       width: 146px; }
+
+.RFID_Content .content-bar {
+  display: table;
+  width: 100%;
+  height: 55px;
+  background-color: #e8ebf0; }
+  .RFID_Content .content-bar p {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 12px;
+    color: #808ca0; }
+    .RFID_Content .content-bar p .icon-icon_location {
+      font-size: 16px;
+      margin-left: 40px;
+      margin-right: 4px;
+      position: relative;
+      top: 2px; }
+.RFID_Content .content {
+  padding: 20px; }
+  .RFID_Content .content .card-select {
+    height: 101px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding: 20px; }
+    .RFID_Content .content .card-select .form-group-selin {
+      float: left;
+      margin-right: 53px;
+      width: 156px; }
+      .RFID_Content .content .card-select .form-group-selin label {
+        font-size: 12px;
+        color: #3e4d68; }
+      .RFID_Content .content .card-select .form-group-selin ui-select, .RFID_Content .content .card-select .form-group-selin .ui-select-container {
+        width: 156px;
+        height: 34px; }
 
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6, label, form, input, button,

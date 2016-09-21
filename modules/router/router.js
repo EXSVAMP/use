@@ -2,7 +2,7 @@
 
 
 var card = require("pages/card/card");
-// var content = require("pages/content/content");
+var content = require("pages/content/content");
 // var eventlog = require("pages/eventlog/eventlog");
 // var camera = require("pages/camera/camera");
 // var reader = require("pages/reader/reader");
@@ -20,8 +20,8 @@ app.config(function ($stateProvider, $urlRouterProvider,$controllerProvider) {
 
     // Application routes
     $stateProvider
-        .state('card', card);
-        // .state('content', content)
+        .state('card', card)
+        .state('content', content);
         // .state('eventlog', eventlog)
         // .state('reader', reader)
         // .state('camera', camera)
