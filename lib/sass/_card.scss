@@ -322,6 +322,8 @@
 }
 
 .ui-select-search,.ui-select-match {
+	width: 146px !important;
+	min-width: 146px !important;
     /* Because of the inclusion of Bootstrap */
     span{
     	height: 34px;
