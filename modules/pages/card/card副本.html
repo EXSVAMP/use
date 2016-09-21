@@ -1,0 +1,63 @@
+<div ng-controller="cardCtrl">
+	<div class="card-bar">
+		<p><span></span>设备管理>RFID卡</p>
+	</div>
+	<div class="card-content">
+		<form role="form" class="card-select">
+			<div class="form-group form-group-selin">
+    			<label for="name">状态:</label> 
+    			<ui-select ng-model="state.name" theme="bootstrap">
+            		<ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+            		<ui-select-choices repeat="item in state">
+              			<div ng-bind-html="item.name"></div>
+              			<!-- <small ng-bind-html="item.email"></small> -->
+            		</ui-select-choices>
+          		</ui-select>
+			</div>
+			<div class="form-group form-group-selin">
+    			<label for="name">序列号:</label> 
+    			 <input type="text" class="form-control" id="serial-search" placeholder="请输入名称" ng-model="serial_search">
+			</div>
+			<div class="btns-group">
+				<button type="button" class="btn btn-rfid-search" ng-click="queryRFIDList()"><span></span>搜索</button>
+				<button type="button" class="btn btn-rfid-add" ng-click="addRFID()"><span></span>增加</button>
+			</div>
+		</form>
+
+		<table class="table table-bordered">
+  			<thead>
+    			<tr>
+      				<th><p>编号<span class="sort-arrow-id"><img ng-src="{{sort_arrow_id_img}}"/></span></p></th>
+      				<th><p>序列号<span class="sort-arrow-serial"><img ng-src="{{sort_arrow_serial_img}}" src=""/></span></p></th>
+      				<th><p>显示状态<span class="sort-arrow-state"><img ng-src="{{sort_arrow_state_img}}" src=""/></span></p></th>
+      				<th><p>更新时间<span class="sort-arrow-updatetime"><img ng-src="{{sort_arrow_updatetime_img}}" src=""/></span></p></th>
+      				<th><p>创建时间<span class="sort-arrow-createtime"><img ng-src="{{sort_arrow_createtime_img}}" /></span></p></th>
+      				<th><p>操作</p></th>
+    			</tr>
+  			</thead>
+  			<tbody>
+    			<!-- <tr>
+      				<td><p>23</p></td>
+      				<td><p>sa10011961</p></td>
+      				<td><p>正常</p></td>
+      				<td><p>2016.9.10</p></td>
+      				<td><p>2019.8.1</p></td>
+      				<td><p><span class="rfid-edit"></span><span class="rfid-delete"></span></p></td>
+    			</tr> -->
+    			<tr ng-repeat="item in dataList">
+    				<td><p>{{item.id}}</p></td>
+      				<td><p>{{item.serial_number}}</p></td>
+      				<td><p>{{item.status_display}}</p></td>
+      				<td><p>{{item.updated_at}}</p></td>
+      				<td><p>{{item.created_at}}</p></td>
+      				<td><p><span class="rfid-edit" ng-click="edit(item)"></span><span class="rfid-delete" ng-click="delete(item)"></span></p></td>
+    			</tr>
+    		</tbody>
+    	</table>
+
+    	<div class="emptyDataList {{emptyDataListShow}}">
+    		<p><span></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
+    		
+    	</div>
+	</div>
+</div>

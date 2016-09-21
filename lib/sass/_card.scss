@@ -11,11 +11,12 @@
 		span{
 			display: block;
 			float: left;
-			width: 16px;
-			height: 16px; 
+			/*width: 16px;
+			height: 16px;*/
+			font-size: 16px;
 			margin-left: 40px;
     		margin-right: 5px;
-			background:url(/lib/img/icon_location_16_16.png);
+			/*background:url(/lib/img/icon_location_16_16.png);*/
 		}
 	}
 }
@@ -70,11 +71,13 @@
 				span{
 					display: block;
 					float: left;
-					padding-top: 5px;
-					padding-right: 4px;
-					width: 16px;
+					padding-top: 0px;
+					padding-right: 0px;
+					/*width: 16px;
 					height: 16px;
-					background: url(/lib/img/icon_search_16_16_02.png);
+					background: url(/lib/img/icon_search_16_16_02.png);*/
+					font-size: 16px;
+					color: #fff;
 				}
 			}
 			.btn-rfid-add{
@@ -124,6 +127,30 @@
 						}*/
 					}
 				}
+				span{
+					position: relative;
+				}
+
+				.dwn-arw-af-card::after,.up-arw-af-card::after{
+    				content: "\e928";
+    				position: absolute;
+    				top: 2px;
+    				right: 0px;
+    				font-size: 20px;
+    				-moz-osx-font-smoothing: grayscale;
+    				font-family: "icomoon" !important;
+    				font-style: normal;
+    				font-variant: normal;
+    				font-weight: normal;
+    				line-height: 1;
+    				text-transform: none;
+				}
+
+				.up-arw-af-card::after,.up-arw-af-card-sn::after,.up-arw-af-card-s::after,.up-arw-af-card-cr::after,.up-arw-af-up::after {
+    				content: "\e929";
+ 				}
+				
+
 			}
 		}
 
@@ -271,6 +298,27 @@
 		}
 	}
 	
+}
+
+.modal-footer-resize{
+    width: 190px;
+    margin: auto;
+    margin-top: 10px;
+    .btn-solid-back,.btn-blank-back{
+    	width: 80px;
+    	height: 34px;
+    	border-radius: 4px !important;
+    	background-color: #5f9bdb;
+    	cursor: pointer;
+    	font-size: 12px;
+    	color: #ffffff;
+    }
+    .btn-blank-back{
+    	background-color: #ffffff;
+    	border: solid 1px #5f9bdb;
+    	font-size: 12px;
+    	color: #5f9bdb;
+    }
 }
 
 .ui-select-search,.ui-select-match {

@@ -1,6 +1,73 @@
 <div ng-controller="cardCtrl">
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title"><span class="icon-icon_RFIDcard"></span>{{item.title}}</h3>
+    </div>
+    <div class="modal-body row">
+        <div ng-show="item.text">{{item.text}}</div>
+        <!-- <div class="row col-md-12" ng-show="item.title">
+            <div class=" col-md-12" ng-hide="item.status_disable">
+                <form class="form-inline">
+                    <div class="form-group col-md-12">
+                        <label class="label-md-4">RFID卡：</label>
+                        <select class="form-control search-md-8" ng-model="status">
+                            <option value="-1">选择键值</option>
+                            <option ng-repeat="(key, value) in choice" value="{{key}}">{{value}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class=" col-md-12" ng-class="{true:'col-md-12'}[item.status_disable]">
+                <form class="form-inline">
+                    <div class="form-group col-md-12">
+                        <label class="label-md-4" ng-show="item.method=='replace'" style="width: 29%!important">新卡序列号：<em style="color: red;font-size: 8px">(*必填)</em></label>
+                        <label class="label-md-4" ng-show="item.method=='add'">序列号：<em style="color: red;font-size: 8px">(*必填)</em></label>
+                        <label class="label-md-4" ng-show="item.method=='modify'">序列号</label>
+                        <input type="text" class="form-control search-md-8" ng-model="serial_number" placeholder="序列号"/>
+                    </div>
+                </form>
+            </div>
+
+        </div> -->
+
+        <form role="form" class="add_form" ng-show="item.method=='add'">
+          <div class="form-group">
+            <label for="add_serial">序列号:</label>
+            <input type="text" class="form-control" id="add_serial" placeholder="请填写序列号" ng-model="model" />
+          </div>
+        </form>
+
+        <form role="form" class="edit_form" ng-show="item.method=='modify' || item.method=='replace'">
+          <div class="form-group form-group-selin" ng-hide="status_disable">
+            <label for="edit_status">状态:</label>
+            <ui-select ng-model="stateEdit.flag" theme="bootstrap">
+              <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+                <!-- <ui-select-choices repeat="item in [{ name: 未使用, flag: 0},{ name: 正在使用, flag: 1},{ name: 损坏, flag: 2},{ name: 已删除停用, flag:3}]"> -->
+                <ui-select-choices repeat="item in stateEdit">
+                <div ng-bind-html="item.name"></div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+          <div class="form-group">
+            <label for="edit_serial">序列号:</label>
+            <input type="text" class="form-control" id="edit_serial" placeholder="请填写序列号" ng-model="serial_number" />
+          </div>
+        </form>
+
+        <div class="deleteCardInfo" ng-show="item.method=='delete'"><p><span></span>确定要删除这个RFID卡吗？<br/>注意：删除以后不可以恢复！</p></div>
+
+    </div>
+    <div class="modal-footer">
+      <div class="modal-footer-resize">
+        <button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()">确定</button>
+        <button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
+      </div>
+    </div>
+</script>
+
 	<div class="card-bar">
-		<p><span></span>设备管理>RFID卡</p>
+		<p><span class="icon-icon_location"></span>设备管理>RFID卡</p>
 	</div>
 	<div class="card-content">
 		<form role="form" class="card-select">
@@ -19,19 +86,19 @@
     			 <input type="text" class="form-control" id="serial-search" placeholder="请输入名称" ng-model="serial_search">
 			</div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-rfid-search" ng-click="queryRFIDList()"><span></span>搜索</button>
-				<button type="button" class="btn btn-rfid-add" ng-click="addRFID()"><span></span>增加</button>
+				<button type="button" class="btn btn-rfid-search" ng-click="submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
+				<!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
 			</div>
 		</form>
 
 		<table class="table table-bordered">
   			<thead>
     			<tr>
-      				<th><p>编号<span class="sort-arrow-id"><img ng-src="{{sort_arrow_id_img}}"/></span></p></th>
-      				<th><p>序列号<span class="sort-arrow-serial"><img ng-src="{{sort_arrow_serial_img}}" src=""/></span></p></th>
-      				<th><p>显示状态<span class="sort-arrow-state"><img ng-src="{{sort_arrow_state_img}}" src=""/></span></p></th>
-      				<th><p>更新时间<span class="sort-arrow-updatetime"><img ng-src="{{sort_arrow_updatetime_img}}" src=""/></span></p></th>
-      				<th><p>创建时间<span class="sort-arrow-createtime"><img ng-src="{{sort_arrow_createtime_img}}" /></span></p></th>
+      				<th ng-click="switch_order('id')"><p>编号<span ng-class="{true:'dwn-arw-af-card',false:'up-arw-af-card'}[order.id]"></span></p></th>
+      				<th ng-click="switch_order('serial_number')"><p>序列号<span ng-class="{true:'dwn-arw-af-card',false:'up-arw-af-card'}[order.serial_number]"></span></p></th>
+      				<th ng-click="switch_order('status')"><p>显示状态<span ng-class="{true:'dwn-arw-af-card',false:'up-arw-af-card'}[order.status]"></span></p></th>
+      				<th ng-click="switch_order('updated_at')"><p>更新时间<span ng-class="{true:'dwn-arw-af-card',false:'up-arw-af-card'}[order.updated_at]"></span></p></th>
+      				<th ng-click="switch_order('created_at')"><p>创建时间<span ng-class="{true:'dwn-arw-af-card',false:'up-arw-af-card'}[order.created_at]"></span</p></span></th>
       				<th><p>操作</p></th>
     			</tr>
   			</thead>
@@ -50,7 +117,7 @@
       				<td><p>{{item.status_display}}</p></td>
       				<td><p>{{item.updated_at}}</p></td>
       				<td><p>{{item.created_at}}</p></td>
-      				<td><p><span class="rfid-edit" ng-click="edit(item)"></span><span class="rfid-delete" ng-click="delete(item)"></span></p></td>
+      				<td><p><span class="rfid-edit" ng-click="open('md','replace',$index)"></span><span class="rfid-delete" ng-click="open('md','delete',$index)"></span></p></td>
     			</tr>
     		</tbody>
     	</table>

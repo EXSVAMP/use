@@ -23,64 +23,6 @@ app.service("baseUrl",function(){
         }
     }
 })
-
-app.factory('HttpInterceptor', ['$q','$injector',HttpInterceptor]);
-function HttpInterceptor($q, $injector) {
-    return {
-        request: function(config){
-            return config;
-        },
-        requestError: function(err){
-            return $q.reject(err);
-        },
-        response: function(res){
-            var ngDialog;
-            if(!ngDialog){
-                ngDialog = $injector.get("ngDialog")
-            }
-            if(res.data.code){
-                if(res.data.code!='200'){
-                    ngDialog.open({
-                        template: '<p style=\"text-align: center\">错误信息：' + res.data.message + '</p>',
-                        plain: true
-                    });
-                };
-
-            }
-            return res;
-        },
-        responseError: function(err){
-            var ngDialog;
-            if(!ngDialog){
-                ngDialog = $injector.get("ngDialog")
-            }
-            if(-1 === err.status) {
-                // 远程服务器无响应
-                // ngDialog.open({
-                //     template:'<p style=\"text-align: center\">远程服务器无响应</p>',
-                //     plain:true
-                // });
-            } else if(500 === err.status) {
-                // 处理各类自定义错误
-                ngDialog.open({
-                    template:'<p style=\"text-align: center\">内部服务器错误</p>',
-                    plain:true
-                });
-            } else if(501 === err.status) {
-                // ...
-            } else if(403 === err.status) {
-                // window.location.href = "/login.html"
-            }
-            return $q.reject(err);
-        }
-    };
-}
-
-// 添加对应的 Interceptors
-app.config(['$httpProvider', function($httpProvider){
-    $httpProvider.interceptors.push(HttpInterceptor);
-}]);
-
 app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDialog, $rootScope){
    // $rootScope.stateEdit = [
    //      { name: '未使用', flag: 0},
@@ -233,6 +175,75 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
         })
     }
 
+    $rootScope.custom_pop = function(handleType,custom_com_pop_size,custom_com_pop_title,custom_com_pop_title_icon,custom_com_pop_m_content,custom_com_pop_ok_func){
+        //$rootScope.ngDialog = ngDialog;
+        //alert(7890);
+        $rootScope.custom_com_pop_title = custom_com_pop_title;
+        if(custom_com_pop_size){
+            var w = custom_com_pop_size.w;
+            var h = custom_com_pop_size.h;
+            $rootScope.custom_com_pop_size = "width:"+w+"px;height:"+h+"px;margin-top:-"+(h/2)+"px;margin-left:-"+(w/2)+"px";
+            $rootScope.custom_com_pop_frame = "width:"+w+"px;height:"+h+"px;";
+        }
+        //$rootScope.custom_com_mask_show = "custom-com-mask-show";
+        $rootScope.custom_com_pop_show = "custom-com-pop-show";
+        if(custom_com_pop_title_icon){
+            $rootScope.custom_com_pop_title_icon = "background:url("+custom_com_pop_title_icon+");";
+
+        }else
+            $rootScope.custom_com_pop_title_icon = "background:none;";
+
+        $rootScope.custom_com_pop_m_content = custom_com_pop_m_content;
+
+        $rootScope.custom_com_pop_cancel = function(){
+            //$rootScope.custom_com_mask_show = "";
+            $rootScope.custom_com_pop_show = "";
+            ngDialog.close();
+        }
+
+        $rootScope.custom_com_pop_ok = function(){
+            custom_com_pop_ok_func();
+        }
+        //alert(234556);
+        var handleTemplate = "commonCustomPop.html";
+        $rootScope.my_directive = false;
+        $rootScope.my_directivedel = false;
+        $rootScope.my_directiveedit = false;
+        if(handleType == 1){
+            $rootScope.my_directive = false;
+            $rootScope.my_directivedel = false;
+            $rootScope.my_directiveedit = true;
+            //handleTemplate = "commonCustomPopDelete.html";
+        }else if(handleType == 2){
+            $rootScope.my_directive = false;
+            $rootScope.my_directivedel = true;
+            $rootScope.my_directiveedit = false;
+            //handleTemplate = "commonCustomPopEdit.html";
+        }else{
+            $rootScope.my_directive = true;
+            $rootScope.my_directivedel = false;
+            $rootScope.my_directiveedit = false;
+        }
+
+        alert(handleTemplate);
+             ngDialog.open({
+            template:handleTemplate,
+            //className:'ngDialog-theme-default',
+            closeByEscape: false,
+            closeByDocument:false,
+            preCloseCallback: function() {
+                //$rootScope.custom_com_mask_show = "";
+                $rootScope.custom_com_pop_show = "";
+            }
+        })
+
+
+        //if(defaultSelVal){ 
+           //$rootScope.$scope2.stateEdit.flag = $rootScope.$scope2.stateEdit[2];
+           //$rootScope.defaultSelVal = defaultSelVal;
+        //}
+    }
+
 })
 app.controller("sideBarCtrl",function($scope, $rootScope){
 
@@ -268,77 +279,70 @@ app.controller("AlertCtrl",function($scope, $rootScope){
 	 $scope.alert_info = $rootScope.alert_info;
 })
 
-app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,items,baseUrl) {
-    baseUrl = baseUrl.getUrl();
-    console.log(items)
-    $scope.item = items;
-    $scope.status = items.data.status;
-    $scope.choice={};
-    $scope.status_disable = items.status_disable;
-    function QueryUrl(input){
-        var output = ''
-        if(input.serial_number){
-            if(output){
-                output += "&serial_number="+input.serial_number
-            }else{
-                output += "?serial_number="+input.serial_number
-            }
-        }
-        if(input.status!=-1 && input.status){
-            if(output){
-                output += "&status="+input.status
-            }else{
-                output += "?status="+input.status
-            }
-        }
-        return output
-    }
-    if(items.method!="delete"&&items.method!="replace"){
-        for(var item in items.choice.data.status){
-            $scope.choice[item] = items.choice.data.status[item];
-        }
-    }
-    if(items.method=="modify"){
-        $scope.serial_number = items.data.serial_number;
-    }
-    $scope.ok = function(){
-        //alert($scope.item.method);
-        if($scope.item.method=="add"){
-            if($scope.serial_number!=undefined){
-            $http.post(baseUrl + "/api/1/card/", {"serial_number":$scope.serial_number, "status":$scope.status}).success(function(data){
-                items.scope.submit_search(); 
-            }).error(function(){
-                alert("有点故障！")
-            })
-            $uibModalInstance.close();
-            }
-        }else if($scope.item.method=="delete"){
-            $http.delete(baseUrl+"/api/1/card/"+ $scope.item.data.id+"/").success(function(data){
-                items.scope.submit_search();
-            }).error(function(){
-                alert("有点故障！")
-            })
-            $uibModalInstance.close();
-        }else if($scope.item.method=="modify"){
-            $http.put(baseUrl+"/api/1/card/"+$scope.item.data.id+"/",{"serial_number":$scope.serial_number, "status":$scope.status}).success(function(data){
-                items.scope.submit_search();
-            }).error(function(){
-                alert("有点故障！")
-            })
-            $uibModalInstance.close();
-        }else if($scope.item.method=="replace"){
-            if($scope.serial_number!=undefined){
-               $http.put(baseUrl+"/api/1/card/replace/"+$scope.item.data.id+"/",{"serial_number":$scope.serial_number}).success(function(data){
-                    items.scope.submit_search();
-               }).error(function(){
-                 alert("有点故障!");
-             })
-                $uibModalInstance.close();
-            }
-        }
+app.controller("CustomPopCtrl",function($scope, $rootScope){
+    $scope.my_directive = false;
+    $scope.my_directivedel = false;
+    $scope.my_directiveedit = false;
+    //alert("12345");
+     $scope.custom_com_pop_title = $rootScope.custom_com_pop_title;
+     $scope.custom_com_pop_m_content = $rootScope.custom_com_pop_m_content;
+     $scope.custom_com_pop_size = $rootScope.custom_com_pop_size;
+     $scope.custom_com_pop_frame = $rootScope.custom_com_pop_frame;
+     $scope.custom_com_pop_show = $rootScope.custom_com_pop_show;
+     $scope.custom_com_pop_title_icon = $rootScope.custom_com_pop_title_icon;
+     $rootScope.$scope2 = $scope;
+     $scope.stateEdit = [
+        { name: '未使用', flag: 0},
+        { name: '正在使用', flag: 1},
+        { name: '损坏', flag: 2},
+        { name: '已删除停用', flag:3}
+    ];
+    $rootScope.$scope2.stateEdit.flag = $rootScope.$scope2.stateEdit[$rootScope.defaultSelVal];
+    $rootScope.$scope2.edit_serial = $rootScope.defaultSerialVal;
 
+    $scope.my_directive = $rootScope.my_directive;
+    $scope.my_directivedel = $rootScope.my_directivedel;
+    $scope.my_directiveedit = $rootScope.my_directiveedit;
+})
+
+app.directive('myDirective', function ($rootScope) {
+
+    alert($rootScope.custom_com_pop_m_content);
+    return { 
+        restrict: 'ECMA',
+        template: $rootScope.custom_com_pop_m_content, 
+  
+ 　　replace: false, 
+  
+ 　　transclude: false,
+    scope:true
     };
-     $scope.cancel = function () {
-         $uibModalInstance.dismiss('cancel');
-     };
-});
+})
+
+app.directive('myDirectivedel', function ($rootScope) {
+
+    alert($rootScope.custom_com_pop_m_content);
+    return { 
+        restrict: 'ECMA',
+        template: $rootScope.custom_com_pop_m_content, 
+  
+ 　　replace: false, 
+  
+ 　　transclude: false,
+    scope:true
+    };
+})
+
+app.directive('my_directiveedit', function ($rootScope) {
+
+    alert($rootScope.custom_com_pop_m_content);
+    return { 
+        restrict: 'ECMA',
+        template: $rootScope.custom_com_pop_m_content, 
+  
+ 　　replace: false, 
+  
+ 　　transclude: false,
+    scope:true
+    };
+})
