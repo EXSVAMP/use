@@ -1,0 +1,20 @@
+<div ng-controller="contentCtrl" class="RFID_Content">
+    <div class="content-bar">
+        <p><span class="icon-icon_location"></span>设备管理>RFID卡数据</p>
+    </div>
+    <div class="content">
+        <form role="form" class="card-select">
+            <div class="form-group form-group-selin">
+                <label for="name">RFID卡类型:</label>
+                <ui-select ng-model="queryParam.rfid_type_Id" theme="bootstrap"  >
+                    <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item.id as item in rfid_type_Items" style="width:500px">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
+                        <!-- <small ng-bind-html="item.email"></small> -->
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </form>
+    </div>
+    <button ng-click="search()">搜索</button>
+</div>

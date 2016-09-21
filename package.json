@@ -4,7 +4,7 @@
   "description": "build angular app with fis3",
   "repository": {
     "type": "git",
-    "url" : "https://github.com/zhangtao07/fis3-angular-demo.git"
+    "url": "https://github.com/zhangtao07/fis3-angular-demo.git"
   },
   "keywords": [
     "angular",
@@ -26,4 +26,5 @@
     "url": "https://github.com/zhangtao07/fis3-angular-demo/issues"
   },
   "homepage": "http://fis.baidu.com"
+
 }

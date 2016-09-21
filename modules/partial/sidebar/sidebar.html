@@ -8,7 +8,7 @@
         </li>
 
         <li ng-class="{true:'deco'}[open.open1]">
-            <a href="#device" class="nav-header nav_head" ng-click="openSide(1)" >
+            <a href="#card" class="nav-header nav_head" ng-click="openSide(1)" >
                 <span  ng-class="{true:'icon-icon_up_open',false:'icon-icon_right_open'}[open.open1]"></span>
                 <span class="icon-icon_equipment"></span>
                 设备管理
@@ -16,12 +16,12 @@
             </a>
             <ul id="device" class="nav nav-list "  ng-show="open.open1" >
                 <li>
-                    <a href="#/card">
+                    <a href="#card">
                     <span class="icon-icon_RFIDcard"></span>RFID卡
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#content">
                         <span class="icon-icon_RFIDcardcontent"></span>RFID卡数据
                     </a>
                 </li>

@@ -82,14 +82,7 @@ app.config(['$httpProvider', function($httpProvider){
 }]);
 
 app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDialog, $rootScope){
-   // $rootScope.stateEdit = [
-   //      { name: '未使用', flag: 0},
-   //      { name: '正在使用', flag: 1},
-   //      { name: '损坏', flag: 2},
-   //      { name: '已删除停用', flag:3}
-   //  ];
 	var baseUrl = baseUrl.getUrl();
-    $rootScope.$scopeMasterCtrl = $scope;
 	$scope.header_com_mask = false;
 	$scope.header_com_logout_pop = false;
 	$scope.header_com_repass_pop = false;
@@ -268,6 +261,7 @@ app.controller("AlertCtrl",function($scope, $rootScope){
 	 $scope.alert_info = $rootScope.alert_info;
 })
 
+
 app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,items,baseUrl) {
     baseUrl = baseUrl.getUrl();
     console.log(items)
@@ -342,3 +336,4 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,it
          $uibModalInstance.dismiss('cancel');
      };
 });
+
