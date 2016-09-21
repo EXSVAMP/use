@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a86e1736-04ec-4d77-8b97-d0e9ffcf94b8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/main/main副本.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/main/main.js" afterPath="$PROJECT_DIR$/modules/main/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/partial/sidebar/sidebar.html" afterPath="$PROJECT_DIR$/modules/partial/sidebar/sidebar.html" />
     </list>
     <ignored path="iotHtml2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,6 +23,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="sidebar.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/partial/sidebar/sidebar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/page/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -45,7 +53,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="content.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="content.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/pages/content/content.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -173,7 +181,6 @@
         <option value="$PROJECT_DIR$/lib/sass/sideBar.scss" />
         <option value="$PROJECT_DIR$/lib/sass/_sideBar.scss" />
         <option value="$PROJECT_DIR$/modules/pages/content/content.js" />
-        <option value="$PROJECT_DIR$/modules/partial/sidebar/sidebar.html" />
         <option value="$PROJECT_DIR$/modules/router/router.js" />
         <option value="$PROJECT_DIR$/lib/sass/content.scss" />
         <option value="$PROJECT_DIR$/lib/sass/main.css.map" />
@@ -188,6 +195,7 @@
         <option value="$PROJECT_DIR$/modules/pages/content/content.html" />
         <option value="$PROJECT_DIR$/modules/pages/content/content.sync.js" />
         <option value="$PROJECT_DIR$/modules/main/main.js" />
+        <option value="$PROJECT_DIR$/modules/partial/sidebar/sidebar.html" />
       </list>
     </option>
   </component>
@@ -197,8 +205,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="221" />
-    <option name="y" value="75" />
+    <option name="x" value="269" />
+    <option name="y" value="65" />
     <option name="width" value="1440" />
     <option name="height" value="775" />
   </component>
@@ -522,15 +530,15 @@
       <workItem from="1474252725491" duration="11805000" />
       <workItem from="1474282388692" duration="4923000" />
       <workItem from="1474337486472" duration="46286000" />
-      <workItem from="1474455801455" duration="99000" />
+      <workItem from="1474455801455" duration="258000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139050000" />
+    <option name="totallyTimeSpent" value="139209000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="221" y="75" width="1440" height="775" extended-state="0" />
+    <frame x="269" y="65" width="1440" height="775" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2473573" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -665,6 +673,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
           <caret line="340" column="26" selection-start-line="340" selection-start-column="26" selection-end-line="340" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -686,6 +695,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="33" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -722,13 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="61" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/partial/sidebar/sidebar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -908,6 +911,14 @@
           <folding>
             <element signature="n#style#0;n#ui-select-choices#0;n#ui-select#0;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/partial/sidebar/sidebar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
