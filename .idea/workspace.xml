@@ -2,8 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a86e1736-04ec-4d77-8b97-d0e9ffcf94b8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/page/index副本.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/page/index.html" afterPath="$PROJECT_DIR$/page/index.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/.bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/css/selectize.bootstrap2.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/css/selectize.bootstrap3.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/css/selectize.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/css/selectize.default.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/css/selectize.legacy.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/js/selectize.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/js/selectize.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/js/standalone/selectize.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/js/standalone/selectize.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/less/plugins/drag_drop.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/less/plugins/dropdown_header.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/less/plugins/optgroup_columns.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/less/plugins/remove_button.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/less/selectize.bootstrap2.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/less/selectize.bootstrap3.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/less/selectize.default.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/less/selectize.legacy.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/dist/less/selectize.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/selectize/package.json" afterPath="" />
     </list>
     <ignored path="iotHtml2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,8 +59,8 @@
       <file leaf-file-name="sidebar.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/partial/sidebar/sidebar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+            <state relative-caret-position="210">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -521,12 +543,12 @@
       <workItem from="1474252725491" duration="11805000" />
       <workItem from="1474282388692" duration="4923000" />
       <workItem from="1474337486472" duration="46286000" />
-      <workItem from="1474455801455" duration="1243000" />
+      <workItem from="1474455801455" duration="1316000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140194000" />
+    <option name="totallyTimeSpent" value="140267000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="111" y="24" width="1440" height="775" extended-state="0" />
@@ -910,8 +932,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/partial/sidebar/sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+        <state relative-caret-position="210">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
