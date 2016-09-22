@@ -1,0 +1,20 @@
+<div ng-controller="cameraCtrl" class="camera_Content">
+    <div class="content-bar">
+        <p><span class="icon-icon_location"></span>设备管理>摄像头</p>
+    </div>
+    <div class="content">
+        <form role="form" class="function_type_select">
+            <div class="form-group form-group-selin">
+                <label for="name">RFID卡类型:</label>
+                <ui-select ng-model="o" theme="bootstrap"  on-select="change(o)">
+                    <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item.name as item in test" style="width:500px">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
+                        <!-- <small ng-bind-html="item.email"></small> -->
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </form>
+    </div>
+
+</div>
