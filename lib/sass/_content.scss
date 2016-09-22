@@ -1,47 +1,358 @@
+.content-bar{
+  display: table;
+  width: 100%;
+  height: 55px;
+  background-color: #e8ebf0; 
+  p{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 12px;
+    color: #808ca0;
+    span{
+      display: block;
+      float: left;
+      /*width: 16px;
+      height: 16px;*/
+      font-size: 16px;
+      margin-left: 40px;
+        margin-right: 5px;
+      /*background:url(/lib/img/icon_location_16_16.png);*/
+    }
+  }
+}
 
-.RFID_Content{
-  .content-bar{
+.content-content{
+  padding: 20px;
+  .content-select{
+    background-color: #ffffff;
+    border-radius: 4px;
     display: table;
+    height: auto;
+    margin-bottom: 20px;
+    min-height: 101px !important;
+    padding: 20px;
+    /*.card-select-selin{
+      width: 250px;
+      height: auto;
+      overflow: hidden;
+      label{
+        font-size: 12px;
+        color: #3e4d68;
+      }
+      
+    }*/
+    .form-group-selin{
+      float: left;
+        margin-right: 53px;
+      width: 250px;
+      label{
+        font-size: 12px;
+        color: #3e4d68;
+      }
+      ui-select,.ui-select-container,input{
+        width: 250px;
+        height: 34px;
+      }
+      input{
+        font-size: 12px;
+        color: #888888;
+      }
+      .ui-select-container{
+        position: relative;
+      }
+      .ui-select-search,.ui-select-match {
+        width: 250px !important;
+        min-width: 250px !important;
+          /* Because of the inclusion of Bootstrap */
+          span{
+            /*height: 34px;*/
+            font-size: 12px !important;
+          color: #888888 !important;
+        }
+      }
+
+      .ui-select-choices{
+        width: 250px !important;
+        min-width: 250px !important;
+        overflow: hidden;
+        padding:0;
+        margin:0;
+        height: auto !important;
+        max-height: 1000px !important;
+        li{
+          width: 250px;
+          overflow: hidden;
+          padding:0;
+          margin:0;
+          .dropup, .dropdown {
+              margin: 0;
+              padding: 0;
+              position: relative;
+              width: 250px;
+          }
+        }
+      }
+    }
+
+    .btns-group{
+      float: left;
+      height: 34px;
+      margin-top: 19px;
+      .btn-rfid-search,.btn-rfid-add{
+        width: 80px;
+        height: 34px;
+        border-radius: 4px !important;
+        background-color: #45b6b0;
+        margin-right: 30px;
+        font-size: 12px;
+        color: #ffffff;
+        span{
+          display: block;
+          float: left;
+          padding-top: 0px;
+          padding-right: 0px;
+          /*width: 16px;
+          height: 16px;
+          background: url(/lib/img/icon_search_16_16_02.png);*/
+          font-size: 16px;
+          color: #fff;
+        }
+      }
+      .btn-rfid-add{
+        background-color: #fc763c;
+        span{
+          background: url(/lib/img/icon_plus_16_16_02.png);
+        }
+      }
+    }
+  }
+
+  .type-sel-tab{
     width: 100%;
-    height: 55px;
-    background-color: #e8ebf0;
-    p{
-      display: table-cell;
+    height: 75px;
+    border-radius: 4px;
+    background-color: #ffffff; 
+    li{
+      float: left;
+      width: 150px;
+      height: 75px;
+      cursor: pointer;
+      text-align: center;
+      display: table;
       vertical-align: middle;
       font-size: 12px;
       color: #808ca0;
-      .icon-icon_location{
-        font-size: 16px;
-        margin-left: 40px;
-        margin-right:4px;
-        position: relative;
-        top:2px;
+      &:nth-child(1){
+        margin-left: 20px;
+      }
+      p{
+        display: table-cell;
+        vertical-align: middle;
+        border-bottom: 1px solid #e8ebf0;
+        span{
+          display: block;
+          font-size: 26px;
+          padding-bottom: 3px;
+        }
       }
 
+      p.sel-tab-active{
+         border-bottom: 1px solid #5f9bdb;
+         color: #5f9bdb; 
+      }
+     
     }
-  };
-  .content{
-    padding: 20px;
-   .card-select{
-     height: 101px;
-     border-radius: 4px;
-     background-color: #ffffff;
-     margin-bottom: 20px;
-     padding: 20px;
-     .form-group-selin{
-       float: left;
-       margin-right: 53px;
-       width: 156px;
-       label{
-         font-size: 12px;
-         color: #3e4d68;
-       };
-
-
-     }
-
-   };
   }
+
+  table.table-content{
+    thead{
+      tr{
+        th{
+          height: 48px;
+          background-color: #ffffff;
+          border: solid 1px #e8ebf0;
+          cursor: pointer;
+          p{
+            line-height: 2;
+            text-align: center;
+            font-size: 14px;
+            color: #666666;
+            span{
+              display: inline-block;
+                height: 16px;
+                padding-left: 4px;
+                width: 16px;
+
+            }
+            .sort-arrow-id,.sort-arrow-serial,.sort-arrow-state,.sort-arrow-updatetime,.sort-arrow-createtime{
+              span{
+                width: 16px;
+                height: 16px;
+                /*background: url(/lib/img/icon_sort_down_16_16_01.png);*/
+                img{
+                  height: 16px;
+                    margin-top: -3px;
+                    width: 16px;
+                }
+              }
+            }
+
+            /*.sort-arrow-id-up,.sort-arrow-serial-up,.sort-arrow-state-up,.sort-arrow-updatetime-up,.sort-arrow-createtime-up{
+              background: url(/lib/img/icon_sort_up_16_16_01.png);
+            }*/
+          }
+        }
+        span{
+          position: relative;
+        }
+
+        .dwn-arw-af-card::after,.up-arw-af-card::after{
+            content: "\e928";
+            position: absolute;
+            top: 2px;
+            right: 0px;
+            font-size: 20px;
+            -moz-osx-font-smoothing: grayscale;
+            font-family: "icomoon" !important;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+            line-height: 1;
+            text-transform: none;
+        }
+
+        .up-arw-af-card::after,.up-arw-af-card-sn::after,.up-arw-af-card-s::after,.up-arw-af-card-cr::after,.up-arw-af-up::after {
+            content: "\e929";
+        }
+        
+
+      }
+    }
+
+    tbody{
+      tr{
+        td{
+          height: 48px;
+          background-color: #ffffff;
+          border: solid 1px #e8ebf0;
+          p{
+            line-height: 2;
+            text-align: center;
+            font-size: 14px;
+            color: #666666;
+            display: inline-table;
+            span{
+              display: block;
+              float: left;
+              width: 16px;
+              height: 16px;
+              margin-top: 5px;
+              margin-right: 10px;
+              cursor: pointer;
+            }
+            .rfid-edit{
+              background: url(/lib/img/icon_edit_16_16_06.png);
+            }
+            .rfid-delete{
+              background: url(/lib/img/icon_cancel_16_16_06.png);
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+.emptyDataList{
+    display: none;
+    /*width: 406px;*/
+    height: 80px;
+    /*text-align: center;*/
+    margin: 100px auto 0 auto;
+    p{
+      font-size: 19px;
+      color: #3e4d68;
+      display: table-cell;
+      vertical-align: middle;
+      span{
+        &:first-child{
+          display: block;
+          float: left;
+          width: 112px;
+          height: 80px; 
+          background: url(/lib/img/Group.png);
+          margin-right: 12px;
+        }
+        &:last-child{
+          display: block;
+          float: left;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+
+.emptyDataListShow{
+    display: table;
+  }
+
+  table.table-pagination{
+    thead{
+      tr{
+        th{
+          height: 36px;
+          .pagination{
+            margin: 0;
+              padding: 0;
+              li{
+                a{
+                  height: 36px;
+                  padding-top: 9px;
+                }
+              }
+          }
+          .pagination-detail{
+            margin-left: 5px;
+            height: 36px;
+            display: inline-table;
+            span{
+              display: table-cell;
+              vertical-align: middle;
+              font-size: 12px;
+              color: #666666;
+              &:nth-child(1),&:nth-child(2){
+                padding-right: 10px;
+              }
+              input{
+                width: 36px;
+                height: 36px;
+                border-radius: 2px;
+                background-color: #ffffff;
+                border: solid 1px #e8ebf0;
+                margin-left: 2px;
+                margin-right: 2px;
+                text-align: center;
+                margin-right: 10px;
+                margin-left: 10px;
+                
+              }
+              button{
+                width: 36px;
+                height: 36px;
+                border-radius: 2px;
+                background-color: #ffffff;
+                border: solid 1px #e8ebf0;
+                font-size: 12px;
+                color: #5f9bdb;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
 
 }
 
