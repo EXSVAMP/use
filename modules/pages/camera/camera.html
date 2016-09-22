@@ -5,16 +5,82 @@
     <div class="content">
         <form role="form" class="function_type_select">
             <div class="form-group form-group-selin">
-                <label for="name">RFID卡类型:</label>
-                <ui-select ng-model="o" theme="bootstrap"  on-select="change(o)">
+                <label for="name">功能类型:</label>{{func_type}}
+                <ui-select ng-model="functype" theme="bootstrap"  on-select="select_func_type(functype)">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="item.name as item in test" style="width:500px">
+                    <ui-select-choices repeat="item.state as item in func_type_Items">
                         <div ng-bind-html="item.name | highlight: $select.search"></div>
                         <!-- <small ng-bind-html="item.email"></small> -->
                     </ui-select-choices>
                 </ui-select>
             </div>
+            <div class="form-group form-group-selin">
+                <label for="name">摄像头状态:</label>
+                <ui-select ng-model="state" theme="bootstrap" on-select="select_status(state)">
+                    <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item.state as item in status_Items">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
+                        <!-- <small ng-bind-html="item.email"></small> -->
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="form-group form-group-selin">
+                <label for="name">摄像头描述:</label>
+                <input type="text" placeholder="  摄像头描述" class="camera_desc" ng-model="description"/>
+            </div>
+            <div class="form-group form-group-selin">
+                <label for="name">摄像头监视货位:</label>
+                <input type="text" placeholder="  摄像头监视货位" class="camera_monitor" ng-model="storage_names"/>
+
+            </div>
+            <div style="clear: both"></div>
+            <div class="btns-group" >
+                 <button type="button" class="btn btn-camera-search" ng-click="submit_search()"><span class="icon-icon_search"></span>搜索</button>
+                 <button type="button" class="btn btn-camera-add" ng-click="open('md','add',$index)"><span class="icon-icon_plus"></span>增加</button>
+            </div>
         </form>
+
+                    <table class="table table-bordered table-content" >
+                        <thead >
+                        <tr>
+                            <th ng-click="switch_order('id')">编号<span  ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.id]"></span></th>
+                            <th ng-click="switch_order('serial_number')">序列号<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.serial_number]"></span></th>
+                            <th ng-click="switch_order('func_type')">功能类型<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.func_type]"></span></th>
+                            <th>库位地址</th>
+                            <th>状态</th>
+                            <!--<th>RFID读写器</th>-->
+                            <th>IP地址</th>
+                            <th>直播地址</th>
+
+                            <th>描述</th>
+                            <th  ng-click="switch_order('updated_at')">更新时间<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.updated_at]"></span></th>
+                            <th  ng-click="switch_order('created_at')">创建时间<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.created_at]"></span></th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="items in query_result">
+                            <td>{{items.id}}</td>
+                            <td>{{items.serial_number}}</td>
+                            <td>{{items.func_type_display}}</td>
+                            <td>{{items.storage_names}}</td>
+                            <td>{{items.status_display}}</td>
+
+                            <td>{{items.ip_address}}</td>
+                            <td><a  ng-click="live(items.live_address,items.storage_list)" ng-show="items.live_address&&items.storage_list.length>0" title="{{items.live_address}}" target="_blank">地址</a></td>
+                            <!--<td>{{items.rfid_reader.serial_number}}</td>-->
+                            <td><span tooltip-placement="bottom" uib-tooltip="{{items.description}}">{{items.description |characters:10 :true}}</span></td>
+                            <!--<td>{{items.description}}</td>-->
+                            <td>{{items.updated_at}}</td>
+                            <td>{{items.created_at}}</td>
+                            <td>
+                                <p><span class="icon-icon_edit" ng-click="open('md','replace',$index)"></span><span class="icon-icon_cancel" ng-click="open('md','delete',$index)"></span></p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+
     </div>
 
 </div>
