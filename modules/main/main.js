@@ -22,7 +22,32 @@ app.service("baseUrl",function(){
             return url;
         }
     }
-})
+}).service("url_junction", function(){
+    return {
+        getQuery:function(dic){
+            var query_url = '';
+            for(var i in dic){
+                if(dic[i] && dic[i]!='-1'){
+                    if(query_url==""){
+                        query_url+="?"+i+"="+dic[i]
+                    }else{
+                        query_url+="&"+i+"="+dic[i]
+                    }
+                }
+            }
+            return query_url
+        },
+        getDict:function(dic){
+            var ret_dic = {};
+            for(var i in dic){
+                if(dic[i] && dic[i]!='-1'){
+                    ret_dic[i] = dic[i];
+                }
+            }
+            return ret_dic;
+        }
+    }
+});
 
 app.factory('HttpInterceptor', ['$q','$injector',HttpInterceptor]);
 function HttpInterceptor($q, $injector) {

@@ -89,7 +89,7 @@
 		}
 	}
 
-	table{
+	table.table-content{
 		thead{
 			tr{
 				th{
@@ -222,6 +222,56 @@
 		display: table;
 	}
 
+	table.table-pagination{
+		thead{
+			tr{
+				th{
+					height: 36px;
+					.pagination{
+						margin: 0;
+    					padding: 0;
+    					li{
+    						a{
+    							height: 36px;
+    							padding-top: 9px;
+    						}
+    					}
+					}
+					.pagination-detail{
+						margin-left: 5px;
+						height: 36px;
+						display: inline-table;
+						span{
+							display: table-cell;
+							vertical-align: middle;
+							font-size: 12px;
+							color: #666666;
+							input{
+								width: 36px;
+								height: 36px;
+								border-radius: 2px;
+								background-color: #ffffff;
+								border: solid 1px #e8ebf0;
+								margin-left: 2px;
+								margin-right: 2px;
+								text-align: center;
+							}
+							button{
+								width: 36px;
+								height: 36px;
+								border-radius: 2px;
+								background-color: #ffffff;
+								border: solid 1px #e8ebf0;
+								font-size: 12px;
+								color: #5f9bdb;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 }
 
 .add_form{
@@ -326,7 +376,7 @@
 	min-width: 146px !important;
     /* Because of the inclusion of Bootstrap */
     span{
-    	height: 34px;
+    	/*height: 34px;*/
     	font-size: 12px !important;
 		color: #888888 !important;
 	}

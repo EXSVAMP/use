@@ -68,6 +68,7 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
 
   	$scope.index = 1;
   	$scope.number = 10;
+    $scope.maxSize = 5;
   	$scope.status = "-1";
   	
     $scope.order = {
@@ -99,6 +100,13 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
             baseUrl.redirect()
         }
     });
+
+    $scope.setPage = function (pageNo) {
+        $scope.submit_search();
+    };
+    $scope.changePage = function(a){
+        $scope.submit_search()
+    };
 
   	$scope.submit_search = function(iStartIdx,iStatus){
       if(iStartIdx)
@@ -142,6 +150,8 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
         if(data.code==200){
           $scope.dataList = data.data;
           currentPageDataNum = $scope.dataList.length;
+          $scope.bigTotalItems = data.pageinfo.total_number;
+          $scope.total_page = data.pageinfo.total_page;
           if(currentPageDataNum == 0)
             $scope.emptyDataListShow = "emptyDataListShow";
           else{
