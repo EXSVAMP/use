@@ -42,7 +42,9 @@ $scope.rfid_type="-1";
     alert($scope.queryParam.rfid_type_Id);
   }
 
-
+$scope.change=function(sta){
+  alert(sta);
+}
 
   // $scope.test = [
   //   {

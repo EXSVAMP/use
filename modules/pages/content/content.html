@@ -6,9 +6,9 @@
         <form role="form" class="card-select">
             <div class="form-group form-group-selin">
                 <label for="name">RFID卡类型:</label>
-                <ui-select ng-model="queryParam.rfid_type_Id" theme="bootstrap"  >
+                <ui-select ng-model="o" theme="bootstrap"  on-select="change(o)">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="item.id as item in rfid_type_Items" style="width:500px">
+                    <ui-select-choices repeat="item.name as item in rfid_type_Items" style="width:500px">
                         <div ng-bind-html="item.name | highlight: $select.search"></div>
                         <!-- <small ng-bind-html="item.email"></small> -->
                     </ui-select-choices>
