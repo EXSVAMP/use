@@ -15,7 +15,6 @@
   "dependencies": {
     "compass-mixins": "^0.12.10",
     "fis-parser-less": "*",
-    "fis-parser-node-sass": "^0.2.1",
     "fis-preprocessor-annotate": "*",
     "fis3-hook-module": "*",
     "fis3-postpackager-loader": "*"
@@ -25,6 +24,8 @@
   "bugs": {
     "url": "https://github.com/zhangtao07/fis3-angular-demo/issues"
   },
-  "homepage": "http://fis.baidu.com"
-
+  "homepage": "http://fis.baidu.com",
+  "devDependencies": {
+    "fis-parser-node-sass": "^1.0.0"
+  }
 }

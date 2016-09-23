@@ -5,6 +5,7 @@ var card = require("pages/card/card");
 var content = require("pages/content/content");
 // var eventlog = require("pages/eventlog/eventlog");
 var camera = require("pages/camera/camera");
+var warn = require("pages/warn/warn");
 // var reader = require("pages/reader/reader");
 // var location = require("pages/location/location");
 // var imgs = require("pages/imgs/imgs");
@@ -22,6 +23,7 @@ app.config(function ($stateProvider, $urlRouterProvider,$controllerProvider) {
     $stateProvider
         .state('card', card)
         .state('content', content)
+        .state('warn', warn)
         .state('camera', camera);
         // .state('eventlog', eventlog)
         // .state('reader', reader)
