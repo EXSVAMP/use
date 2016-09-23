@@ -1,4 +1,50 @@
 <div ng-controller="contentCtrl" class="RFID_Content">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title"><span class="icon-icon_RFIDcardcontent"></span>{{item.title}}</h3>
+        </div>
+        <div class="modal-body row">
+            <div ng-show="item.text">{{item.text}}</div>
+            <form role="form" class="add_form-content" ng-show="item.method=='add'">
+                <div class="form-group">
+                    <label for="add_serial">序列号:</label>
+                    <input type="text" class="form-control" id="add_serial" placeholder="请填写序列号" ng-model="model" />
+                </div>
+            </form>
+
+            <form role="form" class="edit-form-content" ng-show="item.method=='modify'">
+                <div class="form-group form-group-selin">
+                    <label for="name">RFID卡类型:</label>
+                    <ui-select ng-model="type" theme="bootstrap"  on-select="changeType(type)">
+                        <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="item in rfid_type_Items" style="width:500px">
+                            <div ng-bind-html="item.name | highlight: $select.search"></div>
+                            <!-- <small ng-bind-html="item.email"></small> -->
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="form-group form-group-selin">
+                    <label for="name">状态:</label>
+                    <ui-select ng-model="status" theme="bootstrap"  on-select="changeStatus(status)">
+                        <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+                        <ui-select-choices repeat="(key,value) in statusInfo" style="width:500px">
+                            <div ng-bind-html="value.value"></div>
+                            <!-- <small ng-bind-html="item.email"></small> -->
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </form>
+
+            <div class="delete-content" ng-show="item.method=='delete'"><p><span></span>确定要删除这个RFID卡内容吗？<br/>注意：删除以后不可以恢复！</p></div>
+
+        </div>
+        <div class="modal-footer">
+            <div class="modal-footer-resize-content">
+                <button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()">确定</button>
+                <button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
+            </div>
+        </div>
+    </script>
     <div class="content-bar">
         <p><span class="icon-icon_location"></span>设备管理>RFID卡数据</p>
     </div>
@@ -8,8 +54,8 @@
                 <label for="name">RFID卡类型:</label>
                 <ui-select ng-model="type" theme="bootstrap"  on-select="changeType(type)">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="item.id as item in rfid_type_Items" style="width:500px">
-                        <div ng-bind-html="item.id | highlight: $select.search"></div>
+                    <ui-select-choices repeat="item in rfid_type_Items" style="width:500px">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
                         <!-- <small ng-bind-html="item.email"></small> -->
                     </ui-select-choices>
                 </ui-select>
@@ -26,22 +72,22 @@
                 <label for="name">是否写入:</label>
                 <ui-select ng-model="write" theme="bootstrap"  on-select="changeWrite(write)">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="item.id as item in is_writed" style="width:500px">
-                        <div ng-bind-html="item.id | highlight: $select.search"></div>
+                    <ui-select-choices repeat="item in is_writed_Items" style="width:500px">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
                         <!-- <small ng-bind-html="item.email"></small> -->
                     </ui-select-choices>
                 </ui-select>
             </div>
              <div class="form-group form-group-selin">
                 <label for="name">RFID分配货位:</label> 
-                 <input type="text" class="form-control" id="serial-search" placeholder="请输入分配编号" ng-model="goods_location_name">
+                 <input type="text" class="form-control" id="serial-search" placeholder="请输入分配货位" ng-model="goods_location_name">
             </div>
             <div class="form-group form-group-selin">
                 <label for="name">RFID硬件卡序列号:</label> 
                  <input type="text" class="form-control" id="serial-search" placeholder="请输入硬件卡序列号" ng-model="card_serial_number">
             </div>
             <div class="btns-group">
-                <button type="button" class="btn btn-rfid-search" ng-click="submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
+                <button type="button" class="btn btn-rfid-search" ng-click="submit_search(status,0)"><span class="icon-icon_search"></span>搜索</button>
                 <!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
             </div>
         </form>
@@ -105,7 +151,8 @@
             <thead>
                 <tr>
                     <th>
-                        <uib-pagination items-per-page="number" total-items="bigTotalItems" ng-change="changePage()" ng-model="index" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true" num-pages="numPages" first-text="首页" last-text="末页" next-text="下一页" previous-text="上一页"></uib-pagination>
+                        <uib-pagination items-per-page="number" total-items="bigTotalItems" ng-change="changePage()" ng-model="index" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" num-pages="numPages" previous-text="上一页" next-text="下一页">
+                        </uib-pagination>
                         <div class="pagination-detail">
                             <span>共{{total_page}}页</span>
                             <span>跳至<input type="text" ng-model="index"/>页</span>

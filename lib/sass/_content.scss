@@ -279,15 +279,15 @@
         &:first-child{
           display: block;
           float: left;
-          width: 112px;
-          height: 80px; 
-          background: url(/lib/img/Group.png);
+          width: 128px;
+          height: 128px; 
+          background: url(/lib/img/icon_RFIDcardcontent_128_128.png);
           margin-right: 12px;
         }
         &:last-child{
           display: block;
           float: left;
-          margin-top: 10px;
+          margin-top: 36px;
         }
       }
     }
@@ -302,6 +302,7 @@
       tr{
         th{
           height: 36px;
+          border: none;
           .pagination{
             margin: 0;
               padding: 0;
@@ -354,5 +355,138 @@
   }
 
 
+}
+
+.add-form-content{
+  width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  label{
+    font-size: 12px;
+    color: #3e4d68;
+    margin-bottom: 8px;
+  }
+  input{
+    width: 360px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: solid 1px #e6e6e6;
+    font-size: 12px;
+    color: #888888;
+  }
+}
+
+.edit-form-content{
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  label{
+    font-size: 12px;
+    color: #3e4d68;
+    margin-bottom: 8px;
+  }
+  input{
+    width: 360px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: solid 1px #e6e6e6;
+    font-size: 12px;
+    color: #888888;
+  }
+  .form-group-selin{
+      width: 360px;
+      label{
+        font-size: 12px;
+        color: #3e4d68;
+      }
+      ui-select,.ui-select-container,input{
+        width: 360px;
+        height: 34px;
+      }
+      input{
+        font-size: 12px;
+        color: #888888;
+      }
+      .ui-select-container{
+        position: relative;
+      }
+      .ui-select-search,.ui-select-match {
+        width: 360px !important;
+        min-width: 360px !important;
+          /* Because of the inclusion of Bootstrap */
+          span{
+            /*height: 34px;*/
+            font-size: 12px !important;
+          color: #888888 !important;
+        }
+      }
+
+      .ui-select-choices{
+        width: 360px !important;
+        min-width: 360px !important;
+        overflow: hidden;
+        padding:0;
+        margin:0;
+        height: auto !important;
+        max-height: 1000px !important;
+        li{
+          width: 360px;
+          overflow: hidden;
+          padding:0;
+          margin:0;
+          .dropup, .dropdown {
+              margin: 0;
+              padding: 0;
+              position: relative;
+              width: 360px;
+          }
+        }
+      }
+
+    }
+}
+
+.delete-content{
+  margin-left: auto;
+  margin-right: auto;
+  width: 260px;
+  text-align: center;
+  font-size: 14px;
+  color: #3e4d68;
+  p{
+    span{
+      display: block;
+      float: left;
+      width: 48px;
+      height: 48px;
+      background: url(/lib/img/icon_warning_48_48.png);
+      margin-right: 6px;
+      margin-top: -2px;
+    }
+  }
+  
+}
+
+.modal-footer-resize-content{
+    width: 190px;
+    margin: auto;
+    margin-top: 10px;
+    .btn-solid-back,.btn-blank-back{
+      width: 80px;
+      height: 34px;
+      border-radius: 4px !important;
+      background-color: #5f9bdb;
+      cursor: pointer;
+      font-size: 12px;
+      color: #ffffff;
+    }
+    .btn-blank-back{
+      background-color: #ffffff;
+      border: solid 1px #5f9bdb;
+      font-size: 12px;
+      color: #5f9bdb;
+    }
 }
 

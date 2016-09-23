@@ -260,6 +260,7 @@
 			tr{
 				th{
 					height: 36px;
+					border: none;
 					.pagination{
 						margin: 0;
     					padding: 0;
@@ -313,7 +314,7 @@
 
 }
 
-.add_form{
+.add-form-card{
 	width: 360px;
 	margin-left: auto;
 	margin-right: auto;
@@ -333,7 +334,7 @@
 	}
 }
 
-.edit_form{
+.edit-form-card{
 	width: 400px;
 	margin-left: auto;
 	margin-right: auto;
@@ -368,7 +369,7 @@
 		}
 }
 
-.deleteCardInfo{
+.delete-card{
 	margin-left: auto;
     margin-right: auto;
     width: 240px;
@@ -389,7 +390,7 @@
 	
 }
 
-.modal-footer-resize{
+.modal-footer-resize-card{
     width: 190px;
     margin: auto;
     margin-top: 10px;
