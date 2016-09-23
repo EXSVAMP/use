@@ -258,6 +258,7 @@
 	table.table-pagination{
 		thead{
 			tr{
+				position:relative;
 				th{
 					height: 36px;
 					border: none;
@@ -306,6 +307,77 @@
 								color: #5f9bdb;
 							}
 						}
+					}
+					&:first-child{
+    					height: 24px;
+    					position: absolute;
+    					top: 15px;
+    					width: 154px;
+    					border-radius: 4px;
+						background-color: #ffffff;
+						border: solid 1px #e6e6e6;
+						font-size: 12px;
+						color: #666666;
+						text-align: start;
+						line-height: 0.7;
+						.btn{
+							height: 22px !important;
+							line-height: 22px;
+							border-radius: 0;
+							border: none;
+							border-left: 1px solid #e6e6e6;
+						}
+						ui-select,.ui-select-container,input{
+        					width: 60px;
+        					height: 22px !important;
+      					}
+      					input{
+        					font-size: 12px;
+        					color: #888888;
+        					padding: 0;
+    						text-align: center;
+      					}
+      					.ui-select-container{
+        					position: absolute;
+    						right: 0;
+    						top: 0;
+      					}
+      					.ui-select-search,.ui-select-match {
+        					width: 60px !important;
+        					min-width: 60px !important;
+        					border-radius: 0;
+          					/* Because of the inclusion of Bootstrap */
+          					span{
+            					/*height: 34px;*/
+            					font-size: 12px !important;
+          						color: #888888 !important;
+
+        					}
+      					}
+
+      					.ui-select-choices{
+        					width: 60px !important;
+       	 					min-width: 60px !important;
+        					overflow: hidden;
+        					padding:0;
+        					margin:0;
+        					height: auto !important;
+        					max-height: 1000px !important;
+        					border-radius: 0;
+        					li{
+          						width: 60px;
+          						overflow: hidden;
+          						padding:0;
+          						margin:0;
+          						.dropup, .dropdown {
+              						margin: 0;
+              						padding: 0;
+              						position: relative;
+              						width: 80px;
+          						}
+        					}
+      					}
+
 					}
 				}
 			}

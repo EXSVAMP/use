@@ -70,6 +70,7 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
   	$scope.number = 10;
     $scope.maxSize = 5;
   	$scope.status = "-1";
+    $scope.numbers = [10,20,30,40,50,60,70,80,90,100];
   	
     $scope.order = {
         id: false,
@@ -100,6 +101,12 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
             baseUrl.redirect()
         }
     });
+
+    $scope.setShowNum = function(data){
+      $scope.number = data;
+      $scope.index = 1;
+      $scope.submit_search();
+    }
 
     $scope.setPage = function (pageNo) {
         $scope.submit_search();
