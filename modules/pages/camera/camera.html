@@ -79,6 +79,25 @@
                         </tr>
                         </tbody>
                     </table>
+        <!--<div class="emptyDataList {{emptyDataListShow}}">-->
+            <!--<p><span></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>-->
+        <!--</div>-->
+        <table class="table table-pagination" ng-show="bigTotalItems>0">
+            <thead>
+            <tr>
+                <th>
+                    <uib-pagination items-per-page="number" total-items="bigTotalItems" ng-change="changePage()" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" num-pages="numPages" previous-text="上一页" next-text="下一页"></uib-pagination>
+                    <div class="pagination-detail">
+                        <span>共{{total_page}}页</span>
+                        <span>跳至<input type="text" ng-model="index"/>页</span>
+                        <span><button id="" ng-click="setPage()">确定</button></span>
+                    </div>
+                </th>
+
+            </tr>
+            </thead>
+
+        </table>
 
 
     </div>

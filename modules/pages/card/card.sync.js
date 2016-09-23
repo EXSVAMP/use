@@ -148,7 +148,7 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
 
   		$http.get(baseUrl.getUrl() + "/api/1/card/?"+params).success(function(data){
         if(data.code==200){
-          $scope.dataList = data.data;
+          $scope.dataList =  data.data;
           currentPageDataNum = $scope.dataList.length;
           $scope.bigTotalItems = data.pageinfo.total_number;
           $scope.total_page = data.pageinfo.total_page;
