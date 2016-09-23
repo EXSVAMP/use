@@ -1,0 +1,212 @@
+.main-top-bar{
+  display: table;
+  width: 100%;
+  height: 55px;
+  background-color: #e8ebf0;
+  p{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 12px;
+    color: #808ca0;
+    span{
+      display: block;
+      float: left;
+      font-size: 16px;
+      margin-left: 40px;
+      margin-right: 5px;
+    }
+  }
+}
+.main-content{
+  padding: 20px;
+  .search-bar{
+    height: 101px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding: 20px;
+    .form-group{
+      float: left;
+      margin-right: 53px;
+      width: 250px;
+      label{
+        font-size: 12px;
+        color: #3e4d68;
+      }
+      ui-select,.ui-select-container,input{
+        width: 250px;
+        height: 34px;
+      }
+      input{
+        font-size: 12px;
+        color: #888888;
+      }
+      .ui-select-search,.ui-select-match {
+        width: 250px !important;
+        min-width: 250px !important;
+        /* Because of the inclusion of Bootstrap */
+        span{
+          /*height: 34px;*/
+          font-size: 12px !important;
+          color: #888888 !important;
+        }
+      }
+
+      .ui-select-choices{
+        width: 250px !important;
+        min-width: 250px !important;
+        overflow: hidden;
+        padding:0;
+        margin:0;
+        height: auto !important;
+        max-height: 1000px !important;
+        li{
+          width: 250px;
+          overflow: hidden;
+          padding:0;
+          margin:0;
+          .dropup, .dropdown {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 250px;
+          }
+        }
+      }
+    }
+
+    .btns-group{
+      float: left;
+      height: 34px;
+      margin-top: 19px;
+    }
+  }
+
+  table.table-content{
+    thead{
+      tr{
+        th{
+          height: 48px;
+          background-color: #ffffff;
+          border: solid 1px #e8ebf0;
+          cursor: pointer;
+          p{
+            line-height: 2;
+            text-align: center;
+            font-size: 14px;
+            color: #666666;
+            span{
+              display: inline-block;
+              height: 16px;
+              padding-left: 4px;
+              width: 16px;
+
+            }
+            .sort-arrow-id,.sort-arrow-serial,.sort-arrow-state,.sort-arrow-updatetime,.sort-arrow-createtime{
+              span{
+                width: 16px;
+                height: 16px;
+                img{
+                  height: 16px;
+                  margin-top: -3px;
+                  width: 16px;
+                }
+              }
+            }
+          }
+        }
+        span{
+          position: relative;
+        }
+      }
+    }
+
+    tbody{
+      tr{
+        td{
+          height: 48px;
+          background-color: #ffffff;
+          border: solid 1px #e8ebf0;
+          p{
+            line-height: 2;
+            text-align: center;
+            font-size: 14px;
+            color: #666666;
+            display: inline-table;
+            span{
+              display: block;
+              float: left;
+              width: 16px;
+              height: 16px;
+              margin-top: 5px;
+              margin-right: 10px;
+              cursor: pointer;
+            }
+            .rfid-edit{
+              background: url(/lib/img/icon_edit_16_16_06.png);
+            }
+            .rfid-delete{
+              background: url(/lib/img/icon_cancel_16_16_06.png);
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  table.table-pagination{
+    thead{
+      tr{
+        th{
+          height: 36px;
+          .pagination{
+            margin: 0;
+            padding: 0;
+            li{
+              a{
+                height: 36px;
+                padding-top: 9px;
+              }
+            }
+          }
+          .pagination-detail{
+            margin-left: 5px;
+            height: 36px;
+            display: inline-table;
+            span{
+              display: table-cell;
+              vertical-align: middle;
+              font-size: 12px;
+              color: #666666;
+              &:nth-child(1),&:nth-child(2){
+                padding-right: 10px;
+              }
+              input{
+                width: 36px;
+                height: 36px;
+                border-radius: 2px;
+                background-color: #ffffff;
+                border: solid 1px #e8ebf0;
+                margin-left: 2px;
+                margin-right: 2px;
+                text-align: center;
+                margin-right: 10px;
+                margin-left: 10px;
+
+              }
+              button{
+                width: 36px;
+                height: 36px;
+                border-radius: 2px;
+                background-color: #ffffff;
+                border: solid 1px #e8ebf0;
+                font-size: 12px;
+                color: #5f9bdb;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
