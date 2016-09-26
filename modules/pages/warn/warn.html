@@ -20,27 +20,27 @@
 			</div>
 			<div class="form-group form-group-selin">
 				<label>警报类型:</label>
-				<ui-select ng-model="params.event_type" theme="bootstrap" on-select="onSelect($select.selected,'params.event_type')">
+				<ui-select ng-model="params.event_type" theme="bootstrap" on-select="params.event_type=$select.selected.value;">
 					<ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
-					<ui-select-choices repeat="item in selections.event_type">
-						<div ng-bind-html="item.name"></div>
+					<ui-select-choices repeat="item.value as item in selections.event_type">
+						<div>{{item.name}}</div>
 					</ui-select-choices>
 				</ui-select>
 			</div>
 			<div class="form-group form-group-selin" style="margin-right:0;">
     			<label>警报反馈:</label>
-    			<ui-select ng-model="params.event_feedback" theme="bootstrap">
+    			<ui-select ng-model="params.event_feedback_type" theme="bootstrap" on-select="params.event_feedback_type=$select.selected.value;">
             		<ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
-            		<ui-select-choices repeat="item in state">
-              			<div ng-bind-html="item.name"></div>
+            		<ui-select-choices repeat="item.value as item in selections.event_feedback">
+              			<div class="select-item" ng-bind-html="item.name"></div>
             		</ui-select-choices>
           		</ui-select>
 			</div>
 			<div class="form-group form-group-selin" style="margin-right:40px;">
     			<label >处理结果:</label>
-				<ui-select ng-model="params.handle_result" theme="bootstrap">
+				<ui-select ng-model="params.handle_result" theme="bootstrap" on-select="params.handle_result=$select.selected.value;">
 					<ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
-					<ui-select-choices repeat="item in state">
+					<ui-select-choices repeat="item.value as item in selections.handle_result">
 						<div class="select-item" ng-bind-html="item.name"></div>
 					</ui-select-choices>
 				</ui-select>
