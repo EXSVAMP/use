@@ -26,59 +26,43 @@
     margin-bottom: 20px;
     padding: 20px;
     .form-group{
-      float: left;
-      margin-right: 53px;
-      width: 250px;
-      label{
-        font-size: 12px;
-        color: #3e4d68;
-      }
-      ui-select,.ui-select-container,input{
-        width: 250px;
-        height: 34px;
-      }
-      input{
-        font-size: 12px;
-        color: #888888;
-      }
-      .ui-select-search,.ui-select-match {
-        width: 250px !important;
-        min-width: 250px !important;
-        /* Because of the inclusion of Bootstrap */
-        span{
-          /*height: 34px;*/
-          font-size: 12px !important;
-          color: #888888 !important;
-        }
-      }
-
-      .ui-select-choices{
-        width: 250px !important;
-        min-width: 250px !important;
-        overflow: hidden;
-        padding:0;
-        margin:0;
-        height: auto !important;
-        max-height: 1000px !important;
-        li{
-          width: 250px;
-          overflow: hidden;
-          padding:0;
-          margin:0;
-          .dropup, .dropdown {
-            margin: 0;
-            padding: 0;
-            position: relative;
-            width: 250px;
-          }
-        }
-      }
+      @include common_select(250px);
     }
 
     .btns-group{
       float: left;
       height: 34px;
       margin-top: 19px;
+      .btn{
+        line-height: 34px;
+      }
+      .btn-com-search,.btn-com-add{
+        width: 80px;
+        height: 34px;
+        border-radius: 4px !important;
+        background-color: #45b6b0;
+        margin-right: 30px;
+        font-size: 12px;
+        color: #ffffff;
+        span{
+          display: block;
+          float: left;
+          padding-top: 0px;
+          padding-right: 0px;
+          /*width: 16px;
+          height: 16px;
+          background: url(/lib/img/icon_search_16_16_02.png);*/
+          font-size: 16px;
+          color: #fff;
+        }
+      }
+      .btn-com-add{
+        background-color: #fc763c;
+        span{
+          background: url(/lib/img/icon_plus_16_16_02.png);
+        }
+      
+    }
     }
   }
 
@@ -142,10 +126,10 @@
               margin-right: 10px;
               cursor: pointer;
             }
-            .rfid-edit{
+            .rfid-edit,.com-deit{
               background: url(/lib/img/icon_edit_16_16_06.png);
             }
-            .rfid-delete{
+            .rfid-delete,.com-delete{
               background: url(/lib/img/icon_cancel_16_16_06.png);
               margin-right: 0;
             }
@@ -154,6 +138,40 @@
       }
     }
   }
+
+  .emptyDataList{
+    display: none;
+    /*width: 406px;*/
+    height: 80px;
+    /*text-align: center;*/
+    margin: 100px auto 0 auto;
+    p{
+      font-size: 19px;
+      color: #3e4d68;
+      display: table-cell;
+      vertical-align: middle;
+      span{
+        &:first-child{
+          display: block;
+          float: left;
+          width: 112px;
+          height: 80px; 
+          background: url(/lib/img/Group.png);
+          margin-right: 12px;
+        }
+        &:last-child{
+          display: block;
+          float: left;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+
+  .emptyDataListShow{
+    display: table;
+  }
+
   table.table-pagination{
     thead{
       tr{
@@ -209,4 +227,86 @@
       }
     }
   }
+}
+
+.pop-add-form-com{
+  width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  label{
+    font-size: 12px;
+    color: #3e4d68;
+    margin-bottom: 8px;
+  }
+  input{
+    width: 360px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: solid 1px #e6e6e6;
+    font-size: 12px;
+    color: #888888;
+  }
+}
+
+.pop-edit-form-com{
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  label{
+    font-size: 12px;
+    color: #3e4d68;
+    margin-bottom: 8px;
+  }
+  input{
+    width: 360px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: solid 1px #e6e6e6;
+    font-size: 12px;
+    color: #888888;
+  }
+}
+
+.pop-delete-com{
+  margin-left: auto;
+    margin-right: auto;
+    width: 240px;
+  text-align: center;
+  font-size: 14px;
+  color: #3e4d68;
+  p{
+    span{
+      display: block;
+      float: left;
+      width: 48px;
+      height: 48px;
+      background: url(/lib/img/icon_warning_48_48.png);
+      margin-right: 6px;
+      margin-top: -2px;
+    }
+  }
+  
+}
+
+.modal-footer-resize-com{
+    width: 190px;
+    margin: auto;
+    margin-top: 10px;
+    .btn-solid-back,.btn-blank-back{
+      width: 80px;
+      height: 34px;
+      border-radius: 4px !important;
+      background-color: #5f9bdb;
+      cursor: pointer;
+      font-size: 12px;
+      color: #ffffff;
+    }
+    .btn-blank-back{
+      background-color: #ffffff;
+      border: solid 1px #5f9bdb;
+      font-size: 12px;
+      color: #5f9bdb;
+    }
 }
