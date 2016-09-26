@@ -1,4 +1,74 @@
 <div ng-controller="cameraCtrl" class="camera_Content">
+    <script type="text/ng-template" id="myModalContent.html">
+       <div ng-class="{'camera_Modal':modal_add_modify,'camera_delete':modal_delete}" >
+           <div class="modal-header" >
+               <div class="modal-title" ><span class="icon-icon_camera"></span>{{item.title}}{{modal_add_modify}}</div>
+           </div>
+
+           <div class="add " ng-show="modal_add_modify" >
+             <form role="form" >
+                <div class="form-group form-group-selin">
+                 <label>功能类型:{{func_type}}</label>
+                 <ui-select ng-model="func_type" theme="bootstrap"  on-select="select_func_type(func_type)">
+                     <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+                     <ui-select-choices repeat="item.state as item in func_type_Items">
+                         <div ng-bind-html="item.name | highlight: $select.search"></div>
+                         <!-- <small ng-bind-html="item.email"></small> -->
+                     </ui-select-choices>
+                 </ui-select>
+             </div>
+                 <div class="form-group form-group-selin">
+                     <label>状态:{{state}}</label>
+                     <ui-select ng-model="state" theme="bootstrap" on-select="select_status(state)">
+                         <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+                         <ui-select-choices repeat="item.state as item in status_Items">
+                             <div ng-bind-html="item.name | highlight: $select.search"></div>
+                             <!-- <small ng-bind-html="item.email"></small> -->
+                         </ui-select-choices>
+                     </ui-select>
+                 </div>
+                 <div class="form-group form-group-selin">
+                     <label><span style="color: red">*</span>序列号:</label>
+                     <input type="text" name="serial_number"  required  ng-model="serial_number" placeholder="  序列号"/>
+                 </div>
+                 <div class="form-group form-group-selin">
+                     <label>描述:</label>
+                     <input type="text" ng-model="description"    placeholder="  描述" />
+                 </div>
+                 <div class="form-group form-group-selin">
+                     <label>库位:</label>
+                     <input type="text" ng-model="storage_names" placeholder="  库位"/>
+                 </div>
+                 <div class="form-group form-group-selin">
+                     <label>IP地址:</label>
+                     <input type="text"  ng-model="ip_address" placeholder="  IP地址"/>
+                 </div>
+                 <div class="form-group form-group-selin">
+                     <label>直播地址:</label>
+                     <input type="text" ng-model="live_address" placeholder="  直播地址"/>
+                 </div>
+             </form>
+           </div>
+           <div class="delete"  ng-show="modal_delete" >
+               <div class="dele_info">
+                 <span class="icon-icon_warning"></span>
+                 <span class="dele_info_desc1">确定要删除这个摄像头信息吗?
+                     <span class="dele_info_desc2">注意:删除以后不可恢复!</span>
+                 </span>
+               </div>
+           </div>
+           <div style="clear: both"></div>
+           <div class="camera_modal-footer">
+               <div class="cameraBtn" ng-class="{'cameraBtn1':modal_delete}">
+                   <button class="btn btn-primary btn-solid-back" ng-class="{'btn-solid-back1':modal_delete}" type="button" ng-click="ok()">确定</button>
+                   <button class="btn btn-warning btn-blank-back" ng-class="{'btn-blank-back1':modal_delete}" type="button" ng-click="cancel()">取消</button>
+               </div>
+           </div>
+       </div>
+
+
+    </script>
+
     <div class="content-bar">
         <p><span class="icon-icon_location"></span>设备管理>摄像头</p>
     </div>
@@ -74,7 +144,8 @@
                             <td>{{items.updated_at}}</td>
                             <td>{{items.created_at}}</td>
                             <td>
-                                <p><span class="icon-icon_edit" ng-click="open('md','replace',$index)"></span><span class="icon-icon_cancel" ng-click="open('md','delete',$index)"></span></p>
+                                <p><span class="icon-icon_edit"   ng-click="open('md','modify',$index)"></span>
+                                    <span class="icon-icon_cancel" ng-click="open('sm','delete',$index)"></span></p>
                             </td>
                         </tr>
                         </tbody>
@@ -89,8 +160,8 @@
                     <uib-pagination items-per-page="number" total-items="bigTotalItems" ng-change="changePage()" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" num-pages="numPages" previous-text="上一页" next-text="下一页"></uib-pagination>
                     <div class="pagination-detail">
                         <span>共{{total_page}}页</span>
-                        <span>跳至<input type="text" ng-model="index"/>页</span>
-                        <span><button id="" ng-click="setPage()">确定</button></span>
+                        <span>跳至<input type="text" ng-model="bigCurrentPage"/>页</span>
+                        <span><button id="" ng-click="changePage()">确定</button></span>
                     </div>
                 </th>
 

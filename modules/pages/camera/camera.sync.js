@@ -13,8 +13,8 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
     $scope.number = "10";
     $scope.maxSize = 5;
     $scope.bigCurrentPage = 1;
+   
 
-    //
     $http.get(urlBase + "/api/1/common/choices/?key=camera").success(function (data) {
         $scope.func_type_Items = [];
         $scope.status_Items = [];
@@ -114,6 +114,48 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
      }
 
     $scope.submit_search();
+    $scope.open=function(size, method,index){
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            controller: 'ModalCamera',
+            templateUrl: "myModalContent.html",
+            size: size,
+            resolve: {
+                items:function(){
+                    if(method=="add"){
+                        return {
+                            title:"新增摄像头信息",
+                            method:"add",
+                            status_disable:true,
+                            scope:$scope
+                            //data:
+                        }
+                    }else if(method=="modify"){
+                        return {
+                            title:"修改摄像头信息",
+                            method:"modify",
+                            status_disable:true,
+                            data:$scope.query_result[index],
+                            scope:$scope
+                        }
+                    }else if(method=="delete"){
+                        return {
+                            title:"删除摄像头信息",
+                            method:"delete",
+                            data:$scope.query_result[index],
+                            scope:$scope
+                        }
+                    }
+
+                }
+
+
+            }
+        });
+        modalInstance.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function(){});
+    }
 
 
     $scope.test = [
