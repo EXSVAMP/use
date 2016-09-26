@@ -31,14 +31,14 @@
 
         </div> -->
 
-        <form role="form" class="add-form-card" ng-show="item.method=='add'">
+        <form role="form" class="pop-add-form-com add-form-card" ng-show="item.method=='add'">
           <div class="form-group">
             <label for="add_serial">序列号:</label>
             <input type="text" class="form-control" id="add_serial" placeholder="请填写序列号" ng-model="model" />
           </div>
         </form>
 
-        <form role="form" class="edit-form-card" ng-show="item.method=='modify' || item.method=='replace'">
+        <form role="form" class="pop-edit-form-com edit-form-card" ng-show="item.method=='modify' || item.method=='replace'">
           <div class="form-group form-group-selin" ng-hide="status_disable">
             <label for="edit_status">状态:</label>
             <ui-select ng-model="stateEdit.flag" theme="bootstrap">
@@ -55,22 +55,22 @@
           </div>
         </form>
 
-        <div class="delete-card" ng-show="item.method=='delete'"><p><span></span>确定要删除这个RFID卡吗？<br/>注意：删除以后不可以恢复！</p></div>
+        <div class="pop-delete-com" ng-show="item.method=='delete'"><p><span></span>确定要删除这个RFID卡吗？<br/>注意：删除以后不可以恢复！</p></div>
 
     </div>
     <div class="modal-footer">
-      <div class="modal-footer-resize-card">
+      <div class="modal-footer-resize-com modal-footer-resize-card">
         <button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()">确定</button>
         <button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
       </div>
     </div>
 </script>
 
-	<div class="card-bar">
+	<div class="main-top-bar card-bar">
 		<p><span class="icon-icon_location"></span>设备管理>RFID卡</p>
 	</div>
-	<div class="card-content">
-		<form role="form" class="card-select">
+	<div class="main-content card-content">
+		<form role="form" class="search-bar card-select">
 			<div class="form-group form-group-selin">
     			<label for="name">状态:</label> 
     			<ui-select ng-model="state.name" theme="bootstrap">
@@ -81,12 +81,12 @@
             		</ui-select-choices>
           		</ui-select>
 			</div>
-			<div class="form-group form-group-selin">
+			<div class="form-group">
     			<label for="name">序列号:</label> 
     			 <input type="text" class="form-control" id="serial-search" placeholder="请输入名称" ng-model="serial_search">
 			</div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-rfid-search" ng-click="submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
 				<!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
 			</div>
 		</form>
@@ -117,7 +117,7 @@
       				<td><p>{{item.status_display}}</p></td>
       				<td><p>{{item.updated_at}}</p></td>
       				<td><p>{{item.created_at}}</p></td>
-      				<td><p><span class="rfid-edit" ng-click="open('md','replace',$index)"></span><span class="rfid-delete" ng-click="open('md','delete',$index)"></span></p></td>
+      				<td><p><span class="com-deit rfid-edit" ng-click="open('md-edit','replace',$index)"></span><span class="com-delete rfid-delete" ng-click="open('md-delete','delete',$index)"></span></p></td>
     			</tr>
     		</tbody>
     	</table>

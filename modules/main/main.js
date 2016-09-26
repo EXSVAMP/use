@@ -9,6 +9,16 @@ require('interceptor/captainlnterceptor');
  * Master Controller
  */
 var app = angular.module('RDash');
+app.filter("opis_writed",function(){
+  return function(input){
+    if(input == true)
+      input = "是";
+    else if(!input){
+      input = "否";
+    }
+    return input;
+  };
+});
 app.config(function($httpProvider){
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';

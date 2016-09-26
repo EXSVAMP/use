@@ -1,11 +1,12 @@
 @charset "utf-8";
+@import "commonfunc";
+@import "common";
+@import "button";
 @import "login";
 @import "sideBar";
 @import "card";
 @import "content";
 @import "camera";
-@import "common";
-@import "button";
 
 
 body, div, dl, dt, dd, ul, ol, li,
@@ -20,3 +21,5 @@ textarea, p, section, strong, a, th, td, tr {
   margin: 0px;
   padding: 0px;
 }
+
+
