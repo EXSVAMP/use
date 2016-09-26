@@ -41,7 +41,7 @@
 				<ui-select ng-model="params.handle_result" theme="bootstrap">
 					<ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
 					<ui-select-choices repeat="item in state">
-						<div ng-bind-html="item.name"></div>
+						<div class="select-item" ng-bind-html="item.name"></div>
 					</ui-select-choices>
 				</ui-select>
 			</div>
