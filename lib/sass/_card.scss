@@ -4,6 +4,7 @@
   		height: auto;
     	width: 100%;
 		.btns-group{
+			width: 80px;
 			.btn-rfid-search,.btn-rfid-add{
 				width: 80px;
 				height: 34px;
@@ -58,12 +59,12 @@
 
 	}
 
-	table.table-pagination{
+	/*table.table-pagination{
 		thead{
 			tr{
 				position:relative;
 				display: table;
-				    width: 100%;
+				width: 100%;
 				th{
 					border: none;
 					&:first-child{
@@ -108,7 +109,7 @@
         					position: absolute;
     						right: 1px;
     						top: 0;
-    						height: 24px;
+    						height: 22px;
     						&:hover{
     							right: 0;
     						}
@@ -120,7 +121,7 @@
 
       					.ui-select-search,.ui-select-match {
         					//border-radius: 0;
-        					height: 24px;
+        					height: 22px;
         				}
 
         				.ui-select-match{
@@ -138,7 +139,7 @@
     								.ui-select-match-text{
     									//padding-right: 0;
     									//text-align: center;
-    									height: 24px;
+    									height: 22px;
     								}
         						}
         						
@@ -153,7 +154,7 @@
 				}
 			}
 		}
-	}
+	}*/
 
 }
 

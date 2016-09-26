@@ -2,6 +2,7 @@
   .content-select{
     display: table;
     .btns-group{
+      width: 80px;
       .btn-rfid-search{
         width: 80px;
         height: 34px;
@@ -87,7 +88,7 @@
 
   }
 
-  table.table-pagination{
+  /*table.table-pagination{
     thead{
       tr{
         position:relative;
@@ -145,7 +146,7 @@
         }
       }
     }
-  }
+  }*/
 
 
 }
