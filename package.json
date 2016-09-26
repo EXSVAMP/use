@@ -13,6 +13,7 @@
     "client-side"
   ],
   "dependencies": {
+    "angular-bootstrap-datetimepicker": "^1.0.1",
     "compass-mixins": "^0.12.10",
     "fis-parser-less": "*",
     "fis-preprocessor-annotate": "*",

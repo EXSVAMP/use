@@ -40,7 +40,7 @@ function RDashInterceptor() {
             },
             responseError: function(response) {
                 console.log("后台出错!")
-                window.location.href="/login.html"
+                // window.location.href="/login.html"
 
                 return $q.reject(response);
             }

@@ -20,14 +20,13 @@
 .main-content{
   padding: 20px;
   .search-bar{
-    height: 101px;
     border-radius: 4px;
     background-color: #ffffff;
     margin-bottom: 20px;
     padding: 20px;
     .form-group{
       float: left;
-      margin-right: 53px;
+      margin-right: 50px;
       width: 250px;
       label{
         font-size: 12px;
@@ -209,4 +208,35 @@
       }
     }
   }
+}
+
+.date-area{
+  position: relative;
+  float:left;
+  .date-picker{
+    padding:0 26px 0 5px;
+    border-radius: 4px;
+    border:1px solid #E6E6E6;
+  }
+  .icon-icon_calendar{
+    position: absolute;
+    top:0;
+    font-size:16px;
+    right: 5px;
+    padding: 9px 8px;
+    height: 100%;
+    border-left:1px solid #e6e6e6;
+  }
+}
+
+.col-flow {
+  float: left;
+  position: relative;
+  min-height: 1px;
+}
+
+.col-flow:after {
+  content: "";
+  display: table;
+  clear: both;
 }
