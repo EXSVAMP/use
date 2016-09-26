@@ -23,13 +23,12 @@ app.factory('ListService', function ($http,baseUrl) {
                 }
                 $scope.params.descent=descent;
                 $http.get(baseUrl.getUrl() + url,{params:$scope.params}).success(function(data){
-                    console.log(data);
                     if(data.code==200){
                         $scope.dataList=data.data;
                         $scope.total=data.pageinfo.total_number;
                         $scope.total_page=data.pageinfo.total_page;
-                        if(callback&&typeof callback=='Function')callback(data);
-                        if($scope.listCallback&&typeof $scope.listCallback=='Function')$scope.listCallback(data);
+                        if(callback&&angular.isFunction(callback))callback(data);
+                        if($scope.listCallback&&angular.isFunction($scope.listCallback))$scope.listCallback(data);
                     }else{
                         alert(data.message)
                     }
