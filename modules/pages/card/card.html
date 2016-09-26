@@ -130,7 +130,8 @@
         <thead>
           <tr>
             <th>
-              <span>每页显示数量</span>
+              <div class="pagination-content">
+              <span class="pagination-tip">每页显示数量</span>
               <ui-select ng-model="number" theme="bootstrap" on-select="setShowNum(number)">
                 <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
                 <ui-select-choices repeat="item in numbers">
@@ -138,6 +139,7 @@
                     <!-- <small ng-bind-html="item.email"></small> -->
                 </ui-select-choices>
               </ui-select>
+              </div>
             </th>
             <th>
              <uib-pagination items-per-page="number" total-items="bigTotalItems" ng-change="changePage()" ng-model="index" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" num-pages="numPages" previous-text="上一页" next-text="下一页">
