@@ -8,7 +8,7 @@
            <div class="add " ng-show="modal_add_modify" >
              <form role="form" >
                 <div class="form-group form-group-selin">
-                 <label>功能类型:{{func_type}}</label>
+                 <label>功能类型:</label>
                  <ui-select ng-model="func_type" theme="bootstrap"  on-select="select_func_type(func_type)">
                      <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                      <ui-select-choices repeat="item.state as item in func_type_Items">
@@ -18,7 +18,7 @@
                  </ui-select>
              </div>
                  <div class="form-group form-group-selin">
-                     <label>状态:{{state}}</label>
+                     <label>状态:</label>
                      <ui-select ng-model="state" theme="bootstrap" on-select="select_status(state)">
                          <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                          <ui-select-choices repeat="item.state as item in status_Items">
@@ -75,7 +75,7 @@
     <div class="content">
         <form role="form" class="function_type_select">
             <div class="form-group form-group-selin">
-                <label for="name">功能类型:</label>{{func_type}}
+                <label for="name">功能类型:</label>
                 <ui-select ng-model="functype" theme="bootstrap"  on-select="select_func_type(functype)">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                     <ui-select-choices repeat="item.state as item in func_type_Items">
