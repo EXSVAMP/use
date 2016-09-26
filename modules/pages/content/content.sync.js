@@ -89,6 +89,8 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
   $scope.bigCurrentPage = {
 
   };
+  $scope.numbers = [10,20,30,40,50,60,70,80,90,100];
+
   $http.get(urlBase + "/api/1/common/choices/?key=rfidcontent").success(function(data){
     $scope.rfid_type_Items = [];
     $scope.is_writed_Items = [];
@@ -179,6 +181,12 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
     $scope.bigCurrentPage[$scope.currentSelTab] = $scope.index;
     $scope.submit_search($scope.currentSelTab,1);
   };
+  $scope.setShowNum = function(data){
+      $scope.number[$scope.currentSelTab] = data;
+      $scope.index = 1;
+      $scope.bigCurrentPage[$scope.currentSelTab] = $scope.index;
+      $scope.submit_search($scope.currentSelTab,1);
+    }
 
   $scope.emptyDataListShow = "";
   $scope.currentPageDataNum = 0;
@@ -257,4 +265,4 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
   };
   //$scope.submit_search(0,0);
 
-})
+});
