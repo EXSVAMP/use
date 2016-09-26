@@ -1,98 +1,6 @@
-.card-bar{
-	display: table;
-	width: 100%;
-	height: 55px;
-	background-color: #e8ebf0; 
-	p{
-		display: table-cell;
-		vertical-align: middle;
-		font-size: 12px;
-		color: #808ca0;
-		span{
-			display: block;
-			float: left;
-			/*width: 16px;
-			height: 16px;*/
-			font-size: 16px;
-			margin-left: 40px;
-    		margin-right: 5px;
-			/*background:url(/lib/img/icon_location_16_16.png);*/
-		}
-	}
-}
-
 .card-content{
-	padding: 20px;
 	.card-select{
-		height: 101px;
-		border-radius: 4px;
-		background-color: #ffffff;
-		margin-bottom: 20px;
-		padding: 20px;
-		/*.card-select-selin{
-			width: 250px;
-			height: auto;
-			overflow: hidden;
-			label{
-				font-size: 12px;
-				color: #3e4d68;
-			}
-			
-		}*/
-		.form-group-selin{
-			float: left;
-    		margin-right: 53px;
-			width: 250px;
-			label{
-				font-size: 12px;
-				color: #3e4d68;
-			}
-			ui-select,.ui-select-container,input{
-				width: 250px;
-				height: 34px;
-			}
-			input{
-				font-size: 12px;
-				color: #888888;
-			}
-			.ui-select-search,.ui-select-match {
-				width: 250px !important;
-				min-width: 250px !important;
-    			/* Because of the inclusion of Bootstrap */
-    			span{
-    				/*height: 34px;*/
-    				font-size: 12px !important;
-					color: #888888 !important;
-				}
-			}
-
-			.ui-select-choices{
-				width: 250px !important;
-				min-width: 250px !important;
-				overflow: hidden;
-				padding:0;
-				margin:0;
-				height: auto !important;
-				max-height: 1000px !important;
-				li{
-					width: 250px;
-					overflow: hidden;
-					padding:0;
-					margin:0;
-					.dropup, .dropdown {
-    					margin: 0;
-    					padding: 0;
-    					position: relative;
-    					width: 250px;
-					}
-				}
-			}
-		}
-
 		.btns-group{
-			float: left;
-			height: 34px;
-			margin-top: 19px;
 			.btn-rfid-search,.btn-rfid-add{
 				width: 80px;
 				height: 34px;
@@ -106,64 +14,23 @@
 					float: left;
 					padding-top: 0px;
 					padding-right: 0px;
-					/*width: 16px;
-					height: 16px;
-					background: url(/lib/img/icon_search_16_16_02.png);*/
 					font-size: 16px;
 					color: #fff;
+					line-height: 34px;
 				}
 			}
-			.btn-rfid-add{
+			/*.btn-rfid-add{
 				background-color: #fc763c;
 				span{
 					background: url(/lib/img/icon_plus_16_16_02.png);
 				}
-			}
+			}*/
 		}
 	}
 
 	table.table-content{
 		thead{
 			tr{
-				th{
-					height: 48px;
-					background-color: #ffffff;
-					border: solid 1px #e8ebf0;
-					cursor: pointer;
-					p{
-						line-height: 2;
-						text-align: center;
-						font-size: 14px;
-						color: #666666;
-						span{
-							display: inline-block;
-    						height: 16px;
-    						padding-left: 4px;
-    						width: 16px;
-
-						}
-						.sort-arrow-id,.sort-arrow-serial,.sort-arrow-state,.sort-arrow-updatetime,.sort-arrow-createtime{
-							span{
-								width: 16px;
-								height: 16px;
-								/*background: url(/lib/img/icon_sort_down_16_16_01.png);*/
-								img{
-									height: 16px;
-    								margin-top: -3px;
-    								width: 16px;
-								}
-							}
-						}
-
-						/*.sort-arrow-id-up,.sort-arrow-serial-up,.sort-arrow-state-up,.sort-arrow-updatetime-up,.sort-arrow-createtime-up{
-							background: url(/lib/img/icon_sort_up_16_16_01.png);
-						}*/
-					}
-				}
-				span{
-					position: relative;
-				}
-
 				.dwn-arw-af-card::after,.up-arw-af-card::after{
     				content: "\e928";
     				position: absolute;
@@ -183,230 +50,90 @@
     				content: "\e929";
  				}
 				
-
 			}
 		}
 
-		tbody{
-			tr{
-				td{
-					height: 48px;
-					background-color: #ffffff;
-					border: solid 1px #e8ebf0;
-					p{
-						line-height: 2;
-						text-align: center;
-						font-size: 14px;
-						color: #666666;
-						display: inline-table;
-						span{
-							display: block;
-							float: left;
-							width: 16px;
-							height: 16px;
-							margin-top: 5px;
-							margin-right: 10px;
-							cursor: pointer;
-						}
-						.rfid-edit{
-							background: url(/lib/img/icon_edit_16_16_06.png);
-						}
-						.rfid-delete{
-							background: url(/lib/img/icon_cancel_16_16_06.png);
-							margin-right: 0;
-						}
-					}
-				}
-			}
-		}
-
-	}
-
-	.emptyDataList{
-		display: none;
-		/*width: 406px;*/
-		height: 80px;
-		/*text-align: center;*/
-		margin: 100px auto 0 auto;
-		p{
-			font-size: 19px;
-			color: #3e4d68;
-			display: table-cell;
-			vertical-align: middle;
-			span{
-				&:first-child{
-					display: block;
-					float: left;
-					width: 112px;
-					height: 80px; 
-					background: url(/lib/img/Group.png);
-					margin-right: 12px;
-				}
-				&:last-child{
-					display: block;
-					float: left;
-					margin-top: 10px;
-				}
-			}
-		}
-	}
-
-	.emptyDataListShow{
-		display: table;
 	}
 
 	table.table-pagination{
 		thead{
 			tr{
+				position:relative;
 				th{
-					height: 36px;
-					.pagination{
-						margin: 0;
-    					padding: 0;
-    					li{
-    						a{
-    							height: 36px;
-    							padding-top: 9px;
-    						}
-    					}
-					}
-					.pagination-detail{
-						margin-left: 5px;
-						height: 36px;
-						display: inline-table;
-						span{
-							display: table-cell;
-							vertical-align: middle;
+					border: none;
+					&:first-child{
+    					height: 24px+10px;
+    					position: absolute;
+    					top: 5px;
+    					width: 154px+10px;
+    					background: #fff;
+						div.pagination-content{
+							width: 154px;
+							height: 24px;
+							background: #f5f5f5;
+							border-radius: 4px;
+							background-color: #fff;
+							border: solid 1px #e6e6e6;
 							font-size: 12px;
 							color: #666666;
-							&:nth-child(1),&:nth-child(2){
-								padding-right: 10px;
-							}
-							input{
-								width: 36px;
-								height: 36px;
-								border-radius: 2px;
-								background-color: #ffffff;
-								border: solid 1px #e8ebf0;
-								margin-left: 2px;
-								margin-right: 2px;
-								text-align: center;
-								margin-right: 10px;
-								margin-left: 10px;
-								
-							}
-							button{
-								width: 36px;
-								height: 36px;
-								border-radius: 2px;
-								background-color: #ffffff;
-								border: solid 1px #e8ebf0;
-								font-size: 12px;
-								color: #5f9bdb;
+							text-align: start;
+							line-height: 0.7;
+							position: absolute;
+							top: 5px;
+							left: 5px;
+							span.pagination-tip{
+								line-height: 1.9;
+    							padding-left: 5px;
 							}
 						}
+						.btn{
+							height: 22px !important;
+							line-height: 22px;
+							border-radius: 0;
+							border: none;
+							border-left: 1px solid #e6e6e6;
+						}
+						@include common_select_detail(60px);
+      					input{
+        					padding: 0 0 0 5px;
+    						text-align: start;
+      					}
+
+      					.ui-select-container{
+        					position: absolute;
+    						right: 1px;
+    						top: 0;
+    						height: 24px;
+    						&:hover{
+    							right: 0;
+    						}
+      					}
+
+      					.ui-select-container.open{
+      						right: 0;
+      					}
+
+      					.ui-select-search,.ui-select-match {
+        					//border-radius: 0;
+        					height: 24px;
+        				}
+
+        				.ui-select-match{
+        					&>span{
+        						padding: 0 0 0 5px;
+    							text-align: start;
+        					}
+        				} 
+
+        				.ui-select-choices{
+        					//border-radius: 0;
+        				}
+
 					}
 				}
 			}
 		}
 	}
 
-}
-
-.add_form{
-	width: 360px;
-	margin-left: auto;
-	margin-right: auto;
-	label{
-		font-size: 12px;
-		color: #3e4d68;
-		margin-bottom: 8px;
-	}
-	input{
-		width: 360px;
-		height: 34px;
-		border-radius: 4px;
-		background-color: #ffffff;
-		border: solid 1px #e6e6e6;
-		font-size: 12px;
-		color: #888888;
-	}
-}
-
-.edit_form{
-	width: 400px;
-	margin-left: auto;
-	margin-right: auto;
-	label{
-		font-size: 12px;
-		color: #3e4d68;
-		margin-bottom: 8px;
-	}
-	input{
-		width: 360px;
-		height: 34px;
-		border-radius: 4px;
-		background-color: #ffffff;
-		border: solid 1px #e6e6e6;
-		font-size: 12px;
-		color: #888888;
-	}
-	.form-group-selin{
-			width: 360px;
-			label{
-				font-size: 12px;
-				color: #3e4d68;
-			}
-			ui-select,.ui-select-container,input{
-				width: 360px;
-				height: 34px;
-			}
-			input{
-				font-size: 12px;
-				color: #888888;
-			}
-		}
-}
-
-.deleteCardInfo{
-	margin-left: auto;
-    margin-right: auto;
-    width: 240px;
-	text-align: center;
-	font-size: 14px;
-	color: #3e4d68;
-	p{
-		span{
-			display: block;
-			float: left;
-			width: 48px;
-			height: 48px;
-			background: url(/lib/img/icon_warning_48_48.png);
-			margin-right: 6px;
-			margin-top: -2px;
-		}
-	}
-	
-}
-
-.modal-footer-resize{
-    width: 190px;
-    margin: auto;
-    margin-top: 10px;
-    .btn-solid-back,.btn-blank-back{
-    	width: 80px;
-    	height: 34px;
-    	border-radius: 4px !important;
-    	background-color: #5f9bdb;
-    	cursor: pointer;
-    	font-size: 12px;
-    	color: #ffffff;
-    }
-    .btn-blank-back{
-    	background-color: #ffffff;
-    	border: solid 1px #5f9bdb;
-    	font-size: 12px;
-    	color: #5f9bdb;
-    }
 }
 

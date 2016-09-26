@@ -11,6 +11,16 @@ require('common/service/utils');
  * Master Controller
  */
 var app = angular.module('RDash');
+app.filter("opis_writed",function(){
+  return function(input){
+    if(input == true)
+      input = "是";
+    else if(!input){
+      input = "否";
+    }
+    return input;
+  };
+});
 app.config(function($httpProvider){
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -327,7 +337,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,it
         if($scope.item.method=="add"){
             if($scope.serial_number!=undefined){
             $http.post(baseUrl + "/api/1/card/", {"serial_number":$scope.serial_number, "status":$scope.status}).success(function(data){
-                items.scope.submit_search(); 
+                items.scope.submit_search();
             }).error(function(){
                 alert("有点故障！")
             })
@@ -362,6 +372,207 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,it
      $scope.cancel = function () {
          $uibModalInstance.dismiss('cancel');
      };
+
+});
+
+app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,items,url_junction){
+    baseUrl = baseUrl.getUrl();
+    scope=items.scope;
+    $scope.item=items;
+    $scope.func_type_Items=scope.func_type_Items.slice(1);
+    $scope.func_type=scope.func_type_Items.slice(1)[0].state;
+    $scope.status_Items=scope.status_Items.slice(1);
+    $scope.state=scope.status_Items.slice(1)[0].state;
+    $scope.select_func_type=function(functype){
+    $scope.func_type=functype;
+    };
+    $scope.select_status=function(state){
+        $scope.state=state;
+    };
+    $scope.cancel = function(){
+        $uibModalInstance.dismiss('cancel');
+    };
+    if(items.method=="add"){
+        $scope.modal_add_modify=true;
+        $scope.modal_delete=false;
+        $scope.rfid_reader_id = "-1";
+        $scope.func_type = "100";
+        $scope.status = "0";
+        $scope.serial_number = "";
+        $scope.description = "";
+        $scope.storage_names = "";
+        $scope.ip_address="";
+        $scope.live_address="";
+        $scope.ok=function(){
+            var query_url = url_junction.getDict({
+                func_type:$scope.func_type,
+                status:$scope.state,
+                serial_number:$scope.serial_number,
+                description:$scope.description,
+                storage_names:$scope.storage_names,
+                ip_address:$scope.ip_address,
+                live_address:$scope.live_address
+
+            });
+            if( $scope.serial_number!="") {
+                $http.post(baseUrl + "/api/1/camera/", query_url).success(function (data) {
+                    if (data.code == 200) {
+                        items.scope.submit_search($scope.item.scope.status, 1);
+                    }
+                    ;
+                });
+                $uibModalInstance.close();
+            }
+        }
+
+    }else if(items.method=="modify"){
+        $scope.modal_add_modify=true;
+        $scope.modal_delete=false;
+        $scope.rfid_reader_id = "";
+        $scope.func_type = items.data.func_type;
+        $scope.status = items.data.status;
+        $scope.serial_number = items.data.serial_number;
+        $scope.description = items.data.description;
+        $scope.storage_names = items.data.storage_names;
+        $scope.ip_address=items.data.ip_address;
+        $scope.live_address=items.data.live_address;
+        $scope.ok = function(){
+            $scope.pk = items.data.id;
+            var query_url = url_junction.getDict({
+                rfid_reader_id:$scope.rfid_reader_id,
+                func_type:$scope.func_type,
+                status:$scope.state,
+                serial_number:$scope.serial_number,
+                description:$scope.description,
+                storage_names:$scope.storage_names,
+                ip_address:$scope.ip_address,
+                live_address:$scope.live_address
+            });
+            $http.put(baseUrl+"/api/1/camera/"+$scope.item.data.id+"/",query_url).success(function(data){
+                if(data.code=="200"){
+                    items.scope.submit_search();
+                }
+            });
+            $uibModalInstance.close();
+        };
+
+    }else if(items.method=="delete"){
+        $scope.modal_add_modify=false;
+        $scope.modal_delete=true;
+        $scope.ok = function(){
+            $http.delete(baseUrl+"/api/1/camera/"+$scope.item.data.id+"/").success(function(data){
+                if(data.code=="200"){
+                    items.scope.submit_search();
+                }
+            });
+            $uibModalInstance.close();
+        };
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+});
+
+app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,baseUrl){
+    baseUrl = baseUrl.getUrl();
+    $scope.item = items;
+    $scope.cancel = function(){
+        $uibModalInstance.dismiss('cancel');
+    }
+    $scope.changeType = function(data){
+        $scope.rfid_card = data.id;
+        console.log("rfid_card:"+$scope.crfid_card);
+    }
+    $scope.changeStatus = function(data){
+        $scope.currentSelTab = data.key;
+        console.log("currentSelTab:"+$scope.currentSelTab);
+    }
+    if(items.method=="add"){
+        $scope.rfid_card = "-1";
+        $scope.rfid_type = "0";
+        $scope.status = items.scope.status;
+        $http.get(baseUrl+"/api/1/card/?status=0").success(function(data){
+            $scope.rfid_cards = data;
+        }).error(function(){
+            console.log("有错误！")
+        });
+        $scope.ok = function(){
+            $http.post(baseUrl+"/api/1/content/",{"rfid_card_id":$scope.rfid_card,"rfid_type":$scope.rfid_type,"status":$scope.status}).success(function(data){
+                if(data.code==200){
+                    items.scope.submit_search($scope.item.scope.status, 1);
+                    items.scope.refresh_stat();
+                }
+            });
+            $uibModalInstance.close();
+        };
+    }else if(items.method=="modify"){
+        $scope.rfid_type_Items = items.scope.rfid_type_Items;
+        $scope.rfid_type_Items = $scope.rfid_type_Items.slice(0,$scope.rfid_type_Items.length-1);
+        $scope.statusInfo = items.scope.statusInfo;
+        $scope.rfid_card = items.data.rfid_card.id+"";
+        $scope.rfid_type = items.data.rfid_type;
+        $scope.currentSelTab = items.data.status;
+        for(var i=0; i< $scope.rfid_type_Items.length; i++){
+            if(items.scope.rfid_type_Items[i].id == $scope.rfid_type){
+                $scope.type = items.scope.rfid_type_Items[i];
+                break;
+            }
+        }
+        for(statusItem in items.scope.statusInfo){
+            if(statusItem == $scope.currentSelTab){
+                //alert(statusItem+","+items.scope.statusInfo[statusItem]);
+                $scope.status = {key:statusItem,value:items.scope.statusInfo[statusItem]};
+                //$scope.status = {key:"200",value: "入库监视"};
+                break;
+            }
+        }
+
+        //$scope.type = $scope.rfid_type;
+        //$scope.status = $scope.currentSelTab;
+        //console.log("status:"+$scope.statusInfo["100"]+",rfid_card:"+$scope.rfid_card+",rfid_type:"+$scope.rfid_type);
+        // $http.get(baseUrl+"/api/1/card/?status=0").success(function(data){
+        //     $scope.rfid_cards = data;
+        //     var exist = false;
+        //     for(var item in data.data){
+        //         if(data.data[item].id==items.data.rfid_card.id){
+        //             exist = true;
+        //         }
+        //     }
+        //     if(!exist){
+        //         $scope.rfid_cards.data.push(items.data.rfid_card)
+        //     }
+        // }).error(function(){
+        //     console.log("有错误！")
+        // });
+        $scope.ok = function(){
+            $http.put(baseUrl+"/api/1/content/"+$scope.item.data.id+"/",{"rfid_card_id":$scope.rfid_card,"rfid_type":$scope.rfid_type,"status":$scope.currentSelTab}).success(function(data){
+                if(data.code=="200"){
+                    items.scope.submit_search($scope.item.scope.currentSelTab, 1);
+                    items.scope.refresh_stat(true);
+                }
+            });
+            $uibModalInstance.close();
+        };
+    }else if(items.method=="delete"){
+        $scope.ok = function(){
+            $http.delete(baseUrl+"/api/1/content/"+$scope.item.data.id+"/").success(function(data){
+                if(data.code=="200"){
+                    $scope.item.scope.submit_search($scope.item.scope.currentSelTab, 1);
+                    $scope.item.scope.refresh_stat(true);
+                }
+            });
+            $uibModalInstance.close();
+        };
+    }
 });
 
 $.fn.datepicker.dates['zh'] = {

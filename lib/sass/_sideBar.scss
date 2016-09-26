@@ -27,7 +27,10 @@
     line-height: 58px;
 
   };
-.nav_head+ul>li a{
+  .nav-pills > li > a{
+    border-radius: 0px;
+  };
+  .nav_head+ul>li a{
 display: inline-block;
   width: 200px;
   height: 48px;

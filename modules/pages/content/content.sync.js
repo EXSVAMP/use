@@ -6,6 +6,46 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
 
   };
   var urlBase=baseUrl.getUrl();
+  $scope.open = function (size, method,index){
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      controller: 'ModalContent',
+      templateUrl: "myModalContent.html",
+      size: size,
+      resolve: {
+        items: function () {
+          if(method=="delete"){
+            return {
+              title:"删除RFID卡内容",
+              method:"delete",
+              data:$scope.query_result[$scope.currentSelTab][index],
+              scope:$scope
+            }
+          }else if(method=="add"){
+            return {
+              title:"新增RFID卡内容",
+              method:"add",
+              status_disable:true,
+              choice:$scope.choice,  //
+              scope:$scope
+            }
+          }else{
+            return {
+              title:"修改RFID卡内容",
+              method:"modify",
+              status_disable:false,
+              data:$scope.query_result[$scope.currentSelTab][index],  //
+              choice:$scope.choice, //
+              scope:$scope
+            }
+          }
+        }
+      }
+    });
+    modalInstance.result.then(function(selectedItem) {
+      $scope.selected = selectedItem;
+    }, function(){});
+  };
   $scope.statusInfo= {"200": "入库监视", 
                       "600": "已删除作废", 
                       "400": "已出库", 
@@ -40,7 +80,7 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
   $scope.tabActive={
 
   };
-   $scope.order={
+  $scope.order={
 
   };
   $scope.number = {
@@ -49,9 +89,11 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
   $scope.bigCurrentPage = {
 
   };
+  $scope.numbers = [10,20,30,40,50,60,70,80,90,100];
+
   $http.get(urlBase + "/api/1/common/choices/?key=rfidcontent").success(function(data){
     $scope.rfid_type_Items = [];
-    $scope.is_writed = [];
+    $scope.is_writed_Items = [];
     if(data.code==200){
       $scope.choice = data;
       var dataTemp= $scope.choice.data.rfid_type;
@@ -61,9 +103,9 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
       $scope.rfid_type_Items.push({id:-1,name:"--请选择-"});
       dataTemp= $scope.choice.data.is_writed;
       for(dataItem in dataTemp){
-        $scope.is_writed.push({id:dataItem,name:dataTemp[dataItem]});
+        $scope.is_writed_Items.push({id:dataItem,name:dataTemp[dataItem]});
       }
-      $scope.is_writed.push({id:-1,name:"--请选择-"});
+      $scope.is_writed_Items.push({id:-1,name:"--请选择-"});
 
     }else{
       alert(data.message)
@@ -73,22 +115,24 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
   });
 
   $scope.changeType=function(data){
-    $scope.rfid_type = data;
+    $scope.rfid_type = data.id;
   }
 
   $scope.changeWrite=function(data){
-    $scope.is_writed = data;
+    $scope.is_writed = data.id;
   }
 
   $scope.typeSelTabClick=function(data){
     $scope.tabActive[$scope.currentSelTab] = false;
     $scope.tabActive[data] = true;
     $scope.currentSelTab = data;
+    $scope.submit_search($scope.currentSelTab,1);
   }
 
-  $scope.refresh_stat = function () {
+  $scope.refresh_stat = function (bDataCountChange) {
     $http.get(urlBase+'/api/1/content/stat/').success(function (data) {
-      if(data.code==200){         
+      if(data.code==200){
+      if(!bDataCountChange){
         for(var status in data.data.rfid_content){
           //$scope.bigTotalItems[status] = data.data.rfid_content[status].total;
           $scope.tabActive[status] = false;
@@ -108,8 +152,12 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
                                 };
           $scope.number[status] = 10;
           index:$scope.bigCurrentPage[status] = 1;
-        } 
+        }
+        $scope.submit_search(0,0); 
+      }        
+        
         $scope.bigTotalItems_detail = data.data.rfid_content;
+
       }else{
         alert(data.message)
       }
@@ -127,12 +175,18 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
   };
   $scope.setPage = function() {
     $scope.bigCurrentPage[$scope.currentSelTab] = $scope.index;
-    $scope.submit_search($scope.status,1);
+    $scope.submit_search($scope.currentSelTab,1);
   };
   $scope.changePage = function(){
     $scope.bigCurrentPage[$scope.currentSelTab] = $scope.index;
-    $scope.submit_search($scope.status,1)
+    $scope.submit_search($scope.currentSelTab,1);
   };
+  $scope.setShowNum = function(data){
+      $scope.number[$scope.currentSelTab] = data;
+      $scope.index = 1;
+      $scope.bigCurrentPage[$scope.currentSelTab] = $scope.index;
+      $scope.submit_search($scope.currentSelTab,1);
+    }
 
   $scope.emptyDataListShow = "";
   $scope.currentPageDataNum = 0;
@@ -142,6 +196,7 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
 
   $scope.submit_search = function(status,type,method){  //search type 0:搜索1:更新
     //$scope.table_hide = false;
+    console.log($scope.currentSelTab);
     if(type==0){
       rfid_card_id = $scope.rfid_card_id;
       rfid_id = $scope.rfid_id;
@@ -151,9 +206,12 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
       goods_location_name = $scope.goods_location_name;
 
     }else{
+      //console.log("status:"+status);
       if(status){
-        $scope.status=status;
+        $scope.currentSelTab=status;
+        //$scope.bigCurrentPage[$scope.currentSelTab] = 1;
       }
+
     }
     var order_str = "";
     for(var i in $scope.order[$scope.currentSelTab]){
@@ -170,7 +228,7 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
       }
     };
     var query_url = url_junction.getQuery({
-      status:$scope.status,
+      status:$scope.currentSelTab,
       rfid_card_id:rfid_card_id,
       rfid_id:rfid_id,
       rfid_type:rfid_type,
@@ -205,6 +263,6 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
     })
 
   };
-  $scope.submit_search(0,0);
+  //$scope.submit_search(0,0);
 
-})
+});
