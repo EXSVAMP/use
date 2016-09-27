@@ -150,9 +150,9 @@
                         </tr>
                         </tbody>
                     </table>
-        <!--<div class="emptyDataList {{emptyDataListShow}}">-->
-            <!--<p><span></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>-->
-        <!--</div>-->
+        <div  ng-class="{'notFound':notFound}" ng-show="notFound">
+            <p><span class="icon-icon_camera"></span><span class="notFound_desc">对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
+        </div>
         <table class="table table-pagination" ng-show="bigTotalItems>0">
             <thead>
             <tr>
@@ -171,6 +171,13 @@
         </table>
 
 
+    </div>
+
+</div>
+<div class="cover" ng-show="false">
+    <div class="cover1">
+        <div id="play"></div>
+        <img ng-click="close()" class="closeVideo" src="/lib/img/icon_close.png"/>
     </div>
 
 </div>
