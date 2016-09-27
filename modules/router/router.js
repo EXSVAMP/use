@@ -16,11 +16,7 @@ var warnDetail = require("pages/warn/warnDetail");
  */
 var app = angular.module('RDash');
 app.config(function ($stateProvider, $urlRouterProvider,$controllerProvider) {
-
-    // For unmatched routes
     $urlRouterProvider.otherwise('/card');
-
-    // Application routes
     $stateProvider
         .state('card', card)
         .state('content', content)

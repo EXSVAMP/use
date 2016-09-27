@@ -18,6 +18,7 @@
 .main-content {
   padding: 20px; }
   .main-content .search-bar {
+    width: 1200px;
     border-radius: 4px;
     background-color: #ffffff;
     margin-bottom: 20px;
@@ -816,6 +817,11 @@
     text-transform: none; }
   .card-content table.table-content thead tr .up-arw-af-card::after, .card-content table.table-content thead tr .up-arw-af-card-sn::after, .card-content table.table-content thead tr .up-arw-af-card-s::after, .card-content table.table-content thead tr .up-arw-af-card-cr::after, .card-content table.table-content thead tr .up-arw-af-up::after {
     content: "\e929"; }
+  .card-content .emptyDataList p span:first-child {
+    background: none;
+    font-size: 128px; }
+  .card-content .emptyDataList p span:last-child {
+    margin-top: 35px; }
 
 .content-content {
   /*table.table-pagination{
@@ -940,6 +946,11 @@
     text-transform: none; }
   .content-content table.table-content thead tr .up-arw-af-card::after, .content-content table.table-content thead tr .up-arw-af-card-sn::after, .content-content table.table-content thead tr .up-arw-af-card-s::after, .content-content table.table-content thead tr .up-arw-af-card-cr::after, .content-content table.table-content thead tr .up-arw-af-up::after {
     content: "\e929"; }
+  .content-content .emptyDataList p span:first-child {
+    background: none;
+    font-size: 128px; }
+  .content-content .emptyDataList p span:last-child {
+    margin-top: 37px; }
 
 .edit-form-content .form-group-selin {
   float: left;
@@ -1298,6 +1309,47 @@
   height: 20px;
   margin-top: 1px;
   margin-right: 1px; }
+
+.main-content .main-detail {
+  position: relative; }
+  .main-content .main-detail .main-detail-tab {
+    width: 850px;
+    margin-bottom: 20px;
+    background-color: #fff; }
+    .main-content .main-detail .main-detail-tab .nav-tabs .tab-item {
+      width: 150px;
+      height: 70px;
+      text-align: center; }
+      .main-content .main-detail .main-detail-tab .nav-tabs .tab-item a {
+        height: 100%;
+        color: #808CA0;
+        border-radius: 0; }
+        .main-content .main-detail .main-detail-tab .nav-tabs .tab-item a .icon {
+          font-size: 32px; }
+      .main-content .main-detail .main-detail-tab .nav-tabs .tab-item.active {
+        border-bottom: 2px solid #5F9BDB; }
+        .main-content .main-detail .main-detail-tab .nav-tabs .tab-item.active a {
+          border: 0px;
+          color: #5F9BDB; }
+    .main-content .main-detail .main-detail-tab .detail-img {
+      position: relative;
+      padding: 20px; }
+      .main-content .main-detail .main-detail-tab .detail-img img {
+        width: 810px;
+        height: 500px; }
+  .main-content .main-detail .main-detail-content {
+    width: 850px;
+    height: 580px;
+    padding: 0 20px;
+    background-color: #fff; }
+  .main-content .main-detail .main-detail-record {
+    width: 320px;
+    height: 100%;
+    float: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff; }
 
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6, label, form, input, button,

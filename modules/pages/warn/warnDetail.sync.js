@@ -1,22 +1,14 @@
 var app = angular.module('RDash');
-app.register.controller("warnDetailCtrl", function ($scope, $http, $timeout,listService,utils) {
-    listService.init($scope,'/api/1/eventlog/');
-    $scope.params.event_feedback_type=1;
-    $scope.refresh();
-    $scope.selections={};
-    $scope.selections.event_type=[{name:'入库',value:'0'},{name:'移动',value:'1'},{name:'消失',value:'2'},{name:'出库',value:'3'},{name:'非正常',value:'4'}];
-    $scope.selections.event_feedback=[{name:'通过',value:'0'},{name:'报警',value:'1'},{name:'通知',value:'2'}];
-    $scope.selections.handle_result=[{name:'未处理',value:'0'},{name:'保持',value:'1'},{name:'解除',value:'2'}];
-    $timeout(function(){
-        $('.date-picker').datepicker({
-            language: 'zh',
-            orientation: "left",
-            todayHighlight: true,
-            autoclose:true,
-            templates:{
-                leftArrow: '<i class="fa fa-angle-left"></i>',
-                rightArrow: '<i class="fa fa-angle-right"></i>'
-            }
-        });
+app.register.controller("warnDetailCtrl", function ($scope, $http, params,$location,baseUrl) {
+    var data = $location.search();
+    $http.get(baseUrl.getUrl()+'/api/1/eventlog/'+data.id+"/").success(function(data){
+        if(data.code==200){
+            $scope.detail = data.data;
+            console.log($scope.detail);
+            $scope.detail.img1='http://img0.imgtn.bdimg.com/it/u=3761389663,2619900045&fm=11&gp=0.jpg';
+            $scope.detail.img2='http://imgsrc.baidu.com/forum/pic/item/199db2da81cb39db2dedc43ed3160924ab183007.jpg';
+        }
     });
+    $scope.tabSwitch = 0;
+
 });

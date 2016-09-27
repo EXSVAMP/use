@@ -8,8 +8,7 @@ app.register.controller("warnCtrl", function ($scope, $http, $timeout,$location,
     $scope.selections.event_feedback=[{name:'通过',value:'0'},{name:'报警',value:'1'},{name:'通知',value:'2'}];
     $scope.selections.handle_result=[{name:'未处理',value:'0'},{name:'保持',value:'1'},{name:'解除',value:'2'}];
     $scope.jumpToDetail=function(item){
-        params.data=item;
-        $location.path('#warnDetail');
+        $location.path('/warnDetail').search({id:item.id});
     };
     $timeout(function(){
         $('.date-picker').datepicker({
