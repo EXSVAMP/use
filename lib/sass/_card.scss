@@ -59,6 +59,20 @@
 
 	}
 
+	.emptyDataList{
+		p{
+			span{
+				&:first-child{
+					background: none;
+					font-size: 128px;
+				}
+				&:last-child{
+					margin-top: 35px;
+				}
+			}
+		}
+	}
+
 	/*table.table-pagination{
 		thead{
 			tr{

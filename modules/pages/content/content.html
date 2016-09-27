@@ -35,7 +35,7 @@
                 </div>
             </form>
 
-            <div class="pop-delete-com" ng-show="item.method=='delete'"><p><span></span>确定要删除这个RFID卡内容吗？<br/>注意：删除以后不可以恢复！</p></div>
+            <div class="pop-delete-com pop-delete-com-content" ng-show="item.method=='delete'"><p><span></span>确定要删除这个RFID卡内容吗？<br/>注意：删除以后不可以恢复！</p></div>
 
         </div>
         <div class="modal-footer">
@@ -144,7 +144,7 @@
         </table>
 
         <div class="emptyDataList {{emptyDataListShow}}">
-            <p><span></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
+            <p><span class="icon-icon_RFIDcardcontent"></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
             
         </div>
         <table class="table table-pagination" ng-show="bigTotalItems>0">
