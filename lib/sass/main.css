@@ -395,7 +395,7 @@
   margin-top: -113.5px;
   margin-left: -200px; }
 
-.modal-md-edit, .modal-md-edit-content {
+.modal-md-edit, .modal-md-edit-content, .modal-md-edit-reader {
   position: absolute;
   width: 400px;
   height: 293px;
@@ -1356,6 +1356,102 @@
     top: 0;
     right: 0;
     background-color: #fff; }
+
+.reader-content .reader-select {
+  display: table;
+  height: auto;
+  width: 100%; }
+  .reader-content .reader-select .btns-group {
+    margin: auto; }
+    .reader-content .reader-select .btns-group .btn-rfid-search, .reader-content .reader-select .btns-group .btn-rfid-add {
+      float: left;
+      width: 80px;
+      height: 34px;
+      border-radius: 4px !important;
+      background-color: #45b6b0;
+      margin-right: 30px;
+      font-size: 12px;
+      color: #ffffff; }
+      .reader-content .reader-select .btns-group .btn-rfid-search span, .reader-content .reader-select .btns-group .btn-rfid-add span {
+        display: block;
+        float: left;
+        padding-top: 0px;
+        padding-right: 0px;
+        font-size: 16px;
+        color: #fff;
+        /*line-height: 34px;*/ }
+    .reader-content .reader-select .btns-group .btn-rfid-add {
+      background-color: #fc763c;
+      margin-right: 0; }
+.reader-content table.table-content thead tr .dwn-arw-af-card::after, .reader-content table.table-content thead tr .up-arw-af-card::after {
+  content: "\e928";
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  font-size: 20px;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "icomoon" !important;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: none; }
+.reader-content table.table-content thead tr .up-arw-af-card::after, .reader-content table.table-content thead tr .up-arw-af-card-sn::after, .reader-content table.table-content thead tr .up-arw-af-card-s::after, .reader-content table.table-content thead tr .up-arw-af-card-cr::after, .reader-content table.table-content thead tr .up-arw-af-up::after {
+  content: "\e929"; }
+.reader-content .emptyDataList p span:first-child {
+  background: none;
+  font-size: 128px; }
+.reader-content .emptyDataList p span:last-child {
+  margin-top: 35px; }
+
+.edit-form-reader .form-group {
+  float: left;
+  margin-right: 53px;
+  width: 360px; }
+  .edit-form-reader .form-group label {
+    font-size: 12px;
+    color: #3e4d68; }
+  .edit-form-reader .form-group ui-select, .edit-form-reader .form-group .ui-select-container, .edit-form-reader .form-group input {
+    width: 360px;
+    height: 34px; }
+  .edit-form-reader .form-group input {
+    font-size: 12px;
+    color: #888888; }
+  .edit-form-reader .form-group .ui-select-search, .edit-form-reader .form-group .ui-select-match {
+    width: 360px !important;
+    min-width: 360px !important;
+    /* Because of the inclusion of Bootstrap */ }
+    .edit-form-reader .form-group .ui-select-search span, .edit-form-reader .form-group .ui-select-match span {
+      /*height: 34px;*/
+      font-size: 12px !important;
+      color: #888888 !important; }
+  .edit-form-reader .form-group .ui-select-choices {
+    width: 360px !important;
+    min-width: 360px !important;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    height: auto !important;
+    max-height: 1000px !important; }
+    .edit-form-reader .form-group .ui-select-choices li {
+      width: 360px;
+      overflow: hidden;
+      padding: 0;
+      margin: 0; }
+      .edit-form-reader .form-group .ui-select-choices li .dropup, .edit-form-reader .form-group .ui-select-choices li .dropdown {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        width: 360px; }
+
+.modal-md-edit-reader {
+  height: 283px;
+  width: 800px;
+  margin-top: -141.5px;
+  margin-left: -400px; }
+
+.delete-reader {
+  width: 250px; }
 
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6, label, form, input, button,

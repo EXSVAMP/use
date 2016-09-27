@@ -585,6 +585,83 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
     }
 });
 
+app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,baseUrl,url_junction){
+    baseUrl = baseUrl.getUrl();
+    $scope.item = items;
+    $scope.cancel = function(){
+        $uibModalInstance.dismiss('cancel');
+    };
+    if(items.method=="add"){
+        $scope.func_type = "100";
+        $scope.status = "0";
+        $scope.description = "";
+        $scope.serial_number = "";
+        $scope.ip_address="";
+        $scope.ok = function(){
+          if($scope.serial_number!=""){
+            var query_url = url_junction.getDict({
+                func_type:$scope.func_type,
+                status:$scope.status,
+                serial_number:$scope.serial_number,
+                description:$scope.description,
+                storage_names:$scope.storage_names,
+                ip_address:$scope.ip_address
+            });
+            if($scope.func_type=="100"){
+                query_url["rfid_reader_id"] = $scope.rfid_reader_id;
+            };
+
+            $http.post(baseUrl+"/api/1/reader/",query_url).success(function(data){
+                if(data.code==200){
+                    items.scope.submit_search($scope.item.scope.status, 1);
+                };
+            }).error(function(){
+                alert("error")
+            });
+            $uibModalInstance.close();
+         }
+
+        };
+    }else if(items.method=="modify"){
+        $scope.func_type = items.data.func_type;
+        $scope.status = items.data.status;
+        $scope.serial_number = items.data.serial_number;
+        $scope.description = items.data.description;
+        $scope.ip_address=items.data.ip_address;
+        $scope.ok = function(){
+            $scope.pk = items.data.id;
+            var query_url = url_junction.getDict({
+                func_type: $scope.func_type,
+                status: $scope.status,
+                serial_number: $scope.serial_number,
+                description: $scope.description,
+                ip_address:$scope.ip_address
+            });
+            $http.put(baseUrl+"/api/1/reader/"+$scope.item.data.id+"/",query_url).success(function(data){
+                if(data.code=="200"){
+                    items.scope.submit_search($scope.item.scope.status, 1);
+                }else{
+                    alert(data.description)
+                }
+            }).error(function(){
+                alert("error")
+            });
+            $uibModalInstance.close();
+        };
+    }else if(items.method=="delete"){
+        $scope.ok = function(){
+            $http.delete(baseUrl+"/api/1/reader/"+$scope.item.data.id+"/").success(function(data){
+                if(data.code=="200"){
+                    items.scope.submit_search();
+                }
+            }).error(function(){
+                alert("error")
+            });
+            $uibModalInstance.close();
+        };
+    }
+});
+
 $.fn.datepicker.dates['zh'] = {
     days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
     daysShort: ["日", "一", "二", "三", "四", "五", "六", "日"],
