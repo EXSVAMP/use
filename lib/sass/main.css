@@ -1163,10 +1163,18 @@
   margin-top: 5px;
   cursor: pointer; }
 
+.modal-md {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -210px;
+  margin-left: -400px; }
+
 .camera_Modal {
   width: 800px;
   height: 420px;
-  background: #ffffff; }
+  background: #ffffff;
+  border-radius: 4px; }
   .camera_Modal .modal-header {
     width: 100%;
     height: 57px;
@@ -1231,10 +1239,18 @@
   .camera_modal-footer .cameraBtn1 {
     margin-top: 0px; }
 
+.modal-sm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -113px;
+  margin-left: -200px; }
+
 .camera_delete {
   width: 400px;
   height: 227px;
-  background: #ffffff; }
+  background: #ffffff;
+  border-radius: 4px; }
   .camera_delete .modal-header {
     width: 100%;
     height: 57px;
@@ -1423,54 +1439,65 @@
 .reader-content .emptyDataList p span:last-child {
   margin-top: 35px; }
 
-.edit-form-reader .form-group {
-  float: left;
-  margin-right: 53px;
-  width: 360px; }
-  .edit-form-reader .form-group label {
-    font-size: 12px;
-    color: #3e4d68; }
-  .edit-form-reader .form-group ui-select, .edit-form-reader .form-group .ui-select-container, .edit-form-reader .form-group input {
+.modal-body {
+  padding: 0;
+  margin: 0; }
+
+.edit-form-reader {
+  width: 800px; }
+  .edit-form-reader .form-group {
+    float: left;
+    margin-right: 53px;
     width: 360px;
-    height: 34px; }
-  .edit-form-reader .form-group input {
-    font-size: 12px;
-    color: #888888; }
-  .edit-form-reader .form-group .ui-select-search, .edit-form-reader .form-group .ui-select-match {
-    width: 360px !important;
-    min-width: 360px !important;
-    /* Because of the inclusion of Bootstrap */ }
-    .edit-form-reader .form-group .ui-select-search span, .edit-form-reader .form-group .ui-select-match span {
-      /*height: 34px;*/
-      font-size: 12px !important;
-      color: #888888 !important; }
-  .edit-form-reader .form-group .ui-select-choices {
-    width: 360px !important;
-    min-width: 360px !important;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    height: auto !important;
-    max-height: 1000px !important; }
-    .edit-form-reader .form-group .ui-select-choices li {
+    margin-right: 0; }
+    .edit-form-reader .form-group label {
+      font-size: 12px;
+      color: #3e4d68; }
+    .edit-form-reader .form-group ui-select, .edit-form-reader .form-group .ui-select-container, .edit-form-reader .form-group input {
       width: 360px;
+      height: 34px; }
+    .edit-form-reader .form-group input {
+      font-size: 12px;
+      color: #888888; }
+    .edit-form-reader .form-group .ui-select-search, .edit-form-reader .form-group .ui-select-match {
+      width: 360px !important;
+      min-width: 360px !important;
+      /* Because of the inclusion of Bootstrap */ }
+      .edit-form-reader .form-group .ui-select-search span, .edit-form-reader .form-group .ui-select-match span {
+        /*height: 34px;*/
+        font-size: 12px !important;
+        color: #888888 !important; }
+    .edit-form-reader .form-group .ui-select-choices {
+      width: 360px !important;
+      min-width: 360px !important;
       overflow: hidden;
       padding: 0;
-      margin: 0; }
-      .edit-form-reader .form-group .ui-select-choices li .dropup, .edit-form-reader .form-group .ui-select-choices li .dropdown {
-        margin: 0;
+      margin: 0;
+      height: auto !important;
+      max-height: 1000px !important; }
+      .edit-form-reader .form-group .ui-select-choices li {
+        width: 360px;
+        overflow: hidden;
         padding: 0;
-        position: relative;
-        width: 360px; }
+        margin: 0; }
+        .edit-form-reader .form-group .ui-select-choices li .dropup, .edit-form-reader .form-group .ui-select-choices li .dropdown {
+          margin: 0;
+          padding: 0;
+          position: relative;
+          width: 360px; }
+  .edit-form-reader .form-group-odd {
+    margin-left: 20px;
+    margin-right: 40px; }
 
 .modal-md-edit-reader {
   height: 283px;
-  width: 800px;
+  margin-left: -400px;
   margin-top: -141.5px;
-  margin-left: -400px; }
+  width: 800px; }
 
 .delete-reader {
-  width: 250px; }
+  width: 250px;
+  margin-top: 10px; }
 
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6, label, form, input, button,
