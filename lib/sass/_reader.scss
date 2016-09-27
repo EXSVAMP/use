@@ -1,0 +1,98 @@
+.reader-content{
+	.reader-select{
+		display: table;
+  		height: auto;
+    	width: 100%;
+		.btns-group{
+			margin: auto;
+			.btn-rfid-search,.btn-rfid-add{
+				float: left;
+				width: 80px;
+				height: 34px;
+				border-radius: 4px !important;
+				background-color: #45b6b0;
+				margin-right: 30px;
+				font-size: 12px;
+				color: #ffffff;
+				span{
+					display: block;
+					float: left;
+					padding-top: 0px;
+					padding-right: 0px;
+					font-size: 16px;
+					color: #fff;
+					/*line-height: 34px;*/
+				}
+			}
+			.btn-rfid-add{
+				background-color: #fc763c;
+				margin-right: 0;
+			}
+		}
+	}
+
+	table.table-content{
+		thead{
+			tr{
+				.dwn-arw-af-card::after,.up-arw-af-card::after{
+    				content: "\e928";
+    				position: absolute;
+    				top: 2px;
+    				right: 0px;
+    				font-size: 20px;
+    				-moz-osx-font-smoothing: grayscale;
+    				font-family: "icomoon" !important;
+    				font-style: normal;
+    				font-variant: normal;
+    				font-weight: normal;
+    				line-height: 1;
+    				text-transform: none;
+				}
+
+				.up-arw-af-card::after,.up-arw-af-card-sn::after,.up-arw-af-card-s::after,.up-arw-af-card-cr::after,.up-arw-af-up::after {
+    				content: "\e929";
+ 				}
+				
+			}
+		}
+
+	}
+
+	.emptyDataList{
+		p{
+			span{
+				&:first-child{
+					background: none;
+					font-size: 128px;
+				}
+				&:last-child{
+					margin-top: 35px;
+				}
+			}
+		}
+	}
+
+
+}
+
+.edit-form-reader{
+  
+  //.form-group-selin{
+  .form-group{
+    @include common_select(360px);
+
+    }
+}
+
+.modal-md-edit-reader{
+ @extend .modal-md-edit;
+  height: 283px;
+  width: 800px;
+  margin-top: -141.5px;
+  margin-left: -400px;
+}
+
+.delete-reader{
+	width: 250px;
+}
+

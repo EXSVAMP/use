@@ -7,7 +7,7 @@ var content = require("pages/content/content");
 var camera = require("pages/camera/camera");
 var warn = require("pages/warn/warn");
 var warnDetail = require("pages/warn/warnDetail");
-// var reader = require("pages/reader/reader");
+var reader = require("pages/reader/reader");
 // var location = require("pages/location/location");
 // var imgs = require("pages/imgs/imgs");
 
@@ -26,9 +26,9 @@ app.config(function ($stateProvider, $urlRouterProvider,$controllerProvider) {
         .state('content', content)
         .state('warn', warn)
         .state('warnDetail', warnDetail)
-        .state('camera', camera);
+        .state('camera', camera)
         // .state('eventlog', eventlog)
-        // .state('reader', reader)
+        .state('reader', reader);
 
         // .state('location', location)
 
