@@ -67,7 +67,7 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
         $scope.submit_search();
     };
 
-
+     
     $scope.submit_search = function () {
         console.log("<==功能类型==>" + $scope.func_type)
         console.log("<==摄像头状态==>" + $scope.status);
@@ -97,6 +97,12 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
                 $scope.query_result = data.data;
                 $scope.bigTotalItems = data.pageinfo.total_number;
                 $scope.total_page=data.pageinfo.total_page;
+                $scope.currentPageTotal=$scope.query_result.length;
+                if($scope.currentPageTotal>0){
+                    $scope.notFound=false;
+                }else{
+                    $scope.notFound=true;
+                }
 
 
             } else {
@@ -158,21 +164,7 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
     }
 
 
-    $scope.test = [
-        {
-            id: 2,
-            name: 'a2'
-        },
-        {
-            id: 4,
-            name: 'a4'
-        },
-
-        {
-            id: 3,
-            name: 'a3'
-        }
-    ]
+ 
 
 
 })

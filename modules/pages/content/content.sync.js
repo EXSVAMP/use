@@ -89,7 +89,7 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
   $scope.bigCurrentPage = {
 
   };
-  $scope.numbers = [10,20,30,40,50,60,70,80,90,100];
+  $scope.numbers = [10,20,30,40,50];
 
   $http.get(urlBase + "/api/1/common/choices/?key=rfidcontent").success(function(data){
     $scope.rfid_type_Items = [];

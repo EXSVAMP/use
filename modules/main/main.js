@@ -431,7 +431,7 @@ app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,it
         $scope.modal_delete=false;
         $scope.rfid_reader_id = "";
         $scope.func_type = items.data.func_type;
-        $scope.status = items.data.status;
+        $scope.state = items.data.status;
         $scope.serial_number = items.data.serial_number;
         $scope.description = items.data.description;
         $scope.storage_names = items.data.storage_names;
