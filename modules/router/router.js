@@ -29,7 +29,7 @@ app.config(function ($stateProvider, $urlRouterProvider,$controllerProvider) {
         // .state('eventlog', eventlog)
         .state('reader', reader)
         .state('user', user)
-        .state('account', account);
+        .state('account', account)
         .state('eventlog', eventlog);
         // .state('reader', reader)
         // .state('location', location)
