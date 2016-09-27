@@ -1,0 +1,93 @@
+<div ng-controller="warnCtrl">
+	<div class="main-top-bar">
+		<p><span class="icon-icon_location"></span>警报管理>警报列表</p>
+	</div>
+	<div class="main-content">
+		<form role="form" class="search-bar col-flow">
+			<div class="form-group form-group-selin" style="width:540px;">
+				<label>事件发生时间:</label>
+				<div class="form-row">
+					<div class="date-area">
+						<span class="icon-icon_calendar"></span>
+						<input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd" ng-model="params.startDate"/>
+					</div>
+					<span style="margin:0 10px;float:left;position: relative;top:10px;">至</span>
+					<div class="date-area">
+						<span class="icon-icon_calendar"></span>
+						<input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd" ng-model="params.endDate"/>
+					</div>
+				</div>
+			</div>
+			<div class="form-group form-group-selin">
+				<label>警报类型:</label>
+				<ui-select ng-model="params.event_type" theme="bootstrap" on-select="params.event_type=$select.selected.value;">
+					<ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+					<ui-select-choices repeat="item.value as item in selections.event_type">
+						<div>{{item.name}}</div>
+					</ui-select-choices>
+				</ui-select>
+			</div>
+			<div class="form-group form-group-selin" style="margin-right:0;">
+    			<label>警报反馈:</label>
+    			<ui-select ng-model="params.event_feedback_type" theme="bootstrap" on-select="params.event_feedback_type=$select.selected.value;">
+            		<ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+            		<ui-select-choices repeat="item.value as item in selections.event_feedback">
+              			<div class="select-item" ng-bind-html="item.name"></div>
+            		</ui-select-choices>
+          		</ui-select>
+			</div>
+			<div class="form-group form-group-selin" style="margin-right:35px;">
+    			<label >处理结果:</label>
+				<ui-select ng-model="params.handle_result" theme="bootstrap" on-select="params.handle_result=$select.selected.value;">
+					<ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+					<ui-select-choices repeat="item.value as item in selections.handle_result">
+						<div class="select-item" ng-bind-html="item.name"></div>
+					</ui-select-choices>
+				</ui-select>
+			</div>
+			<div class="btns-group">
+				<a type="button" class="btn btn-green" ng-click="refresh()"><span class="icon-icon_search btn-icon"></span>搜索</a>
+				<!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
+			</div>
+		</form>
+
+		<table class="table table-bordered table-content">
+  			<thead>
+    			<tr>
+      				<th ng-click="order.id=!order.id;refresh();"><p>编号<span ng-class="order.id?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></th>
+      				<th ng-click="order.event_type=!order.event_type"><p>警报类型<span ng-class="order.event_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></th>
+      				<th ng-click="order.event_feedback_type=!order.event_feedback_type;refresh();"><p>警报反馈<span ng-class="order.event_feedback_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></th>
+      				<th ng-click="order.handle_result=!order.handle_result;refresh();"><p>处理结果<span ng-class="order.handle_result?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></th>
+					<th ng-click="order.event_datetime=!order.event_datetime;refresh();"><p>警报发生时间<span ng-class="order.event_datetime?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></span></th>
+      				<th><p>操作</p></th>
+    			</tr>
+  			</thead>
+  			<tbody>
+    			<tr ng-repeat="item in dataList">
+    				<td><p>{{item.id}}</p></td>
+      				<td><p>{{item.event_type_display}}</p></td>
+      				<td><p>{{item.event_feedback_type_display}}</p></td>
+      				<td><p>{{item.handle_result_display}}</p></td>
+      				<td><p>{{item.event_datetime}}</p></td>
+      				<td><p><a href="#warnDetail"><span class="icon-icon_information"></span>查看详情</a></p></td>
+    			</tr>
+    		</tbody>
+    	</table>
+      <table class="table table-pagination" ng-show="total_page>1">
+        <thead>
+          <tr>
+            <th>
+              <uib-pagination items-per-page="params.number" total-items="total" ng-change="refresh()" ng-model="params.index" max-size="5"
+							  class="pagination-sm" boundary-links="true" force-ellipses="true" first-text="首页"
+							  last-text="末页" next-text="下一页" previous-text="上一页"></uib-pagination>
+              <div class="pagination-detail">
+                <span>共{{total_page}}页</span>
+                <span>跳至<input type="text" ng-model="jumpToPage"/>页</span>
+                <span><button ng-click="params.index=jumpToPage;jumpToPage='';refresh();">确定</button></span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+      </table>
+	</div>
+</div>
