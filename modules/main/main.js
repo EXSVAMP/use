@@ -270,7 +270,8 @@ app.controller("sideBarCtrl",function($scope, $rootScope){
      $scope.open={
          open1:false,
          open2:false,
-         open3:false
+         open3:false,
+         open4:false,
          
      }
     $scope.openSide=function(status){
@@ -279,16 +280,25 @@ app.controller("sideBarCtrl",function($scope, $rootScope){
             $scope.open.open1=!$scope.open.open1;
             $scope.open.open2=false;
             $scope.open.open3=false;
+            $scope.open.open4=false;
         };
         if(status==2){
             $scope.open.open2=!$scope.open.open2;
             $scope.open.open1=false;
             $scope.open.open3=false;
+            $scope.open.open4=false;
         };
         if(status==3){
             $scope.open.open3=!$scope.open.open3;
             $scope.open.open1=false;
             $scope.open.open2=false;
+            $scope.open.open4=false;
+        };
+        if(status==4){
+            $scope.open.open4=!$scope.open.open4;
+            $scope.open.open1=false;
+            $scope.open.open2=false;
+            $scope.open.open3=false;
         }
 
     };
@@ -439,8 +449,7 @@ app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,it
         $scope.live_address=items.data.live_address;
         $scope.ok = function(){
             $scope.pk = items.data.id;
-            var query_url = url_junction.getDict({
-                rfid_reader_id:$scope.rfid_reader_id,
+            var query_url = {
                 func_type:$scope.func_type,
                 status:$scope.state,
                 serial_number:$scope.serial_number,
@@ -448,7 +457,7 @@ app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,it
                 storage_names:$scope.storage_names,
                 ip_address:$scope.ip_address,
                 live_address:$scope.live_address
-            });
+            };
             $http.put(baseUrl+"/api/1/camera/"+$scope.item.data.id+"/",query_url).success(function(data){
                 if(data.code=="200"){
                     items.scope.submit_search();
