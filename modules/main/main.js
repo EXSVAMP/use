@@ -585,18 +585,27 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
     }
 });
 
-app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,baseUrl,url_junction){
+app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,baseUrl,url_junction,ngDialog){
     baseUrl = baseUrl.getUrl();
+    $scope.choice = {func_type:{},status:{}};
     $scope.item = items;
+    $scope.func_type = "100";
+    $scope.status = "0";
+    $scope.description = "";
+    $scope.serial_number = "";
+    $scope.storage_names = "";
+    $scope.ip_address="";
     $scope.cancel = function(){
         $uibModalInstance.dismiss('cancel');
     };
+    $scope.func_typeSelFunc = function(data){
+        $scope.func_type = data.key;
+    }
+    $scope.statusSelFunc = function(data){
+        $scope.status = data.key;
+    }
     if(items.method=="add"){
-        $scope.func_type = "100";
-        $scope.status = "0";
-        $scope.description = "";
-        $scope.serial_number = "";
-        $scope.ip_address="";
+        $scope.choice = items.choice;
         $scope.ok = function(){
           if($scope.serial_number!=""){
             var query_url = url_junction.getDict({
@@ -613,40 +622,53 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
 
             $http.post(baseUrl+"/api/1/reader/",query_url).success(function(data){
                 if(data.code==200){
-                    items.scope.submit_search($scope.item.scope.status, 1);
+                    items.scope.submit_search();
                 };
             }).error(function(){
                 alert("error")
             });
             $uibModalInstance.close();
-         }
+         }else
+            ngDialog.open({
+                template: '<p style=\"text-align: center\">序列号不能为空</p>',
+                plain: true
+            });
 
         };
     }else if(items.method=="modify"){
+        $scope.choice = items.choice;
         $scope.func_type = items.data.func_type;
         $scope.status = items.data.status;
         $scope.serial_number = items.data.serial_number;
         $scope.description = items.data.description;
         $scope.ip_address=items.data.ip_address;
+        $scope.func_typeSel = {key:items.data.func_type,value:items.data.func_type_display};
+        $scope.statusSel = {key:items.data.status,value:items.data.status_display};
         $scope.ok = function(){
-            $scope.pk = items.data.id;
-            var query_url = url_junction.getDict({
-                func_type: $scope.func_type,
-                status: $scope.status,
-                serial_number: $scope.serial_number,
-                description: $scope.description,
-                ip_address:$scope.ip_address
-            });
-            $http.put(baseUrl+"/api/1/reader/"+$scope.item.data.id+"/",query_url).success(function(data){
-                if(data.code=="200"){
-                    items.scope.submit_search($scope.item.scope.status, 1);
-                }else{
-                    alert(data.description)
-                }
-            }).error(function(){
-                alert("error")
-            });
-            $uibModalInstance.close();
+            if($scope.serial_number){
+                $scope.pk = items.data.id;
+                var query_url = url_junction.getDict({
+                    func_type: $scope.func_type,
+                    status: $scope.status,
+                    serial_number: $scope.serial_number,
+                    description: $scope.description,
+                    ip_address:$scope.ip_address
+                });
+                $http.put(baseUrl+"/api/1/reader/"+$scope.item.data.id+"/",query_url).success(function(data){
+                    if(data.code=="200"){
+                        items.scope.submit_search();
+                    }else{
+                        alert(data.description)
+                    }
+                }).error(function(){
+                    alert("error")
+                });
+                $uibModalInstance.close();
+            }else
+                ngDialog.open({
+                    template: '<p style=\"text-align: center\">序列号不能为空</p>',
+                    plain: true
+                });
         };
     }else if(items.method=="delete"){
         $scope.ok = function(){

@@ -72,27 +72,34 @@
 		}
 	}
 
+}
 
+.modal-body{
+	padding: 0;
+	margin: 0;
 }
 
 .edit-form-reader{
-  
-  //.form-group-selin{
-  .form-group{
-    @include common_select(360px);
-
+	width: 800px;
+ 	.form-group{
+    	@include common_select(360px);
+    	margin-right: 0;
+    }
+    .form-group-odd{
+    	margin-left: 20px;
+    	margin-right: 40px;
     }
 }
 
 .modal-md-edit-reader{
- @extend .modal-md-edit;
-  height: 283px;
-  width: 800px;
-  margin-top: -141.5px;
-  margin-left: -400px;
+ 	@extend .modal-md-edit;
+	height: 283px;
+	margin-left: -400px;
+	margin-top: -141.5px;
+	width: 800px;
 }
 
 .delete-reader{
 	width: 250px;
+	margin-top: 10px;
 }
-

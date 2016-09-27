@@ -31,9 +31,9 @@
         </div> -->
 
         <form role="form" class="pop-edit-form-com edit-form-reader" ng-show="item.method=='modify' || item.method=='add'">
-          <div class="form-group">
-          <label for="func_type_edit">功能类型:</label> 
-          <ui-select ng-model="func_typeSel_edit" theme="bootstrap" on-select="func_typeSelFunc_edit(func_typeSel_edit)">
+          <div class="form-group form-group-odd">
+          <label for="func_type">功能类型:</label> 
+          <ui-select ng-model="func_typeSel" theme="bootstrap" on-select="func_typeSelFunc(func_typeSel)">
                 <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                 <ui-select-choices repeat="(key,value) in choice['func_type']">
                     <div ng-bind-html="value.value"></div>
@@ -42,8 +42,8 @@
               </ui-select>
       </div>
       <div class="form-group">
-          <label for="status_edit">读写器状态:</label> 
-          <ui-select ng-model="statusSel_edit" theme="bootstrap" on-select="statusSelFunc_edit(statusSel_edit)">
+          <label for="status">读写器状态:</label> 
+          <ui-select ng-model="statusSel" theme="bootstrap" on-select="statusSelFunc(statusSel)">
                 <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                 <ui-select-choices repeat="(key,value) in choice['status']">
                     <div ng-bind-html="value.value"></div>
@@ -51,13 +51,17 @@
                 </ui-select-choices>
               </ui-select>
       </div>
-      <div class="form-group">
-          <label for="description_edit">读写器描述:</label> 
-           <input type="text" class="form-control" id="description_edit" placeholder="请输入名称" ng-model="description_edit">
+      <div class="form-group form-group-odd">
+          <label for="description">读写器描述:</label> 
+           <input type="text" class="form-control" id="description" placeholder="描述" ng-model="description">
       </div>
       <div class="form-group">
-          <label for="serial_number_edit">序列号:</label> 
-           <input type="text" class="form-control" id="serial_number_edit" placeholder="请输入名称" ng-model="serial_number_edit">
+          <label for="serial_number">序列号:</label> 
+           <input type="text" class="form-control" id="serial_number" placeholder="序列号" ng-model="serial_number">
+      </div>
+      <div class="form-group form-group-odd">
+          <label for="ip_address">IP地址:</label> 
+           <input type="text" class="form-control" id="ip_address" placeholder="IP地址" ng-model="ip_address">
       </div>
         </form>
 
@@ -99,14 +103,14 @@
       </div>
       <div class="form-group">
           <label for="description">读写器描述:</label> 
-           <input type="text" class="form-control" id="description" placeholder="请输入名称" ng-model="description">
+           <input type="text" class="form-control" id="description" placeholder="读写器描述" ng-model="description">
       </div>
 			<div class="form-group">
     			<label for="serial_number">序列号:</label> 
-    			 <input type="text" class="form-control" id="serial_number" placeholder="请输入名称" ng-model="serial_number">
+    			 <input type="text" class="form-control" id="serial_number" placeholder="序列号" ng-model="serial_number">
 			</div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-rfid-search" ng-click="index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
 				<button type="button" class="btn btn-rfid-add" ng-click="open('md-edit-reader','add',$index)"><span class="icon-icon_plus"></span>增加</button>
 			</div>
 		</form>
@@ -118,6 +122,7 @@
       				<th ng-click="switch_order('serial_number')"><p>序列号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.serial_number]"></span></p></th>
       				<th ng-click="switch_order('status')"><p>状态<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.status]"></span></p></th>
               <th ng-click="switch_order('func_type')"><p>功能类型<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.func_type]"></span></p></th>
+              <th><p>IP地址</p></th>
               <th><p>描述</p></th>
       				<th ng-click="switch_order('updated_at')"><p>更新时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.updated_at]"></span></p></th>
       				<th ng-click="switch_order('created_at')"><p>创建时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.created_at]"></span</p></span></th>
@@ -138,6 +143,7 @@
       				<td><p>{{item.serial_number}}</p></td>
       				<td><p>{{item.status_display}}</p></td>
               <td><p>{{item.func_type_display}}</p></td>
+              <td><p>{{item.ip_address}}</p></td>
               <td><p>{{item.description}}</p></td>
       				<td><p>{{item.updated_at}}</p></td>
       				<td><p>{{item.created_at}}</p></td>
