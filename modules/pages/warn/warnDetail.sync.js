@@ -7,6 +7,14 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
             console.log($scope.detail);
             $scope.detail.img1='http://img0.imgtn.bdimg.com/it/u=3761389663,2619900045&fm=11&gp=0.jpg';
             $scope.detail.img2='http://imgsrc.baidu.com/forum/pic/item/199db2da81cb39db2dedc43ed3160924ab183007.jpg';
+            var rfid_list_display = '';
+            angular.forEach($scope.detail.rfid_list,function(item){
+                if(rfid_list_display!=''){
+                    rfid_list_display+=',';
+                }
+                rfid_list_display+=item.rfid_id;
+            });
+            $scope.detail.rfid_list_display=rfid_list_display
         }
     });
     $scope.tabSwitch = 0;

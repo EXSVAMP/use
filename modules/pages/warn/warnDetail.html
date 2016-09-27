@@ -16,9 +16,39 @@
                     <img ng-src="{{detail.img2}}"/>
                 </div>
             </div>
-            <div class="main-detail-content">
-                <div class="detail-row">
-                    <label class="col-lg-12"></label>
+            <div class="main-detail-content col-flow">
+                <div class="form-group">
+                    <span class="col-lg-12"><span class="icon icon-icon_eventlog"></span>NO:{{detail.id}} 详细信息</span>
+                </div>
+                <div class="form-group">
+                    <span class="col-lg-2">事件反馈类型</span>
+                    <span class="col-lg-4">{{detail.event_feedback_type_display}}</span>
+                    <span class="col-lg-2">事件类型</span>
+                    <span class="col-lg-4">{{detail.event_type_display}}</span>
+                </div>
+                <div class="form-group">
+                    <span class="col-lg-2">事件发生时间</span>
+                    <span class="col-lg-4">{{detail.event_datetime}}</span>
+                    <span class="col-lg-2">摄像头</span>
+                    <span class="col-lg-4">{{detail.ip_address}}</span>
+                </div>
+                <div class="form-group">
+                    <span class="col-lg-2">RFID读写器</span>
+                    <span class="col-lg-4">{{detail.event_feedback_type_display}}</span>
+                    <span class="col-lg-2">事件反馈简述</span>
+                    <span class="col-lg-4">{{detail.event_feedback_detail_display|characters:10 :true}}</span>
+                </div>
+                <div class="form-group">
+                    <span class="col-lg-2">RIDF列表</span>
+                    <span class="col-lg-10">{{detail.rfid_list_display}}</span>
+                </div>
+                <div class="form-group">
+                    <span class="col-lg-2">处理结果</span>
+                    <span class="col-lg-10">{{detail.handle_result_display}}<a href="javasvript:void(0)" style="margin-left:10px;">前去处理</a></span>
+                </div>
+                <div class="form-group">
+                    <span class="col-lg-2">事件描述</span>
+                    <span class="col-lg-10">{{detail.description}}</span>
                 </div>
             </div>
             <div class="main-detail-record">

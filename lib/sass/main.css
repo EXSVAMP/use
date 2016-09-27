@@ -407,6 +407,9 @@
 .ui-select-container .select-item {
   line-height: 20px; }
 
+.icon {
+  margin-right: 10px; }
+
 .btn-disable {
   background-color: #c1c7cc;
   color: #fff; }
@@ -1345,9 +1348,25 @@
         height: 500px; }
   .main-content .main-detail .main-detail-content {
     width: 850px;
-    height: 580px;
-    padding: 0 20px;
     background-color: #fff; }
+    .main-content .main-detail .main-detail-content .form-group {
+      height: 40px;
+      line-height: 40px;
+      margin: 0 20px;
+      padding: 0;
+      border-bottom: 1px solid #e6e6e6; }
+      .main-content .main-detail .main-detail-content .form-group:first-child {
+        margin: 0;
+        padding: 0 20px; }
+      .main-content .main-detail .main-detail-content .form-group:last-child {
+        border-bottom: 0; }
+      .main-content .main-detail .main-detail-content .form-group > span:nth-child(2n+1) {
+        color: #888888; }
+      .main-content .main-detail .main-detail-content .form-group:nth-last-child(1) {
+        height: auto; }
+      .main-content .main-detail .main-detail-content .form-group:nth-last-child(2) {
+        height: auto;
+        overflow: hidden; }
   .main-content .main-detail .main-detail-record {
     width: 320px;
     height: 100%;
