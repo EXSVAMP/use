@@ -59,6 +59,7 @@ display: inline-block;
   };
   span{
     font-size: 16px;
+
   };
   .deco{
     border-top:solid 2px #5F9BDB;
@@ -69,7 +70,7 @@ display: inline-block;
     border-bottom:none;
     color:#5F9BDB ;
   };
-.icon-icon_data,.icon-icon_alert{
+.icon-icon_data,.icon-icon_alert,.icon-icon_menu_setting{
   margin-left: 50px;
   margin-right: 5px;
 };
@@ -81,21 +82,24 @@ display: inline-block;
   margin-left: 22px;
   margin-right: 6px;
 };
-.icon-icon_equipment{
+.icon-icon_equipment,.icon-icon_menu_setting{
   margin-right: 2px;
   position: relative;
   top:2px;
 };
   .icon-icon_RFIDcard,.icon-icon_RFIDcardcontent,.icon-icon_camera,.icon-icon_cardreader,
   .icon-icon_eventlog,.icon-icon_userlist,.icon-icon_user,
-  .icon-icon_warehouse_eyesmap,.icon-icon_gear{
+  .icon-icon_warehouse_eyesmap,.icon-icon_gear,.icon-icon_realtime_text,.icon-icon_manual_test{
     position: relative;
     top:2px;
     margin-left: 45px;
     margin-right: 5px;
   };
-  .icon-icon_user,.icon-icon_userlist,.icon-icon_gear{
-    top:1px;
+  .icon-icon_user,.icon-icon_userlist,.icon-icon_gear,.icon-icon_warehouse,
+  .icon-icon_stock_search{
+    position: relative;
+    top:2px;
+    margin-right: 3px;
   };
 
   .showout {

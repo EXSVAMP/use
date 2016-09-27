@@ -208,89 +208,89 @@
             border: solid 1px #e8ebf0;
             font-size: 12px;
             color: #5f9bdb; }
-      .main-content table.table-pagination thead tr th:first-child {
-        height: 34px;
+    .main-content table.table-pagination thead tr th.pagination-items-per-page {
+      height: 34px;
+      position: absolute;
+      top: 10px;
+      width: 164px;
+      background: #fff; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page div.pagination-content {
+        width: 154px;
+        height: 24px;
+        background: #f5f5f5;
+        border-radius: 4px;
+        border: solid 1px #e6e6e6;
+        font-size: 12px;
+        color: #666666;
+        text-align: start;
+        line-height: 0.7;
         position: absolute;
-        top: 10px;
-        width: 164px;
-        background: #fff; }
-        .main-content table.table-pagination thead tr th:first-child div.pagination-content {
-          width: 154px;
-          height: 24px;
-          background: #f5f5f5;
-          border-radius: 4px;
-          border: solid 1px #e6e6e6;
-          font-size: 12px;
-          color: #666666;
-          text-align: start;
-          line-height: 0.7;
-          position: absolute;
-          top: 5px;
-          left: 5px; }
-          .main-content table.table-pagination thead tr th:first-child div.pagination-content span.pagination-tip {
-            line-height: 1.9;
-            padding-left: 10px; }
-        .main-content table.table-pagination thead tr th:first-child .btn {
-          height: 22px !important;
-          line-height: 22px;
-          border-radius: 0;
-          border: none;
-          border-left: 1px solid #e6e6e6; }
-        .main-content table.table-pagination thead tr th:first-child ui-select, .main-content table.table-pagination thead tr th:first-child .ui-select-container, .main-content table.table-pagination thead tr th:first-child input {
+        top: 5px;
+        left: 5px; }
+        .main-content table.table-pagination thead tr th.pagination-items-per-page div.pagination-content span.pagination-tip {
+          line-height: 1.9;
+          padding-left: 10px; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page .btn {
+        height: 22px !important;
+        line-height: 22px;
+        border-radius: 0;
+        border: none;
+        border-left: 1px solid #e6e6e6; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page ui-select, .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-container, .main-content table.table-pagination thead tr th.pagination-items-per-page input {
+        width: 60px;
+        height: 34px; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page input {
+        font-size: 12px;
+        color: #888888; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-search, .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-match {
+        width: 60px !important;
+        min-width: 60px !important;
+        /* Because of the inclusion of Bootstrap */ }
+        .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-search span, .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-match span {
+          /*height: 34px;*/
+          font-size: 12px !important;
+          color: #888888 !important; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-choices {
+        width: 60px !important;
+        min-width: 60px !important;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        height: auto !important;
+        max-height: 1000px !important; }
+        .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-choices li {
           width: 60px;
-          height: 34px; }
-        .main-content table.table-pagination thead tr th:first-child input {
-          font-size: 12px;
-          color: #888888; }
-        .main-content table.table-pagination thead tr th:first-child .ui-select-search, .main-content table.table-pagination thead tr th:first-child .ui-select-match {
-          width: 60px !important;
-          min-width: 60px !important;
-          /* Because of the inclusion of Bootstrap */ }
-          .main-content table.table-pagination thead tr th:first-child .ui-select-search span, .main-content table.table-pagination thead tr th:first-child .ui-select-match span {
-            /*height: 34px;*/
-            font-size: 12px !important;
-            color: #888888 !important; }
-        .main-content table.table-pagination thead tr th:first-child .ui-select-choices {
-          width: 60px !important;
-          min-width: 60px !important;
           overflow: hidden;
           padding: 0;
-          margin: 0;
-          height: auto !important;
-          max-height: 1000px !important; }
-          .main-content table.table-pagination thead tr th:first-child .ui-select-choices li {
-            width: 60px;
-            overflow: hidden;
+          margin: 0; }
+          .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-choices li .dropup, .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-choices li .dropdown {
+            margin: 0;
             padding: 0;
-            margin: 0; }
-            .main-content table.table-pagination thead tr th:first-child .ui-select-choices li .dropup, .main-content table.table-pagination thead tr th:first-child .ui-select-choices li .dropdown {
-              margin: 0;
-              padding: 0;
-              position: relative;
-              width: 60px; }
-        .main-content table.table-pagination thead tr th:first-child input {
-          padding: 0 0 0 5px;
-          text-align: start;
-          line-height: 2; }
-        .main-content table.table-pagination thead tr th:first-child .ui-select-container {
-          position: absolute;
-          right: 1px;
-          top: 0;
-          height: 22px; }
-          .main-content table.table-pagination thead tr th:first-child .ui-select-container:hover {
-            right: 0; }
-        .main-content table.table-pagination thead tr th:first-child .ui-select-container.open {
+            position: relative;
+            width: 60px; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page input {
+        padding: 0 0 0 5px;
+        text-align: start;
+        line-height: 2; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-container {
+        position: absolute;
+        right: 1px;
+        top: 0;
+        height: 22px; }
+        .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-container:hover {
           right: 0; }
-        .main-content table.table-pagination thead tr th:first-child .ui-select-search, .main-content table.table-pagination thead tr th:first-child .ui-select-match {
-          height: 24px; }
-        .main-content table.table-pagination thead tr th:first-child .ui-select-match > span {
-          padding: 0 0 0 5px;
-          text-align: start;
-          line-height: 2; }
-        .main-content table.table-pagination thead tr th:first-child .ui-select-match span {
-          height: 18px; }
-        .main-content table.table-pagination thead tr th:first-child .ui-select-match .btn:first-child .ui-select-match-text {
-          height: 24px; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-container.open {
+        right: 0; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-search, .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-match {
+        height: 24px; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-match > span {
+        padding: 0 0 0 5px;
+        text-align: start;
+        line-height: 2; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-match span {
+        height: 18px; }
+      .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-match .btn:first-child .ui-select-match-text {
+        height: 24px; }
 
 .date-area {
   position: relative;
@@ -646,7 +646,7 @@
   .sideBar .deco2 {
     border-bottom: none;
     color: #5F9BDB; }
-  .sideBar .icon-icon_data, .sideBar .icon-icon_alert {
+  .sideBar .icon-icon_data, .sideBar .icon-icon_alert, .sideBar .icon-icon_menu_setting {
     margin-left: 50px;
     margin-right: 5px; }
   .sideBar .icon-icon_up_open {
@@ -655,19 +655,22 @@
   .sideBar .icon-icon_right_open {
     margin-left: 22px;
     margin-right: 6px; }
-  .sideBar .icon-icon_equipment {
+  .sideBar .icon-icon_equipment, .sideBar .icon-icon_menu_setting {
     margin-right: 2px;
     position: relative;
     top: 2px; }
   .sideBar .icon-icon_RFIDcard, .sideBar .icon-icon_RFIDcardcontent, .sideBar .icon-icon_camera, .sideBar .icon-icon_cardreader,
   .sideBar .icon-icon_eventlog, .sideBar .icon-icon_userlist, .sideBar .icon-icon_user,
-  .sideBar .icon-icon_warehouse_eyesmap, .sideBar .icon-icon_gear {
+  .sideBar .icon-icon_warehouse_eyesmap, .sideBar .icon-icon_gear, .sideBar .icon-icon_realtime_text, .sideBar .icon-icon_manual_test {
     position: relative;
     top: 2px;
     margin-left: 45px;
     margin-right: 5px; }
-  .sideBar .icon-icon_user, .sideBar .icon-icon_userlist, .sideBar .icon-icon_gear {
-    top: 1px; }
+  .sideBar .icon-icon_user, .sideBar .icon-icon_userlist, .sideBar .icon-icon_gear, .sideBar .icon-icon_warehouse,
+  .sideBar .icon-icon_stock_search {
+    position: relative;
+    top: 2px;
+    margin-right: 3px; }
   .sideBar .showout {
     transition: all linear 200ms; }
   .sideBar .showout.ng-hide {
@@ -816,6 +819,11 @@
     text-transform: none; }
   .card-content table.table-content thead tr .up-arw-af-card::after, .card-content table.table-content thead tr .up-arw-af-card-sn::after, .card-content table.table-content thead tr .up-arw-af-card-s::after, .card-content table.table-content thead tr .up-arw-af-card-cr::after, .card-content table.table-content thead tr .up-arw-af-up::after {
     content: "\e929"; }
+  .card-content .emptyDataList p span:first-child {
+    background: none;
+    font-size: 128px; }
+  .card-content .emptyDataList p span:last-child {
+    margin-top: 35px; }
 
 .content-content {
   /*table.table-pagination{
@@ -940,6 +948,11 @@
     text-transform: none; }
   .content-content table.table-content thead tr .up-arw-af-card::after, .content-content table.table-content thead tr .up-arw-af-card-sn::after, .content-content table.table-content thead tr .up-arw-af-card-s::after, .content-content table.table-content thead tr .up-arw-af-card-cr::after, .content-content table.table-content thead tr .up-arw-af-up::after {
     content: "\e929"; }
+  .content-content .emptyDataList p span:first-child {
+    background: none;
+    font-size: 128px; }
+  .content-content .emptyDataList p span:last-child {
+    margin-top: 37px; }
 
 .edit-form-content .form-group-selin {
   float: left;
@@ -1074,6 +1087,9 @@
         position: relative;
         top: 2px;
         margin-left: 2px; }
+    .camera_Content .content .table-content a {
+      text-decoration: none !important;
+      cursor: pointer; }
   .camera_Content .content table.table-pagination thead tr th {
     height: 36px;
     border: none; }
@@ -1253,6 +1269,7 @@
 .cover {
   position: fixed;
   width: 100%;
+  margin-left: -200px;
   top: 0;
   z-index: 20;
   background: rgba(51, 51, 51, 0.4); }
@@ -1264,7 +1281,7 @@
   width: 540px;
   height: 440px;
   margin-top: -250px;
-  margin-left: -350px;
+  margin-left: -260px;
   border-radius: 4px !important;
   background-color: #f3f3f3;
   box-shadow: 2px 2px 14px 0 rgba(0, 0, 0, 0.3);
