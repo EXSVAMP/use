@@ -3,6 +3,7 @@ require('router');
 require('interceptor/captainlnterceptor');
 require('common/service/listService');
 require('common/service/utils');
+require('common/service/params');
 
 
 
