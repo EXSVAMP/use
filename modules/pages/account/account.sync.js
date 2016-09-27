@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("readerCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,url_junction,listService,params) {
+app.register.controller("accountCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,listService,params) {
 	var urlBase = baseUrl.getUrl();
 	$scope.choice = {func_type:{},status:{}};
 	$scope.func_type = '-1';
@@ -13,7 +13,6 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
     //$scope.bigCurrentPage = 1;
     $scope.numbers = [10,20,30,40,50];
     $scope.listLoadFlag = 1;
-    $scope.params = {};
 
     $scope.open = function (size, method,index){
         var modalInstance = $uibModal.open({
@@ -97,74 +96,23 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
         $scope.submit_search();
     };
     $scope.changePage = function(a){
-        //console.log("$scope.index3:"+$scope.index);
-        $scope.submit_search();
-        //console.log("$scope.index4:"+$scope.index);
+        $scope.submit_search()
     };
     $scope.submit_search = function(){
-         $scope.listLoadFlag = 1;
-       
-    	// listService.init($scope,'/api/1/reader/');
-    	// if($scope.func_type && $scope.func_type != -1)
-    	// 	$scope.params.func_type = $scope.func_type;
-    	// if($scope.status && $scope.status != -1)
-    	// 	$scope.params.status = $scope.status;
-    	// if($scope.description)
-    	// 	$scope.params.description = $scope.description;
-    	// if($scope.serial_number)
-    	// 	$scope.params.serial_number = $scope.serial_number;
-    	// $scope.params.index = $scope.index;
-    	// $scope.params.number = $scope.number;
-       
-    	// $scope.refresh($scope.index);
-        var order_str = "";
-      for(var i in $scope.order){
-        if($scope.order[i]){
-          if(order_str){
-            order_str += ','+i
-          }else{
-            order_str += i;
-          }
-        }
-      };
-
-      var query_url = url_junction.getQuery({
-      status:$scope.status,
-      func_type:$scope.func_type,
-      description:$scope.description,
-      serial_number:$scope.serial_number,
-      number:$scope.number,
-      index:$scope.index
-    });
-    $http.get(urlBase+"/api/1/reader/"+ query_url).success(function(data){
-      if(data.code==200){
-        $scope.listLoadFlag = 2;
-        // $scope.query_result[$scope.currentSelTab] = data.data;
-        // $scope.currentPageDataNum = data.data.length;
-        // $scope.searchTotal[$scope.currentSelTab] = data.pageinfo.total_number;
-
-        // $scope.bigTotalItems = data.pageinfo.total_number;
-        // $scope.total_page = data.pageinfo.total_page;
-      
-        // if($scope.currentPageDataNum == 0)
-        //   $scope.emptyDataListShow = "emptyDataListShow";
-        // else{
-        //   $scope.emptyDataListShow = "";
-        // }
-        $scope.dataList=data.data;
-        $scope.total=data.pageinfo.total_number;
-        $scope.totalPage=data.pageinfo.total_page;
-      }else{
-        alert(data.message)
-      }
-    }).error(function(data,state){
-      if(state == 403){
-        baseUrl.redirect()
-      }
-    })
-
+    	listService.init($scope,'/api/1/user/');
+    	if($scope.func_type && $scope.func_type != -1)
+    		$scope.params.func_type = $scope.func_type;
+    	if($scope.status && $scope.status != -1)
+    		$scope.params.status = $scope.status;
+    	if($scope.description)
+    		$scope.params.description = $scope.description;
+    	if($scope.serial_number)
+    		$scope.params.serial_number = $scope.serial_number;
+    	$scope.params.index = $scope.index;
+    	$scope.params.number = $scope.number;
+    	$scope.refresh();
     }
 
-    $scope.submit_search();	
+    //$scope.submit_search();	
 
 })
