@@ -8,6 +8,8 @@ var camera = require("pages/camera/camera");
 var warn = require("pages/warn/warn");
 var warnDetail = require("pages/warn/warnDetail");
 var reader = require("pages/reader/reader");
+var user = require("pages/user/user");
+var account = require("pages/account/account");
 // var location = require("pages/location/location");
 // var imgs = require("pages/imgs/imgs");
 
@@ -26,10 +28,15 @@ app.config(function ($stateProvider, $urlRouterProvider,$controllerProvider) {
 
         // .state('eventlog', eventlog)
         .state('reader', reader)
+<<<<<<< HEAD
+        .state('user', user)
+        .state('account', account);
+=======
         .state('eventlog', eventlog);
         // .state('reader', reader)
 
 
+>>>>>>> fc5ab57e4a52ab009a74180385159b584a5d8a1d
         // .state('location', location)
 
         // .state('imgs', imgs)
