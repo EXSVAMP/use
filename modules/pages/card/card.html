@@ -130,10 +130,10 @@
       <table class="table table-pagination" ng-show="bigTotalItems>0">
         <thead>
           <tr>
-            <th>
+            <th class="pagination-items-per-page">
               <div class="pagination-content">
               <span class="pagination-tip">每页显示数量</span>
-              <ui-select ng-model="number" theme="bootstrap" on-select="setShowNum(number)">
+              <ui-select ng-model="number2" theme="bootstrap" on-select="setShowNum(number2)">
                 <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
                 <ui-select-choices repeat="item in numbers">
                     <div ng-bind-html="item"></div>

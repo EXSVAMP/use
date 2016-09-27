@@ -134,7 +134,7 @@
                     <td><p>{{item.rfid_type_display}}</p></td>
                     <td><p>{{item.is_writed | opis_writed}}</p></td>
                     <td><p>{{item.status_display}}</p></td>
-                    <td><p>{{item.goods_location}}</p></td>
+                    <td><p>{{item.goods_location.name}}</p></td>
                     <td><p>{{item.rfid_card.serial_number}}</p></td>
                     <td><p>{{item.updated_at}}</p></td>
                     <td><p>{{item.created_at}}</p></td>
@@ -150,7 +150,7 @@
         <table class="table table-pagination" ng-show="bigTotalItems>0">
             <thead>
                 <tr>
-                    <th>
+                    <th class="pagination-items-per-page">
                         <!-- <span>每页显示数量</span>
                         <ui-select ng-model="number2" theme="bootstrap" on-select="setShowNum(number2)">
                             <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>

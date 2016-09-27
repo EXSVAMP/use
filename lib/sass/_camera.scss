@@ -112,6 +112,10 @@
           margin-left: 2px;
         };
 
+      };
+      a{
+        text-decoration: none!important;
+        cursor: pointer;
       }
     };
     table.table-pagination{
@@ -353,6 +357,7 @@
 .cover{
   position: fixed;
   width: 100%;
+  margin-left: -200px;
 
   top: 0;
   z-index: 20;
@@ -366,7 +371,7 @@
   width: 540px;
   height: 440px;
   margin-top: -250px;
-  margin-left: -350px;
+  margin-left: -260px;
   border-radius: 4px!important;
   background-color: #f3f3f3;
   box-shadow: 2px 2px 14px 0 rgba(0, 0, 0, 0.3);

@@ -93,6 +93,32 @@
             </ul>
 
         </li>
+        <li ng-class="{true:'deco'}[open.open4]">
+            <a href="#" class="nav-header nav_head"  ng-click="openSide(4)">
+                <span  ng-class="{true:'icon-icon_up_open',false:'icon-icon_right_open'}[open.open4]"></span>
+                <span class="icon-icon_stock_search"></span>在线管理
+            </a>
+            <ul  class="nav nav-list " ng-show="open.open4" >
+                <li>
+                    <a href="#">
+                        <span class="icon-icon_realtime_text"></span>轮巡检测
+                    </a>
+                </li>
+                <li >
+                    <a href="#" >
+                        <span class="icon-icon_manual_test"></span>手动检测
+                    </a>
+                </li>
+
+            </ul>
+
+        </li>
+        <li >
+            <a href="#" class="nav-header  nav_head" >
+                <span class="icon-icon_menu_setting"></span>功能设置
+            </a>
+
+        </li>
 
     </ul>
 </div>
