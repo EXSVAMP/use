@@ -87,6 +87,7 @@
 		list-style-type: none;
 		height: auto;
 		overflow: hidden;
+
 		li{
 			float: left;
 			margin-right: 25px;
@@ -118,6 +119,20 @@
 						font-size: 14px;
 						color: #3e4d68;
 					}
+					.rfid-edit,.rfid-delete{
+						display: block;
+              			float: right;
+              			width: 16px;
+             			height: 16px;
+              			margin-top: 5px;
+              			margin-right: 10px;
+              			cursor: pointer;
+              			background: url(/lib/img/icon_edit_16_16_06.png);
+            		}
+            		.rfid-delete{
+              			background: url(/lib/img/icon_cancel_16_16_06.png);
+              			margin-right: 0;
+            		}
 				}
 				&:last-child{
 					border-bottom: 0 none;
@@ -147,4 +162,24 @@
 		margin-top: 20px;
 	}
 
+}
+
+.edit-form-user{
+  
+  .form-group{
+    @include common_select(360px);
+    margin: 10px auto;
+    float: none;
+    }
+}
+
+.modal-md-edit-user{
+ @extend .modal-md-edit;
+  height: 359px;
+  margin-top: -179.5px;
+}
+
+.pop-delete-com-user {
+    width: 260px;
+    margin-top: 10px;
 }

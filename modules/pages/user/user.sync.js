@@ -17,33 +17,33 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
     $scope.open = function (size, method,index){
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
-            controller: 'ModalReader',
+            controller: 'ModalUser',
             templateUrl: "myModalContent.html",
             size: size,
             resolve: {
                 items: function () {
                     if(method=="delete"){
                         return {
-                            title:"删除读写器信息",
+                            title:"删除用户",
                             method:"delete",
                             data:$scope.dataList[index],
                             scope:$scope
                         }
                     }else if(method=="add"){
                         return {
-                            title:"新增读写器",
+                            title:"新增用户",
                             method:"add",
                             //status_disable:true,
-                            choice:$scope.choice,
+                            //choice:$scope.choice,
                             scope:$scope
                         }
                     }else{
                         return {
-                            title:"修改读写器信息",
+                            title:"修改用户",
                             method:"modify",
                            	//status_disable:false,
                             data:$scope.dataList[index],
-                            choice:$scope.choice,
+                            //choice:$scope.choice,
                             scope:$scope
                         }
                     }

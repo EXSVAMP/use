@@ -1,4 +1,47 @@
 <div ng-controller="userCtrl">
+	<script type="text/ng-template" id="myModalContent.html">
+    	<div class="modal-header">
+        	<h3 class="modal-title"><span class="icon-icon_RFIDcard"></span>{{item.title}}</h3>
+    	</div>
+    	<div class="modal-body row">
+        	<div ng-show="item.text">{{item.text}}</div>
+        	<form role="form" class="pop-edit-form-com edit-form-user" ng-show="item.method=='modify' || item.method=='add'">
+        		<div class="form-group">
+    				<label for="username">用户名:</label> 
+    			 	<input type="text" class="form-control" id="username" placeholder="请输入用户名" ng-model="username">
+				</div>
+          		<div class="form-group">
+    				<label for="role2">角色:</label> 
+    				<ui-select ng-model="role2" theme="bootstrap" on-select="roleSel(role2)">
+            			<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+            			<ui-select-choices repeat="item in roleList">
+              				<div ng-bind-html="item.value"></div>
+              				<!-- <small ng-bind-html="item.email"></small> -->
+            			</ui-select-choices>
+          			</ui-select>
+				</div>
+				<div class="form-group">
+    				<label for="status">状态:</label> 
+    				<ui-select ng-model="status2" theme="bootstrap" on-select="statusSel(status2)">
+            			<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+            			<ui-select-choices repeat="item in statusList">
+              				<div ng-bind-html="item.value"></div>
+              				<!-- <small ng-bind-html="item.email"></small> -->
+            			</ui-select-choices>
+          			</ui-select>
+				</div>
+        	</form>
+
+        	<div class="pop-delete-com pop-delete-com-user" ng-show="item.method=='delete'"><p><span></span>确定要删除这个用户信息吗？<br/>注意：删除以后不可以恢复！</p></div>
+
+    	</div>
+    	<div class="modal-footer">
+      		<div class="modal-footer-resize-com modal-footer-resize-card">
+        		<button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()">确定</button>
+        		<button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
+      		</div>
+    	</div>
+	</script>
 	<div class="main-top-bar user-bar">
 		<p><span class="icon-icon_location"></span>用户管理>用户列表</p>
 	</div>
@@ -6,7 +49,7 @@
 		<form role="form" class="search-bar user-select">
 			<div class="form-group">
     			<label for="role2">角色:</label> 
-    			<ui-select ng-model="role" theme="bootstrap" on-select="roleSel(role2)">
+    			<ui-select ng-model="role2" theme="bootstrap" on-select="roleSel(role2)">
             		<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
             		<ui-select-choices repeat="item in roleList">
               			<div ng-bind-html="item.value"></div>
@@ -29,8 +72,8 @@
     			 <input type="text" class="form-control" id="username" placeholder="请输入用户名" ng-model="username">
 			</div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-rfid-search" ng-click="submit_search()"><span class="icon-icon_search"></span>搜索</button>
-				<button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span class="icon-icon_plus"></span>增加</button>
+				<button type="button" class="btn btn-rfid-search" ng-click="index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-rfid-add" ng-click="open('md-edit-user','add',$index)"><span class="icon-icon_plus"></span>增加</button>
 			</div>
 		</form>
 		<div class="condition-sort">
@@ -66,6 +109,8 @@
 				<div class="table-content-user-detail">
 					<p>
 						<span class="table-content-user-name">NO:{{item.id}}</span>
+						<span class="com-delete rfid-delete" ng-click="open('md-delete','delete',$index)"></span>
+						<span class="com-deit rfid-edit" ng-click="open('md-edit-user','modify',$index)"></span>
 					</p>
 				</div>
 				<div class="table-content-user-detail">

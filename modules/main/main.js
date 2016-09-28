@@ -694,6 +694,98 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
     }
 });
 
+app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUrl,url_junction,ngDialog){
+    baseUrl = baseUrl.getUrl();
+    $scope.item = items;
+    $scope.role = 4;
+    $scope.status = false;
+    $scope.username = "";
+    $scope.roleList = items.scope.roleList;
+    $scope.statusList = items.scope.statusList;
+    $scope.cancel = function(){
+        $uibModalInstance.dismiss('cancel');
+    };
+    $scope.roleSel = function(data){
+        $scope.role = data.key;
+    }
+    $scope.statusSel = function(data){
+        $scope.status = data.key;
+    }
+    if(items.method=="add"){
+        $scope.role2 = {key:4,value:"其它"};
+        $scope.status2 = {key:false,value:"未激活"};
+        $scope.ok = function(){
+          if($scope.username){
+            var query_url = url_junction.getDict({
+                user_role_typy:$scope.role,
+                username:$scope.username,
+                password:'111111',
+                re_password:'111111',
+                is_active:$scope.status
+            });
+            $http.post(baseUrl+"/api/1/user/",query_url).success(function(data){
+                if(data.code==200){
+                    items.scope.submit_search();
+                };
+            }).error(function(){
+                alert("error")
+            });
+            $uibModalInstance.close();
+         }else
+            ngDialog.open({
+                template: '<p style=\"text-align: center\">用户名不能为空</p>',
+                plain: true
+            });
+
+        };
+    }else if(items.method=="modify"){
+        $scope.role2 = {key:items.data.user_role_type,value:items.data.get_user_role_type_display};
+        var statusInfo = {};
+        statusInfo.key = items.data.is_active;
+        if(statusInfo.key)
+            statusInfo.value = "激活";
+        else
+            statusInfo.value = "未激活";       
+        $scope.status2 = statusInfo;
+        $scope.username = items.data.username;
+        $scope.ok = function(){
+            if($scope.username){
+                $scope.pk = items.data.id;
+                var query_url = url_junction.getDict({
+                    user_role_typy:$scope.role,
+                    username:$scope.username,
+                    is_active:$scope.status
+                });
+                $http.put(baseUrl+"/api/1/reader/"+$scope.item.data.id+"/",query_url).success(function(data){
+                    if(data.code=="200"){
+                        items.scope.submit_search();
+                    }else{
+                        alert(data.description)
+                    }
+                }).error(function(){
+                    alert("error")
+                });
+                $uibModalInstance.close();
+            }else
+                ngDialog.open({
+                    template: '<p style=\"text-align: center\">用户名不能为空</p>',
+                    plain: true
+                });
+        };
+    }else if(items.method=="delete"){
+        $scope.ok = function(){
+            $http.delete(baseUrl+"/api/1/reader/"+$scope.item.data.id+"/").success(function(data){
+                if(data.code=="200"){
+                    items.scope.submit_search();
+                }
+            }).error(function(){
+                alert("error")
+            });
+            $uibModalInstance.close();
+        };
+    }
+});
+
 $.fn.datepicker.dates['zh'] = {
     days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
     daysShort: ["日", "一", "二", "三", "四", "五", "六", "日"],
