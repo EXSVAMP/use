@@ -24,7 +24,7 @@
                 <label>警报类型:</label>
                 <ui-select ng-model="params.event_type" theme="bootstrap"
                            on-select="params.event_type=$select.selected.key;">
-                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+                    <ui-select-match placeholder="--请选择--">{{$select.selected.value}}</ui-select-match>
                     <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
                         <div class="select-item">{{item.value}}</div>
                     </ui-select-choices>
@@ -115,8 +115,8 @@
             </tr>
             </thead>
         </table>
-        <div ng-show="listLoadFlag==2&&dataList&&dataList.length==0">
-            <p><span></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
+        <div ng-show="listLoadFlag==2&&dataList&&dataList.length==0" class="emplty-view">
+            <span class="icon icon-icon_alert"></span><span class="empty-view-text">对不起，您搜索的内容不存在。<br/>请重新搜索。</span>
         </div>
     </div>
 </div>

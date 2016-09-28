@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("warnCtrl", function ($scope, $http,baseUrl, $timeout,$location,listService,params,global) {
+app.register.controller("warnCtrl", function ($scope, $http,baseUrl, $timeout,$location,listService,params,global,$uibModal) {
     listService.init($scope,'/api/1/eventlog/');
     $scope.params.event_feedback_type="1";
     $scope.jumpToPage=0;
@@ -11,9 +11,9 @@ app.register.controller("warnCtrl", function ($scope, $http,baseUrl, $timeout,$l
             console.log($scope.selections)
         }
     });
-    $scope.selections.event_type={};
-    $scope.selections.event_feedback_type={};
-    $scope.selections.handle_result={};
+    $scope.selections.event_type={"/":"--请选择--"};
+    $scope.selections.event_feedback_type={"-1":"--请选择--"};
+    $scope.selections.handle_result={"-1":"--请选择--"};
     $scope.selections.numbers=global.pageNumSelections;
     $scope.jumpToDetail=function(item){
         $location.path('/warnDetail').search({id:item.id});

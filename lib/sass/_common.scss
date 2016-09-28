@@ -475,4 +475,39 @@
 
 .icon{
   margin-right: 10px;
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+//列表为空样式
+.emplty-view{
+  margin-top:250px;
+  color:#3E4D68;
+  text-align: center;
+  .icon{
+    font-size:128px;
+  }
+  .empty-view-text{
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    top: -40px;
+  }
+}
+
+.form-group{
+  textarea{
+    display: block;
+    width:100%;
+  }
+}
+.modal-md{
+  width:500px;
+  .modal-body{
+    .form-group{
+      margin:20px;
+    }
+  }
 }

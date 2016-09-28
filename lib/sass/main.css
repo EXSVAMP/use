@@ -411,7 +411,31 @@
   line-height: 20px; }
 
 .icon {
-  margin-right: 10px; }
+  margin-right: 10px;
+  text-decoration: none; }
+  .icon:hover {
+    text-decoration: none; }
+
+.emplty-view {
+  margin-top: 250px;
+  color: #3E4D68;
+  text-align: center; }
+  .emplty-view .icon {
+    font-size: 128px; }
+  .emplty-view .empty-view-text {
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    top: -40px; }
+
+.form-group textarea {
+  display: block;
+  width: 100%; }
+
+.modal-md {
+  width: 500px; }
+  .modal-md .modal-body .form-group {
+    margin: 20px; }
 
 .btn-disable {
   background-color: #c1c7cc;
@@ -1409,6 +1433,30 @@
     top: 0;
     right: 0;
     background-color: #fff; }
+    .main-content .main-detail .main-detail-record .record-title {
+      height: 40px;
+      line-height: 40px;
+      padding: 0;
+      border-bottom: 1px solid #e6e6e6; }
+    .main-content .main-detail .main-detail-record .record-list {
+      overflow: auto;
+      position: absolute;
+      top: 40px;
+      bottom: 0;
+      left: 0; }
+      .main-content .main-detail .main-detail-record .record-list .record-item {
+        margin: 5px;
+        border: 1px solid #e6e6e6;
+        padding: 5px;
+        overflow: hidden;
+        border-radius: 2px; }
+        .main-content .main-detail .main-detail-record .record-list .record-item .item-row span:nth-child(1) {
+          width: 30%;
+          color: #888;
+          float: left; }
+        .main-content .main-detail .main-detail-record .record-list .record-item .item-row span:nth-child(2) {
+          width: 70%;
+          float: left; }
 
 .reader-content .reader-select {
   display: table;
@@ -1516,6 +1564,53 @@
 .delete-reader {
   width: 250px;
   margin-top: 10px; }
+
+.account-content {
+  width: 940px;
+  height: 400px;
+  background-color: #ffffff;
+  margin-top: 20px;
+  margin-left: 20px; }
+  .account-content .account-content-head {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #e8ebf0;
+    display: table;
+    padding-left: 20px; }
+    .account-content .account-content-head p {
+      display: table-cell;
+      vertical-align: middle; }
+      .account-content .account-content-head p span {
+        display: block;
+        float: left; }
+        .account-content .account-content-head p span:last-child {
+          font-size: 12px;
+          color: #666666;
+          padding-left: 10px; }
+  .account-content .account-content-detail {
+    width: 900px;
+    margin: 20px auto 0 auto; }
+    .account-content .account-content-detail .account-content-detail-li {
+      width: 100%;
+      height: 40px;
+      border-bottom: 1px solid #e8ebf0;
+      display: table;
+      padding-left: 20px; }
+      .account-content .account-content-detail .account-content-detail-li p {
+        width: 50%;
+        display: table-cell;
+        vertical-align: middle; }
+        .account-content .account-content-detail .account-content-detail-li p span {
+          display: block;
+          float: left; }
+        .account-content .account-content-detail .account-content-detail-li p span.detail-title {
+          font-size: 12px;
+          color: #888888;
+          margin-right: 32px;
+          width: 75px; }
+        .account-content .account-content-detail .account-content-detail-li p span.detail-content {
+          font-size: 14px;
+          color: #3e4d68; }
 
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6, label, form, input, button,

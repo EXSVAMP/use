@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h3 class="modal-title"><span class="icon-icon_RFIDcard"></span>警报处理</h3>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label>处理类型:</label>
+        <ui-select ng-model="params.handle_result" theme="bootstrap"
+                   on-select="params.handle_result=$select.selected.key;">
+            <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+            <ui-select-choices repeat="item.key as (key,item) in handle_results">
+                <div class="select-item">{{item.value}}</div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <div class="form-group">
+        <label>描述:</label>
+        <textarea ng-model="params.handle_description" rows="5"></textarea>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="modal-footer-resize-com modal-footer-resize-card">
+        <button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()">确定</button>
+        <button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
+    </div>
+</div>
