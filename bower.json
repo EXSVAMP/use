@@ -39,6 +39,7 @@
     "ng-dialog": "^0.6.2",
     "angular-sanitize": "^1.5.8",
     "angular-ui-select": "^0.19.4",
-    "selectize": "~0.8.5"
+    "selectize": "~0.8.5",
+    "bootstrap-datepicker": "^1.6.4"
   }
 }

@@ -1,0 +1,24 @@
+<div ng-controller="accountCtrl">
+	<div class="main-top-bar account-bar">
+		<p><span class="icon-icon_location"></span>用户管理>我的账户</p>
+	</div>
+	<div class="account-content">
+		<div class="account-content-head">
+			<p><span class="icon-icon_user"></span><span>我的账号</span></p>
+		</div>
+		<div class="account-content-detail">
+			
+			<div class="account-content-detail-li">
+				<p><span class="detail-title">用户名</span><span class="detail-content">{{username}}</span></p>
+			</div>
+			<div class="account-content-detail-li">
+				<p><span class="detail-title">角色</span><span class="detail-content">{{userrole}}</span></p>
+				<p><span class="detail-title">状态</span><span class="detail-content">{{active}}</span></p>
+			</div>
+			<div class="account-content-detail-li">
+				<p><span class="detail-title">创建时间</span><span class="detail-content">{{joindate}}</span></p>
+				<p><span class="detail-title">最后登录时间</span><span class="detail-content">{{lastlogindate}}</span></p>
+			</div>
+		</div>
+	</div>
+</div>

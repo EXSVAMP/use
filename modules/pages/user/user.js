@@ -1,16 +1,18 @@
 // require('service');
 
 module.exports = {
-    url: '/eventlog',
-    template: __inline('./eventlog.html'),
+    url: '/user',
+    template: __inline('./user.html'),
+
+
     //注意如果开启压缩，应采取此方式注入对象，否则压缩后将找不到
-    controller : 'eventlogCtrl',
+    controller : 'userCtrl',
     resolve: {
         loadCtrl: ["$q", function($q) {
             var deferred = $q.defer();
             //异步加载controller／directive/filter/service
             require([
-                'eventlog.sync'
+                'user.sync'
             ], function() {
                 deferred.resolve();
             });
