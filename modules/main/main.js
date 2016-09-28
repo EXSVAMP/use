@@ -753,7 +753,7 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
         }
 
 
-
+    }
     if(items.method=="add"){
         $scope.role2 = {key:4,value:"其它"};
         $scope.status2 = {key:false,value:"未激活"};
