@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.factory('utils', function () {
+app.factory('utils', function ($http) {
     return {
         set:function(obj,key,value){
             var keys = key.split('\.');

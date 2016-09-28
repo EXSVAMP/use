@@ -10,5 +10,7 @@ var app = angular.module('RDash');
 //         }
 //     }
 // });
-app.constant('global',{});
+app.constant('global',{
+    pageNumSelections:[10,20,30,40,50]
+});
 app.value('params',{});

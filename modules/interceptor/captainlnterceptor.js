@@ -28,7 +28,6 @@ function RDashInterceptor() {
                         if($(".mgNavigator").length>0){
                             $(".mgNavigator").remove();
                         }
-
                     }
                     var headers = response.headers();
                     var security = $cookieStore.get(self.config.iotcloudtoken);

@@ -23,30 +23,30 @@
             <div class="form-group form-group-selin">
                 <label>警报类型:</label>
                 <ui-select ng-model="params.event_type" theme="bootstrap"
-                           on-select="params.event_type=$select.selected.value;">
-                    <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="item.value as item in selections.event_type">
-                        <div>{{item.name}}</div>
+                           on-select="params.event_type=$select.selected.key;">
+                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+                    <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
+                        <div class="select-item">{{item.value}}</div>
                     </ui-select-choices>
                 </ui-select>
             </div>
             <div class="form-group form-group-selin" style="margin-right:0;">
                 <label>警报反馈:</label>
                 <ui-select ng-model="params.event_feedback_type" theme="bootstrap"
-                           on-select="params.event_feedback_type=$select.selected.value;">
-                    <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="item.value as item in selections.event_feedback">
-                        <div class="select-item" ng-bind-html="item.name"></div>
+                           on-select="params.event_feedback_type=$select.selected.key;">
+                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+                    <ui-select-choices repeat="item.key as (key,item) in selections.event_feedback_type">
+                        <div class="select-item">{{item.value}}</div>
                     </ui-select-choices>
                 </ui-select>
             </div>
             <div class="form-group form-group-selin" style="margin-right:35px;">
                 <label>处理结果:</label>
                 <ui-select ng-model="params.handle_result" theme="bootstrap"
-                           on-select="params.handle_result=$select.selected.value;">
-                    <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="item.value as item in selections.handle_result">
-                        <div class="select-item" ng-bind-html="item.name"></div>
+                           on-select="params.handle_result=$select.selected.key;">
+                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+                    <ui-select-choices repeat="item.key as (key,item) in selections.handle_result">
+                        <div class="select-item">{{item.value}}</div>
                     </ui-select-choices>
                 </ui-select>
             </div>
@@ -81,13 +81,26 @@
                 <td><p>{{item.event_feedback_type_display}}</p></td>
                 <td><p>{{item.handle_result_display}}</p></td>
                 <td><p>{{item.event_datetime}}</p></td>
-                <td><p><a href="javascript:void(0)" ng-click="jumpToDetail(item)"><span class="icon-icon_information"></span>查看详情</a></p></td>
+                <td><p><a href="javascript:void(0)" ng-click="jumpToDetail(item)"><span
+                        class="icon-icon_information"></span>查看详情</a></p></td>
             </tr>
             </tbody>
         </table>
         <table class="table table-pagination" ng-show="totalPage>1">
             <thead>
             <tr>
+                <th class="pagination-items-per-page">
+                    <div class="pagination-content">
+                        <span class="pagination-tip">每页显示数量</span>
+                        <ui-select ng-model="params.number" theme="bootstrap"
+                                   on-select="params.number=$select.selected;refresh();">
+                            <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
+                            <ui-select-choices repeat="item in selections.numbers">
+                                <div ng-bind-html="item"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </th>
                 <th>
                     <uib-pagination items-per-page="params.number" total-items="total" ng-change="refresh()"
                                     ng-model="params.index" max-size="5"
@@ -96,13 +109,13 @@
                     <div class="pagination-detail">
                         <span>共{{totalPage}}页</span>
                         <span>跳至<input type="text" ng-model="jumpToPage"/>页</span>
-                        <span><button ng-click="params.index=jumpToPage;jumpToPage='';refresh();">确定</button></span>
+                        <span><button ng-click="refresh(jumpToPage);jumpToPage='';">确定</button></span>
                     </div>
                 </th>
             </tr>
             </thead>
         </table>
-        <div ng-show="dataList&&dataList.length==0">
+        <div ng-show="listLoadFlag==2&&dataList&&dataList.length==0">
             <p><span></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
         </div>
     </div>

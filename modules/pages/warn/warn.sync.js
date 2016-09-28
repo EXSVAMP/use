@@ -1,12 +1,20 @@
 var app = angular.module('RDash');
-app.register.controller("warnCtrl", function ($scope, $http, $timeout,$location,listService,params) {
+app.register.controller("warnCtrl", function ($scope, $http,baseUrl, $timeout,$location,listService,params,global) {
     listService.init($scope,'/api/1/eventlog/');
-    $scope.params.event_feedback_type=1;
+    $scope.params.event_feedback_type="1";
+    $scope.jumpToPage=0;
     $scope.refresh();
     $scope.selections={};
-    $scope.selections.event_type=[{name:'入库',value:'0'},{name:'移动',value:'1'},{name:'消失',value:'2'},{name:'出库',value:'3'},{name:'非正常',value:'4'}];
-    $scope.selections.event_feedback=[{name:'通过',value:'0'},{name:'报警',value:'1'},{name:'通知',value:'2'}];
-    $scope.selections.handle_result=[{name:'未处理',value:'0'},{name:'保持',value:'1'},{name:'解除',value:'2'}];
+    $http.get(baseUrl.getUrl()+'/api/1/common/choices/?key=eventlog').success(function(data){
+        if(data.code==200){
+            angular.merge($scope.selections,data.data);
+            console.log($scope.selections)
+        }
+    });
+    $scope.selections.event_type={};
+    $scope.selections.event_feedback_type={};
+    $scope.selections.handle_result={};
+    $scope.selections.numbers=global.pageNumSelections;
     $scope.jumpToDetail=function(item){
         $location.path('/warnDetail').search({id:item.id});
     };

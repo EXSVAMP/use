@@ -18,6 +18,7 @@
 .main-content {
   padding: 20px; }
   .main-content .search-bar {
+    width: 1200px;
     border-radius: 4px;
     background-color: #ffffff;
     margin-bottom: 20px;
@@ -94,53 +95,55 @@
         background-color: #fc763c; }
         .main-content .search-bar .btns-group .btn-com-add span {
           background: url(/lib/img/icon_plus_16_16_02.png); }
-  .main-content table.table-content thead tr th {
-    height: 48px;
-    background-color: #ffffff;
-    border: solid 1px #e8ebf0;
-    cursor: pointer; }
-    .main-content table.table-content thead tr th p {
-      line-height: 2;
-      text-align: center;
-      font-size: 14px;
-      color: #666666; }
-      .main-content table.table-content thead tr th p span {
-        display: inline-block;
-        height: 16px;
-        padding-left: 4px;
-        width: 16px; }
-      .main-content table.table-content thead tr th p .sort-arrow-id span, .main-content table.table-content thead tr th p .sort-arrow-serial span, .main-content table.table-content thead tr th p .sort-arrow-state span, .main-content table.table-content thead tr th p .sort-arrow-updatetime span, .main-content table.table-content thead tr th p .sort-arrow-createtime span {
-        width: 16px;
-        height: 16px; }
-        .main-content table.table-content thead tr th p .sort-arrow-id span img, .main-content table.table-content thead tr th p .sort-arrow-serial span img, .main-content table.table-content thead tr th p .sort-arrow-state span img, .main-content table.table-content thead tr th p .sort-arrow-updatetime span img, .main-content table.table-content thead tr th p .sort-arrow-createtime span img {
+  .main-content table.table-content {
+    width: 1200px; }
+    .main-content table.table-content thead tr th {
+      height: 48px;
+      background-color: #ffffff;
+      border: solid 1px #e8ebf0;
+      cursor: pointer; }
+      .main-content table.table-content thead tr th p {
+        line-height: 2;
+        text-align: center;
+        font-size: 14px;
+        color: #666666; }
+        .main-content table.table-content thead tr th p span {
+          display: inline-block;
           height: 16px;
-          margin-top: -3px;
+          padding-left: 4px;
           width: 16px; }
-  .main-content table.table-content thead tr span {
-    position: relative; }
-  .main-content table.table-content tbody tr td {
-    height: 48px;
-    background-color: #ffffff;
-    border: solid 1px #e8ebf0; }
-    .main-content table.table-content tbody tr td p {
-      line-height: 2;
-      text-align: center;
-      font-size: 14px;
-      color: #666666;
-      display: inline-table; }
-      .main-content table.table-content tbody tr td p span {
-        display: block;
-        float: left;
-        width: 16px;
-        height: 16px;
-        margin-top: 5px;
-        margin-right: 10px;
-        cursor: pointer; }
-      .main-content table.table-content tbody tr td p .rfid-edit, .main-content table.table-content tbody tr td p .com-deit {
-        background: url(/lib/img/icon_edit_16_16_06.png); }
-      .main-content table.table-content tbody tr td p .rfid-delete, .main-content table.table-content tbody tr td p .com-delete {
-        background: url(/lib/img/icon_cancel_16_16_06.png);
-        margin-right: 0; }
+        .main-content table.table-content thead tr th p .sort-arrow-id span, .main-content table.table-content thead tr th p .sort-arrow-serial span, .main-content table.table-content thead tr th p .sort-arrow-state span, .main-content table.table-content thead tr th p .sort-arrow-updatetime span, .main-content table.table-content thead tr th p .sort-arrow-createtime span {
+          width: 16px;
+          height: 16px; }
+          .main-content table.table-content thead tr th p .sort-arrow-id span img, .main-content table.table-content thead tr th p .sort-arrow-serial span img, .main-content table.table-content thead tr th p .sort-arrow-state span img, .main-content table.table-content thead tr th p .sort-arrow-updatetime span img, .main-content table.table-content thead tr th p .sort-arrow-createtime span img {
+            height: 16px;
+            margin-top: -3px;
+            width: 16px; }
+    .main-content table.table-content thead tr span {
+      position: relative; }
+    .main-content table.table-content tbody tr td {
+      height: 48px;
+      background-color: #ffffff;
+      border: solid 1px #e8ebf0; }
+      .main-content table.table-content tbody tr td p {
+        line-height: 2;
+        text-align: center;
+        font-size: 14px;
+        color: #666666;
+        display: inline-table; }
+        .main-content table.table-content tbody tr td p span {
+          display: block;
+          float: left;
+          width: 16px;
+          height: 16px;
+          margin-top: 5px;
+          margin-right: 10px;
+          cursor: pointer; }
+        .main-content table.table-content tbody tr td p .rfid-edit, .main-content table.table-content tbody tr td p .com-deit {
+          background: url(/lib/img/icon_edit_16_16_06.png); }
+        .main-content table.table-content tbody tr td p .rfid-delete, .main-content table.table-content tbody tr td p .com-delete {
+          background: url(/lib/img/icon_cancel_16_16_06.png);
+          margin-right: 0; }
   .main-content .emptyDataList {
     display: none;
     /*width: 406px;*/
@@ -1346,9 +1349,24 @@
       .main-content .main-detail .main-detail-tab .detail-img img {
         width: 810px;
         height: 500px; }
+      .main-content .main-detail .main-detail-tab .detail-img .img-bottom-bar {
+        float: left;
+        position: absolute;
+        bottom: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 50px;
+        width: 810px;
+        text-align: right; }
+        .main-content .main-detail .main-detail-tab .detail-img .img-bottom-bar .icon {
+          color: #fff;
+          font-size: 32px;
+          line-height: 50px; }
+          .main-content .main-detail .main-detail-tab .detail-img .img-bottom-bar .icon:hover {
+            color: #337ab7; }
   .main-content .main-detail .main-detail-content {
     width: 850px;
-    background-color: #fff; }
+    background-color: #fff;
+    overflow: auto; }
     .main-content .main-detail .main-detail-content .form-group {
       height: 40px;
       line-height: 40px;
@@ -1360,7 +1378,7 @@
         padding: 0 20px; }
       .main-content .main-detail .main-detail-content .form-group:last-child {
         border-bottom: 0; }
-      .main-content .main-detail .main-detail-content .form-group > span:nth-child(2n+1) {
+      .main-content .main-detail .main-detail-content .form-group:not(:nth-child(1)) > span:nth-child(2n+1) {
         color: #888888; }
       .main-content .main-detail .main-detail-content .form-group:nth-last-child(1) {
         height: auto; }
@@ -1423,54 +1441,65 @@
 .reader-content .emptyDataList p span:last-child {
   margin-top: 35px; }
 
-.edit-form-reader .form-group {
-  float: left;
-  margin-right: 53px;
-  width: 360px; }
-  .edit-form-reader .form-group label {
-    font-size: 12px;
-    color: #3e4d68; }
-  .edit-form-reader .form-group ui-select, .edit-form-reader .form-group .ui-select-container, .edit-form-reader .form-group input {
+.modal-body {
+  padding: 0;
+  margin: 0; }
+
+.edit-form-reader {
+  width: 800px; }
+  .edit-form-reader .form-group {
+    float: left;
+    margin-right: 53px;
     width: 360px;
-    height: 34px; }
-  .edit-form-reader .form-group input {
-    font-size: 12px;
-    color: #888888; }
-  .edit-form-reader .form-group .ui-select-search, .edit-form-reader .form-group .ui-select-match {
-    width: 360px !important;
-    min-width: 360px !important;
-    /* Because of the inclusion of Bootstrap */ }
-    .edit-form-reader .form-group .ui-select-search span, .edit-form-reader .form-group .ui-select-match span {
-      /*height: 34px;*/
-      font-size: 12px !important;
-      color: #888888 !important; }
-  .edit-form-reader .form-group .ui-select-choices {
-    width: 360px !important;
-    min-width: 360px !important;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    height: auto !important;
-    max-height: 1000px !important; }
-    .edit-form-reader .form-group .ui-select-choices li {
+    margin-right: 0; }
+    .edit-form-reader .form-group label {
+      font-size: 12px;
+      color: #3e4d68; }
+    .edit-form-reader .form-group ui-select, .edit-form-reader .form-group .ui-select-container, .edit-form-reader .form-group input {
       width: 360px;
+      height: 34px; }
+    .edit-form-reader .form-group input {
+      font-size: 12px;
+      color: #888888; }
+    .edit-form-reader .form-group .ui-select-search, .edit-form-reader .form-group .ui-select-match {
+      width: 360px !important;
+      min-width: 360px !important;
+      /* Because of the inclusion of Bootstrap */ }
+      .edit-form-reader .form-group .ui-select-search span, .edit-form-reader .form-group .ui-select-match span {
+        /*height: 34px;*/
+        font-size: 12px !important;
+        color: #888888 !important; }
+    .edit-form-reader .form-group .ui-select-choices {
+      width: 360px !important;
+      min-width: 360px !important;
       overflow: hidden;
       padding: 0;
-      margin: 0; }
-      .edit-form-reader .form-group .ui-select-choices li .dropup, .edit-form-reader .form-group .ui-select-choices li .dropdown {
-        margin: 0;
+      margin: 0;
+      height: auto !important;
+      max-height: 1000px !important; }
+      .edit-form-reader .form-group .ui-select-choices li {
+        width: 360px;
+        overflow: hidden;
         padding: 0;
-        position: relative;
-        width: 360px; }
+        margin: 0; }
+        .edit-form-reader .form-group .ui-select-choices li .dropup, .edit-form-reader .form-group .ui-select-choices li .dropdown {
+          margin: 0;
+          padding: 0;
+          position: relative;
+          width: 360px; }
+  .edit-form-reader .form-group-odd {
+    margin-left: 20px;
+    margin-right: 40px; }
 
 .modal-md-edit-reader {
   height: 283px;
-  width: 800px;
+  margin-left: -400px;
   margin-top: -141.5px;
-  margin-left: -400px; }
+  width: 800px; }
 
 .delete-reader {
-  width: 250px; }
+  width: 250px;
+  margin-top: 10px; }
 
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6, label, form, input, button,

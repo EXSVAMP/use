@@ -18,5 +18,19 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
         }
     });
     $scope.tabSwitch = 0;
-
+    // $scope.download=function(url){
+    //     $http({
+    //         method: 'GET',
+    //         cache: false,
+    //         url: url,
+    //         headers: {
+    //             'Content-Type': 'application/json; charset=utf-8'
+    //         }
+    //     }).success(function (data, status) {
+    //         console.log(data); // Displays text data if the file is a text file, binary if it's an image
+    //         // What should I write here to download the file I receive from the WebAPI method?
+    //     }).error(function (data, status) {
+    //         // ...
+    //     });
+    // }
 });
