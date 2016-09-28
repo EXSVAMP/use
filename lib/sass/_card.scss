@@ -176,7 +176,8 @@
   
   .form-group{
     @include common_select(360px);
-
+    float: none;
+    margin: 10px auto;
     }
 }
 

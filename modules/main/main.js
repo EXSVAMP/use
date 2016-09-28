@@ -743,6 +743,7 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
     }
     $scope.statusSel = function(data){
         //$scope.status = data.key;
+
         if(data.key){
             $scope.status = (1).toString();
             console.log(typeof $scope.status)
@@ -751,7 +752,8 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
             $scope.status = (0).toString();
         }
 
-    }
+
+
     if(items.method=="add"){
         $scope.role2 = {key:4,value:"其它"};
         $scope.status2 = {key:false,value:"未激活"};

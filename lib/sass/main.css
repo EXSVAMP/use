@@ -859,7 +859,9 @@
 .edit-form-card .form-group {
   float: left;
   margin-right: 53px;
-  width: 360px; }
+  width: 360px;
+  float: none;
+  margin: 10px auto; }
   .edit-form-card .form-group label {
     font-size: 12px;
     color: #3e4d68; }
@@ -1028,7 +1030,9 @@
 .edit-form-content .form-group-selin {
   float: left;
   margin-right: 53px;
-  width: 360px; }
+  width: 360px;
+  float: none;
+  margin: 10px auto; }
   .edit-form-content .form-group-selin label {
     font-size: 12px;
     color: #3e4d68; }
