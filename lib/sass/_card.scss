@@ -172,3 +172,11 @@
 
 }
 
+.edit-form-card{
+  
+  .form-group{
+    @include common_select(360px);
+
+    }
+}
+

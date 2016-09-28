@@ -2,16 +2,16 @@ var app = angular.module('RDash');
 app.register.controller("userCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,url_junction,listService,params) {
 	var urlBase = baseUrl.getUrl();
 	$scope.choice = {};
-	$scope.role = "";
+	$scope.role = "-1";
     $scope.status = "";
     $scope.username = "";
 	$scope.dataList = {};
 	$scope.index = 1;
-	$scope.number = 10;
+	$scope.number = 8;
     $scope.maxSize = 5;
-    $scope.numbers = [10,20,30,40,50];
-    $scope.roleList = [{key:0,value:"仓库主管"},{key:1,value:"仓库管理员"},{key:2,value:"仓库盒子"},{key:3,value:"云仓系统"},{key:4,value:"其它"}];
-    $scope.statusList = [{key:true,value:"激活"},{key:false,value:"未激活"}];
+    $scope.numbers = [8,16,24,32,40];
+    $scope.roleList = [{key:0,value:"仓库主管"},{key:1,value:"仓库管理员"},{key:2,value:"仓库盒子"},{key:3,value:"云仓系统"},{key:4,value:"其它"},{key:-1,value:"--请选择-"}];
+    $scope.statusList = [{key:true,value:"激活"},{key:false,value:"未激活"},{key:-1,value:"--请选择-"}];
     //$scope.listLoadFlag = 1;
 
     $scope.open = function (size, method,index){
@@ -107,9 +107,14 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
         }
       };
 
+      if($scope.status == true)
+        $scope.status = 1;
+       else if($scope.status == false) 
+        $scope.status = 0;
+
       var query_url = url_junction.getQuery({
-      user_role_typ:$scope.role,
-      is_active:$scope.status,
+      user_role_type:$scope.role,
+      //is_active:$scope.status,
       username:$scope.username,
       descent:order_str,
       number:$scope.number,

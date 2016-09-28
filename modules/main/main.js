@@ -616,7 +616,22 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
         $scope.status = data.key;
     }
     if(items.method=="add"){
-        $scope.choice = items.choice;
+        var choiceStr = JSON.stringify(items.choice);
+        var choiceArr = JSON.parse(choiceStr);
+        $scope.choice = choiceArr;
+        for(var temp in choiceArr.func_type){
+            if(temp == -1){
+                delete choiceArr.func_type[temp];
+                break;
+            }
+        } 
+       for(var temp in choiceArr.status){
+            if(temp == -1){
+                delete choiceArr.status[temp];
+                break;
+            }
+        } 
+        //console.log(JSON.stringify($scope.choice));
         $scope.ok = function(){
           if($scope.serial_number!=""){
             var query_url = url_junction.getDict({
@@ -647,7 +662,22 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
 
         };
     }else if(items.method=="modify"){
-        $scope.choice = items.choice;
+        //$scope.choice = items.choice;
+        var choiceStr = JSON.stringify(items.choice);
+        var choiceArr = JSON.parse(choiceStr);
+        $scope.choice = choiceArr;
+        for(var temp in choiceArr.func_type){
+            if(temp == -1){
+                delete choiceArr.func_type[temp];
+                break;
+            }
+        } 
+       for(var temp in choiceArr.status){
+            if(temp == -1){
+                delete choiceArr.status[temp];
+                break;
+            }
+        }
         $scope.func_type = items.data.func_type;
         $scope.status = items.data.status;
         $scope.serial_number = items.data.serial_number;
@@ -703,6 +733,8 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
     $scope.username = "";
     $scope.roleList = items.scope.roleList;
     $scope.statusList = items.scope.statusList;
+    $scope.roleList = $scope.roleList.slice(0,$scope.roleList.length-1);
+    $scope.statusList = items.scope.statusList.slice(0,$scope.statusList.length-1);;
     $scope.cancel = function(){
         $uibModalInstance.dismiss('cancel');
     };

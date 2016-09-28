@@ -2,6 +2,7 @@ var app = angular.module('RDash');
 app.register.controller("readerCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,url_junction,listService,params) {
 	var urlBase = baseUrl.getUrl();
 	$scope.choice = {func_type:{},status:{}};
+    //$scope.choice2 = {func_type:{},status:{}};
 	$scope.func_type = '-1';
     $scope.status = "-1";
     $scope.description = "";
@@ -58,8 +59,18 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
 
     $http.get(urlBase + "/api/1/common/choices/?key=rfidreader").success(function(data){
         if(data.code==200){
+            //var func_type_t = data.data.func_type;
+            //var func_type_t2 = data.data.func_type;
             $scope.choice["func_type"] = data.data.func_type;
             $scope.choice["status"] = data.data.status;
+            //$scope.choice2["func_type"] = func_type_t2;
+            //$scope.choice2["status"] = data.data.status;
+            //console.log("--555:"+JSON.stringify($scope.choice2));
+            //console.log("--555:"+JSON.stringify($scope.choice));
+            $scope.choice["func_type"][-1] = "--请选择-";
+            $scope.choice["status"][-1] = "--请选择-";
+            //console.log("--:"+JSON.stringify($scope.choice2));
+            //console.log("--:"+JSON.stringify($scope.choice));
             //console.log($scope.choice["func_type"][300]);
         }else{
             alert(data);
