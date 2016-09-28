@@ -1,3 +1,124 @@
 <div ng-controller="userCtrl">
+	<div class="main-top-bar user-bar">
+		<p><span class="icon-icon_location"></span>用户管理>用户列表</p>
+	</div>
+	<div class="main-content user-content">
+		<form role="form" class="search-bar user-select">
+			<div class="form-group">
+    			<label for="role2">角色:</label> 
+    			<ui-select ng-model="role" theme="bootstrap" on-select="roleSel(role2)">
+            		<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+            		<ui-select-choices repeat="item in roleList">
+              			<div ng-bind-html="item.value"></div>
+              			<!-- <small ng-bind-html="item.email"></small> -->
+            		</ui-select-choices>
+          		</ui-select>
+			</div>
+			<div class="form-group">
+    			<label for="status">状态:</label> 
+    			<ui-select ng-model="status2" theme="bootstrap" on-select="statusSel(status2)">
+            		<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+            		<ui-select-choices repeat="item in statusList">
+              			<div ng-bind-html="item.value"></div>
+              			<!-- <small ng-bind-html="item.email"></small> -->
+            		</ui-select-choices>
+          		</ui-select>
+			</div>
+			<div class="form-group">
+    			<label for="username">用户名:</label> 
+    			 <input type="text" class="form-control" id="username" placeholder="请输入用户名" ng-model="username">
+			</div>
+			<div class="btns-group">
+				<button type="button" class="btn btn-rfid-search" ng-click="submit_search()"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span class="icon-icon_plus"></span>增加</button>
+			</div>
+		</form>
+		<div class="condition-sort">
+			<ul class="condition-sort-ul">
+				<li class="condition-sort-li" ng-click="switch_order('id')"><p>编号<span ng-class="{false:'icon-icon_sort_down',true:'icon-icon_sort_up'}[order.id]"></span></p></li>
+				<li class="condition-sort-li" ng-click="switch_order('user_role_type')"><p>角色<span ng-class="{false:'icon-icon_sort_down',true:'icon-icon_sort_up'}[order.user_role_type]"></span></p></li>
+				<li class="condition-sort-li" ng-click="switch_order('is_active')"><p>状态<span ng-class="{false:'icon-icon_sort_down',true:'icon-icon_sort_up'}[order.is_active]"></span></p></li>
+				<li class="condition-sort-li" ng-click="switch_order('date_joined')"><p>创建时间<span ng-class="{false:'icon-icon_sort_down',true:'icon-icon_sort_up'}[order.date_joined]"></span></p></li>
+			</ul>
+			<table class="table table-pagination table-pagination-sort" ng-show="bigTotalItems>0">
+        		<thead>
+          			<tr>
+            			<th class="pagination-items-per-page">
+              				<div class="pagination-content">
+              					<span class="pagination-tip">每页显示数量</span>
+              					<ui-select ng-model="number2" theme="bootstrap" on-select="setShowNum(number2)">
+                					<ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
+                					<ui-select-choices repeat="item in numbers">
+                    					<div ng-bind-html="item"></div>
+                    					<!-- <small ng-bind-html="item.email"></small> -->
+                					</ui-select-choices>
+              					</ui-select>
+              				</div>
+            			</th>
+        			</tr>
+    			</thead>
+    		</table>
 
+		</div>
+
+		<ul class="table-content-user">
+			<li ng-repeat="item in dataList">
+				<div class="table-content-user-detail">
+					<p>
+						<span class="table-content-user-name">NO:{{item.id}}</span>
+					</p>
+				</div>
+				<div class="table-content-user-detail">
+					<p>
+						<span class="table-content-user-title">用户名</span>
+						<span class="table-content-user-name">{{item.username}}</span>
+					</p>
+				</div>
+				<div class="table-content-user-detail">
+					<p>
+						<span class="table-content-user-title">角色</span>
+						<span class="table-content-user-name">{{item.get_user_role_type_display}}</span>
+					</p>
+				</div>
+				<div class="table-content-user-detail">
+					<p>
+						<span class="table-content-user-title">状态</span>
+						<span class="table-content-user-name">{{item.is_active | user_active}}</span>
+					</p>
+				</div>
+				<div class="table-content-user-detail">
+					<p>
+						<span class="table-content-user-title">创建时间</span>
+						<span class="table-content-user-name">{{item.date_joined}}</span>
+					</p>
+				</div>
+				<div class="table-content-user-detail">
+					<p>
+						<span class="table-content-user-title">最后登录时间</span>
+						<span class="table-content-user-name"></span>
+					</p>
+				</div>
+
+
+			</li>
+
+		</ul>
+		<table class="table table-pagination" ng-show="bigTotalItems>0">
+        <thead>
+          <tr>
+            <th>
+             <uib-pagination items-per-page="number" total-items="bigTotalItems" ng-change="changePage()" ng-model="index" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" num-pages="total_page" previous-text="上一页" next-text="下一页">
+             </uib-pagination>
+              <div class="pagination-detail">
+                <span>共{{total_page}}页</span>
+                <span>跳至<input type="text" ng-model="index"/>页</span>
+                <span><button id="" ng-click="setPage()">确定</button></span>
+              </div>
+            </th>
+
+          </tr>
+        </thead>
+        
+      </table>
+	</div>
 </div>

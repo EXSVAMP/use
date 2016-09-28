@@ -1,18 +1,18 @@
 var app = angular.module('RDash');
-app.register.controller("userCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,listService,params) {
+app.register.controller("userCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,url_junction,listService,params) {
 	var urlBase = baseUrl.getUrl();
-	$scope.choice = {func_type:{},status:{}};
-	$scope.func_type = '-1';
-    $scope.status = "-1";
-    $scope.description = "";
-    $scope.serial_number = "";
+	$scope.choice = {};
+	$scope.role = "";
+    $scope.status = "";
+    $scope.username = "";
 	$scope.dataList = {};
 	$scope.index = 1;
 	$scope.number = 10;
     $scope.maxSize = 5;
-    //$scope.bigCurrentPage = 1;
     $scope.numbers = [10,20,30,40,50];
-    $scope.listLoadFlag = 1;
+    $scope.roleList = [{key:0,value:"仓库主管"},{key:1,value:"仓库管理员"},{key:2,value:"仓库盒子"},{key:3,value:"云仓系统"},{key:4,value:"其它"}];
+    $scope.statusList = [{key:true,value:"激活"},{key:false,value:"未激活"}];
+    //$scope.listLoadFlag = 1;
 
     $scope.open = function (size, method,index){
         var modalInstance = $uibModal.open({
@@ -55,32 +55,17 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
         }, function(){});
     };
 
-    $http.get(urlBase + "/api/1/common/choices/?key=rfidreader").success(function(data){
-        if(data.code==200){
-            $scope.choice["func_type"] = data.data.func_type;
-            $scope.choice["status"] = data.data.status;
-            //console.log($scope.choice["func_type"][300]);
-        }else{
-            alert(data);
-        }
-    }).error(function(data,state){
-        if(state == 403){
-            baseUrl.redirect()
-        }
-    });
-
     $scope.order={
         id:false,
-        serial_number:false,
-        status:false,
-        func_type:false,
-        updated_at:false,
-        created_at:false
+        user_role_type:false,
+        is_active:false,
+        date_joined:false
     };
-    $scope.func_typeSelFunc = function(data){
-    	$scope.func_type = data.key;
+
+    $scope.roleSel = function(data){
+    	$scope.role = data.key;
     }
-    $scope.statusSelFunc = function(data){
+    $scope.statusSel = function(data){
     	$scope.status = data.key;
     }
     $scope.switch_order = function(key){
@@ -99,7 +84,7 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
         $scope.submit_search()
     };
     $scope.submit_search = function(){
-    	listService.init($scope,'/api/1/user/');
+    	/*listService.init($scope,'/api/1/user/');
     	if($scope.func_type && $scope.func_type != -1)
     		$scope.params.func_type = $scope.func_type;
     	if($scope.status && $scope.status != -1)
@@ -110,9 +95,50 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
     		$scope.params.serial_number = $scope.serial_number;
     	$scope.params.index = $scope.index;
     	$scope.params.number = $scope.number;
-    	$scope.refresh();
-    }
+    	$scope.refresh();*/
+        var order_str = "";
+      for(var i in $scope.order){
+        if($scope.order[i]){
+          if(order_str){
+            order_str += ','+i
+          }else{
+            order_str += i;
+          }
+        }
+      };
 
-    //$scope.submit_search();	
+      var query_url = url_junction.getQuery({
+      user_role_typ:$scope.role,
+      is_active:$scope.status,
+      username:$scope.username,
+      descent:order_str,
+      number:$scope.number,
+      index:$scope.index,
+    });
+
+      $http.get(urlBase+"/api/1/user/"+ query_url).success(function(data){
+      if(data.code==200){
+        $scope.dataList = data.data;
+        $scope.bigTotalItems = data.pageinfo.total_number;
+        $scope.total_page = data.pageinfo.total_page;
+        $scope.currentPageDataNum = data.data.length;
+        if($scope.currentPageDataNum == 0)
+          $scope.emptyDataListShow = "emptyDataListShow";
+        else{
+          $scope.emptyDataListShow = "";
+        }
+      }else{
+        alert(data.message)
+      }
+    }).error(function(data,state){
+      if(state == 403){
+        baseUrl.redirect()
+      }
+    })
+
+
+    };
+
+    $scope.submit_search();	
 
 })

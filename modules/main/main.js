@@ -22,6 +22,16 @@ app.filter("opis_writed",function(){
     return input;
   };
 });
+app.filter("user_active",function(){
+  return function(input){
+    if(input == true)
+      input = "激活";
+    else if(!input){
+      input = "未激活";
+    }
+    return input;
+  };
+});
 app.config(function($httpProvider){
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
