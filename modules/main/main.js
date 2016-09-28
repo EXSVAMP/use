@@ -744,9 +744,9 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
     $scope.statusSel = function(data){
         //$scope.status = data.key;
         if(data.key)
-            $scope.status = 1;
+            $scope.status = (1).toString();
         else
-            $scope.status = 0;
+            $scope.status = (0).toString();
     }
     if(items.method=="add"){
         $scope.role2 = {key:4,value:"其它"};
