@@ -22,7 +22,9 @@
             </div>
             <div class="form-group form-group-selin">
                 <label>警报类型:</label>
-               4-">{{$select.selected.value}}</ui-select-match>
+                <ui-select ng-model="params.event_type" theme="bootstrap"
+                           on-select="params.event_type=$select.selected.key;">
+                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                     <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
                         <div class="select-item">{{item.value}}</div>
                     </ui-select-choices>
