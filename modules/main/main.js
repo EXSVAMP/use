@@ -4,6 +4,7 @@ require('interceptor/captainlnterceptor');
 require('common/service/listService');
 require('common/service/utils');
 require('common/service/params');
+require('common/service/popService');
 require('common/filters');
 
 

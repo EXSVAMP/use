@@ -1940,14 +1940,66 @@
     height: 620px;
     margin-bottom: 20px;
     background-color: #fff;
-    float: right;
-    border: solid 1px #000000; }
+    float: right; }
+    .eventlog_Content .main-content .eventlog_detail .main-detail-tab .nav-tabs .tab-item {
+      width: 150px;
+      height: 70px;
+      text-align: center; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-tab .nav-tabs .tab-item a {
+        height: 100%;
+        color: #808CA0;
+        border-radius: 0; }
+        .eventlog_Content .main-content .eventlog_detail .main-detail-tab .nav-tabs .tab-item a .icon {
+          font-size: 32px; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-tab .nav-tabs .tab-item.active {
+        border-bottom: 2px solid #5F9BDB; }
+        .eventlog_Content .main-content .eventlog_detail .main-detail-tab .nav-tabs .tab-item.active a {
+          border: 0px;
+          color: #5F9BDB; }
+    .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img {
+      position: relative;
+      padding: 20px; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img img {
+        width: 810px;
+        height: 500px; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img .img-bottom-bar {
+        float: left;
+        position: absolute;
+        bottom: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 50px;
+        width: 810px;
+        text-align: right; }
+        .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img .img-bottom-bar .icon {
+          color: #fff;
+          font-size: 32px;
+          line-height: 50px; }
+          .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img .img-bottom-bar .icon:hover {
+            color: #337ab7; }
   .eventlog_Content .main-content .eventlog_detail .main-detail-content {
     width: 850px;
     height: 350px;
     background-color: #fff;
     float: right;
-    border: solid 1px #000000; }
+    overflow: auto; }
+    .eventlog_Content .main-content .eventlog_detail .main-detail-content .form-group {
+      height: 40px;
+      line-height: 40px;
+      margin: 0 20px;
+      padding: 0;
+      border-bottom: 1px solid #e6e6e6; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-content .form-group:first-child {
+        margin: 0;
+        padding: 0 20px; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-content .form-group:last-child {
+        border-bottom: 0; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-content .form-group:not(:nth-child(1)) > span:nth-child(2n+1) {
+        color: #888888; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-content .form-group:nth-last-child(1) {
+        height: auto; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-content .form-group:nth-last-child(2) {
+        height: auto;
+        overflow: hidden; }
   .eventlog_Content .main-content .eventlog_detail .main-detail-record {
     width: 320px;
     height: 100%;
@@ -1955,7 +2007,8 @@
     top: 0;
     left: 0;
     margin-bottom: 20px;
-    background-color: #fff; }
+    background-color: #fff;
+    overflow: auto; }
     .eventlog_Content .main-content .eventlog_detail .main-detail-record .record-desc {
       width: 300px;
       height: 110px;
@@ -1969,7 +2022,7 @@
       cursor: pointer; }
       .eventlog_Content .main-content .eventlog_detail .main-detail-record .record-desc ul {
         list-style: none; }
-        .eventlog_Content .main-content .eventlog_detail .main-detail-record .record-desc ul li span {
+        .eventlog_Content .main-content .eventlog_detail .main-detail-record .record-desc ul li span:nth-child(1) {
           display: inline-block;
           width: 100px; }
         .eventlog_Content .main-content .eventlog_detail .main-detail-record .record-desc ul li .number {
@@ -1985,7 +2038,7 @@
     .eventlog_Content .main-content .eventlog_detail .main-detail-record .active {
       border: solid  1px #5F9BDB;
       border-left: solid 5px #5F9BDB;
-      padding-left: 16;
+      padding-left: 16px;
       border-bottom-left-radius: 0px;
       border-top-left-radius: 0px; }
 

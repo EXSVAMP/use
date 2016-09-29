@@ -12,7 +12,7 @@ app.factory('listService', function ($http,baseUrl) {
                 if(angular.isNumber(page)&&page>$scope.totalPage)return;
                 if(angular.isNumber(page)){
                     $scope.params.index=page
-                }else if(!angular.isUndefined(page)){
+                }else if(!angular.isUndefined(page)&&page!=null&&page!==''){
                     return;
                 }
                 if($scope.totalPage&&$scope.params.index>$scope.totalPage)return;
