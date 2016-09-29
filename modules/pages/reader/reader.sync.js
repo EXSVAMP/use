@@ -150,21 +150,15 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
     $http.get(urlBase+"/api/1/reader/"+ query_url).success(function(data){
       if(data.code==200){
         $scope.listLoadFlag = 2;
-        // $scope.query_result[$scope.currentSelTab] = data.data;
-        // $scope.currentPageDataNum = data.data.length;
-        // $scope.searchTotal[$scope.currentSelTab] = data.pageinfo.total_number;
-
-        // $scope.bigTotalItems = data.pageinfo.total_number;
-        // $scope.total_page = data.pageinfo.total_page;
-      
-        // if($scope.currentPageDataNum == 0)
-        //   $scope.emptyDataListShow = "emptyDataListShow";
-        // else{
-        //   $scope.emptyDataListShow = "";
-        // }
         $scope.dataList=data.data;
         $scope.total=data.pageinfo.total_number;
         $scope.totalPage=data.pageinfo.total_page;
+        $scope.currentPageDataNum = data.data.length;
+        if($scope.currentPageDataNum == 0)
+          $scope.emptyDataListShow = "emptyDataListShow";
+        else{
+          $scope.emptyDataListShow = "";
+        }
       }else{
         alert(data.message)
       }
