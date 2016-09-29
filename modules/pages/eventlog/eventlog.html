@@ -1,5 +1,139 @@
-<div ng-controller="eventlogCtrl">
+<div ng-controller="eventlogCtrl" class="eventlog_Content">
     <div class="main-top-bar">
         <p><span class="icon-icon_location"></span>设备管理>事件日志</p>
     </div>
+   <div class="main-content" style="min-width: 1200px">
+       <form role="form" class="search-bar col-flow">
+
+           <div class="form-group form-group-selin">
+               <label>事件类型:</label>
+               <ui-select ng-model="params.event_type" theme="bootstrap"
+                          on-select="params.event_type=$select.selected.key;">
+                   <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+                   <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
+                       <div class="select-item">{{item.value}}</div>
+                   </ui-select-choices>
+               </ui-select>
+           </div>
+           <div class="form-group form-group-selin">
+               <label>RFID序列号:</label>
+               <input type="text"  class="form-control" placeholder="请输入名称" ng-model="serial_search">
+           </div>
+           <div class="form-group form-group-selin">
+               <label>读写器:</label>
+               <ui-select ng-model="params.event_type" theme="bootstrap"
+                          on-select="params.event_type=$select.selected.key;">
+                   <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+                   <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
+                       <div class="select-item">{{item.value}}</div>
+                   </ui-select-choices>
+               </ui-select>
+           </div>
+           <div class="form-group form-group-selin" style="margin: 0px">
+               <label>摄像头:</label>
+               <ui-select ng-model="params.event_type" theme="bootstrap"
+                          on-select="params.event_type=$select.selected.key;">
+                   <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+                   <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
+                       <div class="select-item">{{item.value}}</div>
+                   </ui-select-choices>
+               </ui-select>
+           </div>
+           <div class="form-group form-group-selin">
+               <label>事件反馈:</label>
+               <ui-select ng-model="params.event_type" theme="bootstrap"
+                          on-select="params.event_type=$select.selected.key;">
+                   <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+                   <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
+                       <div class="select-item">{{item.value}}</div>
+                   </ui-select-choices>
+               </ui-select>
+           </div>
+
+           <div class="form-group form-group-selin">
+               <label>处理类型:</label>
+               <ui-select ng-model="params.event_type" theme="bootstrap"
+                          on-select="params.event_type=$select.selected.key;">
+                   <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+                   <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
+                       <div class="select-item">{{item.value}}</div>
+                   </ui-select-choices>
+               </ui-select>
+           </div>
+           <div class="btns-group">
+               <a type="button" class="btn btn-green" ng-click="refresh()"><span
+                       class="icon-icon_search btn-icon"></span>搜索</a>
+           </div>
+       </form>
+       <!--<form role="form" class="search-bar col-flow">-->
+
+       <!--</form>-->
+       <div style="clear: both"></div>
+       <div class="condition-sort">
+           <ul class="condition-sort-ul">
+               <li class="condition-sort-li" ng-click="order.id=!order.id;refresh()"><p>编号<span ng-class="order.id?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
+               <li class="condition-sort-li" ng-click="order.event_feedback_type=!order.event_feedback_type;refresh()"><p>事件反馈类型<span ng-class="order.event_feedback_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
+               <li class="condition-sort-li" ng-click="order.event_type=!order.event_type;refresh()"><p>事件类型<span ng-class="order.event_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
+               <li class="condition-sort-li" ng-click="order.event_datetime=!order.event_datetime;refresh()"><p>事件发生时间<span ng-class="order.event_datetime?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
+           </ul>
+           <table class="table table-pagination table-pagination-sort" >
+               <thead>
+               <tr>
+                   <th class="pagination-items-per-page">
+                       <div class="pagination-content">
+                           <span class="pagination-tip">每页显示数量</span>
+                           <ui-select ng-model="number2" theme="bootstrap" on-select="setShowNum(number2)">
+                               <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
+                               <ui-select-choices repeat="item in numbers">
+                                   <div ng-bind-html="item"></div>
+                                   <!-- <small ng-bind-html="item.email"></small> -->
+                               </ui-select-choices>
+                           </ui-select>
+                       </div>
+                   </th>
+               </tr>
+               </thead>
+           </table>
+
+
+       </div>
+       <div class="eventlog_detail">
+           <div class="main-detail-tab">
+               123
+           </div>
+           <div class="main-detail-content">
+            123
+           </div>
+           <div class="main-detail-record">
+               <div class="record-desc" ng-class="{'active':active}" ng-click="active=!active">
+                    <ul>
+                        <li>
+                            <span class="number">编号:</span>
+                            <span>1818</span>
+                        </li>
+                        <li>
+                            <span>事件反馈类型</span>
+                            <span>1818</span>
+                        </li>
+                        <li>
+                            <span>事件类型</span>
+                            <span>1818</span>
+                        </li>
+                        <li>
+                            <span>事件发生时间</span>
+                            <span>1818</span>
+                        </li>
+
+                    </ul>
+               </div>
+
+
+           </div>
+       </div>
+       <div style="clear: both"></div>
+
+   </div>
+
+
+
 </div>

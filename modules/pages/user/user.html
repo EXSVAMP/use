@@ -21,7 +21,7 @@
           			</ui-select>
 				</div>
 				<div class="form-group">
-    				<label for="status">状态:</label> 
+    				<label for="status">状态:{{status}}</label>
     				<ui-select ng-model="status2" theme="bootstrap" on-select="statusSel(status2)">
             			<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
             			<ui-select-choices repeat="item in statusList">
@@ -57,16 +57,15 @@
             		</ui-select-choices>
           		</ui-select>
 			</div>
-			<div class="form-group">
+			<!-- <div class="form-group">
     			<label for="status">状态:</label> 
     			<ui-select ng-model="status2" theme="bootstrap" on-select="statusSel(status2)">
             		<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
             		<ui-select-choices repeat="item in statusList">
               			<div ng-bind-html="item.value"></div>
-              			<!-- <small ng-bind-html="item.email"></small> -->
             		</ui-select-choices>
           		</ui-select>
-			</div>
+			</div> -->
 			<div class="form-group">
     			<label for="username">用户名:</label> 
     			 <input type="text" class="form-control" id="username" placeholder="请输入用户名" ng-model="username">
@@ -83,14 +82,14 @@
 				<li class="condition-sort-li" ng-click="switch_order('is_active')"><p>状态<span ng-class="{false:'icon-icon_sort_down',true:'icon-icon_sort_up'}[order.is_active]"></span></p></li>
 				<li class="condition-sort-li" ng-click="switch_order('date_joined')"><p>创建时间<span ng-class="{false:'icon-icon_sort_down',true:'icon-icon_sort_up'}[order.date_joined]"></span></p></li>
 			</ul>
-			<table class="table table-pagination table-pagination-sort" ng-show="bigTotalItems>0">
+			<table class="table table-pagination table-pagination-sort">
         		<thead>
           			<tr>
             			<th class="pagination-items-per-page">
               				<div class="pagination-content">
               					<span class="pagination-tip">每页显示数量</span>
               					<ui-select ng-model="number2" theme="bootstrap" on-select="setShowNum(number2)">
-                					<ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
+                					<ui-select-match placeholder="8">{{$select.selected}}</ui-select-match>
                 					<ui-select-choices repeat="item in numbers">
                     					<div ng-bind-html="item"></div>
                     					<!-- <small ng-bind-html="item.email"></small> -->
@@ -109,8 +108,8 @@
 				<div class="table-content-user-detail">
 					<p>
 						<span class="table-content-user-name">NO:{{item.id}}</span>
-						<span class="com-delete rfid-delete" ng-click="open('md-delete','delete',$index)"></span>
-						<span class="com-deit rfid-edit" ng-click="open('md-edit-user','modify',$index)"></span>
+						<span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span>
+						<span class="rfid-edit icon-icon_edit" ng-click="open('md-edit-user','modify',$index)"></span>
 					</p>
 				</div>
 				<div class="table-content-user-detail">
@@ -148,6 +147,13 @@
 			</li>
 
 		</ul>
+
+		<div class="emptyDataList {{emptyDataListShow}}">
+
+    		<p><span class="icon-icon_users"></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
+ 
+    	</div>
+
 		<table class="table table-pagination" ng-show="bigTotalItems>0">
         <thead>
           <tr>

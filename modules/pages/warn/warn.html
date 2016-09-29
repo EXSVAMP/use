@@ -24,7 +24,7 @@
                 <label>警报类型:</label>
                 <ui-select ng-model="params.event_type" theme="bootstrap"
                            on-select="params.event_type=$select.selected.key;">
-                    <ui-select-match placeholder="--请选择--">{{$select.selected.value}}</ui-select-match>
+                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                     <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
                         <div class="select-item">{{item.value}}</div>
                     </ui-select-choices>
@@ -62,7 +62,7 @@
             <tr>
                 <th ng-click="order.id=!order.id;refresh();"><p>编号<span
                         ng-class="order.id?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></th>
-                <th ng-click="order.event_type=!order.event_type"><p>警报类型<span
+                <th ng-click="order.event_type=!order.event_type"  ><p>警报类型<span
                         ng-class="order.event_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></th>
                 <th ng-click="order.event_feedback_type=!order.event_feedback_type;refresh();"><p>警报反馈<span
                         ng-class="order.event_feedback_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></th>

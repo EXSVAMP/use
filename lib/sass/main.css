@@ -629,6 +629,7 @@
   position: fixed;
   top: 0px;
   left: 0;
+  z-index: 1000;
   margin-top: 48px; }
   .sideBar a {
     color: #3e4d68; }
@@ -855,6 +856,48 @@
   .card-content .emptyDataList p span:last-child {
     margin-top: 35px; }
 
+.edit-form-card .form-group {
+  float: left;
+  margin-right: 53px;
+  width: 360px;
+  float: none;
+  margin: 10px auto; }
+  .edit-form-card .form-group label {
+    font-size: 12px;
+    color: #3e4d68; }
+  .edit-form-card .form-group ui-select, .edit-form-card .form-group .ui-select-container, .edit-form-card .form-group input {
+    width: 360px;
+    height: 34px; }
+  .edit-form-card .form-group input {
+    font-size: 12px;
+    color: #888888; }
+  .edit-form-card .form-group .ui-select-search, .edit-form-card .form-group .ui-select-match {
+    width: 360px !important;
+    min-width: 360px !important;
+    /* Because of the inclusion of Bootstrap */ }
+    .edit-form-card .form-group .ui-select-search span, .edit-form-card .form-group .ui-select-match span {
+      /*height: 34px;*/
+      font-size: 12px !important;
+      color: #888888 !important; }
+  .edit-form-card .form-group .ui-select-choices {
+    width: 360px !important;
+    min-width: 360px !important;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    height: auto !important;
+    max-height: 1000px !important; }
+    .edit-form-card .form-group .ui-select-choices li {
+      width: 360px;
+      overflow: hidden;
+      padding: 0;
+      margin: 0; }
+      .edit-form-card .form-group .ui-select-choices li .dropup, .edit-form-card .form-group .ui-select-choices li .dropdown {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        width: 360px; }
+
 .content-content {
   /*table.table-pagination{
     thead{
@@ -987,7 +1030,9 @@
 .edit-form-content .form-group-selin {
   float: left;
   margin-right: 53px;
-  width: 360px; }
+  width: 360px;
+  float: none;
+  margin: 10px auto; }
   .edit-form-content .form-group-selin label {
     font-size: 12px;
     color: #3e4d68; }
@@ -1565,6 +1610,7 @@
   width: 250px;
   margin-top: 10px; }
 
+<<<<<<< HEAD
 .user-content .user-select {
   display: table;
   height: auto;
@@ -1689,6 +1735,135 @@
   margin-top: 35px; }
 .user-content table.table-pagination {
   margin-top: 20px; }
+=======
+.user-content {
+  min-width: 1240px; }
+  .user-content .user-select {
+    display: table;
+    height: auto;
+    width: 100%; }
+    .user-content .user-select .btns-group {
+      width: 195px; }
+      .user-content .user-select .btns-group .btn-rfid-search, .user-content .user-select .btns-group .btn-rfid-add {
+        width: 80px;
+        height: 34px;
+        border-radius: 4px !important;
+        background-color: #45b6b0;
+        margin-right: 30px;
+        font-size: 12px;
+        color: #ffffff; }
+        .user-content .user-select .btns-group .btn-rfid-search span, .user-content .user-select .btns-group .btn-rfid-add span {
+          display: block;
+          float: left;
+          padding-top: 0px;
+          padding-right: 0px;
+          font-size: 16px;
+          color: #fff;
+          /*line-height: 34px;*/ }
+      .user-content .user-select .btns-group .btn-rfid-add {
+        background: #fc763c;
+        margin-right: 0; }
+  .user-content .condition-sort {
+    width: 100%;
+    height: 34px;
+    background: #fff;
+    border-radius: 4px;
+    position: relative; }
+    .user-content .condition-sort .condition-sort-ul {
+      float: left;
+      height: 24px;
+      margin-left: 10px;
+      border-radius: 4px;
+      border: solid 1px #e6e6e6;
+      list-style-type: none;
+      margin-top: 5px; }
+      .user-content .condition-sort .condition-sort-ul .condition-sort-li {
+        float: left;
+        width: 70px;
+        height: 100%;
+        border-right: solid 1px #e6e6e6;
+        display: table;
+        vertical-align: middle;
+        list-style-type: none;
+        cursor: pointer; }
+        .user-content .condition-sort .condition-sort-ul .condition-sort-li p {
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+          font-size: 12px;
+          color: #666666;
+          height: 100%; }
+          .user-content .condition-sort .condition-sort-ul .condition-sort-li p span {
+            font-size: 16px; }
+          .user-content .condition-sort .condition-sort-ul .condition-sort-li p .icon-icon_sort_down::before {
+            position: relative;
+            top: 3px; }
+        .user-content .condition-sort .condition-sort-ul .condition-sort-li:last-child {
+          border-right: 0 none; }
+    .user-content .condition-sort table.table-pagination-sort {
+      float: right;
+      margin: -10px 0 0;
+      padding: 0;
+      width: 165px; }
+  .user-content .table-content-user {
+    background: #f5f5f5;
+    list-style-type: none;
+    height: auto;
+    overflow: hidden; }
+    .user-content .table-content-user li {
+      float: left;
+      margin-right: 26.5px;
+      width: 280px;
+      height: 224px;
+      border-radius: 4px;
+      background-color: #ffffff;
+      list-style-type: none;
+      margin-top: 18px;
+      padding: 0 10px 0 10px;
+      border: 0 none; }
+      .user-content .table-content-user li:nth-child(4n) {
+        margin-right: 0; }
+      .user-content .table-content-user li .table-content-user-detail {
+        width: 100%;
+        height: 37px;
+        border-bottom: 1px solid #e8ebf0;
+        display: table; }
+        .user-content .table-content-user li .table-content-user-detail p {
+          display: table-cell;
+          vertical-align: middle; }
+          .user-content .table-content-user li .table-content-user-detail p span.table-content-user-title {
+            display: block;
+            float: left;
+            width: 80px;
+            font-size: 12px;
+            color: #888888; }
+          .user-content .table-content-user li .table-content-user-detail p span.table-content-user-name {
+            display: block;
+            float: left;
+            font-size: 14px;
+            color: #3e4d68; }
+          .user-content .table-content-user li .table-content-user-detail p .rfid-edit, .user-content .table-content-user li .table-content-user-detail p .rfid-delete {
+            display: block;
+            float: right;
+            width: 16px;
+            height: 16px;
+            margin-top: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+            color: #45b6b0; }
+          .user-content .table-content-user li .table-content-user-detail p .rfid-delete {
+            margin-right: 0;
+            color: #ff6b6b; }
+        .user-content .table-content-user li .table-content-user-detail:last-child {
+          border-bottom: 0 none; }
+  .user-content .emptyDataList p span:first-child {
+    background: none;
+    font-size: 128px; }
+  .user-content .emptyDataList p span:last-child {
+    margin-top: 35px; }
+  .user-content table.table-pagination {
+    margin-top: 20px; }
+>>>>>>> 7e65d85e7997c9ab472ee4fd0d55806ebf1fd5c4
 
 .edit-form-user .form-group {
   float: left;
@@ -1786,6 +1961,108 @@
         .account-content .account-content-detail .account-content-detail-li p span.detail-content {
           font-size: 14px;
           color: #3e4d68; }
+
+.eventlog_Content .main-content .condition-sort {
+  width: 100%;
+  height: 34px;
+  background: #fff;
+  border-radius: 4px;
+  position: relative;
+  min-width: 1200px;
+  margin-bottom: 13px; }
+  .eventlog_Content .main-content .condition-sort .condition-sort-ul {
+    float: left;
+    height: 24px;
+    margin-left: 10px;
+    border-radius: 4px;
+    border: solid 1px #e6e6e6;
+    list-style-type: none;
+    margin-top: 5px; }
+    .eventlog_Content .main-content .condition-sort .condition-sort-ul .condition-sort-li {
+      float: left;
+      width: 120px;
+      height: 100%;
+      border-right: solid 1px #e6e6e6;
+      display: table;
+      vertical-align: middle;
+      list-style-type: none;
+      cursor: pointer; }
+      .eventlog_Content .main-content .condition-sort .condition-sort-ul .condition-sort-li p {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 12px;
+        color: #666666;
+        height: 100%; }
+        .eventlog_Content .main-content .condition-sort .condition-sort-ul .condition-sort-li p span {
+          font-size: 16px; }
+        .eventlog_Content .main-content .condition-sort .condition-sort-ul .condition-sort-li p .icon-icon_sort_down::before {
+          position: relative;
+          top: 3px; }
+      .eventlog_Content .main-content .condition-sort .condition-sort-ul .condition-sort-li:last-child {
+        border-right: 0 none; }
+  .eventlog_Content .main-content .condition-sort table.table-pagination-sort {
+    float: right;
+    margin: -10px 0 0;
+    padding: 0;
+    width: 165px; }
+.eventlog_Content .main-content .eventlog_detail {
+  position: relative;
+  min-width: 1200px;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  margin-bottom: 20px;
+  float: left; }
+  .eventlog_Content .main-content .eventlog_detail .main-detail-tab {
+    width: 850px;
+    height: 620px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    float: right;
+    border: solid 1px #000000; }
+  .eventlog_Content .main-content .eventlog_detail .main-detail-content {
+    width: 850px;
+    height: 350px;
+    background-color: #fff;
+    float: right;
+    border: solid 1px #000000; }
+  .eventlog_Content .main-content .eventlog_detail .main-detail-record {
+    width: 320px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-bottom: 20px;
+    background-color: #fff; }
+    .eventlog_Content .main-content .eventlog_detail .main-detail-record .record-desc {
+      width: 300px;
+      height: 110px;
+      padding: 15px 20px;
+      margin-bottom: 5px;
+      border-radius: 4px;
+      border: solid 1px #e6e6e6;
+      line-height: 22px;
+      font-size: 12px;
+      color: #888888;
+      cursor: pointer; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-record .record-desc ul {
+        list-style: none; }
+        .eventlog_Content .main-content .eventlog_detail .main-detail-record .record-desc ul li span {
+          display: inline-block;
+          width: 100px; }
+        .eventlog_Content .main-content .eventlog_detail .main-detail-record .record-desc ul li .number {
+          font-size: 12px;
+          font-weight: 500;
+          color: #666666;
+          width: 30px; }
+        .eventlog_Content .main-content .eventlog_detail .main-detail-record .record-desc ul li span:nth-child(2) {
+          font-size: 14px;
+          color: #3e4d68; }
+        .eventlog_Content .main-content .eventlog_detail .main-detail-record .record-desc ul li .number + span {
+          font-size: 12px; }
+    .eventlog_Content .main-content .eventlog_detail .main-detail-record .active {
+      border: solid  1px #5F9BDB;
+      border-left: solid 5px #5F9BDB; }
 
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6, label, form, input, button,
