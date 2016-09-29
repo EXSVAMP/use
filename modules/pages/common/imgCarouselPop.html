@@ -1,0 +1,7 @@
+<div class="img-carousel {{imgCarouselAnimateClass}}">
+    <!--<img ng-src="{{img | img}}" ng-repeat='img in imgs track by $index' ng-show="$index==current"/>-->
+    <section class="img" ng-style='{"background-image":"url({{img|img}})"}' ng-repeat='img in imgs track by $index' ng-show="$index==current"></section>
+    <div class='img-carousel-tab' ng-show="imgs.length>1"><a href='javascript:void(0)' ng-repeat='img in imgs track by $index' ng-class='{"img-carousel-tab-item":$index==current}' ng-click='nextImg($index)'/> </div>
+</div>
+<span class="icon-icon_arrow_circleleft" ng-click="nextImg(current-1)" ng-show="current!=0"></span>
+<span class="icon-icon_arrow_circleright" ng-click="nextImg(current+1)" ng-show="current<imgs.length-1"></span>

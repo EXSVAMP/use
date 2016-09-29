@@ -10,10 +10,10 @@ app.register.controller("warnCtrl", function ($scope, $http,baseUrl, $timeout,$l
             angular.merge($scope.selections,data.data);
         }
     });
-    $scope.selectionsGroupBy = function(item){
-        console.log(item);
-        return item;
-    }
+    // $scope.selectionsGroupBy = function(item){
+    //     console.log(item);
+    //     return item;
+    // }
     $scope.selections.event_type={"/":"--请选择--"};
     $scope.selections.event_feedback_type={"-1":"--请选择--"};
     $scope.selections.handle_result={"-1":"--请选择--"};

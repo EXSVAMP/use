@@ -24,8 +24,6 @@ $RECYCLE.BIN/
 # =========================
 
 .DS_Store
-*/.DS_Store
-*/*/.DS_Store
 *.map
 .AppleDouble
 .LSOverride

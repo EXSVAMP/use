@@ -1,5 +1,6 @@
 var app = angular.module('RDash');
-app.register.controller("warnDetailCtrl", function ($scope, $http, params,$location,baseUrl,$uibModal) {
+app.register.controller("warnDetailCtrl", function ($scope, $http, params,$location,baseUrl,$uibModal,utils) {
+    utils.init($scope);
     var data = $location.search();
     $scope.refresh=function(){
         $http.get(baseUrl.getUrl()+'/api/1/eventlog/'+data.id+"/").success(function(data){
@@ -21,7 +22,7 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
     $scope.refresh();
     $scope.tabSwitch = 0;
     $scope.open=function(){
-        var modalInstance = $uibModal.open({
+        $uibModal.open({
             controller: 'warnHandlePopCtrl',
             templateUrl: "statics/modules/pages/warn/warnHandlePop.html",
             size: 'md',
@@ -49,9 +50,6 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
                     }
                 }
             }
-        });
-        modalInstance.result.then(function(){
-            $scope.refresh();
         });
     }
 });
