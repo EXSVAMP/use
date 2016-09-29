@@ -6,7 +6,7 @@
        <form role="form" class="search-bar col-flow">
 
            <div class="form-group form-group-selin">
-               <label>事件类型:</label>
+               <label>事件类型:{{params.event_type}}</label>
                <ui-select ng-model="params.event_type" theme="bootstrap"
                           on-select="params.event_type=$select.selected.key;">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
@@ -16,46 +16,46 @@
                </ui-select>
            </div>
            <div class="form-group form-group-selin">
-               <label>RFID序列号:</label>
-               <input type="text"  class="form-control" placeholder="请输入名称" ng-model="serial_search">
+               <label>RFID序列号:{{params.rfid_id}}</label>
+               <input type="text"  class="form-control" placeholder="请输入名称" ng-model="params.rfid_id">
            </div>
            <div class="form-group form-group-selin">
-               <label>读写器:</label>
-               <ui-select ng-model="params.event_type" theme="bootstrap"
-                          on-select="params.event_type=$select.selected.key;">
-                   <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
-                   <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
-                       <div class="select-item">{{item.value}}</div>
+               <label>读写器:{{params.reader_id}}</label>
+               <ui-select ng-model="params.reader_id" theme="bootstrap"
+                          on-select="params.reader_id=$select.selected.id;">
+                   <ui-select-match placeholder="--请选择-">{{$select.selected.serial_number}}</ui-select-match>
+                   <ui-select-choices repeat="item.id as item in reader">
+                       <div class="select-item">{{item.serial_number}}</div>
                    </ui-select-choices>
                </ui-select>
            </div>
            <div class="form-group form-group-selin" style="margin: 0px">
-               <label>摄像头:</label>
-               <ui-select ng-model="params.event_type" theme="bootstrap"
-                          on-select="params.event_type=$select.selected.key;">
-                   <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
-                   <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
-                       <div class="select-item">{{item.value}}</div>
+               <label>摄像头:{{params.camera_id}}</label>
+               <ui-select ng-model="params.camera_id" theme="bootstrap"
+                          on-select="params.camera_id=$select.selected.id;">
+                   <ui-select-match placeholder="--请选择-">{{$select.selected.serial_number}}</ui-select-match>
+                   <ui-select-choices repeat="item.id as item in camera">
+                       <div class="select-item">{{item.serial_number}}</div>
                    </ui-select-choices>
                </ui-select>
            </div>
            <div class="form-group form-group-selin">
-               <label>事件反馈:</label>
-               <ui-select ng-model="params.event_type" theme="bootstrap"
-                          on-select="params.event_type=$select.selected.key;">
+               <label>事件反馈:{{params.event_feedback_type}}</label>
+               <ui-select ng-model="params.event_feedback_type" theme="bootstrap"
+                          on-select="params.event_feedback_type=$select.selected.key;">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
-                   <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
+                   <ui-select-choices repeat="item.key as (key,item) in selections.event_feedback_type">
                        <div class="select-item">{{item.value}}</div>
                    </ui-select-choices>
                </ui-select>
            </div>
 
            <div class="form-group form-group-selin">
-               <label>处理类型:</label>
-               <ui-select ng-model="params.event_type" theme="bootstrap"
-                          on-select="params.event_type=$select.selected.key;">
+               <label>处理类型:{{params.handle_result}}</label>
+               <ui-select ng-model="params.handle_result" theme="bootstrap"
+                          on-select="params.handle_result=$select.selected.key;">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
-                   <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
+                   <ui-select-choices repeat="item.key as (key,item) in selections.handle_result">
                        <div class="select-item">{{item.value}}</div>
                    </ui-select-choices>
                </ui-select>
@@ -82,9 +82,9 @@
                    <th class="pagination-items-per-page">
                        <div class="pagination-content">
                            <span class="pagination-tip">每页显示数量</span>
-                           <ui-select ng-model="number2" theme="bootstrap" on-select="setShowNum(number2)">
+                           <ui-select ng-model="params.number" theme="bootstrap" on-select="params.number=$select.selected;refresh();">
                                <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
-                               <ui-select-choices repeat="item in numbers">
+                               <ui-select-choices repeat="item in selections.numbers">
                                    <div ng-bind-html="item"></div>
                                    <!-- <small ng-bind-html="item.email"></small> -->
                                </ui-select-choices>
@@ -99,29 +99,74 @@
        </div>
        <div class="eventlog_detail">
            <div class="main-detail-tab">
-               123
+               <ul class="nav nav-tabs">
+                   <li class="tab-item" style="margin-left:20px;" ng-class="tabSwitch==0?'active':''" ng-click="tabSwitch=0;">
+                       <a href="javascript:void(0)"><span class="icon icon-icon_picture"></span><br/>照片地址</a></li>
+                   <li class="tab-item" ng-class="tabSwitch==1?'active':''" ng-click="tabSwitch=1;">
+                       <a href="javascript:void(0)"><span class="icon icon-icon_video"></span><br/>视频地址</a></li>
+               </ul>
+               <div class="detail-img" ng-show="tabSwitch==0">
+                   <img ng-src="{{detail.photo_url | img}}"/>
+                   <div class="img-bottom-bar"><a ng-href="{{detail.photo_url}}" class="icon icon-icon_download" download></a><span class="icon icon-icon_expand"></span></div>
+               </div>
+               <div class="detail-img" ng-show="tabSwitch==1">
+                   <img ng-src="{{detail.img2|img}}"/>
+               </div>
+
            </div>
            <div class="main-detail-content">
-            123
+               <div class="form-group">
+                   <span class="col-lg-12"><span class="icon icon-icon_eventlog"></span>NO:{{detail.id}} 详细信息</span>
+               </div>
+               <div class="form-group">
+                   <span class="col-lg-2">事件反馈类型</span>
+                   <span class="col-lg-4">{{detail.event_feedback_type_display}}</span>
+                   <span class="col-lg-2">事件类型</span>
+                   <span class="col-lg-4">{{detail.event_type_display}}</span>
+               </div>
+               <div class="form-group">
+                   <span class="col-lg-2">事件发生时间</span>
+                   <span class="col-lg-4">{{detail.event_datetime}}</span>
+                   <span class="col-lg-2">摄像头</span>
+                   <span class="col-lg-4">{{detail.camera.serial_number}}</span>
+               </div>
+               <div class="form-group">
+                   <span class="col-lg-2">RFID读写器</span>
+                   <span class="col-lg-4">{{detail.event_feedback_type_display}}</span>
+                   <span class="col-lg-2">事件反馈简述</span>
+                   <span class="col-lg-4">{{detail.event_feedback_detail_display|characters:10 :true}}</span>
+               </div>
+               <div class="form-group">
+                   <span class="col-lg-2">RIDF列表</span>
+                   <span class="col-lg-10">{{detail.rfid_list_display}}</span>
+               </div>
+               <div class="form-group">
+                   <span class="col-lg-2">处理结果</span>
+                   <span class="col-lg-10">{{detail.handle_result_display}}<a href="javascript:void(0)" style="margin-left:10px;" ng-if="detail.handle_result==0" ng-click="open()">前去处理</a></span>
+               </div>
+               <div class="form-group">
+                   <span class="col-lg-2">事件描述</span>
+                   <span class="col-lg-10">{{detail.description}}</span>
+               </div>
            </div>
            <div class="main-detail-record">
-               <div class="record-desc" ng-class="{'active':active}" ng-click="active=!active">
-                    <ul>
+               <div class="record-desc" ng-class="{'active':active}"  ng-repeat="item in dataList">
+                    <ul  ng-click="active=!active;showDetail(item.id)">
                         <li>
-                            <span class="number">编号:</span>
-                            <span>1818</span>
+                            <span class="number">编号:{{$index}}</span>
+                            <span>{{item.id}}</span>
                         </li>
                         <li>
                             <span>事件反馈类型</span>
-                            <span>1818</span>
+                            <span>{{item.event_feedback_type_display}}</span>
                         </li>
                         <li>
                             <span>事件类型</span>
-                            <span>1818</span>
+                            <span>{{item.event_type_display}}</span>
                         </li>
                         <li>
                             <span>事件发生时间</span>
-                            <span>1818</span>
+                            <span>{{item.created_at}}</span>
                         </li>
 
                     </ul>
