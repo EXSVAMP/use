@@ -131,142 +131,11 @@ app.config(['$httpProvider', function($httpProvider){
 }]);
 
 app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDialog, $rootScope){
-	var baseUrl = baseUrl.getUrl();
-	$scope.header_com_mask = false;
-	$scope.header_com_logout_pop = false;
-	$scope.header_com_repass_pop = false;
-    $scope.header_com_mask_show = "";
-    $scope.header_com_logout_pop_show = "";
-    $scope.header_com_repass_pop_show = "";
-	$scope.repass_test=false;
-    $scope.repass_new=false;
-    $scope.repass_reconfirm=false;
-	$scope.btn_ok_fail = "btn_ok_fail";
-	$scope.header_username = $cookieStore.get("iotcloud-token").loginName;
-	$scope.old_password_len = $cookieStore.get("passlen");
-	//user logout
-	$scope.logout = function(){
-		$scope.header_com_mask = true;
-		$scope.header_com_logout_pop = true;
-        $scope.header_com_mask_show = "header-com-mask-show";
-        $scope.header_com_logout_pop_show = "header-com-logout-pop-show";
-	};
+    var baseUrl = baseUrl.getUrl();
 
-	$scope.logout_ok = function(){
-        $http.get(baseUrl.getUrl()+"/api/1/user/logout/").success(function(data){
-            if(data.code=="200"){
-                window.location.href = "/login.html"
-            }else
-            	$rootScope.alert_pop("退出出错:"+data.description);
-        });
-    };
-
-    $scope.logout_cancel = function(){
-		$scope.header_com_mask = false;
-		$scope.header_com_logout_pop = false;
-        $scope.header_com_mask_show = "";
-        $scope.header_com_logout_pop_show = "";
-	};
-
-	$scope.repassword = function(){
-        //ngDialog.open({ template: 'repassword.html',//模式对话框内容为repassword.html  
-            //scope:$scope //将scope传给repassword.html,以便显示地址详细信息  
-        //}); 
-        document.getElementById("repass_form").reset(); 
-        $scope.repass_test=false;
-        $scope.repass_new=false;
-        $scope.repass_reconfirm=false;
-		$scope.btn_ok_fail = "btn_ok_fail";
-        $scope.header_com_mask = true;
-		$scope.header_com_repass_pop = true;
-        $scope.header_com_mask_show = "header-com-mask-show";
-        $scope.header_com_repass_pop_show = "header-com-repass-pop-show";
-    };
-
-    $scope.repass_click = function(){
-    	$scope.repass_test=false;
-    	document.getElementById('repass_old_password').focus();
-    }
-
-     $scope.re_click = function(){
-    	$scope.repass_new=false;
-    	document.getElementById('repass_re_password').focus();
-    }
-
-    $scope.reconfirm_click = function(){
-    	$scope.repass_reconfirm=false;
-    	document.getElementById('repass_reconfirm_password').focus();
-    }
-
-    $scope.re_in_click = function(){
-    	$scope.repass_new=false;
-    	getRepassInputsVal();
-    }
-
-    $scope.reconfirm_in_click = function(){
-    	$scope.repass_reconfirm=false;
-    	getRepassInputsVal();
-    }
-
-    $scope.repass_in_click = function(){
-    	$scope.repass_test=false;
-    	getRepassInputsVal();
-    }
-
-    function getRepassInputsVal(){
-    	var old_pass = $scope.repass_old_password;
-    	var new_pass = $scope.repass_re_password;
-    	var confirm_pass = $scope.repass_reconfirm_password;
-    	if(old_pass && new_pass && confirm_pass == new_pass){
-    		$scope.btn_ok_fail = "";
-    	}else
-    		$scope.btn_ok_fail = "btn_ok_fail";
-    }
-
-    $scope.repass_in_blur = function(){
-    	$scope.repass_test=true;
-    	getRepassInputsVal();
-    }
-
-    $scope.re_in_blur = function(){
-    	$scope.repass_new=true;
-    	getRepassInputsVal();
-    }
-
-    $scope.reconfirm_in_blur = function(){
-    	$scope.repass_reconfirm=true;
-    	getRepassInputsVal();
-    }
-   
-    $scope.repass_ok = function(){
-    	if($scope.btn_ok_fail == ""){
-    		var data = {
-            	username: $cookieStore.get("iotcloud-token").loginName,
-            	old_password: $scope.repass_old_password,
-            	password: $scope.repass_re_password,
-            	re_password: $scope.repass_reconfirm_password
-        	};
-        	$http.post(baseUrl+"/api/1/user/repassword/", data)
-            .success(function(res){
-                if(res.code=='200'){
-                    window.location.href = "/login.html"
-                }else
-                	$rootScope.alert_pop("密码修改出错:"+res.description);
-            })
-    	}
-       
-    };
-
-    $scope.repass_cancel = function(){
-		$scope.header_com_mask = false;
-		$scope.header_com_repass_pop = false;
-        $scope.header_com_mask_show = "";
-        $scope.header_com_repass_pop_show = "";
-	};
-  
      $rootScope.alert_pop = function(alert_info){
         $rootScope.alert_info = alert_info;
-    	ngDialog.open({
+        ngDialog.open({
             template:"alert.html",
             //className:'ngDialog-theme-default',
             preCloseCallback: function() {
@@ -276,6 +145,154 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
     }
 
 })
+
+app.controller("headerCtrl",function($scope, $cookieStore, $http, $uibModal, baseUrl, ngDialog, $rootScope){
+	var baseUrl = baseUrl.getUrl();
+	$scope.header_username = $cookieStore.get("iotcloud-token").loginName;
+	$scope.old_password_len = $cookieStore.get("passlen");
+
+    $scope.open = function (size, method,index){
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            controller: 'ModalHeader',
+            templateUrl: "myModalContentHeader.html",
+            size: size,
+            resolve: {
+                items: function () {
+                    if(method=="delete"){
+                        return {
+                            title:"退出IOT智能仓储系统",
+                            method:"delete",
+                            scope:$scope
+                        }
+                    }else{
+                        return {
+                            title:"修改密码",
+                            method:"modify",
+                            scope:$scope
+                        }
+                    }
+                }
+            }
+        });
+        modalInstance.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function(){});
+    };
+});
+
+app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$http,items,baseUrl,url_junction,ngDialog){
+    baseUrl = baseUrl.getUrl();
+    $scope.item = items;
+    $scope.isDel = false;
+    if($scope.item.method == "delete")
+        $scope.isDel = true;
+    $scope.cancel = function(){
+        $uibModalInstance.dismiss('cancel');
+    };
+    
+    if(items.method=="modify"){
+        //document.getElementById("repass_form").reset(); 
+        $scope.repass_test=false;
+        $scope.repass_new=false;
+        $scope.repass_reconfirm=false;
+        $scope.btn_ok_fail = "btn_ok_fail";
+        $scope.repass_click = function(){
+            $scope.repass_test=false;
+            document.getElementById('repass_old_password').focus();
+        }
+
+        $scope.re_click = function(){
+            $scope.repass_new=false;
+            document.getElementById('repass_re_password').focus();
+        }
+
+        $scope.reconfirm_click = function(){
+            $scope.repass_reconfirm=false;
+            document.getElementById('repass_reconfirm_password').focus();
+        }
+
+        $scope.re_in_click = function(){
+            $scope.repass_new=false;
+            getRepassInputsVal();
+        }
+
+        $scope.reconfirm_in_click = function(){
+            $scope.repass_reconfirm=false;
+            getRepassInputsVal();
+        }
+
+        $scope.repass_in_click = function(){
+            $scope.repass_test=false;
+            getRepassInputsVal();
+        }
+
+        function getRepassInputsVal(){
+            var old_pass = $scope.repass_old_password;
+            var new_pass = $scope.repass_re_password;
+            var confirm_pass = $scope.repass_reconfirm_password;
+            if(old_pass && new_pass && confirm_pass == new_pass){
+                $scope.btn_ok_fail = "";
+            }else
+                $scope.btn_ok_fail = "btn_ok_fail";
+        }
+
+        $scope.repass_in_blur = function(){
+            $scope.repass_test=true;
+            getRepassInputsVal();
+        }
+
+        $scope.re_in_blur = function(){
+            $scope.repass_new=true;
+            getRepassInputsVal();
+        }
+
+        $scope.reconfirm_in_blur = function(){
+            $scope.repass_reconfirm=true;
+            getRepassInputsVal();
+        }
+
+        $scope.ok = function(){
+            if($scope.btn_ok_fail == ""){
+                var data = {
+                    username: $cookieStore.get("iotcloud-token").loginName,
+                    old_password: $scope.repass_old_password,
+                    password: $scope.repass_re_password,
+                    re_password: $scope.repass_reconfirm_password
+                };
+                $http.post(baseUrl+"/api/1/user/repassword/", data)
+                    .success(function(res){
+                        if(res.code=='200'){
+                            window.location.href = "/login.html"
+                        }else
+                            //$rootScope.alert_pop("密码修改出错:"+res.description);
+                            ngDialog.open({
+                                template: '<p style=\"text-align: center\">密码修改出错:'+res.description+'</p>',
+                                plain: true
+                            });
+                })
+            }
+            $uibModalInstance.close();
+        };
+    
+    }else if(items.method=="delete"){
+        $scope.ok = function(){
+            $http.get(baseUrl+"/api/1/user/logout/").success(function(data){
+                if(data.code=="200"){
+                    window.location.href = "/login.html"
+                }
+            }).error(function(){
+                 ngDialog.open({
+                    template: '<p style=\"text-align: center\">退出出错:'+data.description+'</p>',
+                    plain: true
+                });
+            });
+            $uibModalInstance.close();
+        };
+    }
+
+});
+
 app.controller("sideBarCtrl",function($scope, $rootScope){
 
      $scope.open={
@@ -743,45 +760,45 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
     }
     $scope.statusSel = function(data){
         //$scope.status = data.key;
-
         if(data.key){
-            $scope.status = (1).toString();
-            console.log(typeof $scope.status)
+            $scope.status = "1";
         }
         else{
-            $scope.status = (0).toString();
+            $scope.status = "0";
         }
-
-
     }
     if(items.method=="add"){
         $scope.role2 = {key:4,value:"其它"};
         $scope.status2 = {key:false,value:"未激活"};
         $scope.ok = function(){
           if($scope.username){
-            /*var query_url = url_junction.getDict({
-                user_role_type:$scope.role,
-                username:$scope.username,
-                password:'111111',
-                re_password:'111111',
-                is_active:$scope.status
-            });*/
-            //var query_url = 'user_role_type='+$scope.role+'&username='+$scope.username+'&password=111111&re_password=111111&is_active='+$scope.status;
-            var query_url = {
-                user_role_type:$scope.role,
-                username:$scope.username,
-                password:'111111',
-                re_password:'111111',
-                is_active:$scope.status
-            };
-            $http.post(baseUrl+"/api/1/user/",query_url).success(function(data){
-                if(data.code==200){
-                    items.scope.submit_search();
-                };
-            }).error(function(){
-                alert("error")
-            });
-            $uibModalInstance.close();
+            if($scope.password){
+                if($scope.password == $scope.re_password){
+                    var query_url = url_junction.getDict({
+                        user_role_type:$scope.role,
+                        username:$scope.username,
+                        password:$scope.password,
+                        re_password:$scope.re_password,
+                        is_active:$scope.status
+                    });
+                    $http.post(baseUrl+"/api/1/user/",query_url).success(function(data){
+                        if(data.code==200){
+                            items.scope.submit_search();
+                        };
+                    }).error(function(){
+                        alert("error")
+                    });
+                    $uibModalInstance.close();
+                }else
+                    ngDialog.open({
+                        template: '<p style=\"text-align: center\">确认密码与密码不一致</p>',
+                        plain: true
+                    });
+            }else
+                ngDialog.open({
+                    template: '<p style=\"text-align: center\">密码不能为空</p>',
+                    plain: true
+                });
          }else
             ngDialog.open({
                 template: '<p style=\"text-align: center\">用户名不能为空</p>',
@@ -791,20 +808,21 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
         };
     }else if(items.method=="modify"){
         $scope.role2 = {key:items.data.user_role_type,value:items.data.get_user_role_type_display};
+        $scope.role = items.data.user_role_type;
         var statusInfo = {};
         statusInfo.key = items.data.is_active;
         if(statusInfo.key){
             statusInfo.value = "激活";
-            $scope.status = 1;
+            $scope.status = "1";
         }
         else{
             statusInfo.value = "未激活"; 
-            $scope.status = 0;      
+            $scope.status = "0";      
         }
         $scope.status2 = statusInfo;
         $scope.username = items.data.username;
         $scope.ok = function(){
-            if($scope.username){
+            if($scope.username){ 
                 $scope.pk = items.data.id;
                 var query_url = url_junction.getDict({
                     user_role_type:$scope.role,
@@ -821,6 +839,7 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
                     alert("error")
                 });
                 $uibModalInstance.close();
+                    
             }else
                 ngDialog.open({
                     template: '<p style=\"text-align: center\">用户名不能为空</p>',

@@ -1,42 +1,12 @@
-<div class="header_com page-wrapper-head">
-	<div class="header_com_logo"><img src="/lib/img/use-logo.png" /></div>
-	<div class="header_com_title"><p>IOT智能仓库系统</p></div>
-	
-	<div class="dropdown header_com_user" dropdown>
-    	<button type="button" class="btn dropdown-toggle" id="header_com_user_menu" data-toggle="dropdown"  dropdown-toggle>	Hi,{{header_username}}
-        	<span class="caret"></span>
-    	
-    	</button>
-    	<ul class="dropdown-menu dropdown-menu-right header-menu-pos" role="menu" aria-labelledby="header_com_user_menu">
-        	<li role="presentation">
-            	<a role="menuitem" tabindex="-1" href="javascript:;"><span class="header-menu-tag header-menu-tag-user"></span>我的帐号</a>
-        	</li>
-        	<li role="presentation">
-            	<a role="menuitem" tabindex="-1" href="javascript:;" ng-click="repassword()"><span class="header-menu-tag header-menu-tag-pass"></span>修改密码</a>
-        	</li>
-        	<li role="presentation">
-            	<a role="menuitem" tabindex="-1" href="javascript:;" ng-click="logout()"><span class="header-menu-tag header-menu-tag-logout"></span>退出</a>
-        	</li>
-        	
-    	</ul>
-	</div>
-	<div class="header_com_portrait"><img src="/lib/img/header.png" /></div>
-</div>
-<div class="header-com-mask {{header_com_mask_show}}" ng-show="header_com_mask">
-	
-</div>
-<div class="header-com-logout-pop {{header_com_logout_pop_show}}" ng-show="header_com_logout_pop">
-	<div class="header-com-logout-pop-h"><span></span>退出IOT智能仓储系统</div>
-	<div class="header-com-logout-pop-m"><span></span>确定要退出吗？</div>	
-	<div class="header-com-logout-pop-b">
-    	<button class="btn pull-left btn_ok" ng-click="logout_ok()">确定</button>
-    	<button ng-click="logout_cancel()" class="btn pull-right btn_cancel" type="button">取消</button>
-    </div>
-</div>
-<div class="header-com-repass-pop {{header_com_repass_pop_show}}" ng-show="header_com_repass_pop">
-	<div class="header-com-repass-pop-h"><span></span>修改密码</div>
-	<div class="header-com-repass-pop-m">
-		<form role="form" name="repass" id="repass_form" name="repass_form">
+<div class="header_com page-wrapper-head" ng-controller="headerCtrl">
+
+<script type="text/ng-template" id="myModalContentHeader.html">
+    	<div class="modal-header">
+        	<h3 class="modal-title"><span ng-class="{false:'icon-icon_password',true:'icon-icon_logout'}[isDel]"></span>{{item.title}}</h3>
+    	</div>
+    	<div class="modal-body row">
+        	<div ng-show="item.text">{{item.text}}</div>
+        	<form role="form" id="repass_form" name="repass_form" ng-show="item.method=='modify'" class="pop-edit-form-com edit-form-header">
 			<div class="form-group repass-form-group">
 				<label for="repass_old_password" class="repass_label"><span>*</span>旧密码</label>
 				<input class="form-control repass_in" type="password" id="repass_old_password" name="repass_old_password" ng-model="repass_old_password" ng-maxlength="20" placeholder="请输入旧密码" ng-click="repass_in_click()" ng-keyup="repass_in_click()" ng-blur="repass_in_blur()" required/>
@@ -65,11 +35,38 @@
 			</div>
 
 		</form>
+
+        	<div class="pop-delete-com pop-delete-com-header" ng-show="item.method=='delete'"><p><span></span>确定要退出吗？</p></div>
+
+    	</div>
+    	<div class="modal-footer">
+      		<div class="modal-footer-resize-com modal-footer-resize-card">
+        		<button class="btn pull-left btn_ok {{btn_ok_fail}}" type="button" ng-click="ok()">确定</button>
+        		<button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
+      		</div>
+    	</div>
+	</script>
+
+	<div class="header_com_logo"><img src="/lib/img/use-logo.png" /></div>
+	<div class="header_com_title"><p>IOT智能仓库系统</p></div>
+	
+	<div class="dropdown header_com_user" dropdown>
+    	<button type="button" class="btn dropdown-toggle" id="header_com_user_menu" data-toggle="dropdown"  dropdown-toggle>	Hi,{{header_username}}
+        	<span class="caret"></span>
+    	
+    	</button>
+    	<ul class="dropdown-menu dropdown-menu-right header-menu-pos" role="menu" aria-labelledby="header_com_user_menu">
+        	<li role="presentation">
+            	<a role="menuitem" tabindex="-1" href="#account"><span class="header-menu-tag header-menu-tag-user"></span>我的帐号</a>
+        	</li>
+        	<li role="presentation">
+            	<a role="menuitem" tabindex="-1" href="javascript:;" ng-click="open('md-edit-header','modify',$index)"><span class="header-menu-tag header-menu-tag-pass"></span>修改密码</a>
+        	</li>
+        	<li role="presentation">
+            	<a role="menuitem" tabindex="-1" href="javascript:;" ng-click="open('md-delete','delete',$index)"><span class="header-menu-tag header-menu-tag-logout"></span>退出</a>
+        	</li>
+        	
+    	</ul>
 	</div>
-	<div class="header-com-repass-pop-b">
-    	<button class="btn pull-left btn_ok {{btn_ok_fail}}" ng-click="repass_ok()">确定</button>
-    	<button ng-click="repass_cancel()" class="btn pull-right btn_cancel" type="button">取消</button>
-    </div>
+	<div class="header_com_portrait"><img src="/lib/img/header.png" /></div>
 </div>
-
-

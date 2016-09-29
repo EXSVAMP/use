@@ -33,7 +33,6 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
                         return {
                             title:"新增用户",
                             method:"add",
-                            //status_disable:true,
                             //choice:$scope.choice,
                             scope:$scope
                         }
@@ -41,7 +40,6 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
                         return {
                             title:"修改用户",
                             method:"modify",
-                           	//status_disable:false,
                             data:$scope.dataList[index],
                             //choice:$scope.choice,
                             scope:$scope
