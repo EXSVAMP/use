@@ -8,7 +8,7 @@
         	<form role="form" class="pop-edit-form-com edit-form-user" ng-show="item.method=='modify' || item.method=='add'">
         		<div class="form-group">
     				  <label for="username">用户名:</label> 
-    			 	  <input type="text" class="form-control" id="username" placeholder="请输入用户名" ng-model="username">
+    			 	  <input type="text" class="form-control {false:'',true:'disable-input'}[disAlter]" id="username" placeholder="请输入用户名" ng-model="username" ng-disabled="disAlter">
 				    </div>
             <div class="form-group" ng-show="item.method=='add'">
               <label for="password">密码:</label> 

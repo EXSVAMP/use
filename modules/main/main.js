@@ -4,7 +4,6 @@ require('interceptor/captainlnterceptor');
 require('common/service/listService');
 require('common/service/utils');
 require('common/service/params');
-require('common/service/popService');
 require('common/filters');
 
 
@@ -767,7 +766,7 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
     $scope.roleList = items.scope.roleList;
     $scope.statusList = items.scope.statusList;
     $scope.roleList = $scope.roleList.slice(0,$scope.roleList.length-1);
-    $scope.statusList = items.scope.statusList.slice(0,$scope.statusList.length-1);;
+    $scope.statusList = items.scope.statusList.slice(0,$scope.statusList.length-1);
     $scope.cancel = function(){
         $uibModalInstance.dismiss('cancel');
     };
@@ -784,6 +783,7 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
         }
     }
     if(items.method=="add"){
+        $scope.disAlter = false;
         $scope.role2 = {key:4,value:"其它"};
         $scope.status2 = {key:false,value:"未激活"};
         $scope.ok = function(){
@@ -823,6 +823,7 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
 
         };
     }else if(items.method=="modify"){
+        $scope.disAlter = true;
         $scope.role2 = {key:items.data.user_role_type,value:items.data.get_user_role_type_display};
         $scope.role = items.data.user_role_type;
         var statusInfo = {};
@@ -842,7 +843,7 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
                 $scope.pk = items.data.id;
                 var query_url = url_junction.getDict({
                     user_role_type:$scope.role,
-                    username:$scope.username,
+                    //username:$scope.username,
                     is_active:$scope.status
                 });
                 $http.put(baseUrl+"/api/1/user/"+$scope.item.data.id+"/",query_url).success(function(data){

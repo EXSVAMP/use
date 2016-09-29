@@ -173,17 +173,21 @@
 
 .edit-form-user{
   
-  .form-group{
-    @include common_select(360px);
-    margin: 10px auto;
-    float: none;
+	.form-group{
+		@include common_select(360px);
+		margin: 10px auto;
+		float: none;
+    }
+    .disable-input{
+    	background: #e3e7eb;
+		border: solid 1px #e8ebf0;
     }
 }
 
 .modal-md-edit-user,.modal-md-add-user{
- @extend .modal-md-edit;
-  height: 359px;
-  margin-top: -179.5px;
+	@extend .modal-md-edit;
+	height: 359px;
+	margin-top: -179.5px;
 }
 
 .modal-md-add-user{
