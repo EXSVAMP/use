@@ -338,7 +338,7 @@ app.controller("AlertCtrl",function($scope, $rootScope){
 })
 
 
-app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,items,baseUrl) {
+app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,ngDialog,items,baseUrl) {
     baseUrl = baseUrl.getUrl();
     console.log(items)
     $scope.item = items;
@@ -374,37 +374,52 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,it
     $scope.ok = function(){
         //alert($scope.item.method);
         if($scope.item.method=="add"){
-            if($scope.serial_number!=undefined){
-            $http.post(baseUrl + "/api/1/card/", {"serial_number":$scope.serial_number, "status":$scope.status}).success(function(data){
-                items.scope.submit_search();
-            }).error(function(){
-                alert("有点故障！")
-            })
-            $uibModalInstance.close();
-            }
+            //if($scope.serial_number!=undefined){
+            if($scope.serial_number){
+                $http.post(baseUrl + "/api/1/card/", {"serial_number":$scope.serial_number, "status":$scope.status}).success(function(data){
+                    items.scope.submit_search();
+                }).error(function(){
+                    alert("有点故障！")
+                })
+                $uibModalInstance.close();
+            }else
+                ngDialog.open({
+                    template: '<p style=\"text-align: center\">序列号不能为空</p>',
+                    plain: true
+                });
         }else if($scope.item.method=="delete"){
             $http.delete(baseUrl+"/api/1/card/"+ $scope.item.data.id+"/").success(function(data){
                 items.scope.submit_search();
             }).error(function(){
                 alert("有点故障！")
             })
-            $uibModalInstance.close();
+            $uibModalInstance.close(); 
         }else if($scope.item.method=="modify"){
-            $http.put(baseUrl+"/api/1/card/"+$scope.item.data.id+"/",{"serial_number":$scope.serial_number, "status":$scope.status}).success(function(data){
-                items.scope.submit_search();
-            }).error(function(){
-                alert("有点故障！")
-            })
-            $uibModalInstance.close();
+            if($scope.serial_number){
+                $http.put(baseUrl+"/api/1/card/"+$scope.item.data.id+"/",{"serial_number":$scope.serial_number, "status":$scope.status}).success(function(data){
+                    items.scope.submit_search();
+                }).error(function(){
+                    alert("有点故障！")
+                })
+                $uibModalInstance.close();
+            }else
+                ngDialog.open({
+                    template: '<p style=\"text-align: center\">序列号不能为空</p>',
+                    plain: true
+                });
         }else if($scope.item.method=="replace"){
-            if($scope.serial_number!=undefined){
+            if($scope.serial_number){
                $http.put(baseUrl+"/api/1/card/replace/"+$scope.item.data.id+"/",{"serial_number":$scope.serial_number}).success(function(data){
                     items.scope.submit_search();
                }).error(function(){
                  alert("有点故障!");
              })
                 $uibModalInstance.close();
-            }
+            }else
+                ngDialog.open({
+                    template: '<p style=\"text-align: center\">序列号不能为空</p>',
+                    plain: true
+                });
         }
 
     };

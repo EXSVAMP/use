@@ -56,6 +56,22 @@
 				
 			}
 		}
+		tbody{
+			tr{
+				td{
+					p{
+						.rfid-edit{
+              				color: #45b6b0;
+              				background: none;
+            			}
+            			.rfid-delete{
+              				color: #ff6b6b;
+              				background: none;
+            			}
+					}
+				}
+			}
+		}
 
 	}
 
@@ -181,3 +197,8 @@
     }
 }
 
+.pop-delete-com-card{
+	margin-top: 15px;
+	height: auto;
+    overflow: hidden;
+}
