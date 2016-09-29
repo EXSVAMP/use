@@ -1,4 +1,52 @@
-<div class="header_com page-wrapper-head">
+<div class="header_com page-wrapper-head" ng-controller="headerCtrl">
+
+    <script type="text/ng-template" id="myModalContentHeader.html">
+    	<div class="modal-header">
+        	<h3 class="modal-title"><span ng-class="{false:'icon-icon_password',true:'icon-icon_logout'}[isDel]"></span>{{item.title}}</h3>
+    	</div>
+    	<div class="modal-body row">
+            <div ng-show="item.text">{{item.text}}</div>
+        	<form role="form" id="repass_form" name="repass_form" ng-show="item.method=='modify'" class="pop-edit-form-com edit-form-header">
+                <div class="form-group repass-form-group">
+                    <label for="repass_old_password" class="repass_label"><span>*</span>旧密码</label>
+				    <input class="form-control repass_in" type="password" id="repass_old_password" name="repass_old_password" ng-model="repass_old_password" ng-maxlength="20" placeholder="请输入旧密码" ng-click="repass_in_click()" ng-keyup="repass_in_click()" ng-blur="repass_in_blur()" required/>
+				    <div class="repass_error" ng-show="repass_test&&repass.repass_old_password.$touched&&repass.repass_old_password.$error.required&&repass.repass_old_password.$invalid" ng-click="repass_click()">
+                        <span class="errorInfoRepass" ng-show="repass.repass_old_password.$touched&&repass.repass_old_password.$error.required">必填</span>
+                        <span class="errorInfoRepass" ng-show="repass.repass_old_password.$touched&&repass.repass_old_password.$invalid">密码长度有误</span>
+				    </div>
+                </div>
+
+                <div class="form-group repass-form-group">
+				    <label for="repass_re_password" class="repass_label"><span>*</span>新密码</label>
+				    <input class="form-control repass_in" type="password" id="repass_re_password" name="repass_re_password" ng-model="repass_re_password" ng-maxlength="20" placeholder="请输入新密码" ng-click="re_in_click()" ng-keyup="re_in_click()" ng-blur="re_in_blur()" required/>
+				    <div class="repass_error" ng-show="repass_new&&repass.repass_re_password.$touched&&repass.repass_re_password.$error.required&&repass.repass_re_password.$invalid" ng-click="re_click()">
+                        <span class="errorInfoRepass" ng-show="repass.repass_re_password.$touched&&repass.repass_re_password.$error.required">必填</span>
+                        <span class="errorInfoRepass" ng-show="repass.repass_re_password.$touched&&repass.repass_re_password.$invalid">密码的设置为6-20位</span>
+				    </div>
+                </div>
+
+                <div class="form-group repass-form-group">
+				    <label for="repass_reconfirm_password" class="repass_label"><span>*</span>重复新密码</label>
+				    <input class="form-control repass_in" type="password" id="repass_reconfirm_password" name="repass_reconfirm_password" ng-model="repass_reconfirm_password" ng-maxlength="20" placeholder="请重复新密码" ng-click="reconfirm_in_click()" ng-keyup="reconfirm_in_click()" ng-blur="reconfirm_in_blur()" required/>
+				    <div class="repass_error" ng-show="repass_reconfirm&&repass.repass_reconfirm_password.$touched&&repass.repass_reconfirm_password.$error.required&&repass.repass_reconfirm_password.$invalid" ng-click="reconfirm_click()">
+                        <span class="errorInfoRepass" ng-show="repass.repass_reconfirm_password.$touched&&repass.repass_reconfirm_password.$error.required">必填</span>
+                        <span class="errorInfoRepass" ng-show="repass.repass_reconfirm_password.$touched&&repass.repass_reconfirm_password.$invalid">重复新密码与新密码不一致</span>
+				    </div>
+                </div>
+
+            </form>
+
+        	<div class="pop-delete-com pop-delete-com-header" ng-show="item.method=='delete'"><p><span></span>确定要退出吗？</p></div>
+
+    	</div>
+    	<div class="modal-footer">
+      		<div class="modal-footer-resize-com modal-footer-resize-card">
+        		<button class="btn pull-left btn_ok {{btn_ok_fail}}" type="button" ng-click="ok()">确定</button>
+        		<button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
+      		</div>
+    	</div>
+	</script>
+
 	<div class="header_com_logo"><img src="/lib/img/use-logo.png" /></div>
 	<div class="header_com_title"><p>IOT智能仓库系统</p></div>
 	
@@ -9,67 +57,16 @@
     	</button>
     	<ul class="dropdown-menu dropdown-menu-right header-menu-pos" role="menu" aria-labelledby="header_com_user_menu">
         	<li role="presentation">
-            	<a role="menuitem" tabindex="-1" href="javascript:;"><span class="header-menu-tag header-menu-tag-user"></span>我的帐号</a>
+            	<a role="menuitem" tabindex="-1" href="#account"><span class="header-menu-tag header-menu-tag-user"></span>我的帐号</a>
         	</li>
         	<li role="presentation">
-            	<a role="menuitem" tabindex="-1" href="javascript:;" ng-click="repassword()"><span class="header-menu-tag header-menu-tag-pass"></span>修改密码</a>
+            	<a role="menuitem" tabindex="-1" href="javascript:;" ng-click="open('md-edit-header','modify',$index)"><span class="header-menu-tag header-menu-tag-pass"></span>修改密码</a>
         	</li>
         	<li role="presentation">
-            	<a role="menuitem" tabindex="-1" href="javascript:;" ng-click="logout()"><span class="header-menu-tag header-menu-tag-logout"></span>退出</a>
+            	<a role="menuitem" tabindex="-1" href="javascript:;" ng-click="open('md-delete','delete',$index)"><span class="header-menu-tag header-menu-tag-logout"></span>退出</a>
         	</li>
         	
     	</ul>
 	</div>
 	<div class="header_com_portrait"><img src="/lib/img/header.png" /></div>
 </div>
-<div class="header-com-mask {{header_com_mask_show}}" ng-show="header_com_mask">
-	
-</div>
-<div class="header-com-logout-pop {{header_com_logout_pop_show}}" ng-show="header_com_logout_pop">
-	<div class="header-com-logout-pop-h"><span></span>退出IOT智能仓储系统</div>
-	<div class="header-com-logout-pop-m"><span></span>确定要退出吗？</div>	
-	<div class="header-com-logout-pop-b">
-    	<button class="btn pull-left btn_ok" ng-click="logout_ok()">确定</button>
-    	<button ng-click="logout_cancel()" class="btn pull-right btn_cancel" type="button">取消</button>
-    </div>
-</div>
-<div class="header-com-repass-pop {{header_com_repass_pop_show}}" ng-show="header_com_repass_pop">
-	<div class="header-com-repass-pop-h"><span></span>修改密码</div>
-	<div class="header-com-repass-pop-m">
-		<form role="form" name="repass" id="repass_form" name="repass_form">
-			<div class="form-group repass-form-group">
-				<label for="repass_old_password" class="repass_label"><span>*</span>旧密码</label>
-				<input class="form-control repass_in" type="password" id="repass_old_password" name="repass_old_password" ng-model="repass_old_password" ng-maxlength="20" placeholder="请输入旧密码" ng-click="repass_in_click()" ng-keyup="repass_in_click()" ng-blur="repass_in_blur()" required/>
-				<div class="repass_error" ng-show="repass_test&&repass.repass_old_password.$touched&&repass.repass_old_password.$error.required&&repass.repass_old_password.$invalid" ng-click="repass_click()">
-					<span class="errorInfoRepass" ng-show="repass.repass_old_password.$touched&&repass.repass_old_password.$error.required">必填</span>
-            		<span class="errorInfoRepass" ng-show="repass.repass_old_password.$touched&&repass.repass_old_password.$invalid">密码长度有误</span>
-				</div>
-			</div>
-
-			<div class="form-group repass-form-group">
-				<label for="repass_re_password" class="repass_label"><span>*</span>新密码</label>
-				<input class="form-control repass_in" type="password" id="repass_re_password" name="repass_re_password" ng-model="repass_re_password" ng-maxlength="20" placeholder="请输入新密码" ng-click="re_in_click()" ng-keyup="re_in_click()" ng-blur="re_in_blur()" required/>
-				<div class="repass_error" ng-show="repass_new&&repass.repass_re_password.$touched&&repass.repass_re_password.$error.required&&repass.repass_re_password.$invalid" ng-click="re_click()">
-					<span class="errorInfoRepass" ng-show="repass.repass_re_password.$touched&&repass.repass_re_password.$error.required">必填</span>
-            		<span class="errorInfoRepass" ng-show="repass.repass_re_password.$touched&&repass.repass_re_password.$invalid">密码的设置为6-20位</span>
-				</div>
-			</div>
-
-			<div class="form-group repass-form-group">
-				<label for="repass_reconfirm_password" class="repass_label"><span>*</span>重复新密码</label>
-				<input class="form-control repass_in" type="password" id="repass_reconfirm_password" name="repass_reconfirm_password" ng-model="repass_reconfirm_password" ng-maxlength="20" placeholder="请重复新密码" ng-click="reconfirm_in_click()" ng-keyup="reconfirm_in_click()" ng-blur="reconfirm_in_blur()" required/>
-				<div class="repass_error" ng-show="repass_reconfirm&&repass.repass_reconfirm_password.$touched&&repass.repass_reconfirm_password.$error.required&&repass.repass_reconfirm_password.$invalid" ng-click="reconfirm_click()">
-					<span class="errorInfoRepass" ng-show="repass.repass_reconfirm_password.$touched&&repass.repass_reconfirm_password.$error.required">必填</span>
-            		<span class="errorInfoRepass" ng-show="repass.repass_reconfirm_password.$touched&&repass.repass_reconfirm_password.$invalid">重复新密码与新密码不一致</span>
-				</div>
-			</div>
-
-		</form>
-	</div>
-	<div class="header-com-repass-pop-b">
-    	<button class="btn pull-left btn_ok {{btn_ok_fail}}" ng-click="repass_ok()">确定</button>
-    	<button ng-click="repass_cancel()" class="btn pull-right btn_cancel" type="button">取消</button>
-    </div>
-</div>
-
-
