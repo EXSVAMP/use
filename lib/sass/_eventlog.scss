@@ -90,7 +90,7 @@
            width: 300px;
            height: 110px;
            padding: 15px 20px;
-           margin-bottom: 5px;
+           margin: 5px;
            border-radius: 4px;
            border: solid 1px #e6e6e6;
           line-height: 22px;
@@ -128,6 +128,9 @@
         .active{
           border:solid  1px #5F9BDB;
           border-left: solid 5px #5F9BDB ;
+          padding-left: 16px;
+          border-bottom-left-radius: 0px;
+          border-top-left-radius: 0px;
         }
 
       }
