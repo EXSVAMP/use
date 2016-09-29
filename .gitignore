@@ -22,7 +22,7 @@ $RECYCLE.BIN/
 
 # OSX
 # =========================
-
+*.map
 .DS_Store
 */.DS_Store
 */*/.DS_Store
