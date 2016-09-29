@@ -7,9 +7,17 @@
         	<div ng-show="item.text">{{item.text}}</div>
         	<form role="form" class="pop-edit-form-com edit-form-user" ng-show="item.method=='modify' || item.method=='add'">
         		<div class="form-group">
-    				<label for="username">用户名:</label> 
-    			 	<input type="text" class="form-control" id="username" placeholder="请输入用户名" ng-model="username">
-				</div>
+    				  <label for="username">用户名:</label> 
+    			 	  <input type="text" class="form-control" id="username" placeholder="请输入用户名" ng-model="username">
+				    </div>
+            <div class="form-group" ng-show="item.method=='add'">
+              <label for="password">密码:</label> 
+              <input type="password" class="form-control" id="password" placeholder="请输入密码" ng-model="password">
+            </div>
+            <div class="form-group" ng-show="item.method=='add'">
+              <label for="re_password">确认密码:</label> 
+              <input type="password" class="form-control" id="re_password" placeholder="请确认密码" ng-model="re_password">
+            </div>
           		<div class="form-group">
     				<label for="role2">角色:</label> 
     				<ui-select ng-model="role2" theme="bootstrap" on-select="roleSel(role2)">
@@ -21,7 +29,7 @@
           			</ui-select>
 				</div>
 				<div class="form-group">
-    				<label for="status">状态:{{status}}</label>
+    				<label for="status">状态:</label>
     				<ui-select ng-model="status2" theme="bootstrap" on-select="statusSel(status2)">
             			<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
             			<ui-select-choices repeat="item in statusList">
@@ -72,7 +80,7 @@
 			</div>
 			<div class="btns-group">
 				<button type="button" class="btn btn-rfid-search" ng-click="index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
-				<button type="button" class="btn btn-rfid-add" ng-click="open('md-edit-user','add',$index)"><span class="icon-icon_plus"></span>增加</button>
+				<button type="button" class="btn btn-rfid-add" ng-click="open('md-add-user','add',$index)"><span class="icon-icon_plus"></span>增加</button>
 			</div>
 		</form>
 		<div class="condition-sort">

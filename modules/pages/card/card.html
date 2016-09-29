@@ -43,7 +43,6 @@
             <label for="edit_status">状态:</label>
             <ui-select ng-model="stateEdit.flag" theme="bootstrap">
               <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
-                <!-- <ui-select-choices repeat="item in [{ name: 未使用, flag: 0},{ name: 正在使用, flag: 1},{ name: 损坏, flag: 2},{ name: 已删除停用, flag:3}]"> -->
                 <ui-select-choices repeat="item in stateEdit">
                 <div ng-bind-html="item.name"></div>
               </ui-select-choices>
@@ -55,7 +54,7 @@
           </div>
         </form>
 
-        <div class="pop-delete-com" ng-show="item.method=='delete'"><p><span></span>确定要删除这个RFID卡吗？<br/>注意：删除以后不可以恢复！</p></div>
+        <div class="pop-delete-com pop-delete-com-card" ng-show="item.method=='delete'"><p><span></span>确定要删除这个RFID卡吗？<br/>注意：删除以后不可以恢复！</p></div>
 
     </div>
     <div class="modal-footer">
@@ -72,21 +71,22 @@
 	<div class="main-content card-content">
 		<form role="form" class="search-bar card-select">
 			<div class="form-group form-group-selin">
-    			<label for="name">状态:</label> 
-    			<ui-select ng-model="state.name" theme="bootstrap">
-            		<ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
-            		<ui-select-choices repeat="item in state">
-              			<div ng-bind-html="item.name"></div>
-              			<!-- <small ng-bind-html="item.email"></small> -->
-            		</ui-select-choices>
-          		</ui-select>
+    		<label for="name">状态:</label> 
+    		<!-- <ui-select ng-model="state.name" theme="bootstrap"> -->
+        <ui-select ng-model="statusSel" theme="bootstrap" on-select="statusSelFunc(statusSel)">
+          <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+          <ui-select-choices repeat="item in state">
+            <div ng-bind-html="item.name"></div>
+            <!-- <small ng-bind-html="item.email"></small> -->
+          </ui-select-choices>
+        </ui-select>
 			</div>
 			<div class="form-group">
     			<label for="name">序列号:</label> 
     			 <input type="text" class="form-control" id="serial-search" placeholder="请输入名称" ng-model="serial_search">
 			</div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
 				<!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
 			</div>
 		</form>
@@ -117,7 +117,7 @@
       				<td><p>{{item.status_display}}</p></td>
       				<td><p>{{item.updated_at}}</p></td>
       				<td><p>{{item.created_at}}</p></td>
-      				<td><p><span class="com-deit rfid-edit" ng-click="open('md-edit','replace',$index)"></span><span class="com-delete rfid-delete" ng-click="open('md-delete','delete',$index)"></span></p></td>
+      				<td><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
     			</tr>
     		</tbody>
     	</table>

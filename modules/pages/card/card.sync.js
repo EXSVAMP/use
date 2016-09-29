@@ -70,6 +70,8 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
   	$scope.number = 10;
     $scope.maxSize = 5;
   	$scope.status = "-1";
+    //user sel status but not click search
+    $scope.statusTemp = "-1";
     $scope.numbers = [10,20,30,40,50];
   	
     $scope.order = {
@@ -79,6 +81,11 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
         updated_at:false,
         created_at:false
     };
+
+    $scope.statusSelFunc = function(data){
+      $scope.statusTemp = data.flag;
+    }
+
     $scope.switch_order = function(key){
         $scope.order[key] = !$scope.order[key];
         $scope.submit_search()
@@ -121,10 +128,10 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
       if(iStatus)
         $scope.status = iStatus;
       else{
-        if(typeof $scope.state.name != "undefined")
-          $scope.status = $scope.state.name.flag;
-        else
-          $scope.status = -1;
+        // if(typeof $scope.state.name != "undefined")
+        //   $scope.status = $scope.state.name.flag;
+        // else
+        //   $scope.status = -1;
       }
       var order_str = "";
       for(var i in $scope.order){

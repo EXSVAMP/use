@@ -180,10 +180,15 @@
     }
 }
 
-.modal-md-edit-user{
+.modal-md-edit-user,.modal-md-add-user{
  @extend .modal-md-edit;
   height: 359px;
   margin-top: -179.5px;
+}
+
+.modal-md-add-user{
+	height: 480px;
+	margin-top: -240px;
 }
 
 .pop-delete-com-user {
