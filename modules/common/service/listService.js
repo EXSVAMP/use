@@ -1,7 +1,9 @@
 var app = angular.module('RDash');
 app.factory('listService', function ($http,baseUrl) {
     return {
-        init:function($scope,url){
+        init:function($scope,url,options){                      //options:{isAdd:刷新时旧数据是否清空,autoRefresh:列表到底自动刷新,listElement:列表元素选择器}
+            $scope.options = options?options:{};                //查询设置
+            $scope.listEl = null;                               //列表元素
             $scope.dataList=[];                                 //数据
             $scope.total=0;                                     //总条数
             $scope.totalPage=0;                                 //总页数
@@ -32,7 +34,11 @@ app.factory('listService', function ($http,baseUrl) {
                 $http.get(baseUrl.getUrl() + url,{params:$scope.params}).success(function(data){
                     $scope.listLoadFlag=2;
                     if(data.code==200){
-                        $scope.dataList=data.data;
+                        if($scope.options.isAdd){
+                            $scope.dataList=$scope.dataList.concat(data.data);
+                        }else{
+                            $scope.dataList=data.data;
+                        }
                         $scope.total=data.pageinfo.total_number;
                         $scope.totalPage=data.pageinfo.total_page;
                         if(callback&&angular.isFunction(callback))callback(data);
@@ -41,6 +47,18 @@ app.factory('listService', function ($http,baseUrl) {
                         alert(data.message)
                     }
                 });
+            }
+            //自动刷新的列表添加滚动监听
+            if($scope.options.autoRefresh&&$scope.options.listElement){
+                $scope.listEl = angular.element($scope.options.listElement);
+                if($scope.listEl){
+                    $scope.listEl.on('scroll',function(event){
+                        var list = event.target;
+                        if(list.scrollTop + list.clientHeight == list.scrollHeight){
+                            $scope.refresh();
+                        }
+                    })
+                }
             }
         }
     }

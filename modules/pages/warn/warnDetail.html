@@ -57,7 +57,7 @@
                     <span class="col-lg-12"><span class="icon icon-icon_records"></span>历史操作记录详情</span>
                 </div>
                     <div class="record-list">
-                        <div class="record-item" ng-repeat="record in detail.records">
+                        <div class="record-item" ng-repeat="record in dataList">
                             <div class="item-row">
                                 <span>处理时间</span><span>2016-07-26T16:47:50</span>
                             </div>
@@ -68,6 +68,9 @@
                                 <span>具体操作</span><span>[报警]读卡器:[编号:1][序列号:000b];摄像头:[编号:1][序列号:192.168.11.11];监视到事件:出库;
                                 原因:异常出入库,入</span>
                             </div>
+                        </div>
+                        <div class="list-bottom" ng-show="listLoadFlag==1">
+                            <span>加载中...</span>
                         </div>
                     </div>
                 </div>
