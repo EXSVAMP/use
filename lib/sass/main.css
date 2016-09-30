@@ -622,6 +622,18 @@
   .login .center {
     margin-top: 140px; } }
 
+.triangle-up {
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 5px solid #3e4d68;
+  font-size: 0;
+  line-height: 0; }
+
 .edit-form-header .repass-form-group {
   margin: auto;
   position: relative;
@@ -1824,6 +1836,9 @@
         padding: 0;
         position: relative;
         width: 360px; }
+.edit-form-user .disable-input {
+  background: #e3e7eb;
+  border: solid 1px #e8ebf0; }
 
 .modal-md-edit-user, .modal-md-add-user {
   height: 359px;

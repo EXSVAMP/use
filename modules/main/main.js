@@ -2,6 +2,7 @@ angular.module("RDash",['ui.bootstrap','ui.router','ngCookies','ngDialog','cgBus
 require('router');
 require('interceptor/captainlnterceptor');
 require('common/service/listService');
+require('common/service/popService');
 require('common/service/utils');
 require('common/service/params');
 require('common/filters');
