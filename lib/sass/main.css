@@ -896,12 +896,16 @@
     text-transform: none; }
   .card-content table.table-content thead tr .up-arw-af-card::after, .card-content table.table-content thead tr .up-arw-af-card-sn::after, .card-content table.table-content thead tr .up-arw-af-card-s::after, .card-content table.table-content thead tr .up-arw-af-card-cr::after, .card-content table.table-content thead tr .up-arw-af-up::after {
     content: "\e929"; }
-  .card-content table.table-content tbody tr td p .rfid-edit {
-    color: #45b6b0;
-    background: none; }
-  .card-content table.table-content tbody tr td p .rfid-delete {
-    color: #ff6b6b;
-    background: none; }
+  .card-content table.table-content tbody tr td p {
+    line-height: 2.2; }
+    .card-content table.table-content tbody tr td p .rfid-edit {
+      color: #45b6b0;
+      background: none;
+      margin-top: 8px; }
+    .card-content table.table-content tbody tr td p .rfid-delete {
+      color: #ff6b6b;
+      background: none;
+      margin-top: 8px; }
   .card-content .emptyDataList p span:first-child {
     background: none;
     font-size: 128px; }
@@ -1078,6 +1082,16 @@
     text-transform: none; }
   .content-content table.table-content thead tr .up-arw-af-card::after, .content-content table.table-content thead tr .up-arw-af-card-sn::after, .content-content table.table-content thead tr .up-arw-af-card-s::after, .content-content table.table-content thead tr .up-arw-af-card-cr::after, .content-content table.table-content thead tr .up-arw-af-up::after {
     content: "\e929"; }
+  .content-content table.table-content tbody tr td p {
+    line-height: 2.2; }
+    .content-content table.table-content tbody tr td p .rfid-edit {
+      color: #45b6b0;
+      background: none;
+      margin-top: 8px; }
+    .content-content table.table-content tbody tr td p .rfid-delete {
+      color: #ff6b6b;
+      background: none;
+      margin-top: 8px; }
   .content-content .emptyDataList p span:first-child {
     background: none;
     font-size: 128px; }
@@ -1601,6 +1615,16 @@
   text-transform: none; }
 .reader-content table.table-content thead tr .up-arw-af-card::after, .reader-content table.table-content thead tr .up-arw-af-card-sn::after, .reader-content table.table-content thead tr .up-arw-af-card-s::after, .reader-content table.table-content thead tr .up-arw-af-card-cr::after, .reader-content table.table-content thead tr .up-arw-af-up::after {
   content: "\e929"; }
+.reader-content table.table-content tbody tr td p {
+  line-height: 2.2; }
+  .reader-content table.table-content tbody tr td p .rfid-edit {
+    color: #45b6b0;
+    background: none;
+    margin-top: 8px; }
+  .reader-content table.table-content tbody tr td p .rfid-delete {
+    color: #ff6b6b;
+    background: none;
+    margin-top: 8px; }
 .reader-content .emptyDataList p span:first-child {
   background: none;
   font-size: 128px; }
@@ -1952,7 +1976,7 @@
   float: left; }
   .eventlog_Content .main-content .eventlog_detail .main-detail-tab {
     width: 850px;
-    height: 620px;
+    height: 660px;
     margin-bottom: 20px;
     background-color: #fff;
     float: right; }
@@ -1991,6 +2015,14 @@
           line-height: 50px; }
           .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img .img-bottom-bar .icon:hover {
             color: #337ab7; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img .bottom-bar-group {
+        float: left;
+        position: absolute;
+        bottom: -35px;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 50px;
+        width: 810px;
+        text-align: center; }
   .eventlog_Content .main-content .eventlog_detail .main-detail-content {
     width: 850px;
     height: 350px;

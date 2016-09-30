@@ -46,7 +46,7 @@ app.controller("warnHandlePopCtrl", function ($scope,$http,$uibModalInstance,bas
         $http.put(baseUrl.getUrl()+'/api/1/eventlog/'+$scope.params.id+'/',$scope.params).success(function(data){
             if(callbackFn)callbackFn(data.data);
             $uibModalInstance.dismiss();
-        });
+        }) ;
     }
     $scope.cancel=function(){
         $uibModalInstance.dismiss();
