@@ -85,7 +85,7 @@
     			 <input type="text" class="form-control" id="serial_number" placeholder="序列号" ng-model="serial_number">
 			</div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-rfid-search" ng-click="index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-rfid-search" ng-click="status=statusTemp;func_type=func_typeTemp;descriptionTemp=description;serial_numberTemp=serial_number;index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
 				<button type="button" class="btn btn-rfid-add" ng-click="open('md-edit-reader','add',$index)"><span class="icon-icon_plus"></span>增加</button>
 			</div>
 		</form>
@@ -122,7 +122,7 @@
               <td><p>{{item.description}}</p></td>
       				<td><p>{{item.updated_at}}</p></td>
       				<td><p>{{item.created_at}}</p></td>
-      				<td><p><span class="com-deit rfid-edit" ng-click="open('md-edit-reader','replace',$index)"></span><span class="com-delete rfid-delete" ng-click="open('md-delete','delete',$index)"></span></p></td>
+      				<td><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit-reader','replace',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
     			</tr>
     		</tbody>
     	</table>

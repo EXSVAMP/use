@@ -4,7 +4,10 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
 	$scope.choice = {};
 	$scope.role = "-1";
     $scope.status = "";
+    $scope.roleTemp = "-1";
+    $scope.statusTemp = "";
     $scope.username = "";
+    $scope.usernameTemp = "";
 	$scope.dataList = {};
 	$scope.index = 1;
 	$scope.number = 8;
@@ -61,10 +64,10 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
     };
 
     $scope.roleSel = function(data){
-    	$scope.role = data.key;
+    	$scope.roleTemp = data.key;
     }
     $scope.statusSel = function(data){
-    	$scope.status = data.key;
+    	$scope.statusTemp = data.key;
     }
     $scope.switch_order = function(key){
         $scope.order[key] = !$scope.order[key];
@@ -113,7 +116,7 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
       var query_url = url_junction.getQuery({
       user_role_type:$scope.role,
       //is_active:$scope.status,
-      username:$scope.username,
+      username:$scope.usernameTemp,
       descent:order_str,
       number:$scope.number,
       index:$scope.index,

@@ -62,6 +62,17 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
                     };
   $scope.choice={};
   $scope.rfid_type="-1";
+  $scope.rfid_typeTemp = "-1";
+  $scope.rfid_card_id = "";
+  $scope.rfid_card_idTemp = "";
+  $scope.rfid_id = "";
+  $scope.rfid_idTemp = "";
+  $scope.is_writed = "-1";
+  $scope.is_writedTemp = "-1";
+  $scope.card_serial_numberTemp = "";
+  $scope.card_serial_number = "";
+  $scope.goods_location_nameTemp = "";
+  $scope.goods_location_name = "";
   $scope.currentSelTab = "";
   $scope.query_result = {};
 
@@ -83,13 +94,11 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
   $scope.order={
 
   };
-  $scope.number = {
-
-  };
   $scope.bigCurrentPage = {
 
   };
   $scope.numbers = [10,20,30,40,50];
+  $scope.first_search = 1;
 
   $http.get(urlBase + "/api/1/common/choices/?key=rfidcontent").success(function(data){
     $scope.rfid_type_Items = [];
@@ -115,11 +124,11 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
   });
 
   $scope.changeType=function(data){
-    $scope.rfid_type = data.id;
+    $scope.rfid_typeTemp = data.id;
   }
 
   $scope.changeWrite=function(data){
-    $scope.is_writed = data.id;
+    $scope.is_writedTemp = data.id;
   }
 
   $scope.typeSelTabClick=function(data){
@@ -194,16 +203,25 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
   //$scope.number = 10;
   $scope.maxSize = 5;
 
+  $scope.refresh_stat_search = function (query_url_info){
+    for(var key in $scope.statusInfo){
+      //console.log("refresh_stat_search key:"+key);
+      if(key != $scope.currentSelTab){
+        $scope.submit_search_getTotal(key,query_url_info);
+      }
+    }
+  }
+
   $scope.submit_search = function(status,type,method){  //search type 0:搜索1:更新
     //$scope.table_hide = false;
-    console.log($scope.currentSelTab);
+    //console.log($scope.currentSelTab+",type:"+type);
     if(type==0){
-      rfid_card_id = $scope.rfid_card_id;
-      rfid_id = $scope.rfid_id;
+      rfid_card_id = $scope.rfid_card_idTemp;
+      rfid_id = $scope.rfid_idTemp;
       rfid_type = $scope.rfid_type;
       is_writed = $scope.is_writed;
-      card_serial_number = $scope.card_serial_number;
-      goods_location_name = $scope.goods_location_name;
+      card_serial_number = $scope.card_serial_numberTemp;
+      goods_location_name = $scope.goods_location_nameTemp;
 
     }else{
       //console.log("status:"+status);
@@ -247,12 +265,39 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
 
         $scope.bigTotalItems = data.pageinfo.total_number;
         $scope.total_page = data.pageinfo.total_page;
+        if($scope.first_search == 0 && type == 0)
+          $scope.bigTotalItems_detail[$scope.currentSelTab].total =  data.pageinfo.total_number;
         //alert($scope.currentPageDataNum);
         if($scope.currentPageDataNum == 0)
           $scope.emptyDataListShow = "emptyDataListShow";
         else{
           $scope.emptyDataListShow = "";
         }
+      }else{
+        alert(data.message)
+      }
+    }).error(function(data,state){
+      if(state == 403){
+        baseUrl.redirect()
+      }
+    })
+
+    if($scope.first_search == 0 && type == 0){
+      //console.log("query_url:"+JSON.stringify(query_url.substring(1)));
+      $scope.refresh_stat_search(query_url);
+    }
+
+    $scope.first_search = 0;
+
+  };
+
+  $scope.submit_search_getTotal = function(status,query_url_info){
+    //query_url:"?status=100&rfid_type=1&number=10&index=1"
+    query_url_info = query_url_info.replace(/status=\d*&/,'status='+status+"&");
+    //console.log("query_url_info.status:"+JSON.stringify(query_url_info));
+    $http.get(urlBase+"/api/1/content/"+ query_url_info).success(function(data){
+      if(data.code==200){
+        $scope.bigTotalItems_detail[status].total =  data.pageinfo.total_number;
       }else{
         alert(data.message)
       }

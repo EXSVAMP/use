@@ -56,6 +56,26 @@
 			}
 		}
 
+		tbody{
+			tr{
+				td{
+					p{
+						line-height: 2.2;
+						.rfid-edit{
+              				color: #45b6b0;
+              				background: none;
+              				margin-top: 8px;
+            			}
+            			.rfid-delete{
+              				color: #ff6b6b;
+              				background: none;
+              				margin-top: 8px;
+            			}
+					}
+				}
+			}
+		}
+
 	}
 
 	.emptyDataList{

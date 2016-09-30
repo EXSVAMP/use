@@ -87,7 +87,7 @@
                  <input type="text" class="form-control" id="serial-search" placeholder="请输入硬件卡序列号" ng-model="card_serial_number">
             </div>
             <div class="btns-group">
-                <button type="button" class="btn btn-rfid-search" ng-click="submit_search(status,0)"><span class="icon-icon_search"></span>搜索</button>
+                <button type="button" class="btn btn-rfid-search" ng-click="rfid_type=rfid_typeTemp;rfid_card_idTemp=rfid_card_id;rfid_idTemp=rfid_id;is_writed=is_writedTemp;card_serial_numberTemp=card_serial_number;goods_location_nameTemp=goods_location_name;submit_search(status,0)"><span class="icon-icon_search"></span>搜索</button>
                 <!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
             </div>
         </form>
@@ -138,7 +138,7 @@
                     <td><p>{{item.rfid_card.serial_number}}</p></td>
                     <td><p>{{item.updated_at}}</p></td>
                     <td><p>{{item.created_at}}</p></td>
-                    <td><p><span class="rfid-edit" ng-click="open('md-edit-content','modify',$index)"></span><span class="rfid-delete" ng-click="open('md-delete','delete',$index)"></span></p></td>
+                    <td><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit-content','modify',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
                 </tr>
             </tbody>
         </table>
