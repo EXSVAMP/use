@@ -5,31 +5,6 @@
     </div>
     <div class="modal-body row">
         <div ng-show="item.text">{{item.text}}</div>
-        <!-- <div class="row col-md-12" ng-show="item.title">
-            <div class=" col-md-12" ng-hide="item.status_disable">
-                <form class="form-inline">
-                    <div class="form-group col-md-12">
-                        <label class="label-md-4">RFID卡：</label>
-                        <select class="form-control search-md-8" ng-model="status">
-                            <option value="-1">选择键值</option>
-                            <option ng-repeat="(key, value) in choice" value="{{key}}">{{value}}</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-            <div class=" col-md-12" ng-class="{true:'col-md-12'}[item.status_disable]">
-                <form class="form-inline">
-                    <div class="form-group col-md-12">
-                        <label class="label-md-4" ng-show="item.method=='replace'" style="width: 29%!important">新卡序列号：<em style="color: red;font-size: 8px">(*必填)</em></label>
-                        <label class="label-md-4" ng-show="item.method=='add'">序列号：<em style="color: red;font-size: 8px">(*必填)</em></label>
-                        <label class="label-md-4" ng-show="item.method=='modify'">序列号</label>
-                        <input type="text" class="form-control search-md-8" ng-model="serial_number" placeholder="序列号"/>
-                    </div>
-                </form>
-            </div>
-
-        </div> -->
-
         <form role="form" class="pop-edit-form-com edit-form-reader" ng-show="item.method=='modify' || item.method=='add'">
           <div class="form-group form-group-odd">
           <label for="func_type">功能类型:</label> 
@@ -110,7 +85,7 @@
     			 <input type="text" class="form-control" id="serial_number" placeholder="序列号" ng-model="serial_number">
 			</div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-rfid-search" ng-click="index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-rfid-search" ng-click="status=statusTemp;func_type=func_typeTemp;descriptionTemp=description;serial_numberTemp=serial_number;index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
 				<button type="button" class="btn btn-rfid-add" ng-click="open('md-edit-reader','add',$index)"><span class="icon-icon_plus"></span>增加</button>
 			</div>
 		</form>
@@ -147,13 +122,13 @@
               <td><p>{{item.description}}</p></td>
       				<td><p>{{item.updated_at}}</p></td>
       				<td><p>{{item.created_at}}</p></td>
-      				<td><p><span class="com-deit rfid-edit" ng-click="open('md-edit-reader','replace',$index)"></span><span class="com-delete rfid-delete" ng-click="open('md-delete','delete',$index)"></span></p></td>
+      				<td><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit-reader','replace',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
     			</tr>
     		</tbody>
     	</table>
 
-    	<div ng-class="{false:'emptyDataList emptyDataListShow',true:'emptyDataList'}[total>0&&listLoadFlag==2]">
-
+    	<!-- <div ng-class="{false:'emptyDataList emptyDataListShow',true:'emptyDataList'}[total>0&&listLoadFlag==2]"> -->
+      <div class="emptyDataList {{emptyDataListShow}}">
     		<p><span class="icon-icon_cardreader"></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
  
     	</div>

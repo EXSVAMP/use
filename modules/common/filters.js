@@ -1,7 +1,8 @@
 var app = angular.module('RDash');
 app.filter("img",function(){
-    return function(url){
-        if(!url) return "http://imgsrc.baidu.com/forum/pic/item/199db2da81cb39db2dedc43ed3160924ab183007.jpg";
+    return function(url, isVedio ){
+        if(!url&&!isVedio) return "/statics/lib/img/photo_no.jpg";
+            else if(!url&&isVedio)return "/statics/lib/img/video_no.jpg"
         else return url;
     }
 });

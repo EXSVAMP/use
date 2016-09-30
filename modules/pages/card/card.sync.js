@@ -72,6 +72,8 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
   	$scope.status = "-1";
     //user sel status but not click search
     $scope.statusTemp = "-1";
+    $scope.serial_search = "";
+    $scope.serial_searchTemp = "";
     $scope.numbers = [10,20,30,40,50];
   	
     $scope.order = {
@@ -144,7 +146,7 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
         }
       };
   		var pk = "";
-  		var serial_number = $scope.serial_search;
+  		var serial_number = $scope.serial_searchTemp;
   		var descent = "";
   		var params = "index="+$scope.index+"&number="+$scope.number;
 

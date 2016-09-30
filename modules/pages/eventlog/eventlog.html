@@ -110,7 +110,8 @@
                    <div class="img-bottom-bar"><a ng-href="{{detail.photo_url}}" class="icon icon-icon_download" download></a><span class="icon icon-icon_expand"></span></div>
                </div>
                <div class="detail-img" ng-show="tabSwitch==1">
-                   <img ng-src="{{detail.img2|img}}"/>
+
+                   <img ng-src="{{detail.img2 | img:true}}"/>
                </div>
 
            </div>
@@ -153,7 +154,7 @@
                <div class="record-desc" ng-class="{'active':item.id==detail.id}"  ng-repeat="item in dataList" ng-click="showDetail(item.id)">
                     <ul >
                         <li>
-                            <span class="number">编号:{{$index}}</span>
+                            <span class="number">编号:</span>
                             <span>{{item.id}}</span>
                         </li>
                         <li>

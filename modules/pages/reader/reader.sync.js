@@ -5,8 +5,12 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
     //$scope.choice2 = {func_type:{},status:{}};
 	$scope.func_type = '-1';
     $scope.status = "-1";
+    $scope.func_typeTemp = '-1';
+    $scope.statusTemp = "-1";
     $scope.description = "";
     $scope.serial_number = "";
+    $scope.descriptionTemp = "";
+    $scope.serial_numberTemp = "";
 	$scope.dataList = {};
 	$scope.index = 1;
 	$scope.number = 10;
@@ -142,29 +146,23 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
       var query_url = url_junction.getQuery({
       status:$scope.status,
       func_type:$scope.func_type,
-      description:$scope.description,
-      serial_number:$scope.serial_number,
+      description:$scope.descriptionTemp,
+      serial_number:$scope.serial_numberTemp,
       number:$scope.number,
       index:$scope.index
     });
     $http.get(urlBase+"/api/1/reader/"+ query_url).success(function(data){
       if(data.code==200){
         $scope.listLoadFlag = 2;
-        // $scope.query_result[$scope.currentSelTab] = data.data;
-        // $scope.currentPageDataNum = data.data.length;
-        // $scope.searchTotal[$scope.currentSelTab] = data.pageinfo.total_number;
-
-        // $scope.bigTotalItems = data.pageinfo.total_number;
-        // $scope.total_page = data.pageinfo.total_page;
-      
-        // if($scope.currentPageDataNum == 0)
-        //   $scope.emptyDataListShow = "emptyDataListShow";
-        // else{
-        //   $scope.emptyDataListShow = "";
-        // }
         $scope.dataList=data.data;
         $scope.total=data.pageinfo.total_number;
         $scope.totalPage=data.pageinfo.total_page;
+        $scope.currentPageDataNum = data.data.length;
+        if($scope.currentPageDataNum == 0)
+          $scope.emptyDataListShow = "emptyDataListShow";
+        else{
+          $scope.emptyDataListShow = "";
+        }
       }else{
         alert(data.message)
       }
