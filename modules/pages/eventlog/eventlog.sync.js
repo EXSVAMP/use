@@ -9,12 +9,14 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
     $scope.selections.numbers=global.pageNumSelections;
     utils.init($scope);
     listService.init($scope,'/api/1/eventlog/');
-    $scope.refresh(null,function(data){
+    $scope.listCallback=function(data){
         if(data.data.length>0)$scope.showDetail(data.data[0].id);
-    });
+    };
+    $scope.refresh();
+
     $scope.tabSwitch = 0;
     $scope.detail={};
-    $scope.detail.img2='http://img0.imgtn.bdimg.com/it/u=3761389663,2619900045&fm=11&gp=0.jpg';
+
     $http.get(baseUrl.getUrl()+'/api/1/common/choices/?key=eventlog').success(function(data){
         if(data.code==200){
             angular.merge($scope.selections,data.data);
@@ -39,6 +41,7 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
         $http.get(baseUrl.getUrl()+'/api/1/eventlog/'+id+"/").success(function(data){
             if(data.code==200){
                 $scope.detail = data.data;
+                // $scope.detail.img2='http://img0.imgtn.bdimg.com/it/u=3761389663,2619900045&fm=11&gp=0.jpg';
                 var rfid_list_display = '';
                 angular.forEach($scope.detail.rfid_list,function(item){
                     if(rfid_list_display!=''){
