@@ -10,6 +10,7 @@ var warnDetail = require("pages/warn/warnDetail");
 var reader = require("pages/reader/reader");
 var user = require("pages/user/user");
 var account = require("pages/account/account");
+var pollinventory = require("pages/pollinventory/pollinventory");
 // var location = require("pages/location/location");
 // var imgs = require("pages/imgs/imgs");
 
@@ -30,7 +31,8 @@ app.config(function ($stateProvider, $urlRouterProvider,$controllerProvider) {
         .state('reader', reader)
         .state('user', user)
         .state('account', account)
-        .state('eventlog', eventlog);
+        .state('eventlog', eventlog)
+        .state('pollinventory', pollinventory);
         // .state('reader', reader)
         // .state('location', location)
 
