@@ -91,10 +91,22 @@
           </ui-select-choices>
         </ui-select>
 			</div>
-			<!-- <div class="form-group">
-    			<label for="name">序列号:</label> 
-    			 <input type="text" class="form-control" id="serial-search" placeholder="请输入名称" ng-model="serial_search">
-			</div> -->
+			<div class="form-group form-group-selin" style="width:540px;">
+                <label>检测时间:</label>
+                <div class="form-row">
+                    <div class="date-area">
+                        <span class="icon-icon_calendar"></span>
+                        <input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd"
+                               ng-model="startDate"  date-change="changeDate(startDate,0)"/>
+                    </div>
+                    <span style="margin:0 10px;float:left;position: relative;top:10px;">至</span>
+                    <div class="date-area">
+                        <span class="icon-icon_calendar"></span>
+                        <input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd"
+                               ng-model="endDate" date-change="changeDate(endDate,1)"/>
+                    </div>
+                </div>
+            </div>
 			<div class="btns-group">
 				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;serial_searchTemp=serial_search;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
 				<!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->

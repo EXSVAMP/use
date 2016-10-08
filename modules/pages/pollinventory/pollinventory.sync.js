@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("pollinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction) {
+app.register.controller("pollinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout) {
 	//console.log("Test app.register.controller");
   var urlBase = baseUrl.getUrl();
   $scope.open = function (size, method,index){
@@ -61,6 +61,12 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
     $scope.statusSelFunc = function(data){
       $scope.statusTemp = data.flag;
+    }
+
+    $scope.changeDate = function(data,dataType){
+      alert(data);
+      if(dataType == 0)
+        alert(data);
     }
 
     $scope.switch_order = function(key){
@@ -140,6 +146,23 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   	}
 
     $scope.submit_search(1,-1);
+
+    $timeout(function(){
+        $('.date-picker').datepicker({
+            language: 'zh',
+            orientation: "left",
+            todayHighlight: true,
+            autoclose:true,
+            templates:{
+                leftArrow: '<i class="fa fa-angle-left"></i>',
+                rightArrow: '<i class="fa fa-angle-right"></i>'
+            }
+        });
+    });
+
+    $scope.$watch("startDate", function (oldVal, newVal) {
+                        console.log("Value: " + $scope.startDate);
+        });
 
     // Create a client instance
  client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10","clientId");

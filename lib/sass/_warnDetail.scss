@@ -1,8 +1,10 @@
 .main-content{
   .main-detail{
     position: relative;
+    padding-right: 340px;
     .main-detail-tab{
-      width: 850px;
+      width: 100%;
+      min-width: 850px;
       margin-bottom:20px;
       background-color: #fff;
       .nav-tabs{
@@ -31,17 +33,22 @@
       .detail-img{
         position: relative;
         padding:20px;
+        height: auto;
+        overflow: hidden;
         img{
-          width: 810px;
-          height:500px;
+          width: 100%;
+          min-width: 810px;
+          //height:500px;
+          height: auto;
         }
         .img-bottom-bar{
           float:left;
-          position: absolute;
+          //position: absolute;
           bottom:20px;
           background-color: rgba(0,0,0,.5);
           height:50px;
-          width:810px;
+          width: 100%;
+          min-width: 810px;
           text-align: right;
           .icon{
             color:#fff;
@@ -55,7 +62,8 @@
       }
     }
     .main-detail-content{
-      width: 850px;
+      width: 100%;
+      min-width: 850px;
       background-color: #fff;
       overflow: auto;
       .form-group{
