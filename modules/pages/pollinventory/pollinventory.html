@@ -3,7 +3,7 @@
 <script type="text/ng-template" id="myModalContent.html">
     <div class="modal-header modal-header-poll">
         <h3 class="modal-title"><span class="icon-icon_realtime_text"></span>{{item.title}}</h3>
-        <span class="icon-icon_cancel modal-cancel-poll" ng-click="cancel()"></span>
+        <span class="icon-icon_cancel modal-cancel-poll" ng-click="cancel()" ng-show="item.method=='info'"></span>
     </div>
     <div class="modal-body row main-content poll-content">
         <div ng-show="item.text">{{item.text}}</div>

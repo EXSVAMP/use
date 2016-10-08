@@ -1,16 +1,20 @@
-.poll-content{
-	.poll-select{
+.manual-content{
+	.manual-select{
 		display: table;
   		height: auto;
     	width: 100%;
+    	.form-group{
+    		margin-right: 35px;
+    	}
 		.btns-group{
-			width: 80px;
-			.btn-rfid-search,.btn-rfid-add{
+			margin: 0;
+    		width: 290px;
+			.btn-rfid-search,.btn-rfid-add,.btn-rfid-inventory{
 				width: 80px;
 				height: 34px;
 				border-radius: 4px !important;
 				background-color: #45b6b0;
-				margin-right: 30px;
+				margin-right: 20px;
 				font-size: 12px;
 				color: #ffffff;
 				span{
@@ -23,12 +27,13 @@
 					/*line-height: 34px;*/
 				}
 			}
-			/*.btn-rfid-add{
+			.btn-rfid-add{
 				background-color: #fc763c;
-				span{
-					background: url(/lib/img/icon_plus_16_16_02.png);
-				}
-			}*/
+			}
+			.btn-rfid-inventory{
+				background-color: #5f9bdb;
+				margin-right: 0;
+			}
 		}
 	}
 
@@ -137,7 +142,7 @@
               				background: none;
               				margin-top: 8px;
             			}
-            			.rfid-delete-poll{
+            			.rfid-delete-manual{
             				color: #45b6b0;
             			}
             			.rfid-delete-tip{
@@ -169,7 +174,7 @@
 
 }
 
-.edit-form-poll{
+.edit-form-manual{
   
   .form-group{
     @include common_select(360px);
@@ -178,16 +183,16 @@
     }
 }
 
-.pop-delete-com-poll{
+.pop-delete-com-manual{
 	margin-top: 15px;
 	height: auto;
     overflow: hidden;
     text-align: start;
 }
 
-.modal-header-poll{
+.modal-header-manual{
 	position: relative;
-	.modal-cancel-poll{
+	.modal-cancel-manual{
 		font-size: 24px;
 		display: block;
 		position: absolute;
@@ -197,7 +202,7 @@
 	}
 }
 
-.modal-md-info {
+.modal-md-info-manual {
 	//height: 305px;
     height: 425px;
     left: 50%;
@@ -213,7 +218,7 @@
     }
 }
 
-.modal-table-poll{
+.modal-table-manual{
 	width: 820px !important;
 	margin:30px auto 30px auto;
 	overflow: auto;

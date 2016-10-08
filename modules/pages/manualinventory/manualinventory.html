@@ -1,14 +1,14 @@
 <div ng-controller="manualinventoryCtrl">
 
 <script type="text/ng-template" id="myModalContent.html">
-    <div class="modal-header modal-header-poll">
-        <h3 class="modal-title"><span class="icon-icon_realtime_text"></span>{{item.title}}</h3>
-        <span class="icon-icon_cancel modal-cancel-poll" ng-click="cancel()"></span>
+    <div class="modal-header modal-header-manual">
+        <h3 class="modal-title"><span class="icon-icon_manual_test"></span>{{item.title}}</h3>
+        <span class="icon-icon_cancel modal-cancel-manual" ng-click="cancel()" ng-show="item.method=='info'"></span>
     </div>
-    <div class="modal-body row main-content poll-content">
+    <div class="modal-body row main-content manual-content">
         <div ng-show="item.text">{{item.text}}</div>
 
-        <table class="table table-bordered table-content modal-table-poll" ng-show="item.method=='info'">
+        <table class="table table-bordered table-content modal-table-manual" ng-show="item.method=='info'">
         <thead>
           <tr>
               <th ng-click="switch_order('id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.id]"></span></p></th>
@@ -64,22 +64,22 @@
         
       </table>
 
-        <div class="pop-delete-com pop-delete-com-poll" ng-show="item.method=='delete'"><p><span></span>确定要删除这个检测吗？<br/>注意：删除以后不可以恢复！</p></div>
+        <div class="pop-delete-com pop-delete-com-manual" ng-show="item.method=='delete'"><p><span></span>确定要删除这个检测吗？<br/>注意：删除以后不可以恢复！</p></div>
 
     </div>
     <div class="modal-footer" ng-show="item.method=='delete'">
-      <div class="modal-footer-resize-com modal-footer-resize-poll">
+      <div class="modal-footer-resize-com modal-footer-resize-manual">
         <button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()">确定</button>
         <button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
       </div>
     </div>
 </script>
 
-	<div class="main-top-bar poll-bar">
+	<div class="main-top-bar manual-bar">
 		<p><span class="icon-icon_location"></span>在线管理>轮巡检测</p>
 	</div>
-	<div class="main-content poll-content">
-		<form role="form" class="search-bar poll-select">
+	<div class="main-content manual-content">
+		<form role="form" class="search-bar manual-select">
 			<div class="form-group">
     		<label for="name">检测状态:</label> 
     		<!-- <ui-select ng-model="state.name" theme="bootstrap"> -->
@@ -109,30 +109,12 @@
             </div>
 			<div class="btns-group">
 				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;serial_searchTemp=serial_search;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
-				<!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
+				<button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span class="icon-icon_plus"></span>增加</button>
+        <button type="button" class="btn btn-rfid-inventory" ng-click="open('md','inventory',$index)">立即检测</button>
 			</div>
 		</form>
 
     <div class="condition-sort">
-      <table class="table table-pagination table-time">
-        <thead>
-                <tr>
-                  <th class="pagination-items-per-page">
-                        <input type="checkbox" class="time-set" checked="checked" />
-                        <span class="pagination-tip2">每</span>
-                        <ui-select ng-model="number3" theme="bootstrap" on-select="setShowNum2(number3)">
-                          <ui-select-match placeholder="5">{{$select.selected}}</ui-select-match>
-                          <ui-select-choices repeat="item in numbers2">
-                              <div ng-bind-html="item"></div>
-                              <!-- <small ng-bind-html="item.email"></small> -->
-                          </ui-select-choices>
-                        </ui-select>
-                        <span class="pagination-tip2 pagination-tip-last">分钟一次盘点</span>
-                      
-                  </th>
-              </tr>
-          </thead>
-      </table>
       <table class="table table-pagination table-pagination-sort">
             <thead>
                 <tr>
@@ -170,16 +152,16 @@
       				<td><p>{{item.state | poll_state}}</p></td>
       				<td><p>{{item.date}}</p></td>
       				<td><p>{{item.updated_at}}</p></td>
-      				<td ng-show="item.state == 0"><p><!-- <span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span> --><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
+      				<td ng-show="item.state == 0"><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','modify',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
               <td ng-show="item.state == 1"><p></p></td>
-              <td ng-show="item.state == 2 || item.state == 3"><p><!-- <span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span> --><span class="rfid-delete rfid-delete-poll icon-icon_information" ng-click="open('md-info','info',$index)"></span><span class="rfid-delete-tip" ng-click="open('md-info','info',$index)">查看结果</span></p></td>
+              <td ng-show="item.state == 2 || item.state == 3"><p><!-- <span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span> --><span class="rfid-delete rfid-delete-manual icon-icon_information" ng-click="open('md-info-manual','info',$index)"></span><span class="rfid-delete-tip" ng-click="open('md-info-manual','info',$index)">查看结果</span></p></td>
     			</tr>
     		</tbody>
     	</table>
 
     	<div class="emptyDataList {{emptyDataListShow}}">
 
-    		<p><span class="icon-icon_realtime_text"></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
+    		<p><span class="icon-icon_manual_test"></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
  
     	</div>
       <table class="table table-pagination" ng-show="bigTotalItems>0">
