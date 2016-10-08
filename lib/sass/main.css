@@ -1,98 +1,3 @@
-<<<<<<< HEAD
-/*
-Error: Invalid CSS after "        overflow": expected ";", was ": auto;"
-        on line 102 of _warnDetail.scss
-        from line 11 of main.scss
-
-97:         padding:0;
-98:         border-bottom:1px solid #e6e6e6;
-99:       }
-100:       .record-list{
-101:         width:100%
-102:         overflow: auto;
-103:         position: absolute;
-104:         top: 40px;
-105:         bottom: 0;
-106:         left: 0;
-107:         .record-item{
-
-Backtrace:
-_warnDetail.scss:102
-main.scss:11
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1189:in `expected'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1125:in `expected'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1120:in `tok!'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:777:in `block in try_declaration'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1165:in `call'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1165:in `rethrow'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:782:in `try_declaration'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:711:in `declaration_or_ruleset'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:676:in `block_child'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:665:in `block_contents'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:657:in `block'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:726:in `declaration_or_ruleset'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:676:in `block_child'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:668:in `block_contents'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:657:in `block'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:726:in `declaration_or_ruleset'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:676:in `block_child'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:668:in `block_contents'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:657:in `block'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:726:in `declaration_or_ruleset'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:676:in `block_child'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:665:in `block_contents'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:657:in `block'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:649:in `ruleset'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:675:in `block_child'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:665:in `block_contents'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:125:in `stylesheet'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:41:in `parse'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:406:in `_to_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:312:in `to_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:326:in `block in visit_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:88:in `block in with_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:88:in `with_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:159:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin.rb:82:in `update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/exec/sass_scss.rb:51:in `process_result'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/exec/base.rb:52:in `parse'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/exec/base.rb:19:in `parse!'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/bin/scss:13:in `<top (required)>'
-/usr/local/bin/scss:23:in `load'
-/usr/local/bin/scss:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"        overflow\": expected \";\", was \": auto;\"\A         on line 102 of _warnDetail.scss\A         from line 11 of main.scss\A \A 97:         padding:0;\A 98:         border-bottom:1px solid #e6e6e6;\A 99:       }\A 100:       .record-list{\A 101:         width:100%\A 102:         overflow: auto;\A 103:         position: absolute;\A 104:         top: 40px;\A 105:         bottom: 0;\A 106:         left: 0;\A 107:         .record-item{"; }
-=======
 @charset "UTF-8";
 .main-top-bar {
   display: table;
@@ -1317,6 +1222,7 @@ body:before {
           top: 2px; }
   .camera_Content .content .table-content {
     background-color: #ffffff;
+    width: 100%;
     min-width: 1000px; }
     .camera_Content .content .table-content thead {
       font-size: 14px;
@@ -1650,6 +1556,7 @@ body:before {
       padding: 0;
       border-bottom: 1px solid #e6e6e6; }
     .main-content .main-detail .main-detail-record .record-list {
+      width: 100%;
       overflow: auto;
       position: absolute;
       top: 40px;
@@ -1668,6 +1575,11 @@ body:before {
         .main-content .main-detail .main-detail-record .record-list .record-item .item-row span:nth-child(2) {
           width: 70%;
           float: left; }
+      .main-content .main-detail .main-detail-record .record-list .list-bottom {
+        margin: 5px;
+        border: 1px solid #e6e6e6;
+        padding: 5px;
+        text-align: center; }
 
 .reader-content .reader-select {
   display: table;
@@ -2071,10 +1983,37 @@ body:before {
   float: left; }
   .eventlog_Content .main-content .eventlog_detail .main-detail-tab {
     width: 850px;
-    height: 660px;
+    height: 650px;
     margin-bottom: 20px;
     background-color: #fff;
     float: right; }
+    .eventlog_Content .main-content .eventlog_detail .main-detail-tab .bottom-bar-group {
+      float: left;
+      position: absolute;
+      background-color: #ffffff;
+      height: 50px;
+      width: 810px;
+      text-align: center;
+      margin-top: -15px; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-tab .bottom-bar-group .previous-group .icon-icon_arrow_circleleft {
+        font-size: 32px;
+        color: #5f9bdb;
+        position: relative;
+        top: 7px;
+        left: 10px;
+        margin-right: 159px;
+        cursor: pointer; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-tab .bottom-bar-group .previous-group .noclick {
+        color: #e6e6e6; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-tab .bottom-bar-group .next-group .icon-icon_arrow_circleright {
+        font-size: 32px;
+        color: #5f9bdb;
+        position: relative;
+        top: 7px;
+        left: 10px;
+        cursor: pointer; }
+      .eventlog_Content .main-content .eventlog_detail .main-detail-tab .bottom-bar-group .next-group .noclick {
+        color: #e6e6e6; }
     .eventlog_Content .main-content .eventlog_detail .main-detail-tab .nav-tabs .tab-item {
       width: 150px;
       height: 70px;
@@ -2110,14 +2049,6 @@ body:before {
           line-height: 50px; }
           .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img .img-bottom-bar .icon:hover {
             color: #337ab7; }
-      .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img .bottom-bar-group {
-        float: left;
-        position: absolute;
-        bottom: -35px;
-        background-color: rgba(0, 0, 0, 0.5);
-        height: 50px;
-        width: 810px;
-        text-align: center; }
   .eventlog_Content .main-content .eventlog_detail .main-detail-content {
     width: 850px;
     height: 350px;
@@ -2330,6 +2261,257 @@ body:before {
     left: 0px; }
   to {
     left: 100%; } }
+.poll-content {
+  	/*table.table-pagination{
+  		thead{
+  			tr{
+  				position:relative;
+  				display: table;
+  				width: 100%;
+  				th{
+  					border: none;
+  					&:first-child{
+      					height: 24px+10px;
+      					position: absolute;
+      					top: 10px;
+      					width: 154px+10px;
+      					background: #fff;
+  						div.pagination-content{
+  							width: 154px;
+  							height: 24px;
+  							background: #f5f5f5;
+  							border-radius: 4px;
+  							border: solid 1px #e6e6e6;
+  							font-size: 12px;
+  							color: #666666;
+  							text-align: start;
+  							line-height: 0.7;
+  							position: absolute;
+  							top: 5px;
+  							left: 5px;
+  							span.pagination-tip{
+  								line-height: 1.9;
+      							padding-left: 10px;
+  							}
+  						}
+  						.btn{
+  							height: 22px !important;
+  							line-height: 22px;
+  							border-radius: 0;
+  							border: none;
+  							border-left: 1px solid #e6e6e6;
+  						}
+  						@include common_select_detail(60px);
+        					input{
+          					padding: 0 0 0 5px;
+      						text-align: start;
+      						line-height: 2;
+        					}
+  
+        					.ui-select-container{
+          					position: absolute;
+      						right: 1px;
+      						top: 0;
+      						height: 22px;
+      						&:hover{
+      							right: 0;
+      						}
+        					}
+  
+        					.ui-select-container.open{
+        						right: 0;
+        					}
+  
+        					.ui-select-search,.ui-select-match {
+          					//border-radius: 0;
+          					height: 22px;
+          				}
+  
+          				.ui-select-match{
+          					&>span{
+          						padding: 0 0 0 5px;
+      							text-align: start;
+      							line-height: 2;
+          					}
+          					.btn{
+          						&:first-child{
+          							//padding-bottom: 0;
+      								//padding-right: 25px;
+      								//padding-top: 0;
+      								//text-align: center;
+      								.ui-select-match-text{
+      									//padding-right: 0;
+      									//text-align: center;
+      									height: 22px;
+      								}
+          						}
+          						
+          					}
+          				} 
+  
+          				.ui-select-choices{
+          					//border-radius: 0;
+          				}
+  
+  					}
+  				}
+  			}
+  		}
+  	}*/ }
+  .poll-content .poll-select {
+    display: table;
+    height: auto;
+    width: 100%; }
+    .poll-content .poll-select .btns-group {
+      width: 80px;
+      /*.btn-rfid-add{
+      	background-color: #fc763c;
+      	span{
+      		background: url(/lib/img/icon_plus_16_16_02.png);
+      	}
+      }*/ }
+      .poll-content .poll-select .btns-group .btn-rfid-search, .poll-content .poll-select .btns-group .btn-rfid-add {
+        width: 80px;
+        height: 34px;
+        border-radius: 4px !important;
+        background-color: #45b6b0;
+        margin-right: 30px;
+        font-size: 12px;
+        color: #ffffff; }
+        .poll-content .poll-select .btns-group .btn-rfid-search span, .poll-content .poll-select .btns-group .btn-rfid-add span {
+          display: block;
+          float: left;
+          padding-top: 0px;
+          padding-right: 0px;
+          font-size: 16px;
+          color: #fff;
+          /*line-height: 34px;*/ }
+  .poll-content .condition-sort {
+    width: 100%;
+    height: 34px;
+    background: #fff;
+    border-radius: 4px;
+    position: relative; }
+    .poll-content .condition-sort table.table-time {
+      float: left;
+      margin: -10px 0 0;
+      padding: 0;
+      width: 200px; }
+      .poll-content .condition-sort table.table-time .time-set {
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+        background-color: #ffffff;
+        border: solid 1px #5f9bdb;
+        position: relative;
+        top: -2px;
+        float: left;
+        margin-left: 6px; }
+      .poll-content .condition-sort table.table-time span.pagination-tip2 {
+        font-size: 12px;
+        color: #666666;
+        position: relative;
+        top: 2px;
+        float: left; }
+      .poll-content .condition-sort table.table-time .pagination-tip-last {
+        left: 68px; }
+      .poll-content .condition-sort table.table-time .ui-select-container {
+        display: inline-table;
+        border-radius: 4px;
+        background-color: #ffffff;
+        border: solid 1px #e6e6e6;
+        border-left: medium none;
+        height: 24px !important;
+        left: 45px;
+        top: 5px !important;
+        /*.ui-select-search,.ui-select-choices{
+        	width: 62px !important;
+        }*/ }
+        .poll-content .condition-sort table.table-time .ui-select-container .ui-select-match {
+          height: 23px; }
+    .poll-content .condition-sort table.table-pagination-sort {
+      float: right;
+      margin: -10px 0 0;
+      padding: 0;
+      width: 165px; }
+  .poll-content table.table-content thead tr .dwn-arw-af-card::after, .poll-content table.table-content thead tr .up-arw-af-card::after {
+    content: "\e928";
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    font-size: 20px;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "icomoon" !important;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-transform: none; }
+  .poll-content table.table-content thead tr .up-arw-af-card::after, .poll-content table.table-content thead tr .up-arw-af-card-sn::after, .poll-content table.table-content thead tr .up-arw-af-card-s::after, .poll-content table.table-content thead tr .up-arw-af-card-cr::after, .poll-content table.table-content thead tr .up-arw-af-up::after {
+    content: "\e929"; }
+  .poll-content table.table-content tbody tr td p {
+    line-height: 2.2; }
+    .poll-content table.table-content tbody tr td p .rfid-edit {
+      color: #45b6b0;
+      background: none;
+      margin-top: 8px; }
+    .poll-content table.table-content tbody tr td p .rfid-delete {
+      color: #ff6b6b;
+      background: none;
+      margin-top: 8px; }
+  .poll-content .emptyDataList p span:first-child {
+    background: none;
+    font-size: 128px; }
+  .poll-content .emptyDataList p span:last-child {
+    margin-top: 35px; }
+
+.edit-form-poll .form-group {
+  float: left;
+  margin-right: 53px;
+  width: 360px;
+  float: none;
+  margin: 10px auto; }
+  .edit-form-poll .form-group label {
+    font-size: 12px;
+    color: #3e4d68; }
+  .edit-form-poll .form-group ui-select, .edit-form-poll .form-group .ui-select-container, .edit-form-poll .form-group input {
+    width: 360px;
+    height: 34px; }
+  .edit-form-poll .form-group input {
+    font-size: 12px;
+    color: #888888; }
+  .edit-form-poll .form-group .ui-select-search, .edit-form-poll .form-group .ui-select-match {
+    width: 360px !important;
+    min-width: 360px !important;
+    /* Because of the inclusion of Bootstrap */ }
+    .edit-form-poll .form-group .ui-select-search span, .edit-form-poll .form-group .ui-select-match span {
+      /*height: 34px;*/
+      font-size: 12px !important;
+      color: #888888 !important; }
+  .edit-form-poll .form-group .ui-select-choices {
+    width: 360px !important;
+    min-width: 360px !important;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    height: auto !important;
+    max-height: 1000px !important; }
+    .edit-form-poll .form-group .ui-select-choices li {
+      width: 360px;
+      overflow: hidden;
+      padding: 0;
+      margin: 0; }
+      .edit-form-poll .form-group .ui-select-choices li .dropup, .edit-form-poll .form-group .ui-select-choices li .dropdown {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        width: 360px; }
+
+.pop-delete-com-poll {
+  margin-top: 15px;
+  height: auto;
+  overflow: hidden; }
+
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6, label, form, input, button,
 textarea, p, section, strong, a, th, td, tr {
@@ -2342,4 +2524,3 @@ textarea, p, section, strong, a, th, td, tr {
   padding: 0px; }
 
 /*# sourceMappingURL=main.css.map */
->>>>>>> 9ce8a5bfbf9d66552b9fb2a6e2ff4758ae3cc571

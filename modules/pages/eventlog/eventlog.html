@@ -108,15 +108,17 @@
                <div class="detail-img" ng-show="tabSwitch==0">
                    <img ng-src="{{detail.photo_url | img}}"/>
                    <div class="img-bottom-bar"><a ng-href="{{detail.photo_url}}" class="icon icon-icon_download" download></a><span class="icon icon-icon_expand"></span></div>
-                   <div class="bottom-bar-group">
-                         <span>上一组<span class></span></span>
-                   </div>
+
 
                </div>
                <div class="detail-img" ng-show="tabSwitch==1">
                    <img ng-src="{{detail.img2 | img:true}}"/>
                </div>
+               <div class="bottom-bar-group">
+                   <span class="previous-group"  >上一组<span class="icon-icon_arrow_circleleft" ng-class="currentIndex<=0?'noclick':''" ng-disabled="currentIndex<=0" ng-click="currentIndex>0?showDetail(currentIndex-1):''"></span></span>
+                   <span class="next-group">下一组<span class="icon-icon_arrow_circleright" ng-class="currentIndex>=params.number-1?'noclick':''" ng-click="currentIndex<params.number-1?showDetail(currentIndex+1):''" ></span></span>
 
+               </div>
 
            </div>
            <div class="main-detail-content">
@@ -155,7 +157,7 @@
                </div>
            </div>
            <div class="main-detail-record">
-               <div class="record-desc" ng-class="{'active':item.id==detail.id}"  ng-repeat="item in dataList" ng-click="showDetail(item.id)">
+               <div class="record-desc" ng-class="{'active':item.id==detail.id}"  ng-repeat="item in dataList" ng-click="showDetail($index)">
                     <ul >
                         <li>
                             <span class="number">编号:</span>

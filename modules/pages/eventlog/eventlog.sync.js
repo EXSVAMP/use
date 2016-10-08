@@ -7,10 +7,12 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
     $scope.selections.event_feedback_type={"-1":'--------'};
     $scope.selections.handle_result={"-1":'--------'};
     $scope.selections.numbers=global.pageNumSelections;
+    $scope.currentIndex = 0;
     utils.init($scope);
     listService.init($scope,'/api/1/eventlog/');
     $scope.listCallback=function(data){
-        if(data.data.length>0)$scope.showDetail(data.data[0].id);
+        $scope.currentIndex=0;
+        if(data.data.length>0)$scope.showDetail($scope.currentIndex);
     };
     $scope.refresh();
 
@@ -36,9 +38,10 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
 
         }
     });
-    $scope.showDetail=function(id){
-        $scope.detail.id=id;
-        $http.get(baseUrl.getUrl()+'/api/1/eventlog/'+id+"/").success(function(data){
+    $scope.showDetail=function(index){
+        $scope.currentIndex=index;
+        $scope.detail.id=$scope.dataList[index].id;
+        $http.get(baseUrl.getUrl()+'/api/1/eventlog/'+ $scope.detail.id+"/").success(function(data){
             if(data.code==200){
                 $scope.detail = data.data;
                 // $scope.detail.img2='http://img0.imgtn.bdimg.com/it/u=3761389663,2619900045&fm=11&gp=0.jpg';
