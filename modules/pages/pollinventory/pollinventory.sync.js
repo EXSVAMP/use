@@ -5,7 +5,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   $scope.open = function (size, method,index){
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
-            controller: 'ModalInstanceCtrl',
+            controller: 'ModalPollinventory',
             templateUrl: "myModalContent.html",
             size: size,
             resolve: {
@@ -18,7 +18,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
                             data:$scope.dataList[index],
                             scope:$scope
                         }
-                    }else{
+                    }else if(method=="info"){
                         return {
                             title:"检测结果",
                             method:"info",
@@ -110,17 +110,27 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
       index:$scope.index
     });
   
-  		$http.get(baseUrl.getUrl() + "/api/2/inventory/list/date"+query_url).success(function(data){
+  		$http.get(baseUrl.getUrl() + "/api/2/inventory/list/interval"+query_url).success(function(data){
         if(data.code==200){
-          $scope.dataList =  data.data;
-          currentPageDataNum = $scope.dataList.length;
-          $scope.bigTotalItems = data.pageinfo.total_number;
-          $scope.total_page = data.pageinfo.total_page;
-          if(currentPageDataNum == 0)
-            $scope.emptyDataListShow = "emptyDataListShow";
-          else{
-            $scope.emptyDataListShow = "";
-          }
+          // $scope.dataList =  data.data;
+          // currentPageDataNum = $scope.dataList.length;
+          // $scope.bigTotalItems = data.pageinfo.total_number;
+          // $scope.total_page = data.pageinfo.total_page;
+          // if(currentPageDataNum == 0)
+          //   $scope.emptyDataListShow = "emptyDataListShow";
+          // else{
+          //   $scope.emptyDataListShow = "";
+          // }
+
+          $scope.dataList =  [
+          {id:1,state:0,date:"2016",updated_at:"2016"},
+          {id:2,state:1,date:"2016",updated_at:"2016"},
+          {id:3,state:2,date:"2016",updated_at:"2016"},
+          {id:4,state:3,date:"2016",updated_at:"2016"}
+          ];
+           currentPageDataNum = 4;
+           $scope.bigTotalItems = 4;
+           $scope.total_page = 1;
         }
     	}).error(function(data,state){
         	if(state == 403){
@@ -130,5 +140,38 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   	}
 
     $scope.submit_search(1,-1);
+
+    // Create a client instance
+ client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10","clientId");
+
+// set callback handlers
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
+
+// connect the client
+client.connect({onSuccess:onConnect});
+
+
+// called when the client connects
+function onConnect() {
+  // Once a connection has been made, make a subscription and send a message.
+  console.log("onConnect");
+  //client.subscribe("/World");
+  //message = new Paho.MQTT.Message("Hello");
+  //message.destinationName = "/World";
+  //client.send(message);
+}
+
+// called when the client loses its connection
+function onConnectionLost(responseObject) {
+  if (responseObject.errorCode !== 0) {
+    console.log("onConnectionLost:"+responseObject.errorMessage);
+  }
+}
+
+// called when a message arrives
+function onMessageArrived(message) {
+  console.log("onMessageArrived:"+message.payloadString);
+}
 
 })
