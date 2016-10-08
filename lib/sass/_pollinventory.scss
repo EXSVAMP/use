@@ -66,22 +66,28 @@
     			left: 68px;
     		}
     		.ui-select-container{
-    			display: inline-table;
 				border-radius: 4px;
 				background-color: #ffffff;
 				border: solid 1px #e6e6e6;
-				border-left: medium none;
     			height: 24px !important;
     			left: 45px;
     			top: 5px !important;
-    			//width: 62px !important;
+    			width: 62px !important;
     			.ui-select-match{
-    				height: 23px;
+    				border: none;
+    				height: 22px;
+    				width: 60px;
+    				span {
+    					border: medium none;
+    					border-radius: 4px;
+    					height: 18px;
+    					padding: 0 0 0 5px;
+    					width: 60px;
+    				}
     			}
-    			/*.ui-select-search,.ui-select-choices{
-    				width: 62px !important;
-    			}*/
+
     		}
+    		
 		}
 
 		table.table-pagination-sort{
@@ -131,6 +137,14 @@
               				background: none;
               				margin-top: 8px;
             			}
+            			.rfid-delete-poll{
+            				color: #45b6b0;
+            			}
+            			.rfid-delete-tip{
+            				width: auto;
+            				color: #45b6b0;
+            				margin-top: 0;
+            			}
 					}
 				}
 			}
@@ -152,102 +166,6 @@
 		}
 	}
 
-	/*table.table-pagination{
-		thead{
-			tr{
-				position:relative;
-				display: table;
-				width: 100%;
-				th{
-					border: none;
-					&:first-child{
-    					height: 24px+10px;
-    					position: absolute;
-    					top: 10px;
-    					width: 154px+10px;
-    					background: #fff;
-						div.pagination-content{
-							width: 154px;
-							height: 24px;
-							background: #f5f5f5;
-							border-radius: 4px;
-							border: solid 1px #e6e6e6;
-							font-size: 12px;
-							color: #666666;
-							text-align: start;
-							line-height: 0.7;
-							position: absolute;
-							top: 5px;
-							left: 5px;
-							span.pagination-tip{
-								line-height: 1.9;
-    							padding-left: 10px;
-							}
-						}
-						.btn{
-							height: 22px !important;
-							line-height: 22px;
-							border-radius: 0;
-							border: none;
-							border-left: 1px solid #e6e6e6;
-						}
-						@include common_select_detail(60px);
-      					input{
-        					padding: 0 0 0 5px;
-    						text-align: start;
-    						line-height: 2;
-      					}
-
-      					.ui-select-container{
-        					position: absolute;
-    						right: 1px;
-    						top: 0;
-    						height: 22px;
-    						&:hover{
-    							right: 0;
-    						}
-      					}
-
-      					.ui-select-container.open{
-      						right: 0;
-      					}
-
-      					.ui-select-search,.ui-select-match {
-        					//border-radius: 0;
-        					height: 22px;
-        				}
-
-        				.ui-select-match{
-        					&>span{
-        						padding: 0 0 0 5px;
-    							text-align: start;
-    							line-height: 2;
-        					}
-        					.btn{
-        						&:first-child{
-        							//padding-bottom: 0;
-    								//padding-right: 25px;
-    								//padding-top: 0;
-    								//text-align: center;
-    								.ui-select-match-text{
-    									//padding-right: 0;
-    									//text-align: center;
-    									height: 22px;
-    								}
-        						}
-        						
-        					}
-        				} 
-
-        				.ui-select-choices{
-        					//border-radius: 0;
-        				}
-
-					}
-				}
-			}
-		}
-	}*/
 
 }
 
@@ -264,4 +182,56 @@
 	margin-top: 15px;
 	height: auto;
     overflow: hidden;
+}
+
+.pop-delete-com-poll{
+	text-align: start;
+}
+
+.modal-header-poll{
+	position: relative;
+	.modal-cancel-poll{
+		font-size: 24px;
+		display: block;
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		cursor: pointer;
+	}
+}
+
+.modal-md-info {
+	//height: 305px;
+    height: 425px;
+    left: 50%;
+    margin-left: -430px;
+    margin-top: -212.5px;
+    position: absolute;
+    top: 50%;
+    width: 860px;
+    .emptyDataList {
+    	height: auto;
+   		margin-bottom: 130px;
+   		margin-top: 90px;
+    }
+}
+
+.modal-table-poll{
+	width: 820px !important;
+	margin:30px auto 30px auto;
+	overflow: auto;
+	thead{
+		tr{
+			th{
+				height: 48px;
+			}
+		}
+	}
+	tbody{
+		tr{
+			td{
+				height: 48px;
+			}
+		}
+	}
 }
