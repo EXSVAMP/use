@@ -48,6 +48,7 @@ app.filter("poll_state",function(){
     return input;
   };
 });
+
 app.config(function($httpProvider){
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -900,96 +901,95 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
     $scope.cancel = function(){
         $uibModalInstance.dismiss('cancel');
     };
+
     if(items.method=="info"){
+        $scope.emptyDataListShow = "";
+        $scope.currentPageDataNum = 0;
+        $scope.index = 1;
+        $scope.number = 10;
+        $scope.maxSize = 5;
+        $scope.numbers = [10,20,30,40,50];
+        $scope.order = {
+            id: false,
+            rfid_card:false,
+            rfid_content:false,
+            store_house:false
+        };
 
-    $scope.emptyDataListShow = "";
-    $scope.currentPageDataNum = 0;
+        $scope.switch_order = function(key){
+            $scope.order[key] = !$scope.order[key];
+            $scope.submit_search()
+        };
 
-    $scope.index = 1;
-    $scope.number = 10;
-    $scope.maxSize = 5;
-
-    $scope.numbers = [10,20,30,40,50];
-    $scope.order = {
-        id: false,
-        rfid_card:false,
-        rfid_content:false,
-        store_house:false
-    };
-
-    $scope.switch_order = function(key){
-        $scope.order[key] = !$scope.order[key];
-        $scope.submit_search()
-    };
-
-    // $scope.setShowNum = function(data){
-    //   $scope.number = data;
-    //   $scope.index = 1;
-    //   $scope.submit_search();
-    // }
-
-    $scope.setPage = function (pageNo) {
-        $scope.submit_search();
-    };
-    $scope.changePage = function(a){
-        $scope.submit_search()
-    };
-
-      $scope.submit_search = function(){
-      var order_str = "";
-      for(var i in $scope.order){
-        if($scope.order[i]){
-          if(order_str){
-            order_str += ','+i
-          }else{
-            order_str += i;
-          }
+        $scope.setShowNum = function(data){
+            $scope.number = data;
+            $scope.index = 1;
+            $scope.submit_search();
         }
-      };
+
+        $scope.setPage = function (pageNo) {
+            $scope.submit_search();
+        };
+
+        $scope.changePage = function(a){
+            $scope.submit_search()
+        };
+
+        $scope.submit_search = function(){
+            var order_str = "";
+            for(var i in $scope.order){
+                if($scope.order[i]){
+                    if(order_str){
+                        order_str += ','+i
+                    }else{
+                        order_str += i;
+                    }
+                }
+            };
         
-      var query_url = url_junction.getQuery({
-      schedule_id:$scope.item.data.id,
-      descent:order_str,
-      number:$scope.number,
-      index:$scope.index
-    });
+            var query_url = url_junction.getQuery({
+                schedule_id:$scope.item.data.id,
+                descent:order_str,
+                number:$scope.number,
+                index:$scope.index
+            });
   
-        $http.get(baseUrl + "/api/2/inventory/result"+query_url).success(function(data){
-        if(data.code==200){
-          // $scope.dataList =  data.data;
-          // currentPageDataNum = $scope.dataList.length;
-          // $scope.bigTotalItems = data.pageinfo.total_number;
-          // $scope.total_page = data.pageinfo.total_page;
-          // if(currentPageDataNum == 0)
-          //   $scope.emptyDataListShow = "emptyDataListShow";
-          // else{
-          //   $scope.emptyDataListShow = "";
-          // }
+            $http.get(baseUrl + "/api/2/inventory/result"+query_url).success(function(data){
+                if(data.code==200){
+                    // $scope.dataList =  data.data;
+                    // currentPageDataNum = $scope.dataList.length;
+                    // $scope.bigTotalItems = data.pageinfo.total_number;
+                    // $scope.total_page = data.pageinfo.total_page;
+                    // if(currentPageDataNum == 0)
+                    //   $scope.emptyDataListShow = "emptyDataListShow";
+                    // else{
+                    //   $scope.emptyDataListShow = "";
+                    // }
 
-           $scope.dataList =  [
-          {id:001,store_house:"2301A",rfid_card:"e0331c",rfid_content:"31275f46f",event_log:"消失",schedule:"123"},
-          {id:002,store_house:"2301C",rfid_card:"e0331d",rfid_content:"31275f46e",event_log:"多余",schedule:"123"},
-          {id:003,store_house:"2301C",rfid_card:"e0331e",rfid_content:"31275f46r",event_log:"消失",schedule:"123"},
-          {id:004,store_house:"2301A",rfid_card:"e0331f",rfid_content:"31275f46t",event_log:"多余",schedule:"123"}
-          ];
-           currentPageDataNum = $scope.dataList.length;
-           $scope.bigTotalItems = 4;
-           $scope.total_page = 1;
+                    $scope.dataList =  [
+                        {id:001,store_house:"2301A",rfid_card:"e0331c",rfid_content:"31275f46f",event_log:"消失",schedule:"123"},
+                        {id:002,store_house:"2301C",rfid_card:"e0331d",rfid_content:"31275f46e",event_log:"多余",schedule:"123"},
+                        {id:003,store_house:"2301C",rfid_card:"e0331e",rfid_content:"31275f46r",event_log:"消失",schedule:"123"},
+                        {id:004,store_house:"2301A",rfid_card:"e0331f",rfid_content:"31275f46t",event_log:"多余",schedule:"123"}
+                    ];
+                    currentPageDataNum = $scope.dataList.length;
+                    $scope.bigTotalItems = 4;
+                    $scope.total_page = 1;
 
-           // if(currentPageDataNum == 0)
-           //   $scope.emptyDataListShow = "emptyDataListShow";
-           // else{
-           //   $scope.emptyDataListShow = "";
-           // }
+                    // if(currentPageDataNum == 0)
+                    //   $scope.emptyDataListShow = "emptyDataListShow";
+                    // else{
+                    //   $scope.emptyDataListShow = "";
+                    // }
+                }
+            }).error(function(data,state){
+                if(state == 403){
+                    baseUrl.redirect()
+                }
+            });
         }
-        }).error(function(data,state){
-            if(state == 403){
-                baseUrl.redirect()
-            }
-        });
-    }
 
-    $scope.submit_search();
+        $scope.submit_search();
        
     }else if(items.method=="delete"){
         $scope.ok = function(){
