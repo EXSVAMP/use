@@ -2462,9 +2462,7 @@
 .pop-delete-com-poll {
   margin-top: 15px;
   height: auto;
-  overflow: hidden; }
-
-.pop-delete-com-poll {
+  overflow: hidden;
   text-align: start; }
 
 .modal-header-poll {
@@ -2497,6 +2495,205 @@
   .modal-table-poll thead tr th {
     height: 48px; }
   .modal-table-poll tbody tr td {
+    height: 48px; }
+
+.manual-content .manual-select {
+  display: table;
+  height: auto;
+  width: 100%; }
+  .manual-content .manual-select .form-group {
+    margin-right: 35px; }
+  .manual-content .manual-select .btns-group {
+    margin: 0;
+    width: 290px; }
+    .manual-content .manual-select .btns-group .btn-rfid-search, .manual-content .manual-select .btns-group .btn-rfid-add, .manual-content .manual-select .btns-group .btn-rfid-inventory {
+      width: 80px;
+      height: 34px;
+      border-radius: 4px !important;
+      background-color: #45b6b0;
+      margin-right: 20px;
+      font-size: 12px;
+      color: #ffffff; }
+      .manual-content .manual-select .btns-group .btn-rfid-search span, .manual-content .manual-select .btns-group .btn-rfid-add span, .manual-content .manual-select .btns-group .btn-rfid-inventory span {
+        display: block;
+        float: left;
+        padding-top: 0px;
+        padding-right: 0px;
+        font-size: 16px;
+        color: #fff;
+        /*line-height: 34px;*/ }
+    .manual-content .manual-select .btns-group .btn-rfid-add {
+      background-color: #fc763c; }
+    .manual-content .manual-select .btns-group .btn-rfid-inventory {
+      background-color: #5f9bdb;
+      margin-right: 0; }
+.manual-content .condition-sort {
+  width: 100%;
+  height: 34px;
+  background: #fff;
+  border-radius: 4px;
+  position: relative; }
+  .manual-content .condition-sort table.table-time {
+    float: left;
+    margin: -10px 0 0;
+    padding: 0;
+    width: 200px; }
+    .manual-content .condition-sort table.table-time .time-set {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      background-color: #ffffff;
+      border: solid 1px #5f9bdb;
+      position: relative;
+      top: -2px;
+      float: left;
+      margin-left: 6px; }
+    .manual-content .condition-sort table.table-time span.pagination-tip2 {
+      font-size: 12px;
+      color: #666666;
+      position: relative;
+      top: 2px;
+      float: left; }
+    .manual-content .condition-sort table.table-time .pagination-tip-last {
+      left: 68px; }
+    .manual-content .condition-sort table.table-time .ui-select-container {
+      border-radius: 4px;
+      background-color: #ffffff;
+      border: solid 1px #e6e6e6;
+      height: 24px !important;
+      left: 45px;
+      top: 5px !important;
+      width: 62px !important; }
+      .manual-content .condition-sort table.table-time .ui-select-container .ui-select-match {
+        border: none;
+        height: 22px;
+        width: 60px; }
+        .manual-content .condition-sort table.table-time .ui-select-container .ui-select-match span {
+          border: medium none;
+          border-radius: 4px;
+          height: 18px;
+          padding: 0 0 0 5px;
+          width: 60px; }
+  .manual-content .condition-sort table.table-pagination-sort {
+    float: right;
+    margin: -10px 0 0;
+    padding: 0;
+    width: 165px; }
+.manual-content table.table-content thead tr .dwn-arw-af-card::after, .manual-content table.table-content thead tr .up-arw-af-card::after {
+  content: "\e928";
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  font-size: 20px;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "icomoon" !important;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: none; }
+.manual-content table.table-content thead tr .up-arw-af-card::after, .manual-content table.table-content thead tr .up-arw-af-card-sn::after, .manual-content table.table-content thead tr .up-arw-af-card-s::after, .manual-content table.table-content thead tr .up-arw-af-card-cr::after, .manual-content table.table-content thead tr .up-arw-af-up::after {
+  content: "\e929"; }
+.manual-content table.table-content tbody tr td p {
+  line-height: 2.2; }
+  .manual-content table.table-content tbody tr td p .rfid-edit {
+    color: #45b6b0;
+    background: none;
+    margin-top: 8px; }
+  .manual-content table.table-content tbody tr td p .rfid-delete {
+    color: #ff6b6b;
+    background: none;
+    margin-top: 8px; }
+  .manual-content table.table-content tbody tr td p .rfid-delete-manual {
+    color: #45b6b0; }
+  .manual-content table.table-content tbody tr td p .rfid-delete-tip {
+    width: auto;
+    color: #45b6b0;
+    margin-top: 0; }
+.manual-content .emptyDataList p span:first-child {
+  background: none;
+  font-size: 128px; }
+.manual-content .emptyDataList p span:last-child {
+  margin-top: 35px; }
+
+.edit-form-manual .form-group {
+  float: left;
+  margin-right: 53px;
+  width: 360px;
+  float: none;
+  margin: 10px auto; }
+  .edit-form-manual .form-group label {
+    font-size: 12px;
+    color: #3e4d68; }
+  .edit-form-manual .form-group ui-select, .edit-form-manual .form-group .ui-select-container, .edit-form-manual .form-group input {
+    width: 360px;
+    height: 34px; }
+  .edit-form-manual .form-group input {
+    font-size: 12px;
+    color: #888888; }
+  .edit-form-manual .form-group .ui-select-search, .edit-form-manual .form-group .ui-select-match {
+    width: 360px !important;
+    min-width: 360px !important;
+    /* Because of the inclusion of Bootstrap */ }
+    .edit-form-manual .form-group .ui-select-search span, .edit-form-manual .form-group .ui-select-match span {
+      /*height: 34px;*/
+      font-size: 12px !important;
+      color: #888888 !important; }
+  .edit-form-manual .form-group .ui-select-choices {
+    width: 360px !important;
+    min-width: 360px !important;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    height: auto !important;
+    max-height: 1000px !important; }
+    .edit-form-manual .form-group .ui-select-choices li {
+      width: 360px;
+      overflow: hidden;
+      padding: 0;
+      margin: 0; }
+      .edit-form-manual .form-group .ui-select-choices li .dropup, .edit-form-manual .form-group .ui-select-choices li .dropdown {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        width: 360px; }
+
+.pop-delete-com-manual {
+  margin-top: 15px;
+  height: auto;
+  overflow: hidden;
+  text-align: start; }
+
+.modal-header-manual {
+  position: relative; }
+  .modal-header-manual .modal-cancel-manual {
+    font-size: 24px;
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer; }
+
+.modal-md-info-manual {
+  height: 425px;
+  left: 50%;
+  margin-left: -430px;
+  margin-top: -212.5px;
+  position: absolute;
+  top: 50%;
+  width: 860px; }
+  .modal-md-info-manual .emptyDataList {
+    height: auto;
+    margin-bottom: 130px;
+    margin-top: 90px; }
+
+.modal-table-manual {
+  width: 820px !important;
+  margin: 30px auto 30px auto;
+  overflow: auto; }
+  .modal-table-manual thead tr th {
+    height: 48px; }
+  .modal-table-manual tbody tr td {
     height: 48px; }
 
 body, div, dl, dt, dd, ul, ol, li,

@@ -331,6 +331,7 @@ td,th{
 .header_com{
     height: 48px;
     background: #3e4d68;
+    z-index: 10000;
 }
 .header_com_logo{
         float:left;
