@@ -106,18 +106,18 @@
                 <div class="form-row">
                     <div class="date-area">
                         <span class="icon-icon_calendar"></span>
-                        <input type="text" datetimez class="normal date-picker" data-date-format="yyyy-mm-dd hh:mm:ss" ng-model="startDate"/>
+                        <input type="text" datetimez class="normal date-picker"  data-date-format="yyyy-mm-dd hh:mm:ss" ng-model="startDate"/>
                     </div>
                     <span style="margin:0 10px;float:left;position: relative;top:10px;">至</span>
                     <div class="date-area">
                         <span class="icon-icon_calendar"></span>
-                        <input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd"
+                        <input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd hh:mm:ss"
                                ng-model="endDate"/>
                     </div>
                 </div>
             </div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;serial_searchTemp=serial_search;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;serial_searchTemp=serial_search;submit_search(1)" id="search-btn"><span class="icon-icon_search"></span>搜索</button>
 				<!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
 			</div>
 		</form>

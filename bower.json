@@ -41,5 +41,8 @@
     "angular-ui-select": "^0.19.4",
     "selectize": "~0.8.5",
     "bootstrap-datepicker": "^1.6.4"
+  },
+  "resolutions": {
+    "bootstrap": "^3.3.7"
   }
 }
