@@ -5,8 +5,20 @@
         <h3 class="modal-title"><span class="icon-icon_manual_test"></span>{{item.title}}</h3>
         <span class="icon-icon_cancel modal-cancel-manual" ng-click="cancel()" ng-show="item.method=='info'"></span>
     </div>
-    <div class="modal-body row main-content manual-content">
+    <div class="modal-body row main-content manual-content manual-content-modal">
         <div ng-show="item.text">{{item.text}}</div>
+
+        <form role="form" class="pop-add-form-com add-form-manual" ng-show="item.method=='add'||item.method=='modify'">
+          <div class="form-group">
+            <label for="startDate">检测时间:</label>
+              <div class="form-row">
+                <div class="date-area">
+                  <span class="icon-icon_calendar"></span>
+                    <input type="text" class="normal date-picker-add" data-date-format="yyyy-mm-dd hh:mm:ss" ng-model="startDate"/>
+                    </div>
+              </div>
+          </div>
+        </form>
 
         <table class="table table-bordered table-content modal-table-manual" ng-show="item.method=='info'">
         <thead>
@@ -67,16 +79,20 @@
         <div class="pop-delete-com pop-delete-com-manual" ng-show="item.method=='delete'"><p><span></span>确定要删除这个检测吗？<br/>注意：删除以后不可以恢复！</p></div>
 
     </div>
-    <div class="modal-footer" ng-show="item.method=='delete'">
+    <div class="pop-inventory-manual" ng-show="item.method=='inventory'"><p><span>编号0001正在检测中</span><br/><span>下一次可检测时间为：2016-09-09 12:12:12</span></p></div>
+
+    </div>
+    <div class="modal-footer" ng-show="item.method!='info'">
       <div class="modal-footer-resize-com modal-footer-resize-manual">
-        <button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()">确定</button>
+        <button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()" ng-show="item.method!='inventory'">确定</button>
+        <button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()" ng-show="item.method=='inventory'">立即预约</button>
         <button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
       </div>
     </div>
 </script>
 
 	<div class="main-top-bar manual-bar">
-		<p><span class="icon-icon_location"></span>在线管理>轮巡检测</p>
+		<p><span class="icon-icon_location"></span>在线管理>手动检测</p>
 	</div>
 	<div class="main-content manual-content">
 		<form role="form" class="search-bar manual-select">
@@ -109,8 +125,8 @@
             </div>
 			<div class="btns-group">
 				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;serial_searchTemp=serial_search;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
-				<button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span class="icon-icon_plus"></span>增加</button>
-        <button type="button" class="btn btn-rfid-inventory" ng-click="open('md','inventory',$index)">立即检测</button>
+				<button type="button" class="btn btn-rfid-add" ng-click="open('md-add-manual','add',$index)"><span class="icon-icon_plus"></span>增加</button>
+        <button type="button" class="btn btn-rfid-inventory" ng-click="open('md-inventory-manual','inventory',$index)">立即检测</button>
 			</div>
 		</form>
 
