@@ -756,6 +756,12 @@
     background: #5F9BDB !important;
     color: #ffffff; }
 
+.main-content table.table-content {
+  width: 100%; }
+
+.main-content .search-bar {
+  width: 100%; }
+
 .card-content {
   	/*table.table-pagination{
   		thead{
@@ -1480,9 +1486,11 @@
   margin-right: 1px; }
 
 .main-content .main-detail {
-  position: relative; }
+  position: relative;
+  padding-right: 340px; }
   .main-content .main-detail .main-detail-tab {
-    width: 850px;
+    width: 100%;
+    min-width: 850px;
     margin-bottom: 20px;
     background-color: #fff; }
     .main-content .main-detail .main-detail-tab .nav-tabs .tab-item {
@@ -1502,17 +1510,20 @@
           color: #5F9BDB; }
     .main-content .main-detail .main-detail-tab .detail-img {
       position: relative;
-      padding: 20px; }
+      padding: 20px;
+      height: auto;
+      overflow: hidden; }
       .main-content .main-detail .main-detail-tab .detail-img img {
-        width: 810px;
-        height: 500px; }
+        width: 100%;
+        min-width: 810px;
+        height: auto; }
       .main-content .main-detail .main-detail-tab .detail-img .img-bottom-bar {
         float: left;
-        position: absolute;
         bottom: 20px;
         background-color: rgba(0, 0, 0, 0.5);
         height: 50px;
-        width: 810px;
+        width: 100%;
+        min-width: 810px;
         text-align: right; }
         .main-content .main-detail .main-detail-tab .detail-img .img-bottom-bar .icon {
           color: #fff;
@@ -1521,7 +1532,8 @@
           .main-content .main-detail .main-detail-tab .detail-img .img-bottom-bar .icon:hover {
             color: #337ab7; }
   .main-content .main-detail .main-detail-content {
-    width: 850px;
+    width: 100%;
+    min-width: 850px;
     background-color: #fff;
     overflow: auto; }
     .main-content .main-detail .main-detail-content .form-group {
@@ -1771,25 +1783,33 @@
     background: #f5f5f5;
     list-style-type: none;
     height: auto;
-    overflow: hidden; }
+    overflow: hidden;
+    width: 100%;
+    min-width: 1200px; }
     .user-content .table-content-user li {
       float: left;
-      margin-right: 26.5px;
-      width: 280px;
+      width: 25%;
+      min-width: 280px;
       height: 224px;
       border-radius: 4px;
-      background-color: #ffffff;
+      background: none;
       list-style-type: none;
       margin-top: 18px;
-      padding: 0 10px 0 10px;
+      padding: 0 26.5px 0 7px;
       border: 0 none; }
       .user-content .table-content-user li:nth-child(4n) {
-        margin-right: 0; }
+        padding-right: 0; }
+      .user-content .table-content-user li:nth-child(n) {
+        padding-left: 0; }
       .user-content .table-content-user li .table-content-user-detail {
         width: 100%;
         height: 37px;
         border-bottom: 1px solid #e8ebf0;
-        display: table; }
+        display: table;
+        background: #fff;
+        padding: 0 26.5px 0 10px; }
+        .user-content .table-content-user li .table-content-user-detail:nth-child(4n) {
+          padding-right: 0; }
         .user-content .table-content-user li .table-content-user-detail p {
           display: table-cell;
           vertical-align: middle; }
@@ -1936,7 +1956,7 @@
   background: #fff;
   border-radius: 4px;
   position: relative;
-  min-width: 1200px;
+  min-width: 1100px;
   margin-bottom: 13px; }
   .eventlog_Content .main-content .condition-sort .condition-sort-ul {
     float: left;
@@ -1976,25 +1996,28 @@
     width: 165px; }
 .eventlog_Content .main-content .eventlog_detail {
   position: relative;
-  min-width: 1200px;
+  min-width: 1100px;
   border-radius: 4px;
   background-color: #f5f5f5;
   margin-bottom: 20px;
-  float: left; }
+  float: left;
+  padding-left: 340px; }
   .eventlog_Content .main-content .eventlog_detail .main-detail-tab {
-    width: 850px;
-    height: 650px;
+    min-width: 850px;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
     margin-bottom: 20px;
     background-color: #fff;
     float: right; }
     .eventlog_Content .main-content .eventlog_detail .main-detail-tab .bottom-bar-group {
       float: left;
-      position: absolute;
+      position: relative;
       background-color: #ffffff;
       height: 50px;
-      width: 810px;
-      text-align: center;
-      margin-top: -15px; }
+      min-width: 810px;
+      width: 100%;
+      text-align: center; }
       .eventlog_Content .main-content .eventlog_detail .main-detail-tab .bottom-bar-group .previous-group .icon-icon_arrow_circleleft {
         font-size: 32px;
         color: #5f9bdb;
@@ -2033,15 +2056,16 @@
       position: relative;
       padding: 20px; }
       .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img img {
-        width: 810px;
-        height: 500px; }
+        width: 100%;
+        min-width: 810px;
+        height: auto; }
       .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img .img-bottom-bar {
         float: left;
-        position: absolute;
         bottom: 20px;
         background-color: rgba(0, 0, 0, 0.5);
         height: 50px;
-        width: 810px;
+        min-width: 810px;
+        width: 100%;
         text-align: right; }
         .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img .img-bottom-bar .icon {
           color: #fff;
@@ -2050,7 +2074,8 @@
           .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img .img-bottom-bar .icon:hover {
             color: #337ab7; }
   .eventlog_Content .main-content .eventlog_detail .main-detail-content {
-    width: 850px;
+    width: 100%;
+    min-width: 850px;
     height: 350px;
     background-color: #fff;
     float: right;
@@ -2114,6 +2139,20 @@
       padding-left: 16px;
       border-bottom-left-radius: 0px;
       border-top-left-radius: 0px; }
+.eventlog_Content .main-content .notFound {
+  display: table;
+  margin: 100px auto 0 auto; }
+  .eventlog_Content .main-content .notFound .icon-icon_eventlog {
+    font-size: 128px;
+    color: #3e4d68;
+    display: inline-block; }
+  .eventlog_Content .main-content .notFound .notFound_desc {
+    display: inline-block;
+    font-size: 19px;
+    color: #3e4d68;
+    position: relative;
+    top: -38px;
+    left: 2px; }
 
 .modal-img-carousel {
   width: 800px; }
@@ -2261,209 +2300,122 @@
     left: 0px; }
   to {
     left: 100%; } }
-.poll-content {
-  	/*table.table-pagination{
-  		thead{
-  			tr{
-  				position:relative;
-  				display: table;
-  				width: 100%;
-  				th{
-  					border: none;
-  					&:first-child{
-      					height: 24px+10px;
-      					position: absolute;
-      					top: 10px;
-      					width: 154px+10px;
-      					background: #fff;
-  						div.pagination-content{
-  							width: 154px;
-  							height: 24px;
-  							background: #f5f5f5;
-  							border-radius: 4px;
-  							border: solid 1px #e6e6e6;
-  							font-size: 12px;
-  							color: #666666;
-  							text-align: start;
-  							line-height: 0.7;
-  							position: absolute;
-  							top: 5px;
-  							left: 5px;
-  							span.pagination-tip{
-  								line-height: 1.9;
-      							padding-left: 10px;
-  							}
-  						}
-  						.btn{
-  							height: 22px !important;
-  							line-height: 22px;
-  							border-radius: 0;
-  							border: none;
-  							border-left: 1px solid #e6e6e6;
-  						}
-  						@include common_select_detail(60px);
-        					input{
-          					padding: 0 0 0 5px;
-      						text-align: start;
-      						line-height: 2;
-        					}
-  
-        					.ui-select-container{
-          					position: absolute;
-      						right: 1px;
-      						top: 0;
-      						height: 22px;
-      						&:hover{
-      							right: 0;
-      						}
-        					}
-  
-        					.ui-select-container.open{
-        						right: 0;
-        					}
-  
-        					.ui-select-search,.ui-select-match {
-          					//border-radius: 0;
-          					height: 22px;
-          				}
-  
-          				.ui-select-match{
-          					&>span{
-          						padding: 0 0 0 5px;
-      							text-align: start;
-      							line-height: 2;
-          					}
-          					.btn{
-          						&:first-child{
-          							//padding-bottom: 0;
-      								//padding-right: 25px;
-      								//padding-top: 0;
-      								//text-align: center;
-      								.ui-select-match-text{
-      									//padding-right: 0;
-      									//text-align: center;
-      									height: 22px;
-      								}
-          						}
-          						
-          					}
-          				} 
-  
-          				.ui-select-choices{
-          					//border-radius: 0;
-          				}
-  
-  					}
-  				}
-  			}
-  		}
-  	}*/ }
-  .poll-content .poll-select {
-    display: table;
-    height: auto;
-    width: 100%; }
-    .poll-content .poll-select .btns-group {
+.poll-content .poll-select {
+  display: table;
+  height: auto;
+  width: 100%; }
+  .poll-content .poll-select .btns-group {
+    width: 80px;
+    /*.btn-rfid-add{
+    	background-color: #fc763c;
+    	span{
+    		background: url(/lib/img/icon_plus_16_16_02.png);
+    	}
+    }*/ }
+    .poll-content .poll-select .btns-group .btn-rfid-search, .poll-content .poll-select .btns-group .btn-rfid-add {
       width: 80px;
-      /*.btn-rfid-add{
-      	background-color: #fc763c;
-      	span{
-      		background: url(/lib/img/icon_plus_16_16_02.png);
-      	}
-      }*/ }
-      .poll-content .poll-select .btns-group .btn-rfid-search, .poll-content .poll-select .btns-group .btn-rfid-add {
-        width: 80px;
-        height: 34px;
-        border-radius: 4px !important;
-        background-color: #45b6b0;
-        margin-right: 30px;
-        font-size: 12px;
-        color: #ffffff; }
-        .poll-content .poll-select .btns-group .btn-rfid-search span, .poll-content .poll-select .btns-group .btn-rfid-add span {
-          display: block;
-          float: left;
-          padding-top: 0px;
-          padding-right: 0px;
-          font-size: 16px;
-          color: #fff;
-          /*line-height: 34px;*/ }
-  .poll-content .condition-sort {
-    width: 100%;
-    height: 34px;
-    background: #fff;
-    border-radius: 4px;
-    position: relative; }
-    .poll-content .condition-sort table.table-time {
-      float: left;
-      margin: -10px 0 0;
-      padding: 0;
-      width: 200px; }
-      .poll-content .condition-sort table.table-time .time-set {
-        width: 16px;
-        height: 16px;
-        border-radius: 4px;
-        background-color: #ffffff;
-        border: solid 1px #5f9bdb;
-        position: relative;
-        top: -2px;
+      height: 34px;
+      border-radius: 4px !important;
+      background-color: #45b6b0;
+      margin-right: 30px;
+      font-size: 12px;
+      color: #ffffff; }
+      .poll-content .poll-select .btns-group .btn-rfid-search span, .poll-content .poll-select .btns-group .btn-rfid-add span {
+        display: block;
         float: left;
-        margin-left: 6px; }
-      .poll-content .condition-sort table.table-time span.pagination-tip2 {
-        font-size: 12px;
-        color: #666666;
-        position: relative;
-        top: 2px;
-        float: left; }
-      .poll-content .condition-sort table.table-time .pagination-tip-last {
-        left: 68px; }
-      .poll-content .condition-sort table.table-time .ui-select-container {
-        display: inline-table;
-        border-radius: 4px;
-        background-color: #ffffff;
-        border: solid 1px #e6e6e6;
-        border-left: medium none;
-        height: 24px !important;
-        left: 45px;
-        top: 5px !important;
-        /*.ui-select-search,.ui-select-choices{
-        	width: 62px !important;
-        }*/ }
-        .poll-content .condition-sort table.table-time .ui-select-container .ui-select-match {
-          height: 23px; }
-    .poll-content .condition-sort table.table-pagination-sort {
-      float: right;
-      margin: -10px 0 0;
-      padding: 0;
-      width: 165px; }
-  .poll-content table.table-content thead tr .dwn-arw-af-card::after, .poll-content table.table-content thead tr .up-arw-af-card::after {
-    content: "\e928";
-    position: absolute;
-    top: 2px;
-    right: 0px;
-    font-size: 20px;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: "icomoon" !important;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: normal;
-    line-height: 1;
-    text-transform: none; }
-  .poll-content table.table-content thead tr .up-arw-af-card::after, .poll-content table.table-content thead tr .up-arw-af-card-sn::after, .poll-content table.table-content thead tr .up-arw-af-card-s::after, .poll-content table.table-content thead tr .up-arw-af-card-cr::after, .poll-content table.table-content thead tr .up-arw-af-up::after {
-    content: "\e929"; }
-  .poll-content table.table-content tbody tr td p {
-    line-height: 2.2; }
-    .poll-content table.table-content tbody tr td p .rfid-edit {
-      color: #45b6b0;
-      background: none;
-      margin-top: 8px; }
-    .poll-content table.table-content tbody tr td p .rfid-delete {
-      color: #ff6b6b;
-      background: none;
-      margin-top: 8px; }
-  .poll-content .emptyDataList p span:first-child {
+        padding-top: 0px;
+        padding-right: 0px;
+        font-size: 16px;
+        color: #fff;
+        /*line-height: 34px;*/ }
+.poll-content .condition-sort {
+  width: 100%;
+  height: 34px;
+  background: #fff;
+  border-radius: 4px;
+  position: relative; }
+  .poll-content .condition-sort table.table-time {
+    float: left;
+    margin: -10px 0 0;
+    padding: 0;
+    width: 200px; }
+    .poll-content .condition-sort table.table-time .time-set {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      background-color: #ffffff;
+      border: solid 1px #5f9bdb;
+      position: relative;
+      top: -2px;
+      float: left;
+      margin-left: 6px; }
+    .poll-content .condition-sort table.table-time span.pagination-tip2 {
+      font-size: 12px;
+      color: #666666;
+      position: relative;
+      top: 2px;
+      float: left; }
+    .poll-content .condition-sort table.table-time .pagination-tip-last {
+      left: 68px; }
+    .poll-content .condition-sort table.table-time .ui-select-container {
+      border-radius: 4px;
+      background-color: #ffffff;
+      border: solid 1px #e6e6e6;
+      height: 24px !important;
+      left: 45px;
+      top: 5px !important;
+      width: 62px !important; }
+      .poll-content .condition-sort table.table-time .ui-select-container .ui-select-match {
+        border: none;
+        height: 22px;
+        width: 60px; }
+        .poll-content .condition-sort table.table-time .ui-select-container .ui-select-match span {
+          border: medium none;
+          border-radius: 4px;
+          height: 18px;
+          padding: 0 0 0 5px;
+          width: 60px; }
+  .poll-content .condition-sort table.table-pagination-sort {
+    float: right;
+    margin: -10px 0 0;
+    padding: 0;
+    width: 165px; }
+.poll-content table.table-content thead tr .dwn-arw-af-card::after, .poll-content table.table-content thead tr .up-arw-af-card::after {
+  content: "\e928";
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  font-size: 20px;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "icomoon" !important;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: none; }
+.poll-content table.table-content thead tr .up-arw-af-card::after, .poll-content table.table-content thead tr .up-arw-af-card-sn::after, .poll-content table.table-content thead tr .up-arw-af-card-s::after, .poll-content table.table-content thead tr .up-arw-af-card-cr::after, .poll-content table.table-content thead tr .up-arw-af-up::after {
+  content: "\e929"; }
+.poll-content table.table-content tbody tr td p {
+  line-height: 2.2; }
+  .poll-content table.table-content tbody tr td p .rfid-edit {
+    color: #45b6b0;
     background: none;
-    font-size: 128px; }
-  .poll-content .emptyDataList p span:last-child {
-    margin-top: 35px; }
+    margin-top: 8px; }
+  .poll-content table.table-content tbody tr td p .rfid-delete {
+    color: #ff6b6b;
+    background: none;
+    margin-top: 8px; }
+  .poll-content table.table-content tbody tr td p .rfid-delete-poll {
+    color: #45b6b0; }
+  .poll-content table.table-content tbody tr td p .rfid-delete-tip {
+    width: auto;
+    color: #45b6b0;
+    margin-top: 0; }
+.poll-content .emptyDataList p span:first-child {
+  background: none;
+  font-size: 128px; }
+.poll-content .emptyDataList p span:last-child {
+  margin-top: 35px; }
 
 .edit-form-poll .form-group {
   float: left;
@@ -2511,6 +2463,41 @@
   margin-top: 15px;
   height: auto;
   overflow: hidden; }
+
+.pop-delete-com-poll {
+  text-align: start; }
+
+.modal-header-poll {
+  position: relative; }
+  .modal-header-poll .modal-cancel-poll {
+    font-size: 24px;
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer; }
+
+.modal-md-info {
+  height: 425px;
+  left: 50%;
+  margin-left: -430px;
+  margin-top: -212.5px;
+  position: absolute;
+  top: 50%;
+  width: 860px; }
+  .modal-md-info .emptyDataList {
+    height: auto;
+    margin-bottom: 130px;
+    margin-top: 90px; }
+
+.modal-table-poll {
+  width: 820px !important;
+  margin: 30px auto 30px auto;
+  overflow: auto; }
+  .modal-table-poll thead tr th {
+    height: 48px; }
+  .modal-table-poll tbody tr td {
+    height: 48px; }
 
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6, label, form, input, button,

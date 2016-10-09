@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.factory('listService', function ($http,baseUrl) {
+app.factory('listService', function ($http,baseUrl,url_junction) {
     return {
         init:function($scope,url,options){                      //options:{isAdd:刷新时旧数据是否清空,autoRefresh:列表到底自动刷新,listElement:列表元素选择器}
             $scope.options = options?options:{};                //查询设置
@@ -7,10 +7,12 @@ app.factory('listService', function ($http,baseUrl) {
             $scope.dataList=[];                                 //数据
             $scope.total=0;                                     //总条数
             $scope.totalPage=0;                                 //总页数
+            $scope.page=0;
             $scope.listLoadFlag = 0;                            //列表加载标记0:未加载;1:加载中;2已加载
             if(!$scope.order)$scope.order = {id:false};         //排序字段,true时带入descent
             $scope.params = {index:1,number:10,descent:''};     //查询条件,页码,每页条数,排序字段
             $scope.refresh=function(page,callback){
+               
                 if(angular.isNumber(page)&&page>$scope.totalPage)return;
                 if(angular.isNumber(page)){
                     $scope.params.index=page
@@ -31,7 +33,7 @@ app.factory('listService', function ($http,baseUrl) {
                 }
                 $scope.params.descent=descent;
                 $scope.listLoadFlag = 1;
-                $http.get(baseUrl.getUrl() + url,{params:$scope.params}).success(function(data){
+                $http.get(baseUrl.getUrl() + url+ url_junction.getQuery($scope.params)).success(function(data){
                     $scope.listLoadFlag=2;
                     if(data.code==200){
                         if($scope.options.isAdd){

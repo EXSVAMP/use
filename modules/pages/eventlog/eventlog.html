@@ -97,7 +97,7 @@
 
 
        </div>
-       <div class="eventlog_detail">
+       <div class="eventlog_detail" ng-show="dataList.length>0">
            <div class="main-detail-tab">
                <ul class="nav nav-tabs">
                    <li class="tab-item" style="margin-left:20px;" ng-class="tabSwitch==0?'active':''" ng-click="tabSwitch=0;">
@@ -107,7 +107,7 @@
                </ul>
                <div class="detail-img" ng-show="tabSwitch==0">
                    <img ng-src="{{detail.photo_url | img}}"/>
-                   <div class="img-bottom-bar"><a ng-href="{{detail.photo_url}}" class="icon icon-icon_download" download></a><span class="icon icon-icon_expand"></span></div>
+                   <div class="img-bottom-bar"><a ng-href="{{detail.photo_url}}" class="icon icon-icon_download" download></a><span class="icon icon-icon_expand" ng-click="showImg(detail.photo_url)"></span></div>
 
 
                </div>
@@ -116,7 +116,7 @@
                </div>
                <div class="bottom-bar-group">
                    <span class="previous-group"  >上一组<span class="icon-icon_arrow_circleleft" ng-class="currentIndex<=0?'noclick':''" ng-disabled="currentIndex<=0" ng-click="currentIndex>0?showDetail(currentIndex-1):''"></span></span>
-                   <span class="next-group">下一组<span class="icon-icon_arrow_circleright" ng-class="currentIndex>=params.number-1?'noclick':''" ng-click="currentIndex<params.number-1?showDetail(currentIndex+1):''" ></span></span>
+                   <span class="next-group">下一组<span class="icon-icon_arrow_circleright" ng-class="currentIndex==dataList.length-1?'noclick':''" ng-click="currentIndex!=dataList.length-1?showDetail(currentIndex+1):''" ></span></span>
 
                </div>
 
@@ -182,6 +182,32 @@
 
            </div>
        </div>
+       <table class="table table-pagination" ng-show="totalPage>1">
+           <thead>
+           <tr>
+               <th>
+                   <uib-pagination items-per-page="params.number" total-items="total" ng-change="refresh()"
+                                   ng-model="params.index" max-size="5"
+                                   class="pagination-sm" boundary-link-numbers="true"
+                                   previous-text="上一页" next-text="下一页"></uib-pagination>
+
+
+                   <div class="pagination-detail">
+                       <span>共{{totalPage}}页</span>
+                       <span>跳至<input type="text" ng-model="jumpToPage"/>页</span>
+                       <span><button ng-click="refresh(jumpToPage);jumpToPage='';">确定</button></span>
+                   </div>
+               </th>
+           </tr>
+           </thead>
+       </table>
+       <div  class="notFound" ng-show="listLoadFlag==2&&dataList&&dataList.length==0">
+           <p><span class="icon-icon_eventlog"></span><span class="notFound_desc">对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
+       </div>
+
+       <!--<div ng-show="listLoadFlag==2&&dataList&&dataList.length==0" class="emplty-view">-->
+           <!--<span class="icon icon-icon_alert"></span><span class="empty-view-text">对不起，您搜索的内容不存在。<br/>请重新搜索。</span>-->
+       <!--</div>-->
        <div style="clear: both"></div>
 
    </div>
