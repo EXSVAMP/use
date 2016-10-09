@@ -5,7 +5,7 @@ html,body{
 }
 #contain{
     width: 3990px;
-    height: 4192px;
+    height: 4235px;
     border: solid 2px #000000;
     border-right: none;
     border-bottom: none;
@@ -271,7 +271,7 @@ img.up5 {
 
 .boardDown{
     width: 3050px;
-    height: 1155px;
+    height: 1198px;
     border: solid 2px #000;
     margin-left: 180px;
     border-top: none;
@@ -931,4 +931,30 @@ img.tip_2{
     left: 50%;
     font-size: 32px;
     color: red;
+}
+
+.goods1_chache{
+    width: 350px;
+    height: 900px;
+    background: #f3f3f3;
+    float: left;
+    border: solid 2px #000000;
+    text-align: center;
+    display: table;
+    color: #9a9a9a;
+    font-size: 30px;
+    position: relative;
+    top: -110px;
+    left: -0px;
+    border-top: none;
+    border-left: none;
+
+}
+.goods1_chache_pass{
+    position: relative;
+    top: 960px;
+    left: -220px;
+    color:#9a9a9a;
+    font-size: 30px;
+
 }
