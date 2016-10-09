@@ -156,19 +156,33 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   }
 
   $scope.submit_search(1,-1);
+  //
+  // $('.date-picker').datetimepicker({
+  //   language: 'zh',
+  //   orientation: "left",
+  //   todayHighlight: true,
+  //   autoclose:true,
+  //   templates:{
+  //     leftArrow: '<i class="fa fa-angle-left"></i>',
+  //     rightArrow: '<i class="fa fa-angle-right"></i>'
+  //   }
+  //
+  //
+  // });
 
-  $('.date-picker').datetimepicker({
-    language: 'zh',
-    orientation: "left",
-    todayHighlight: true,
-    autoclose:true,
-    templates:{
-      leftArrow: '<i class="fa fa-angle-left"></i>',
-      rightArrow: '<i class="fa fa-angle-right"></i>'
-    }
-
-
-  });  
+  $timeout(function(){
+    $('.date-picker').datetimepicker({
+      format:'yyyy-mm-dd hh:ii',
+      language: 'zh',
+      orientation: "left",
+      todayHighlight: true,
+      autoclose:true,
+      templates:{
+        leftArrow: '<i class="fa fa-angle-left"></i>',
+        rightArrow: '<i class="fa fa-angle-right"></i>'
+      }
+    });
+  },100);
 
 // app.directive('datetimez', function() {
 //     return {
