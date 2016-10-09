@@ -762,6 +762,13 @@
 .main-content .search-bar {
   width: 100%; }
 
+.main-top-bar {
+  min-width: 1240px; }
+
+.main-content {
+  min-width: 1240px;
+  width: 100%; }
+
 .card-content {
   	/*table.table-pagination{
   		thead{
@@ -2497,6 +2504,9 @@
   .modal-table-poll tbody tr td {
     height: 48px; }
 
+.poll-content-modal {
+  min-width: 0; }
+
 .manual-content .manual-select {
   display: table;
   height: auto;
@@ -2695,6 +2705,53 @@
     height: 48px; }
   .modal-table-manual tbody tr td {
     height: 48px; }
+
+.modal-md-add-manual, .modal-md-inventory-manual {
+  width: 400px;
+  height: 217px;
+  margin-left: -200px;
+  margin-top: -108.5px;
+  position: absolute;
+  left: 50%;
+  top: 50%; }
+
+.add-form-manual .form-group {
+  height: auto;
+  margin: 20px 0;
+  overflow: hidden;
+  width: 100%; }
+
+.pop-inventory-manual {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin: 20px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #3e4d68; }
+
+.manual-content-modal {
+  min-width: 0; }
+
+.storeSet_content .main-content .search-bar {
+  padding: 0px 20px;
+  color: #666666; }
+.storeSet_content .main-content .storeSet .icon-icon_gear {
+  font-size: 16px;
+  position: relative;
+  top: 12px; }
+.storeSet_content .main-content .storeSet .form-group {
+  font-size: 12px;
+  padding: 0px;
+  float: left;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 0px;
+  overflow: hidden; }
+  .storeSet_content .main-content .storeSet .form-group span {
+    padding: 0px; }
 
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6, label, form, input, button,
