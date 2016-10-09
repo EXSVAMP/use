@@ -5,7 +5,7 @@
         <h3 class="modal-title"><span class="icon-icon_realtime_text"></span>{{item.title}}</h3>
         <span class="icon-icon_cancel modal-cancel-poll" ng-click="cancel()" ng-show="item.method=='info'"></span>
     </div>
-    <div class="modal-body row main-content poll-content">
+    <div class="modal-body row main-content poll-content poll-content-modal">
         <div ng-show="item.text">{{item.text}}</div>
 
         <table class="table table-bordered table-content modal-table-poll" ng-show="item.method=='info'">

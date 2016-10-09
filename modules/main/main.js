@@ -1006,17 +1006,77 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
     }
 });
 
-app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http,items,baseUrl,url_junction,ngDialog){
+app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, $timeout,items,baseUrl,url_junction,ngDialog){
     baseUrl = baseUrl.getUrl();
     $scope.item = items;
     if($scope.item.method == "info")
-        $scope.item.title = "编号"+$scope.item.data.id+"检测结果";
+        $scope.item.title = "编号"+$scope.item.data.id+"检测报告";
 
     $scope.cancel = function(){
         $uibModalInstance.dismiss('cancel');
     };
 
-    if(items.method=="info"){
+    if(items.method=="add"){
+
+        $timeout(function(){
+            $('.date-picker-add').datepicker({
+                language: 'zh',
+                orientation: "left",
+                todayHighlight: true,
+                autoclose:true,
+                templates:{
+                    leftArrow: '<i class="fa fa-angle-left"></i>',
+                    rightArrow: '<i class="fa fa-angle-right"></i>'
+                }
+            });
+        });
+
+        $scope.ok = function(){
+            if($scope.startDate){
+                $http.post(baseUrl + "/api/2/inventory/list/date", {"date":$scope.startDate}).success(function(data){
+                    items.scope.submit_search();
+                }).error(function(){
+                    alert("有点故障！")
+                })
+                $uibModalInstance.close();
+            }else
+                ngDialog.open({
+                    template: '<p style=\"text-align: center\">请选择检测时间</p>',
+                    plain: true
+                });
+        }
+    }else if(items.method=="modify"){
+
+        $timeout(function(){
+            $('.date-picker-add').datepicker({
+                language: 'zh',
+                orientation: "left",
+                todayHighlight: true,
+                autoclose:true,
+                templates:{
+                    leftArrow: '<i class="fa fa-angle-left"></i>',
+                    rightArrow: '<i class="fa fa-angle-right"></i>'
+                }
+            });
+
+            $scope.startDate = items.data.date;
+        });
+
+        $scope.ok = function(){
+            if($scope.startDate){
+                $http.put(baseUrl + "/api/2/inventory/list/date/"+items.data.id, {"date":$scope.startDate}).success(function(data){
+                    items.scope.submit_search();
+                }).error(function(){
+                    alert("有点故障！")
+                })
+                $uibModalInstance.close();
+            }else
+                ngDialog.open({
+                    template: '<p style=\"text-align: center\">请选择检测时间</p>',
+                    plain: true
+                });
+        }
+    }else if(items.method=="info"){
         $scope.emptyDataListShow = "";
         $scope.currentPageDataNum = 0;
         $scope.index = 1;

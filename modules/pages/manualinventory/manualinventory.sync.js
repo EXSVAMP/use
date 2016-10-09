@@ -22,9 +22,26 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
                         return {
                             title:"检测结果",
                             method:"info",
-                            status_disable:false,
                             data:$scope.dataList[index],
-                            choice:$scope.choice,
+                            scope:$scope
+                        }
+                    }else if(method=="add"){
+                        return {
+                            title:"新增检测",
+                            method:"add",
+                            scope:$scope
+                        }
+                    }else if(method=="modify"){
+                        return {
+                            title:"修改检测",
+                            method:"modify",
+                            data:$scope.dataList[index],
+                            scope:$scope
+                        }
+                    }else if(method=="inventory"){
+                        return {
+                            title:"预约检测",
+                            method:"inventory",
                             scope:$scope
                         }
                     }
@@ -116,7 +133,7 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
       index:$scope.index
     });
   
-  		$http.get(baseUrl.getUrl() + "/api/2/inventory/list/interval"+query_url).success(function(data){
+  		$http.get(baseUrl.getUrl() + "/api/2/inventory/list/date"+query_url).success(function(data){
         if(data.code==200){
           // $scope.dataList =  data.data;
           // currentPageDataNum = $scope.dataList.length;
