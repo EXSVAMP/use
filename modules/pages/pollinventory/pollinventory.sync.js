@@ -157,7 +157,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
   $scope.submit_search(1,-1);
 
-  $('.date-picker').datepicker({
+  $('.date-picker').datetimepicker({
     language: 'zh',
     orientation: "left",
     todayHighlight: true,
