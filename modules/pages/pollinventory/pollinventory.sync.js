@@ -157,7 +157,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
   $scope.submit_search(1,-1);
 
-  $('.date-picker').datetimepicker({
+  $('.date-picker').datepicker({
     language: 'zh',
     orientation: "left",
     todayHighlight: true,
@@ -166,9 +166,8 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
       leftArrow: '<i class="fa fa-angle-left"></i>',
       rightArrow: '<i class="fa fa-angle-right"></i>'
     }
-  });
 
-   
+  });  
 
 // app.directive('datetimez', function() {
 //     return {
