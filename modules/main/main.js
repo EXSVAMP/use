@@ -146,6 +146,7 @@ app.config(['$httpProvider', function($httpProvider){
     $httpProvider.interceptors.push(HttpInterceptor);
 }]);
 
+
 app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDialog, $rootScope){
     var baseUrl = baseUrl.getUrl();
 
@@ -1177,6 +1178,45 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
             $uibModalInstance.close();
         };
     }
+});
+
+app.directive('datetimez', function() {
+    return {
+        require: '?ngModel',
+        restrict : 'A',
+        scope:{
+            ngModel: '='
+        },
+        link : function(scope, element, attr,ngModel) {
+            console.log("188888:"+ngModel.$viewValue);
+            // Specify how UI should be updated
+            ngModel.$render = function() {
+                element.val(ngModel.$viewValue || '');
+            };
+            // Listen for change events to enable binding
+            //element.on('blur keyup change', function() {
+            element.on('blur keyup change mouseout click', function() {
+                //console.log("1:"+ngModel.$viewValue);
+                //console.log(element.val());
+                //console.log(element.html());
+                //console.log(element.attr("type"));
+                scope.$apply(read);
+                $(".btn").on('mouseenter', function() {
+                    scope.$apply(read);
+                });
+            });
+            read(); // initialize
+            // Write data to the model
+            function read() {
+                var val = element.val();
+                //console.log("2:"+val);
+                ngModel.$setViewValue(val);
+                console.log("2:"+val);
+            }
+            
+        }
+    }
+
 });
 
 $.fn.datepicker.dates['zh'] = {

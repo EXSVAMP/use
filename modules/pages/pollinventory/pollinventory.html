@@ -1,5 +1,13 @@
 <div ng-controller="pollinventoryCtrl">
-
+  <!-- <script type="text/ng-template" id="datepicker.html">
+    <div class="input-group date" data-date-format="yyyy-mm-dd hh:mm" ng-controller="datepickerCtrl">
+      <input type="text" ng-class={inputError:dp.validDate==false} 
+      class="form-control input-sm"  ng-model="value"/>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-th"></span>
+      </span>
+    </div>
+  </script> -->
 <script type="text/ng-template" id="myModalContent.html">
     <div class="modal-header modal-header-poll">
         <h3 class="modal-title"><span class="icon-icon_realtime_text"></span>{{item.title}}</h3>
@@ -78,6 +86,8 @@
 	<div class="main-top-bar poll-bar">
 		<p><span class="icon-icon_location"></span>在线管理>轮巡检测</p>
 	</div>
+  <!-- <div type="text"  class="col-xs-2" datepicker value="" style="width:300px;height:30px;border:1px solid #000;" ></div> -->
+  
 	<div class="main-content poll-content">
 		<form role="form" class="search-bar poll-select">
 			<div class="form-group">
@@ -96,8 +106,7 @@
                 <div class="form-row">
                     <div class="date-area">
                         <span class="icon-icon_calendar"></span>
-                        <input type="text" datetimez class="normal date-picker" data-date-format="yyyy-mm-dd"
-                               ng-model="startDate"/>
+                        <input type="text" datetimez class="normal date-picker" data-date-format="yyyy-mm-dd hh:mm:ss" ng-model="startDate"/>
                     </div>
                     <span style="margin:0 10px;float:left;position: relative;top:10px;">至</span>
                     <div class="date-area">
