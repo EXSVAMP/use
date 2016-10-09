@@ -51,3 +51,22 @@
     color: #666666;
     cursor: not-allowed;
 }
+
+.header_com_user{
+    float: right;
+    height: 48px;
+    position: relative;
+    width: 150px;
+}
+
+.dropdown-menu-custom{
+    display: none;
+    list-style-type: none;
+    padding-left: 15px;
+    padding-top: 7px;
+    position: absolute;
+}
+
+.dropdown_menu_custom_show{
+    display: block;
+}

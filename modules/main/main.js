@@ -167,7 +167,9 @@ app.controller("headerCtrl",function($scope, $cookieStore, $http, $uibModal, bas
 	var baseUrl = baseUrl.getUrl();
 	$scope.header_username = $cookieStore.get("iotcloud-token").loginName;
 	$scope.old_password_len = $cookieStore.get("passlen");
-
+    $("body").on("click",function(){
+         $scope.dropdown_menu_custom_show = "";
+    })
     $scope.open = function (size, method,index){
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
