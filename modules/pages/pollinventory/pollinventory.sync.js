@@ -167,6 +167,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
       rightArrow: '<i class="fa fa-angle-right"></i>'
     }
 
+
   });  
 
 // app.directive('datetimez', function() {
