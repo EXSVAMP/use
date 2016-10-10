@@ -199,10 +199,12 @@
 
 .modal-md-info {
 	//height: 305px;
-    height: 425px;
+    //height: 425px;
+    height: 495px;
     left: 50%;
     margin-left: -430px;
-    margin-top: -212.5px;
+    //margin-top: -212.5px;
+    margin-top: -247.5px;
     position: absolute;
     top: 50%;
     width: 860px;
@@ -213,9 +215,15 @@
     }
 }
 
+.modal-table-poll-wrapper{
+	height: 288px;
+	margin:30px auto 30px auto;
+}
+
 .modal-table-poll{
 	width: 820px !important;
-	margin:30px auto 30px auto;
+	//margin:30px auto 30px auto;
+	margin: auto;
 	overflow: auto;
 	thead{
 		tr{

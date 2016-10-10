@@ -6,13 +6,13 @@
     </div>
     <div class="modal-body row main-content poll-content poll-content-modal">
         <div ng-show="item.text">{{item.text}}</div>
-
+        <div class="modal-table-poll-wrapper" ng-show="item.method=='info'">
         <table class="table table-bordered table-content modal-table-poll" ng-show="item.method=='info'">
         <thead>
           <tr>
               <th ng-click="switch_order('id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.id]"></span></p></th>
               <th ng-click="switch_order('rfid_card')"><p>卡号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.rfid_card]"></span></p></th>
-              <th ng-click="switch_order('rfid_content')"><p>RFID分配编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.rfid_content]"></span</p></span></th>
+              <th ng-click="switch_order('rfid_content')"><p>RFID分配编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.rfid_content]"></span></p></span></th>
               <th ng-click="switch_order('store_house')"><p>货位<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.store_house]"></span></p></th>
               <th><p>检测结果</p></th>
           </tr>
@@ -28,6 +28,7 @@
           </tr>
         </tbody>
       </table>
+     </div>
       <div class="emptyDataList {{emptyDataListShow}}">
 
         <p><span class="icon-icon_realtime_text"></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
