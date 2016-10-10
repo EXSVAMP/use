@@ -541,16 +541,46 @@ app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,it
     }
 
 
-
-
-
-
-
-
-
-
-
 });
+
+app.controller("ModalStore",function($scope,$uibModalInstance,$http,items,baseUrl,url_junction){
+    baseUrl = baseUrl.getUrl();
+    $scope.params={};
+    $scope.params.name="";
+    $scope.params.address="";
+    $scope.params.connect_username="";
+    $scope.params.connect_info="";
+    scope=items.scope;
+    $scope.item=items;
+    $scope.params.name=scope.params.name;
+    $scope.params.address=scope.params.address;
+    $scope.params.connect_username=scope.params.connect_username;
+    $scope.params.connect_info=scope.params.connect_info;
+    $scope.cancel = function(){
+        $uibModalInstance.dismiss('cancel');
+    };
+    if(items.method=="edit"){
+        $scope.ok=function(){
+            var query_url = url_junction.getDict({
+                name:$scope.params.name,
+                address:$scope.params.address,
+                connect_username:$scope.params.connect_username,
+                connect_info:$scope.params.connect_info
+
+            });
+            if($scope.params.name!=undefined&&$scope.params.address!=undefined&&$scope.params.connect_username!=undefined&&$scope.params.connect_info!=undefined){
+              $http.put(baseUrl+"/api/1/storehouse/self/",query_url).success(function (data) {
+                  if(data.code=="200"){
+                      scope.searchStore();
+                      $uibModalInstance.close();
+                  }
+              })
+
+            }
+      }
+    }
+
+})
 
 app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,baseUrl){
     baseUrl = baseUrl.getUrl();

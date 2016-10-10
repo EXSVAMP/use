@@ -71,9 +71,9 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     getData();
 
 
-    window.setInterval(function(){
-        getData();
-    },30000);
+    // window.setInterval(function(){
+    //     getData();
+    // },30000);
 
     $scope.warnShow=function(obj){
         obj.warnflag=true;
