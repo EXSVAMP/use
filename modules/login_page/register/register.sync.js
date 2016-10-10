@@ -1,5 +1,7 @@
-"use strict"
-var scope = ["$scope","$http","$timeout","$uibModal",'baseUrl',"$interval", function($scope, $http, $timeout, $uibModal, baseUrl, $interval) {
+//"use strict"
+//var scope = ["$scope","$http","$timeout","$uibModal",'baseUrl',"$interval", function($scope, $http, $timeout, $uibModal, baseUrl, $interval) {
+var app = angular.module('Login');
+app.register.controller("registerCtrl", function ($scope, $http, $location, $timeout, $interval, $uibModal, $cookieStore, baseUrl, $rootScope) {
     var BaseUrl = baseUrl.getUrl();
     $scope.regstep1 = "reg-step-i reg-step-i-active";
     $scope.regstep2 = "reg-step-i";
@@ -98,5 +100,6 @@ var scope = ["$scope","$http","$timeout","$uibModal",'baseUrl',"$interval", func
             $scope.regarrow2 = "/statics/lib/img/icon_arrow_32_32_01.png";
         }
     }
-}];
-return scope;
+})
+//}];
+//return scope;

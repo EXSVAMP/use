@@ -1,13 +1,4 @@
 <div ng-controller="pollinventoryCtrl">
-  <!-- <script type="text/ng-template" id="datepicker.html">
-    <div class="input-group date" data-date-format="yyyy-mm-dd hh:mm" ng-controller="datepickerCtrl">
-      <input type="text" ng-class={inputError:dp.validDate==false} 
-      class="form-control input-sm"  ng-model="value"/>
-      <span class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-      </span>
-    </div>
-  </script> -->
 <script type="text/ng-template" id="myModalContent.html">
     <div class="modal-header modal-header-poll">
         <h3 class="modal-title"><span class="icon-icon_realtime_text"></span>{{item.title}}</h3>
@@ -15,13 +6,13 @@
     </div>
     <div class="modal-body row main-content poll-content poll-content-modal">
         <div ng-show="item.text">{{item.text}}</div>
-
+        <div class="modal-table-poll-wrapper" ng-show="item.method=='info'">
         <table class="table table-bordered table-content modal-table-poll" ng-show="item.method=='info'">
         <thead>
           <tr>
               <th ng-click="switch_order('id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.id]"></span></p></th>
               <th ng-click="switch_order('rfid_card')"><p>卡号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.rfid_card]"></span></p></th>
-              <th ng-click="switch_order('rfid_content')"><p>RFID分配编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.rfid_content]"></span</p></span></th>
+              <th ng-click="switch_order('rfid_content')"><p>RFID分配编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.rfid_content]"></span></p></span></th>
               <th ng-click="switch_order('store_house')"><p>货位<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.store_house]"></span></p></th>
               <th><p>检测结果</p></th>
           </tr>
@@ -37,6 +28,7 @@
           </tr>
         </tbody>
       </table>
+     </div>
       <div class="emptyDataList {{emptyDataListShow}}">
 
         <p><span class="icon-icon_realtime_text"></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
@@ -117,7 +109,7 @@
                 </div>
             </div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;serial_searchTemp=serial_search;submit_search(1)" id="search-btn"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;startDateTemp=startDate;endDateTemp=endDate;submit_search(1)" id="search-btn"><span class="icon-icon_search"></span>搜索</button>
 				<!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
 			</div>
 		</form>
@@ -127,7 +119,7 @@
         <thead>
                 <tr>
                   <th class="pagination-items-per-page">
-                        <input type="checkbox" class="time-set" checked="checked" />
+                        <input type="checkbox" class="time-set" ng-checked="{false:'',true:'checked'}[timeSetEnable]" ng-click="timeSetEnableFunc()"/>
                         <span class="pagination-tip2">每</span>
                         <ui-select ng-model="number3" theme="bootstrap" on-select="setShowNum2(number3)">
                           <ui-select-match placeholder="5">{{$select.selected}}</ui-select-match>

@@ -106,13 +106,25 @@
 			//padding: 0 10px 0 10px;
 			padding: 0 26.5px 0 7px;
 			border: 0 none;
+			position: relative;
 
+			&:nth-child(n){
+				padding-left: 0;
+			}
+			&:nth-child(2n){
+				right: -9px;
+			}
+			&:nth-child(2n+1){
+				right: -18px;
+			}
 			&:nth-child(4n){
 				//margin-right: 0;
 				padding-right: 0;
+				padding-left: 26.5px !important;
+				right: 0;
 			}
-			&:nth-child(n){
-				padding-left: 0;
+			&:nth-child(4n+1){
+				right: 0;
 			}
 			.table-content-user-detail{
 				width: 100%;

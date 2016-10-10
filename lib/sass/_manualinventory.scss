@@ -151,6 +151,14 @@
             				color: #45b6b0;
             				margin-top: 0;
             			}
+            			.manual_once{
+            				color: #45b6b0;
+    						cursor: pointer;
+    						font-size: 14px;
+    						line-height: 1.5;
+    						margin-left: 10px;
+    						width: auto;
+            			}
 					}
 				}
 			}
@@ -217,6 +225,11 @@
    		margin-bottom: 130px;
    		margin-top: 90px;
     }
+}
+
+.modal-table-manual-wrapper{
+	height: 288px;
+	margin:30px auto 30px auto;
 }
 
 .modal-table-manual{
