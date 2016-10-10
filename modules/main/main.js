@@ -910,9 +910,9 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
         $scope.emptyDataListShow = "";
         $scope.currentPageDataNum = 0;
         $scope.index = 1;
-        $scope.number = 10;
+        $scope.number = 5;
         $scope.maxSize = 5;
-        $scope.numbers = [10,20,30,40,50];
+        //$scope.numbers = [10,20,30,40,50];
         $scope.order = {
             id: false,
             rfid_card:false,
@@ -960,31 +960,25 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
   
             $http.get(baseUrl + "/api/2/inventory/result"+query_url).success(function(data){
                 if(data.code==200){
-                    // $scope.dataList =  data.data;
-                    // currentPageDataNum = $scope.dataList.length;
-                    // $scope.bigTotalItems = data.pageinfo.total_number;
-                    // $scope.total_page = data.pageinfo.total_page;
-                    // if(currentPageDataNum == 0)
-                    //   $scope.emptyDataListShow = "emptyDataListShow";
-                    // else{
-                    //   $scope.emptyDataListShow = "";
-                    // }
-
-                    $scope.dataList =  [
-                        {id:001,store_house:"2301A",rfid_card:"e0331c",rfid_content:"31275f46f",event_log:"消失",schedule:"123"},
-                        {id:002,store_house:"2301C",rfid_card:"e0331d",rfid_content:"31275f46e",event_log:"多余",schedule:"123"},
-                        {id:003,store_house:"2301C",rfid_card:"e0331e",rfid_content:"31275f46r",event_log:"消失",schedule:"123"},
-                        {id:004,store_house:"2301A",rfid_card:"e0331f",rfid_content:"31275f46t",event_log:"多余",schedule:"123"}
-                    ];
+                    $scope.dataList =  data.data;
                     currentPageDataNum = $scope.dataList.length;
-                    $scope.bigTotalItems = 4;
-                    $scope.total_page = 1;
+                    $scope.bigTotalItems = data.pageinfo.total_number;
+                    $scope.total_page = data.pageinfo.total_page;
+                    if(currentPageDataNum == 0)
+                      $scope.emptyDataListShow = "emptyDataListShow";
+                    else{
+                      $scope.emptyDataListShow = "";
+                    }
 
-                    // if(currentPageDataNum == 0)
-                    //   $scope.emptyDataListShow = "emptyDataListShow";
-                    // else{
-                    //   $scope.emptyDataListShow = "";
-                    // }
+                    // $scope.dataList =  [
+                    //     {id:001,store_house:"2301A",rfid_card:"e0331c",rfid_content:"31275f46f",event_log:"消失",schedule:"123"},
+                    //     {id:002,store_house:"2301C",rfid_card:"e0331d",rfid_content:"31275f46e",event_log:"多余",schedule:"123"},
+                    //     {id:003,store_house:"2301C",rfid_card:"e0331e",rfid_content:"31275f46r",event_log:"消失",schedule:"123"},
+                    //     {id:004,store_house:"2301A",rfid_card:"e0331f",rfid_content:"31275f46t",event_log:"多余",schedule:"123"}
+                    // ];
+                    // currentPageDataNum = $scope.dataList.length;
+                    // $scope.bigTotalItems = 4;
+                    // $scope.total_page = 1;
                 }
             }).error(function(data,state){
                 if(state == 403){
@@ -1181,52 +1175,6 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
         };
     }
 });
-
-// app.directive('datetimez', function() {
-//     return {
-//         require: '?ngModel',
-//         restrict : 'A',
-//         scope:{
-//             ngModel: '='
-//         },
-//         link : function(scope, element, attr,ngModel) {
-//             console.log("188888:"+ngModel.$viewValue);
-//             // Specify how UI should be updated
-//             ngModel.$render = function() {
-//                 element.val(ngModel.$viewValue || '');
-//             };
-//             // Listen for change events to enable binding
-//             //element.on('blur keyup change', function() {
-//             element.on('blur keyup change mouseout click', function() {
-//                 //console.log("1:"+ngModel.$viewValue);
-//                 //console.log(element.val());
-//                 //console.log(element.html());
-//                 //console.log(element.attr("type"));
-//                 scope.$apply(read);
-//                 $("#search-btn").on('mouseenter', function() {
-//                     scope.$apply(read);
-//                 });
-//             });
-//             read(); // initialize
-//             // Write data to the model
-//             function read() {
-//                 if(element.val()){
-//                      //console.log($(".minute.active").html());
-//                 var minuteSel = $(".minute.active").html();
-//                 minuteSel = element.val().split(" ")[0]+" "+minuteSel;
-//                 console.log("minuteSel:"+minuteSel);
-//                 element.val(minuteSel);
-//                 }
-//                 var val = element.val();
-//                 console.log("minuteSel222:"+val);
-//                 ngModel.$setViewValue(val);
-//                 //console.log("2:"+val);
-//             }
-            
-//         }
-//     }
-
-// });
 
 $.fn.datepicker.dates['zh'] = {
     days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],

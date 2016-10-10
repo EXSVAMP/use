@@ -1,13 +1,4 @@
 <div ng-controller="pollinventoryCtrl">
-  <!-- <script type="text/ng-template" id="datepicker.html">
-    <div class="input-group date" data-date-format="yyyy-mm-dd hh:mm" ng-controller="datepickerCtrl">
-      <input type="text" ng-class={inputError:dp.validDate==false} 
-      class="form-control input-sm"  ng-model="value"/>
-      <span class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-      </span>
-    </div>
-  </script> -->
 <script type="text/ng-template" id="myModalContent.html">
     <div class="modal-header modal-header-poll">
         <h3 class="modal-title"><span class="icon-icon_realtime_text"></span>{{item.title}}</h3>
@@ -117,7 +108,7 @@
                 </div>
             </div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;serial_searchTemp=serial_search;submit_search(1)" id="search-btn"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;startDateTemp=startDate;endDateTemp=endDate;submit_search(1)" id="search-btn"><span class="icon-icon_search"></span>搜索</button>
 				<!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
 			</div>
 		</form>
@@ -127,7 +118,7 @@
         <thead>
                 <tr>
                   <th class="pagination-items-per-page">
-                        <input type="checkbox" class="time-set" checked="checked" />
+                        <input type="checkbox" class="time-set" ng-checked="{false:'',true:'checked'}[timeSetEnable]" ng-click="timeSetEnableFunc()"/>
                         <span class="pagination-tip2">每</span>
                         <ui-select ng-model="number3" theme="bootstrap" on-select="setShowNum2(number3)">
                           <ui-select-match placeholder="5">{{$select.selected}}</ui-select-match>
