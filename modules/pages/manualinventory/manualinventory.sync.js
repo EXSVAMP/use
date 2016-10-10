@@ -12,7 +12,6 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
                 items: function () {
                     if(method=="delete"){
                         return {
-                            //text:"删除RFID卡",
                             title:"删除检测",
                             method:"delete",
                             data:$scope.dataList[index],
@@ -63,8 +62,6 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
   	$scope.status = "-1";
     //user sel status but not click search
     $scope.statusTemp = "-1";
-    $scope.serial_search = "";
-    $scope.serial_searchTemp = "";
     $scope.numbers = [10,20,30,40,50];
   	$scope.numbers2 = [5,6,7,8,9,10];
     $scope.order = {
@@ -77,12 +74,11 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
     $scope.state = [{flag:0,name:'未执行'},{flag:1,name:'正在执行'},{flag:2,name:'已执行'},{flag:3,name:'执行异常'},{flag:-1,name:'--请选择-'}];
 
     $scope.startDate = "";
+    $scope.startDateTemp = "";
+    $scope.endDate = "";
+    $scope.endDateTemp = "";
     $scope.statusSelFunc = function(data){
       $scope.statusTemp = data.flag;
-    }
-
-    $scope.changeDate = function(data,dataType){
-      alert(123);
     }
 
     $scope.switch_order = function(key){
@@ -104,7 +100,7 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
     };
 
   	$scope.submit_search = function(iStartIdx,iStatus){
-      console.log("test:"+$scope.startDate);
+      //console.log("test:"+$scope.startDate);
       if(iStartIdx)
         $scope.index = iStartIdx;
       if(iStatus)
@@ -122,8 +118,12 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
         }
       };
   		
-      var from = "";
-      var to = "";
+      var from = $scope.startDateTemp;
+      var to = $scope.endDateTemp;
+      if(from)
+        from += ':00';
+      if(to)
+        to += ':00';
       var query_url = url_junction.getQuery({
       from:from,
       to:to,
@@ -135,25 +135,29 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
   
   		$http.get(baseUrl.getUrl() + "/api/2/inventory/list/date"+query_url).success(function(data){
         if(data.code==200){
-          // $scope.dataList =  data.data;
-          // currentPageDataNum = $scope.dataList.length;
-          // $scope.bigTotalItems = data.pageinfo.total_number;
-          // $scope.total_page = data.pageinfo.total_page;
-          // if(currentPageDataNum == 0)
-          //   $scope.emptyDataListShow = "emptyDataListShow";
-          // else{
-          //   $scope.emptyDataListShow = "";
-          // }
+          $scope.dataList =  data.data;
+          currentPageDataNum = $scope.dataList.length;
+          $scope.bigTotalItems = data.pageinfo.total_number;
+          $scope.total_page = data.pageinfo.total_page;
+          if(currentPageDataNum == 0)
+            $scope.emptyDataListShow = "emptyDataListShow";
+          else{
+            $scope.emptyDataListShow = "";
+          }
+          if($scope.dataList.length > 0){
+            $scope.store_house_id = $scope.dataList[0].store_house;
+            $scope.schedule_id = $scope.dataList[0].schedule_type.id;
+          }
 
-          $scope.dataList =  [
-          {id:1,state:0,date:"2016",updated_at:"2016"},
-          {id:2,state:1,date:"2016",updated_at:"2016"},
-          {id:3,state:2,date:"2016",updated_at:"2016"},
-          {id:4,state:3,date:"2016",updated_at:"2016"}
-          ];
-           currentPageDataNum = 4;
-           $scope.bigTotalItems = 4;
-           $scope.total_page = 1;
+          // $scope.dataList =  [
+          // {id:1,state:0,date:"2016",updated_at:"2016"},
+          // {id:2,state:1,date:"2016",updated_at:"2016"},
+          // {id:3,state:2,date:"2016",updated_at:"2016"},
+          // {id:4,state:3,date:"2016",updated_at:"2016"}
+          // ];
+          //  currentPageDataNum = 4;
+          //  $scope.bigTotalItems = 4;
+          //  $scope.total_page = 1;
         }
     	}).error(function(data,state){
         	if(state == 403){
@@ -164,15 +168,38 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
 
     $scope.submit_search(1,-1);
 
-    $('.date-picker').datepicker({
-      language: 'zh',
-      orientation: "left",
-      todayHighlight: true,
-      autoclose:true,
-      templates:{
-        leftArrow: '<i class="fa fa-angle-left"></i>',
-        rightArrow: '<i class="fa fa-angle-right"></i>'
-      }
-    });
+    $timeout(function(){
+      $('.date-picker').datetimepicker({
+        format:'yyyy-mm-dd hh:ii',
+        language: 'zh',
+        orientation: "left",
+        todayHighlight: true,
+        autoclose:true,
+        templates:{
+          leftArrow: '<i class="fa fa-angle-left"></i>',
+          rightArrow: '<i class="fa fa-angle-right"></i>'
+        }
+      });
+    },100);
+
+    $scope.inventoryOnce = function(store_house_id,schedule_id){
+      //console.log(store_house_id+" "+schedule_id);
+      if(!store_house_id)
+        store_house_id = $scope.store_house_id;
+      if(!schedule_id)
+        schedule_id = $scope.schedule_id;
+      $http.post(baseUrl.getUrl() + "/api/2/inventory/",{store_house_id:store_house_id,schedule_id:schedule_id}).success(function(data){
+        if(data.code==200){
+          ngDialog.open({
+              template: '<p style=\"text-align: center\">检测成功</p>',
+              plain: true
+          });
+        }
+      }).error(function(data,state){
+          if(state == 403){
+              baseUrl.redirect()
+          }
+      });
+    }
 
 });

@@ -112,21 +112,20 @@
                 <div class="form-row">
                     <div class="date-area">
                         <span class="icon-icon_calendar"></span>
-                        <input type="text" datetimez class="normal date-picker" data-date-format="yyyy-mm-dd"
-                               ng-model="startDate"/>
+                        <input type="text" class="normal date-picker" ng-model="startDate"/>
                     </div>
                     <span style="margin:0 10px;float:left;position: relative;top:10px;">至</span>
                     <div class="date-area">
                         <span class="icon-icon_calendar"></span>
-                        <input type="text" class="normal date-picker" data-date-format="yyyy-mm-dd"
-                               ng-model="endDate"/>
+                        <input type="text" class="normal date-picker" ng-model="endDate"/>
                     </div>
                 </div>
             </div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;serial_searchTemp=serial_search;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;startDateTemp=startDate;endDateTemp=endDate;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
 				<button type="button" class="btn btn-rfid-add" ng-click="open('md-add-manual','add',$index)"><span class="icon-icon_plus"></span>增加</button>
-        <button type="button" class="btn btn-rfid-inventory" ng-click="open('md-inventory-manual','inventory',$index)">立即检测</button>
+       <!--  <button type="button" class="btn btn-rfid-inventory" ng-click="open('md-inventory-manual','inventory',$index)">立即检测</button> -->
+        <button type="button" class="btn btn-rfid-inventory" ng-click="inventoryOnce()">立即检测</button>
 			</div>
 		</form>
 
@@ -168,7 +167,7 @@
       				<td><p>{{item.state | poll_state}}</p></td>
       				<td><p>{{item.date}}</p></td>
       				<td><p>{{item.updated_at}}</p></td>
-      				<td ng-show="item.state == 0"><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','modify',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
+      				<td ng-show="item.state == 0"><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','modify',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span><!-- <span class="manual_once" ng-click="inventoryOnce(item.store_house,item.schedule_type.id)">立即检测</span> --></p></td>
               <td ng-show="item.state == 1"><p></p></td>
               <td ng-show="item.state == 2 || item.state == 3"><p><!-- <span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span> --><span class="rfid-delete rfid-delete-manual icon-icon_information" ng-click="open('md-info-manual','info',$index)"></span><span class="rfid-delete-tip" ng-click="open('md-info-manual','info',$index)">查看结果</span></p></td>
     			</tr>

@@ -1016,7 +1016,8 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
     if(items.method=="add"){
 
         $timeout(function(){
-            $('.date-picker-add').datepicker({
+            $('.date-picker-add').datetimepicker({
+                format:'yyyy-mm-dd hh:ii',
                 language: 'zh',
                 orientation: "left",
                 todayHighlight: true,
@@ -1026,11 +1027,11 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
                     rightArrow: '<i class="fa fa-angle-right"></i>'
                 }
             });
-        });
+        },100);
 
         $scope.ok = function(){
             if($scope.startDate){
-                $http.post(baseUrl + "/api/2/inventory/list/date", {"date":$scope.startDate}).success(function(data){
+                $http.post(baseUrl + "/api/2/inventory/list/date", {"date":$scope.startDate+":00"}).success(function(data){
                     items.scope.submit_search();
                 }).error(function(){
                     alert("有点故障！")
@@ -1045,7 +1046,8 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
     }else if(items.method=="modify"){
 
         $timeout(function(){
-            $('.date-picker-add').datepicker({
+            $('.date-picker-add').datetimepicker({
+                format:'yyyy-mm-dd hh:ii',
                 language: 'zh',
                 orientation: "left",
                 todayHighlight: true,
@@ -1057,11 +1059,11 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
             });
 
             $scope.startDate = items.data.date;
-        });
+        },100);
 
         $scope.ok = function(){
             if($scope.startDate){
-                $http.put(baseUrl + "/api/2/inventory/list/date/"+items.data.id, {"date":$scope.startDate}).success(function(data){
+                $http.put(baseUrl + "/api/2/inventory/list/date/"+items.data.id, {"date":$scope.startDate+":00"}).success(function(data){
                     items.scope.submit_search();
                 }).error(function(){
                     alert("有点故障！")
@@ -1077,9 +1079,9 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
         $scope.emptyDataListShow = "";
         $scope.currentPageDataNum = 0;
         $scope.index = 1;
-        $scope.number = 10;
+        $scope.number = 5;
         $scope.maxSize = 5;
-        $scope.numbers = [10,20,30,40,50];
+        //$scope.numbers = [10,20,30,40,50];
         $scope.order = {
             id: false,
             rfid_card:false,
@@ -1127,31 +1129,25 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
   
             $http.get(baseUrl + "/api/2/inventory/result"+query_url).success(function(data){
                 if(data.code==200){
-                    // $scope.dataList =  data.data;
-                    // currentPageDataNum = $scope.dataList.length;
-                    // $scope.bigTotalItems = data.pageinfo.total_number;
-                    // $scope.total_page = data.pageinfo.total_page;
-                    // if(currentPageDataNum == 0)
-                    //   $scope.emptyDataListShow = "emptyDataListShow";
-                    // else{
-                    //   $scope.emptyDataListShow = "";
-                    // }
-
-                    $scope.dataList =  [
-                        {id:001,store_house:"2301A",rfid_card:"e0331c",rfid_content:"31275f46f",event_log:"消失",schedule:"123"},
-                        {id:002,store_house:"2301C",rfid_card:"e0331d",rfid_content:"31275f46e",event_log:"多余",schedule:"123"},
-                        {id:003,store_house:"2301C",rfid_card:"e0331e",rfid_content:"31275f46r",event_log:"消失",schedule:"123"},
-                        {id:004,store_house:"2301A",rfid_card:"e0331f",rfid_content:"31275f46t",event_log:"多余",schedule:"123"}
-                    ];
+                    $scope.dataList =  data.data;
                     currentPageDataNum = $scope.dataList.length;
-                    $scope.bigTotalItems = 4;
-                    $scope.total_page = 1;
+                    $scope.bigTotalItems = data.pageinfo.total_number;
+                    $scope.total_page = data.pageinfo.total_page;
+                    if(currentPageDataNum == 0)
+                      $scope.emptyDataListShow = "emptyDataListShow";
+                    else{
+                      $scope.emptyDataListShow = "";
+                    }
 
-                    // if(currentPageDataNum == 0)
-                    //   $scope.emptyDataListShow = "emptyDataListShow";
-                    // else{
-                    //   $scope.emptyDataListShow = "";
-                    // }
+                    // $scope.dataList =  [
+                    //     {id:001,store_house:"2301A",rfid_card:"e0331c",rfid_content:"31275f46f",event_log:"消失",schedule:"123"},
+                    //     {id:002,store_house:"2301C",rfid_card:"e0331d",rfid_content:"31275f46e",event_log:"多余",schedule:"123"},
+                    //     {id:003,store_house:"2301C",rfid_card:"e0331e",rfid_content:"31275f46r",event_log:"消失",schedule:"123"},
+                    //     {id:004,store_house:"2301A",rfid_card:"e0331f",rfid_content:"31275f46t",event_log:"多余",schedule:"123"}
+                    // ];
+                    // currentPageDataNum = $scope.dataList.length;
+                    // $scope.bigTotalItems = 4;
+                    // $scope.total_page = 1;
                 }
             }).error(function(data,state){
                 if(state == 403){
