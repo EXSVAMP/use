@@ -261,37 +261,37 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   }
 
   $scope.setIntervalTask();
-
-
-  $scope.wsFunc = function(){
-    //console.log($scope.store_house_id);
-    // Create a client instance
-    var token = $cookieStore.get("iotcloud-token").token;
-    //var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10&iotcloud_token="+token,"1");
-
-    //var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10&","1");
-    //var client = new Paho.MQTT.Client("iot.eclipse.org",  Number(80), "/ws", "1");
-    var client = new Paho.MQTT.Client("211.152.46.42", 8083, "/exingcai/iot/clould/6/eventlog/warning","myclientid_" + parseInt(Math.random() * 100, 10));
-
+ 
+  $scope.wsFunc3 = function(){
+    var startTime = 0;
+    var endTime = 0;
+   
+    client = new Paho.MQTT.Client("139.196.148.70", 8083,"myclientid_" + parseInt(Math.random() * 100, 10));
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
 
     // connect the client
-    client.connect({onSuccess:onConnect,mqttVersion:3,userName:'iotweb',password:'123qwe!@#'});
-
+    client.connect({onSuccess:onConnect, userName: "iotweb", password: "123qwe!@#", mqttVersion: 3});
+      
     // called when the client connects
     function onConnect() {
+      startTime = new Date().getMilliseconds();
       // Once a connection has been made, make a subscription and send a message.
       console.log("onConnect");
       // client.subscribe("/World");
-      // message = new Paho.MQTT.Message("Hello");
-      // message.destinationName = "/World";
-      // client.send(message);
+
+      client.subscribe("/exingcai/iot/clould/6/eventlog/warning");
+      //message = new Paho.MQTT.Message("Hello");
+      //message.destinationName = "/World";
+      //client.send(message);
     }
 
     // called when the client loses its connection
     function onConnectionLost(responseObject) {
+      endTime = new Date().getMilliseconds();
+      console.log("endTime-startTime:"+(endTime-startTime));
+      console.log("responseObject.errorCode:"+responseObject.errorCode);
       if (responseObject.errorCode !== 0) {
         console.log("onConnectionLost:"+responseObject.errorMessage);
       }
@@ -301,21 +301,11 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
     function onMessageArrived(message) {
       console.log("onMessageArrived:"+message.payloadString);
       console.log(message);
+      console.log(message.toString());
     }
+    
   }
-
-  $scope.wsFunc();
-
-  $scope.wsFunc2 = function(){
-    $http.get("http://211.152.46.42:8083" + "/exingcai/iot/clould/6/eventlog/warning").success(function(data){
-     console.log(data);
-    }).error(function(data,state){
-      if(state == 403){
-        baseUrl.redirect()
-      }
-    });
-  }
-
-  //$scope.wsFunc2();
+  $scope.wsFunc3();
+  
 
 });
