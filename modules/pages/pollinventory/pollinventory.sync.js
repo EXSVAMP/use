@@ -237,7 +237,8 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
   $scope.wsFunc = function(){
     // Create a client instance
-    var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10","1");
+    ttp
+    var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10&","1");
     //var client = new Paho.MQTT.Client("iot.eclipse.org",  Number(80), "/ws", "1");
     // set callback handlers
     client.onConnectionLost = onConnectionLost;

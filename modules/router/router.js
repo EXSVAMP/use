@@ -14,6 +14,7 @@ var pollinventory = require("pages/pollinventory/pollinventory");
 var manualinventory = require("pages/manualinventory/manualinventory");
 var location = require("pages/location/location");
 var storeSet=require("pages/storeSet/storeSet");
+var functionSet=require("pages/functionSet/functionSet");
 // var imgs = require("pages/imgs/imgs");
 
 /**
@@ -37,7 +38,8 @@ app.config(function ($stateProvider, $urlRouterProvider,$controllerProvider) {
         .state('pollinventory', pollinventory)
         .state('manualinventory', manualinventory)
         .state('location', location)
-        .state('storeSet',storeSet);
+        .state('storeSet',storeSet)
+        .state("functionSet",functionSet);
         // .state('reader', reader)
 
 
