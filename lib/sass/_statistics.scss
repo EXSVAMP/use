@@ -1,0 +1,24 @@
+.statistics-content{
+	.statistics-left,.statistics-right{
+		float: left;
+		width: 50%;
+		padding-right: 10px;
+		.statistics-item{
+			width: 100%;
+			height: 443px;
+			background-color: #ffffff;
+			.statistics-item-title{
+				font-size: 14px;
+				color: #ffffff;
+				padding: 10px 30px;
+				margin-top: 17px;
+			}
+			.statistics-item-title-rfid{
+				background-color: #45b6b0;
+			}
+		}
+	}
+	.statistics-right{
+		padding-left: 10px;
+	}
+}

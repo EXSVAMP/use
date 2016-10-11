@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("pollinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout) {
+app.register.controller("pollinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout,ngDialog) {
 	//console.log("Test app.register.controller");
   var urlBase = baseUrl.getUrl();
   $scope.open = function (size, method,index){
@@ -66,7 +66,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   }
 
   $scope.setShowNum2 = function(data){
-    $scope.intervalTaskTime = data.flag;
+    $scope.intervalTaskTime = data;
     $scope.setIntervalTask(0);
   }
 
@@ -131,7 +131,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
       number:$scope.number,
       index:$scope.index
     });
-  
+  $scope.store_house_id = 0;
   	$http.get(baseUrl.getUrl() + "/api/2/inventory/list/interval"+query_url).success(function(data){
       if(data.code==200){
         $scope.dataList =  data.data;
@@ -143,7 +143,12 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
         else{
           $scope.emptyDataListShow = "";
         }
-
+         if($scope.dataList.length > 0){
+            $scope.store_house_id = $scope.dataList[0].store_house;
+            $scope.schedule_id = $scope.dataList[0].schedule_type.id;
+          }
+          console.log("testtest:"+$scope.store_house_id);
+          $scope.wsFunc();
         // $scope.dataList =  [
         //   {id:1,state:0,date:"2016",updated_at:"2016"},
         //   {id:2,state:1,date:"2016",updated_at:"2016"},
@@ -180,6 +185,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   $scope.setIntervalTask = function(iFlag){
     if($scope.timeSetEnable){
       if(iFlag == 0){
+       console.log("$scope.intervalTaskTime:"+$scope.intervalTaskTime);
       $http.put(baseUrl.getUrl() + "/api/2/inventory/list/interval/delete",{interval:$scope.intervalTaskTime}).success(function(data){
         if(data.code==200){
           //sel interval time
@@ -235,16 +241,21 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
   $scope.setIntervalTask();
 
+
   $scope.wsFunc = function(){
+    console.log($scope.store_house_id);
     // Create a client instance
-    var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10","1");
+    var token = $cookieStore.get("iotcloud-token").token;
+    //var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10&iotcloud_token="+token,"1");
     //var client = new Paho.MQTT.Client("iot.eclipse.org",  Number(80), "/ws", "1");
+    var client = new Paho.MQTT.Client("211.152.46.42", Number(8083), "/exingcai/iot/clould/","web"+parseInt(Math.random()*100));
+
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
 
     // connect the client
-    client.connect({onSuccess:onConnect});
+    client.connect({onSuccess:onConnect,userName:'iotweb',password:'123qwe!@#'});
 
     // called when the client connects
     function onConnect() {
@@ -266,9 +277,11 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
     // called when a message arrives
     function onMessageArrived(message) {
       console.log("onMessageArrived:"+message.payloadString);
+      console.log(message);
     }
   }
 
-  $scope.wsFunc();
+  //$scope.wsFunc();
+
 
 });
