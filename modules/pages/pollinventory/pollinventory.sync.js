@@ -247,6 +247,8 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
     // Create a client instance
     var token = $cookieStore.get("iotcloud-token").token;
     //var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10&iotcloud_token="+token,"1");
+
+    var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10&","1");
     //var client = new Paho.MQTT.Client("iot.eclipse.org",  Number(80), "/ws", "1");
     var client = new Paho.MQTT.Client("211.152.46.42", Number(8083), "/exingcai/iot/clould/","web"+parseInt(Math.random()*100));
 
