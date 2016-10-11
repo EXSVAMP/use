@@ -60,6 +60,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
   $scope.intervalTaskTime = 5;
   $scope.timeSetEnable = true;
+  $scope.firstIn = true;
 
   $scope.statusSelFunc = function(data){
     $scope.statusTemp = data.flag;
@@ -147,8 +148,8 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
             $scope.store_house_id = $scope.dataList[0].store_house;
             $scope.schedule_id = $scope.dataList[0].schedule_type.id;
           }
-          console.log("testtest:"+$scope.store_house_id);
-          $scope.wsFunc();
+          //console.log("testtest:"+$scope.store_house_id);
+          //$scope.wsFunc();
         // $scope.dataList =  [
         //   {id:1,state:0,date:"2016",updated_at:"2016"},
         //   {id:2,state:1,date:"2016",updated_at:"2016"},
@@ -182,42 +183,62 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
     });
   },100);
 
+  $scope.addIntervalTask = function(){
+    $http.post(baseUrl.getUrl() + "/api/2/inventory/list/interval",{interval:$scope.intervalTaskTime}).success(function(data){
+      if(data.code==200){
+        //sel interval time
+        //if(iFlag == 0){
+        ngDialog.open({
+          template: '<p style=\"text-align: center\">新增定时盘点间隔时间任务成功</p>',
+          plain: true
+        });
+          //}
+      }
+    }).error(function(data,state){
+      if(state == 403){
+        baseUrl.redirect()
+      }
+    });
+  }
+
   $scope.setIntervalTask = function(iFlag){
+    //console.log($scope.timeSetEnable);
     if($scope.timeSetEnable){
       if(iFlag == 0){
-       console.log("$scope.intervalTaskTime:"+$scope.intervalTaskTime);
-      $http.put(baseUrl.getUrl() + "/api/2/inventory/list/interval/delete",{interval:$scope.intervalTaskTime}).success(function(data){
-        if(data.code==200){
-          //sel interval time
-          if(iFlag == 0){
-            ngDialog.open({
-              template: '<p style=\"text-align: center\">修改定时盘点间隔时间任务成功</p>',
-              plain: true
-            });
+        // console.log("$scope.intervalTaskTime:"+$scope.intervalTaskTime);
+        $http.put(baseUrl.getUrl() + "/api/2/inventory/list/interval/delete",{interval:$scope.intervalTaskTime}).success(function(data){
+          if(data.code==200){
+            //sel interval time
+            if(iFlag == 0){
+              ngDialog.open({
+                template: '<p style=\"text-align: center\">修改定时盘点间隔时间任务成功</p>',
+                plain: true
+              });
+            }
           }
+        }).error(function(data,state){
+          if(state == 403){
+            baseUrl.redirect()
+          }
+        });
+      }else{
+        if($scope.firstIn){
+          $scope.firstIn = false;
+          $http.get(baseUrl.getUrl() + "/api/2/inventory/list/interval/isexist").success(function(data){
+            if(data.code==200){
+              if(data.data == 1){
+                $scope.timeSetEnable = false;
+              }
+            }
+          }).error(function(data,state){
+            if(state == 403){
+              baseUrl.redirect()
+            }
+          });
+        }else{
+          $scope.addIntervalTask();
         }
-      }).error(function(data,state){
-        if(state == 403){
-          baseUrl.redirect()
-        }
-      });
-    }else{
-      $http.post(baseUrl.getUrl() + "/api/2/inventory/list/interval",{interval:$scope.intervalTaskTime}).success(function(data){
-        if(data.code==200){
-          //sel interval time
-          //if(iFlag == 0){
-            ngDialog.open({
-              template: '<p style=\"text-align: center\">新增定时盘点间隔时间任务成功</p>',
-              plain: true
-            });
-          //}
-        }
-      }).error(function(data,state){
-        if(state == 403){
-          baseUrl.redirect()
-        }
-      });
-    }
+      }//end else
     }
   }
 
@@ -243,21 +264,21 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
 
   $scope.wsFunc = function(){
-    console.log($scope.store_house_id);
+    //console.log($scope.store_house_id);
     // Create a client instance
     var token = $cookieStore.get("iotcloud-token").token;
     //var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10&iotcloud_token="+token,"1");
 
-    var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10&","1");
+    //var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10&","1");
     //var client = new Paho.MQTT.Client("iot.eclipse.org",  Number(80), "/ws", "1");
-    var client = new Paho.MQTT.Client("211.152.46.42", Number(8083), "/exingcai/iot/clould/","web"+parseInt(Math.random()*100));
+    var client = new Paho.MQTT.Client("211.152.46.42", Number(8083), "/exingcai/iot/clould/6/eventlog/warning","web"+parseInt(Math.random()*100));
 
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
 
     // connect the client
-    client.connect({onSuccess:onConnect,userName:'iotweb',password:'123qwe!@#'});
+    client.connect({onSuccess:onConnect,mqttVersion:3,userName:'iotweb',password:'123qwe!@#'});
 
     // called when the client connects
     function onConnect() {
@@ -283,7 +304,18 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
     }
   }
 
-  //$scope.wsFunc();
+  $scope.wsFunc();
 
+  $scope.wsFunc2 = function(){
+    $http.get("http://211.152.46.42:8083" + "/exingcai/iot/clould/6/eventlog/warning").success(function(data){
+     console.log(data);
+    }).error(function(data,state){
+      if(state == 403){
+        baseUrl.redirect()
+      }
+    });
+  }
+
+  //$scope.wsFunc2();
 
 });
