@@ -1,4 +1,5 @@
 .statistics-content{
+
 	.statistics-left,.statistics-right{
 		float: left;
 		width: 50%;
@@ -7,14 +8,65 @@
 			width: 100%;
 			height: 443px;
 			background-color: #ffffff;
+			padding-top: 17px;
 			.statistics-item-title{
 				font-size: 14px;
 				color: #ffffff;
 				padding: 10px 30px;
 				margin-top: 17px;
+				width: auto;
+				display: table;
 			}
 			.statistics-item-title-rfid{
 				background-color: #45b6b0;
+			}
+			.statistics-item-iconcount{
+				width: 100%;
+				padding: 30px;
+				height: auto;
+    			overflow: hidden;
+				.statistics-item-icon{
+					float: left;
+					width: 86px;
+					height: 86px;
+					background-color: #c3ccdb;
+					text-align: center;
+					display: table;
+					border-radius: 86px;
+					span{
+						font-size: 48px;
+						color: #fff;
+						display: table-cell;
+						vertical-align: middle;
+					}
+				}
+				.statistics-item-count{
+					float: right;
+					width: 88px;
+					height: 86px;
+					text-align: center;
+					.statistics-item-count-c{
+						font-size: 50px;
+					}
+					.statistics-item-count-rfid{
+						color: #45b6b0;
+					}
+					.statistics-item-count-t{
+						font-size: 14px;
+						color: #808ca0;
+					}
+				}
+			}
+			.split-line{
+				width: 100%;
+				padding: 0px 30px;
+				.split-line-cont{
+					width: 100%;
+					height: 3px;
+					background-color: #e3e7eb;
+					clear: both;
+    				padding: 0 30px;
+				}
 			}
 		}
 	}

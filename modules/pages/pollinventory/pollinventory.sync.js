@@ -132,7 +132,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
       number:$scope.number,
       index:$scope.index
     });
-  $scope.store_house_id = 0;
+    $scope.store_house_id = 0;
   	$http.get(baseUrl.getUrl() + "/api/2/inventory/list/interval"+query_url).success(function(data){
       if(data.code==200){
         $scope.dataList =  data.data;
@@ -271,7 +271,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
     //var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10&","1");
     //var client = new Paho.MQTT.Client("iot.eclipse.org",  Number(80), "/ws", "1");
-    var client = new Paho.MQTT.Client("211.152.46.42", Number(8083), "/exingcai/iot/clould/6/eventlog/warning","web"+parseInt(Math.random()*100));
+    var client = new Paho.MQTT.Client("211.152.46.42", 8083, "/exingcai/iot/clould/6/eventlog/warning","myclientid_" + parseInt(Math.random() * 100, 10));
 
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
