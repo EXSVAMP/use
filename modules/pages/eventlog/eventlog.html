@@ -6,7 +6,7 @@
        <form role="form" class="search-bar col-flow">
 
            <div class="form-group form-group-selin">
-               <label>事件类型:{{params.event_type}}</label>
+               <label>事件类型:</label>
                <ui-select ng-model="params.event_type" theme="bootstrap"
                           on-select="params.event_type=$select.selected.key;">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
@@ -16,11 +16,11 @@
                </ui-select>
            </div>
            <div class="form-group form-group-selin">
-               <label>RFID序列号:{{params.rfid_id}}</label>
+               <label>RFID序列号:</label>
                <input type="text"  class="form-control" placeholder="请输入名称" ng-model="params.rfid_id">
            </div>
            <div class="form-group form-group-selin">
-               <label>读写器:{{params.reader_id}}</label>
+               <label>读写器:</label>
                <ui-select ng-model="params.reader_id" theme="bootstrap"
                           on-select="params.reader_id=$select.selected.id;">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.serial_number}}</ui-select-match>
@@ -30,7 +30,7 @@
                </ui-select>
            </div>
            <div class="form-group form-group-selin">
-               <label>摄像头:{{params.camera_id}}</label>
+               <label>摄像头:</label>
                <ui-select ng-model="params.camera_id" theme="bootstrap"
                           on-select="params.camera_id=$select.selected.id;">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.serial_number}}</ui-select-match>
@@ -40,7 +40,7 @@
                </ui-select>
            </div>
            <div class="form-group form-group-selin">
-               <label>事件反馈:{{params.event_feedback_type}}</label>
+               <label>事件反馈:</label>
                <ui-select ng-model="params.event_feedback_type" theme="bootstrap"
                           on-select="params.event_feedback_type=$select.selected.key;">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
@@ -51,7 +51,7 @@
            </div>
 
            <div class="form-group form-group-selin">
-               <label>处理类型:{{params.handle_result}}</label>
+               <label>处理类型:</label>
                <ui-select ng-model="params.handle_result" theme="bootstrap"
                           on-select="params.handle_result=$select.selected.key;">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
