@@ -1,0 +1,361 @@
+.statistics-content{
+
+	.statistics-left,.statistics-right{
+		float: left;
+		width: 50%;
+		padding-right: 10px;
+		.statistics-item{
+			width: 100%;
+			//height: 443px;
+			height: auto;
+			overflow: hidden;
+			background-color: #ffffff;
+			padding-top: 17px;
+			.statistics-item-title{
+				font-size: 14px;
+				color: #ffffff;
+				padding: 10px 30px;
+				width: auto;
+				display: table;
+			}
+			.statistics-item-title-rfid{
+				background-color: #45b6b0;
+			}
+			.statistics-item-title-camera{
+				background-color: #fc763c;
+			}
+			.statistics-item-title-alert{
+				background-color: #ff6b6b;
+			}
+			.statistics-item-title-rfidcont{
+				background-color: #5f9bdb;
+			}
+			.statistics-item-title-reader{
+				background-color: #b67ced;
+			}
+			.statistics-item-iconcount{
+				width: 100%;
+				padding: 30px;
+				height: auto;
+    			overflow: hidden;
+				.statistics-item-icon{
+					float: left;
+					width: 86px;
+					height: 86px;
+					background-color: #c3ccdb;
+					text-align: center;
+					display: table;
+					border-radius: 86px;
+					span{
+						font-size: 48px;
+						color: #fff;
+						display: table-cell;
+						vertical-align: middle;
+					}
+				}
+				.statistics-item-count{
+					float: right;
+					width: 88px;
+					height: 86px;
+					text-align: center;
+					.statistics-item-count-c{
+						font-size: 50px;
+					}
+					.statistics-item-count-rfid{
+						color: #45b6b0;
+					}
+					.statistics-item-count-camera{
+						color: #fc763c;
+					}
+					.statistics-item-count-alert{
+						color: #ff6b6b;
+					}
+					.statistics-item-count-rfidcont{
+						color: #5f9bdb;
+					}
+					.statistics-item-count-reader{
+						color: #b67ced;
+					}
+					.statistics-item-count-t{
+						font-size: 14px;
+						color: #808ca0;
+					}
+				}
+			}
+			.split-line{
+				width: 100%;
+				padding: 0px 30px;
+				.split-line-cont{
+					width: 100%;
+					height: 3px;
+					background-color: #e3e7eb;
+					clear: both;
+    				padding: 0 30px;
+				}
+			}
+			//.camera-type-pare{
+				//width: 100%;
+				//height: 70px;
+				//padding: 0 15px;
+			.camera-type{
+				width: 100%;
+				height: 70px;
+				padding: 0 90px;
+				//border-bottom: 2px solid 
+				.camera-type-cont{
+					width: 100%;
+					height: 100%;
+					.camera-type-cont-icon{
+						float: left;
+						display: table;
+						height: 100%;
+						p{
+							display: table-cell;
+							vertical-align: middle;
+							//font-size: 14px;
+							//color: #3e4d68;
+							span{
+								&:nth-child(1){
+									font-size: 32px;
+									color: #c3ccdb;
+								}
+								&:nth-child(2){
+									font-size: 14px;
+									color: #3e4d68;
+									position: relative;
+    								top: -8px;
+								}
+							}
+						}
+					}
+					.camera-type-cont-count{
+						float: right;
+						display: table;
+						height: 100%;
+						p{
+							display: table-cell;
+							vertical-align: middle;
+							font-size: 30px;
+							span{
+								font-size: 12px;
+								color: #808ca0;
+								margin-left: 5px;
+    							position: relative;
+    							top: -5px;
+							}
+						}
+					}
+					.camera-type-cont-count-camera{
+						p{
+							color: #fc763c;
+						}
+					}
+					.camera-type-cont-count-reader{
+						p{
+							color: #b67ced;
+						}
+					}
+				}
+			}
+			//}
+			.statistics-detail{
+				width: 100%;
+				padding: 0px 30px;
+				.statistics-detail-cont{
+					width: 100%;
+					.statistics-detail-cont-i{
+						height: 51px;
+						border-bottom : 1px solid #e3e7eb;
+						position: relative;
+						&:last-child{
+							&:not(.statistics-detail-cont-i-bot){
+								border-bottom : 0;
+							}
+							//border-bottom : 0;
+						}
+						.statistics-detail-cont-i-label{
+							//float: left;
+							display: table;
+							height: 100%;
+							position: absolute;
+							top: 0px;
+							left: 0px;
+							p{
+								display: table-cell;
+								font-size: 14px;
+								color: #3e4d68;
+								vertical-align: middle;
+							}
+						}
+						.statistics-detail-cont-i-cont{
+							width: 100%;
+							//float: left;
+							padding-left: 100px;
+							padding-right: 100px;
+							height: 100%;
+							.progressbar-wrapper {
+								height: 5px;
+    							//padding-top: 23px;
+    							padding-top: 15.5px;
+    							width: 100%;
+								.progress{
+									&:nth-child(1){
+										background: none;
+									 box-shadow: none;
+										position: relative;
+										height: 20px;
+										.progress-bar{
+									background: none;
+									 box-shadow: none;
+									 position: relative;
+								}
+									}
+									&:nth-child(2){
+										background-color: #e3e7eb;
+										position: relative;
+										top: -12.5px;
+										z-index: 1;
+									}
+									height: 5px;
+									margin-bottom: 0;
+								}
+								.statistics-show-label{
+									position: absolute;
+									width: 56px;
+									height: 18px;
+									border-radius: 4px;
+									background-color: #c3ccdb;
+									display: table;
+									right: 5px;
+									//top: -4px;
+									z-index: 2;
+									p{
+										font-size: 12px;
+										text-align: center;
+										color: #ffffff;
+										display: table-cell;
+										vertical-align: middle;
+									}
+
+								}
+								.statistics-show-label-right{
+									right: -61px;
+								}
+							}
+							.progressbar-wrapper-rfid{
+							.progress{
+								&:nth-child(2){
+									.progress-bar{
+									background-color: #b67ced;
+								}
+								}
+							}
+								
+							}
+							.progressbar-wrapper-camera{
+							.progress{
+								&:nth-child(2){
+									.progress-bar{
+									background-color: #5f9bdb;
+								}
+								}
+							}
+								
+							}
+							.progressbar-wrapper-alert{
+							.progress{
+								&:nth-child(2){
+									.progress-bar{
+									background-color: #45b6b0;
+								}
+								}
+							}
+								
+							}
+							.progressbar-wrapper-rfidcont{
+							.progress{
+								&:nth-child(2){
+									.progress-bar{
+									background-color: #fc763c;
+								}
+								}
+							}
+								
+							}
+							.progressbar-wrapper-reader{
+							.progress{
+								&:nth-child(2){
+									.progress-bar{
+									background-color: #ff6b6b;
+								}
+								}
+							}
+								
+							}
+						}
+						.statistics-detail-cont-i-num{
+							//float: left;
+							display: table;
+							height: 100%;
+							position: absolute;
+							top: 0px;
+							right: 0px;
+							p{
+								display: table-cell;
+								font-size: 20px;
+								vertical-align: middle;
+								span{
+									font-size: 12px;
+									position: relative;
+    								top: -2px;
+									color: #808ca0;
+									padding-left: 6px; 
+
+								}
+							}
+						}
+						.statistics-detail-cont-i-num-rfid{
+							p{
+								color: #45b6b0;	
+							}
+						}
+						.statistics-detail-cont-i-num-camera{
+							p{
+								color: #fc763c;
+							}
+						}
+						.statistics-detail-cont-i-num-alert{
+							p{
+								color: #ff6b6b;
+							}
+						}
+						.statistics-detail-cont-i-num-rfidcont{
+							p{
+								color: #5f9bdb;
+							}
+						}
+						.statistics-detail-cont-i-num-reader{
+							p{
+								color: #b67ced;
+							}
+						}
+					}
+					//.statistics-detail-cont-i-bot{
+
+					//}
+				}
+			}
+
+		}
+		.statistics-item-marg{
+			margin-top: 30px;
+			&.statistics-item-marg-bot{
+				margin-bottom: 20px;
+			}
+		}
+	}
+	.statistics-right{
+		padding-left: 10px;
+		padding-right: 0;
+	}
+}

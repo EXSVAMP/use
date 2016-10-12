@@ -1,0 +1,599 @@
+<div ng-controller="statisticsCtrl">
+
+	<div class="main-top-bar statistics-bar">
+		<p><span class="icon-icon_location"></span>统计数据</p>
+	</div>
+	<div class="main-content statistics-content">
+	 <div class="statistics-left">
+      <div class="statistics-item">
+        <div class="statistics-item-title statistics-item-title-rfid"><p>RFID卡使用情况</p></div>
+        <div class="statistics-item-iconcount">
+          <div class="statistics-item-icon">
+            <span class="icon-icon_RFIDcard"></span>
+          </div>
+          <div class="statistics-item-count">
+            <span class="statistics-item-count-c statistics-item-count-rfid">730</span>
+            <span class="statistics-item-count-t">总计数量(个)</span>
+          </div>
+        </div>
+        <div class="split-line">
+          <div class="split-line-cont"></div>
+        </div>
+        <div class="statistics-detail">
+          <div class="statistics-detail-cont">
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>在使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="680" max="730"><div class="statistics-show-label"><p>93.15%</p></div></uib-progressbar><uib-progressbar value="680" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfid">
+                  <p>680<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>未使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="20" max="730"><div class="statistics-show-label statistics-show-label-right"><p>0.027%</p></div></uib-progressbar><uib-progressbar value="20" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfid">
+                  <p>20<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>损坏</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="10" max="730"><div class="statistics-show-label statistics-show-label-right"><p>0.007%</p></div></uib-progressbar><uib-progressbar value="10" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfid">
+                  <p>10<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>已删除停用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="15" max="730"><div class="statistics-show-label statistics-show-label-right"><p>0.013%</p></div></uib-progressbar><uib-progressbar value="15" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfid">
+                  <p>15<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>丢失</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="5" max="730"><div class="statistics-show-label statistics-show-label-right"><p>0.021%</p></div></uib-progressbar><uib-progressbar value="5" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfid">
+                  <p>5<span>个</span></p>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+      <!--statistics-item-->
+      <div class="statistics-item statistics-item-marg">
+        <div class="statistics-item-title statistics-item-title-camera"><p>摄像头</p></div>
+        <div class="statistics-item-iconcount">
+          <div class="statistics-item-icon">
+            <span class="icon-icon_camera"></span>
+          </div>
+          <div class="statistics-item-count">
+            <span class="statistics-item-count-c statistics-item-count-camera">730</span>
+            <span class="statistics-item-count-t">总计数量(个)</span>
+          </div>
+        </div>
+        <div class="split-line">
+          <div class="split-line-cont"></div>
+        </div>
+        <div class="camera-type">
+          <div class="camera-type-cont">
+            <div class="camera-type-cont-icon">
+              <p><span class="icon-icon_monitor"></span><span>监视出入库</span></p>
+            </div>
+            <div class="camera-type-cont-count camera-type-cont-count-camera">
+              <p>400<span>个</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="split-line">
+          <div class="split-line-cont"></div>
+        </div>
+        <div class="statistics-detail">
+          <div class="statistics-detail-cont">
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>未使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="93.15"><div class="statistics-show-label"><p>93.15%</p></div></uib-progressbar><uib-progressbar value="93.15"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
+                  <p>680<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>在使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="0.027"><div class="statistics-show-label statistics-show-label-right"><p>0.027%</p></div></uib-progressbar><uib-progressbar value="0.027"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
+                  <p>20<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i statistics-detail-cont-i-bot">
+                <div class="statistics-detail-cont-i-label">
+                  <p>已删除停用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="0.007"><div class="statistics-show-label statistics-show-label-right"><p>0.007%</p></div></uib-progressbar><uib-progressbar value="0.007"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
+                  <p>10<span>个</span></p>
+                </div>
+              </div>
+
+          </div>
+        </div>
+         <!--statistics-detail-->
+         <div class="camera-type">
+          <div class="camera-type-cont">
+            <div class="camera-type-cont-icon">
+              <p><span class="icon-icon_stock_search"></span><span>在库盘点</span></p>
+            </div>
+            <div class="camera-type-cont-count camera-type-cont-count-camera">
+              <p>400<span>个</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="split-line">
+          <div class="split-line-cont"></div>
+        </div>
+        <div class="statistics-detail">
+          <div class="statistics-detail-cont">
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>未使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="93.15"><div class="statistics-show-label"><p>93.15%</p></div></uib-progressbar><uib-progressbar value="93.15"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
+                  <p>680<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>在使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="0.027"><div class="statistics-show-label statistics-show-label-right"><p>0.027%</p></div></uib-progressbar><uib-progressbar value="0.027"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
+                  <p>20<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i statistics-detail-cont-i-bot">
+                <div class="statistics-detail-cont-i-label">
+                  <p>已删除停用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="0.007"><div class="statistics-show-label statistics-show-label-right"><p>0.007%</p></div></uib-progressbar><uib-progressbar value="0.007"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
+                  <p>10<span>个</span></p>
+                </div>
+              </div>
+
+          </div>
+        </div>
+         <!--statistics-detail-->
+         <div class="camera-type">
+          <div class="camera-type-cont">
+            <div class="camera-type-cont-icon">
+              <p><span class="icon-icon_adjust_camera"></span><span>变焦摄像头</span></p>
+            </div>
+            <div class="camera-type-cont-count camera-type-cont-count-camera">
+              <p>400<span>个</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="split-line">
+          <div class="split-line-cont"></div>
+        </div>
+        <div class="statistics-detail">
+          <div class="statistics-detail-cont">
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>未使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="93.15"><div class="statistics-show-label"><p>93.15%</p></div></uib-progressbar><uib-progressbar value="93.15"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
+                  <p>680<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>在使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="0.027"><div class="statistics-show-label statistics-show-label-right"><p>0.027%</p></div></uib-progressbar><uib-progressbar value="0.027"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
+                  <p>20<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>已删除停用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="0.007"><div class="statistics-show-label statistics-show-label-right"><p>0.007%</p></div></uib-progressbar><uib-progressbar value="0.007"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
+                  <p>10<span>个</span></p>
+                </div>
+              </div>
+
+          </div>
+        </div>
+         <!--statistics-detail-->
+      </div>
+      <!--statistics-item-->
+      <div class="statistics-item statistics-item-marg statistics-item-marg-bot">
+        <div class="statistics-item-title statistics-item-title-alert"><p>警报数据</p></div>
+        <div class="statistics-item-iconcount">
+          <div class="statistics-item-icon">
+            <span class="icon-icon_alert"></span>
+          </div>
+          <div class="statistics-item-count">
+            <span class="statistics-item-count-c statistics-item-count-alert">730</span>
+            <span class="statistics-item-count-t">总计数量(个)</span>
+          </div>
+        </div>
+        <div class="split-line">
+          <div class="split-line-cont"></div>
+        </div>
+        <div class="statistics-detail">
+          <div class="statistics-detail-cont">
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>昨天报警</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-alert"><uib-progressbar value="680" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="680" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-alert">
+                  <p>680<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>上周报警</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-alert"><uib-progressbar value="20" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="20" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-alert">
+                  <p>20<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>上月报警</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-alert"><uib-progressbar value="5" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="5" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-alert">
+                  <p>5<span>个</span></p>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+      <!--statistics-item-->
+
+    </div>
+    <!--statistics-left-->
+    <div class="statistics-right">
+      <div class="statistics-item">
+        <div class="statistics-item-title statistics-item-title-rfidcont"><p>RFID卡数据</p></div>
+        <div class="statistics-item-iconcount">
+          <div class="statistics-item-icon">
+            <span class="icon-icon_RFIDcardcontent"></span>
+          </div>
+          <div class="statistics-item-count">
+            <span class="statistics-item-count-c statistics-item-count-rfidcont">730</span>
+            <span class="statistics-item-count-t">总计数量(个)</span>
+          </div>
+        </div>
+        <div class="split-line">
+          <div class="split-line-cont"></div>
+        </div>
+        <div class="statistics-detail">
+          <div class="statistics-detail-cont">
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>待入库</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="680" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="680" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfidcont">
+                  <p>680<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>入库监视</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="20" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="20" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfidcont">
+                  <p>20<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>待出库</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="5" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="5" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfidcont">
+                  <p>5<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>已出库</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="5" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="5" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfidcont">
+                  <p>5<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>完成出库</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="5" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="5" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfidcont">
+                  <p>5<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>已删除停用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="5" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="5" max="730"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfidcont">
+                  <p>5<span>个</span></p>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+      <!--statistics-item-->
+      <div class="statistics-item statistics-item-marg statistics-item-marg-bot">
+        <div class="statistics-item-title statistics-item-title-reader"><p>读写器</p></div>
+        <div class="statistics-item-iconcount">
+          <div class="statistics-item-icon">
+            <span class="icon-icon_cardreader"></span>
+          </div>
+          <div class="statistics-item-count">
+            <span class="statistics-item-count-c statistics-item-count-reader">730</span>
+            <span class="statistics-item-count-t">总计数量(个)</span>
+          </div>
+        </div>
+        <div class="split-line">
+          <div class="split-line-cont"></div>
+        </div>
+        <div class="camera-type">
+          <div class="camera-type-cont">
+            <div class="camera-type-cont-icon">
+              <p><span class="icon-icon_monitor"></span><span>监视出入库</span></p>
+            </div>
+            <div class="camera-type-cont-count camera-type-cont-count-reader">
+              <p>400<span>个</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="split-line">
+          <div class="split-line-cont"></div>
+        </div>
+        <div class="statistics-detail">
+          <div class="statistics-detail-cont">
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>未使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-reader"><uib-progressbar value="93.15"><div class="statistics-show-label"><p>93.15%</p></div></uib-progressbar><uib-progressbar value="93.15"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-reader">
+                  <p>680<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>在使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-reader"><uib-progressbar value="0.027"><div class="statistics-show-label statistics-show-label-right"><p>0.027%</p></div></uib-progressbar><uib-progressbar value="0.027"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-reader">
+                  <p>20<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i statistics-detail-cont-i-bot">
+                <div class="statistics-detail-cont-i-label">
+                  <p>已删除停用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-reader"><uib-progressbar value="0.007"><div class="statistics-show-label statistics-show-label-right"><p>0.007%</p></div></uib-progressbar><uib-progressbar value="0.007"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-reader">
+                  <p>10<span>个</span></p>
+                </div>
+              </div>
+
+          </div>
+        </div>
+         <!--statistics-detail-->
+         <div class="camera-type">
+          <div class="camera-type-cont">
+            <div class="camera-type-cont-icon">
+              <p><span class="icon-icon_stock_search"></span><span>在库盘点</span></p>
+            </div>
+            <div class="camera-type-cont-count camera-type-cont-count-reader">
+              <p>400<span>个</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="split-line">
+          <div class="split-line-cont"></div>
+        </div>
+        <div class="statistics-detail">
+          <div class="statistics-detail-cont">
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>未使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-reader"><uib-progressbar value="93.15"><div class="statistics-show-label"><p>93.15%</p></div></uib-progressbar><uib-progressbar value="93.15"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-reader">
+                  <p>680<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>在使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-reader"><uib-progressbar value="0.027"><div class="statistics-show-label statistics-show-label-right"><p>0.027%</p></div></uib-progressbar><uib-progressbar value="0.027"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-reader">
+                  <p>20<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i statistics-detail-cont-i-bot">
+                <div class="statistics-detail-cont-i-label">
+                  <p>已删除停用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-reader"><uib-progressbar value="0.007"><div class="statistics-show-label statistics-show-label-right"><p>0.007%</p></div></uib-progressbar><uib-progressbar value="0.007"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-reader">
+                  <p>10<span>个</span></p>
+                </div>
+              </div>
+
+          </div>
+        </div>
+         <!--statistics-detail-->
+         <div class="camera-type">
+          <div class="camera-type-cont">
+            <div class="camera-type-cont-icon">
+              <p><span class="icon-icon_handheld_machine"></span><span>手持扫货</span></p>
+            </div>
+            <div class="camera-type-cont-count camera-type-cont-count-reader">
+              <p>400<span>个</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="split-line">
+          <div class="split-line-cont"></div>
+        </div>
+        <div class="statistics-detail">
+          <div class="statistics-detail-cont">
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>未使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-reader"><uib-progressbar value="93.15"><div class="statistics-show-label"><p>93.15%</p></div></uib-progressbar><uib-progressbar value="93.15"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-reader">
+                  <p>680<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>在使用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-reader"><uib-progressbar value="0.027"><div class="statistics-show-label statistics-show-label-right"><p>0.027%</p></div></uib-progressbar><uib-progressbar value="0.027"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-reader">
+                  <p>20<span>个</span></p>
+                </div>
+              </div>
+
+              <div class="statistics-detail-cont-i">
+                <div class="statistics-detail-cont-i-label">
+                  <p>已删除停用</p>
+                </div>
+                <div class="statistics-detail-cont-i-cont">
+                 <div class="progressbar-wrapper progressbar-wrapper-reader"><uib-progressbar value="0.007"><div class="statistics-show-label statistics-show-label-right"><p>0.007%</p></div></uib-progressbar><uib-progressbar value="0.007"></uib-progressbar></div>
+                </div>
+                <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-reader">
+                  <p>10<span>个</span></p>
+                </div>
+              </div>
+
+          </div>
+        </div>
+         <!--statistics-detail-->
+      </div>
+      <!--statistics-item-->
+    </div>
+    <!--statistics-right-->	
+	</div>
+</div>

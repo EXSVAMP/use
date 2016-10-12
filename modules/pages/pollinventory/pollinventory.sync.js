@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("pollinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout) {
+app.register.controller("pollinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout,ngDialog) {
 	//console.log("Test app.register.controller");
   var urlBase = baseUrl.getUrl();
   $scope.open = function (size, method,index){
@@ -60,13 +60,14 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
   $scope.intervalTaskTime = 5;
   $scope.timeSetEnable = true;
+  $scope.firstIn = true;
 
   $scope.statusSelFunc = function(data){
     $scope.statusTemp = data.flag;
   }
 
   $scope.setShowNum2 = function(data){
-    $scope.intervalTaskTime = data.flag;
+    $scope.intervalTaskTime = data;
     $scope.setIntervalTask(0);
   }
 
@@ -131,7 +132,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
       number:$scope.number,
       index:$scope.index
     });
-  
+    $scope.store_house_id = 0;
   	$http.get(baseUrl.getUrl() + "/api/2/inventory/list/interval"+query_url).success(function(data){
       if(data.code==200){
         $scope.dataList =  data.data;
@@ -143,7 +144,12 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
         else{
           $scope.emptyDataListShow = "";
         }
-
+         if($scope.dataList.length > 0){
+            $scope.store_house_id = $scope.dataList[0].store_house;
+            $scope.schedule_id = $scope.dataList[0].schedule_type.id;
+          }
+          //console.log("testtest:"+$scope.store_house_id);
+          //$scope.wsFunc();
         // $scope.dataList =  [
         //   {id:1,state:0,date:"2016",updated_at:"2016"},
         //   {id:2,state:1,date:"2016",updated_at:"2016"},
@@ -177,41 +183,62 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
     });
   },100);
 
+  $scope.addIntervalTask = function(){
+    $http.post(baseUrl.getUrl() + "/api/2/inventory/list/interval",{interval:$scope.intervalTaskTime}).success(function(data){
+      if(data.code==200){
+        //sel interval time
+        //if(iFlag == 0){
+        ngDialog.open({
+          template: '<p style=\"text-align: center\">新增定时盘点间隔时间任务成功</p>',
+          plain: true
+        });
+          //}
+      }
+    }).error(function(data,state){
+      if(state == 403){
+        baseUrl.redirect()
+      }
+    });
+  }
+
   $scope.setIntervalTask = function(iFlag){
+    //console.log($scope.timeSetEnable);
     if($scope.timeSetEnable){
       if(iFlag == 0){
-      $http.put(baseUrl.getUrl() + "/api/2/inventory/list/interval/delete",{interval:$scope.intervalTaskTime}).success(function(data){
-        if(data.code==200){
-          //sel interval time
-          if(iFlag == 0){
-            ngDialog.open({
-              template: '<p style=\"text-align: center\">修改定时盘点间隔时间任务成功</p>',
-              plain: true
-            });
+        // console.log("$scope.intervalTaskTime:"+$scope.intervalTaskTime);
+        $http.put(baseUrl.getUrl() + "/api/2/inventory/list/interval/delete",{interval:$scope.intervalTaskTime}).success(function(data){
+          if(data.code==200){
+            //sel interval time
+            if(iFlag == 0){
+              ngDialog.open({
+                template: '<p style=\"text-align: center\">修改定时盘点间隔时间任务成功</p>',
+                plain: true
+              });
+            }
           }
+        }).error(function(data,state){
+          if(state == 403){
+            baseUrl.redirect()
+          }
+        });
+      }else{
+        if($scope.firstIn){
+          $scope.firstIn = false;
+          $http.get(baseUrl.getUrl() + "/api/2/inventory/list/interval/isexist").success(function(data){
+            if(data.code==200){
+              if(data.data == 1){
+                $scope.timeSetEnable = false;
+              }
+            }
+          }).error(function(data,state){
+            if(state == 403){
+              baseUrl.redirect()
+            }
+          });
+        }else{
+          $scope.addIntervalTask();
         }
-      }).error(function(data,state){
-        if(state == 403){
-          baseUrl.redirect()
-        }
-      });
-    }else{
-      $http.post(baseUrl.getUrl() + "/api/2/inventory/list/interval",{interval:$scope.intervalTaskTime}).success(function(data){
-        if(data.code==200){
-          //sel interval time
-          //if(iFlag == 0){
-            ngDialog.open({
-              template: '<p style=\"text-align: center\">新增定时盘点间隔时间任务成功</p>',
-              plain: true
-            });
-          //}
-        }
-      }).error(function(data,state){
-        if(state == 403){
-          baseUrl.redirect()
-        }
-      });
-    }
+      }//end else
     }
   }
 
@@ -234,31 +261,37 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   }
 
   $scope.setIntervalTask();
-
-  $scope.wsFunc = function(){
-    // Create a client instance
-    ttp
-    var client = new Paho.MQTT.Client("211.152.46.42", Number(9011), "/api/2/inventory/list/interval?index=1&number=10&","1");
-    //var client = new Paho.MQTT.Client("iot.eclipse.org",  Number(80), "/ws", "1");
+ 
+  $scope.wsFunc3 = function(){
+    var startTime = 0;
+    var endTime = 0;
+   
+    client = new Paho.MQTT.Client("139.196.148.70", 8083,"myclientid_" + parseInt(Math.random() * 100, 10));
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
 
     // connect the client
-    client.connect({onSuccess:onConnect});
-
+    client.connect({onSuccess:onConnect, userName: "iotweb", password: "123qwe!@#", mqttVersion: 3});
+      
     // called when the client connects
     function onConnect() {
+      startTime = new Date().getMilliseconds();
       // Once a connection has been made, make a subscription and send a message.
       console.log("onConnect");
       // client.subscribe("/World");
-      // message = new Paho.MQTT.Message("Hello");
-      // message.destinationName = "/World";
-      // client.send(message);
+
+      client.subscribe("/exingcai/iot/clould/6/eventlog/warning");
+      //message = new Paho.MQTT.Message("Hello");
+      //message.destinationName = "/World";
+      //client.send(message);
     }
 
     // called when the client loses its connection
     function onConnectionLost(responseObject) {
+      endTime = new Date().getMilliseconds();
+      console.log("endTime-startTime:"+(endTime-startTime));
+      console.log("responseObject.errorCode:"+responseObject.errorCode);
       if (responseObject.errorCode !== 0) {
         console.log("onConnectionLost:"+responseObject.errorMessage);
       }
@@ -267,9 +300,12 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
     // called when a message arrives
     function onMessageArrived(message) {
       console.log("onMessageArrived:"+message.payloadString);
+      console.log(message);
+      console.log(message.toString());
     }
+    
   }
-
-  $scope.wsFunc();
+  $scope.wsFunc3();
+  
 
 });

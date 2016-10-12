@@ -1043,8 +1043,7 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
         $uibModalInstance.dismiss('cancel');
     };
 
-    if(items.method=="add"){
-
+    $scope.addFunc = function(){
         $timeout(function(){
             $('.date-picker-add').datetimepicker({
                 format:'yyyy-mm-dd hh:ii',
@@ -1060,9 +1059,16 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
         },100);
 
         $scope.ok = function(){
+            console.log("test");
             if($scope.startDate){
                 $http.post(baseUrl + "/api/2/inventory/list/date", {"date":$scope.startDate+":00"}).success(function(data){
-                    items.scope.submit_search();
+                    if(data.code=="200"){
+                        items.scope.submit_search();
+                        ngDialog.open({
+                            template: '<p style=\"text-align: center\">新增检测时间成功</p>',
+                            plain: true
+                        });
+                    }
                 }).error(function(){
                     alert("有点故障！")
                 })
@@ -1073,6 +1079,10 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
                     plain: true
                 });
         }
+    }
+
+    if(items.method=="add"){
+        $scope.addFunc();
     }else if(items.method=="modify"){
 
         $timeout(function(){
@@ -1093,7 +1103,7 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
 
         $scope.ok = function(){
             if($scope.startDate){
-                $http.put(baseUrl + "/api/2/inventory/list/date/"+items.data.id, {"date":$scope.startDate+":00"}).success(function(data){
+                $http.put(baseUrl + "/api/2/inventory/list/date/"+items.data.id+"/", {"date":$scope.startDate+":00"}).success(function(data){
                     items.scope.submit_search();
                 }).error(function(){
                     alert("有点故障！")
@@ -1198,6 +1208,13 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
                 alert("error")
             });
             $uibModalInstance.close();
+        };
+    }else if(items.method=="inventory"){
+        $scope.ok = function(){
+            //$uibModalInstance.close();
+            //items.scope.open('md-add-manual','add',0);
+            $scope.item.method="add";
+            $scope.addFunc();
         };
     }
 });

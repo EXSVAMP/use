@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("manualinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout) {
+app.register.controller("manualinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout,ngDialog) {
 	//console.log("Test app.register.controller");
   var urlBase = baseUrl.getUrl();
   $scope.open = function (size, method,index){
@@ -41,6 +41,7 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
                         return {
                             title:"预约检测",
                             method:"inventory",
+                            data:$scope.dataList[index],
                             scope:$scope
                         }
                     }
@@ -182,8 +183,55 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
       });
     },100);
 
+    $scope.hasExcutingOne = function(){
+      $http.get(baseUrl.getUrl() + "/api/2/inventory/list/date").success(function(data){
+        if(data.code==200){
+          $scope.dataList =  data.data;
+          var hasExcutingOne = false;
+          var excutingOneId = 0;
+          for(var i=0; i<$scope.dataList.length; i++){
+            if($scope.dataList[i].state == 1){
+              hasExcutingOne = true;
+              excutingOneId = $scope.dataList[i].id;
+              break;
+            }
+          }//end for
+          console.log("hasExcutingOne:"+hasExcutingOne);
+          //hasExcutingOne = true;
+          if(hasExcutingOne){
+            $scope.open('md-inventory-manual','inventory',excutingOneId);
+          }else
+            $scope.open('md-add-manual','add',0);
+        }
+      }).error(function(data,state){
+          if(state == 403){
+              baseUrl.redirect()
+          }
+      });
+    }
+
+    $scope.inventoryImmediately = function(store_house_id,schedule_id){
+      if(!store_house_id)
+        store_house_id = $scope.store_house_id;
+      if(!schedule_id)
+        schedule_id = $scope.schedule_id;
+      $http.post(baseUrl.getUrl() + "/api/2/inventory/",{store_house_id:store_house_id,schedule_id:schedule_id}).success(function(data){
+        if(data.code==200){
+          ngDialog.open({
+              template: '<p style=\"text-align: center\">立即检测成功</p>',
+              plain: true
+          });
+        }
+      }).error(function(data,state){
+          if(state == 403){
+              baseUrl.redirect()
+          }
+      });
+    }
+
     $scope.inventoryOnce = function(store_house_id,schedule_id){
       //console.log(store_house_id+" "+schedule_id);
+      //console.log(1);
       if(!store_house_id)
         store_house_id = $scope.store_house_id;
       if(!schedule_id)
