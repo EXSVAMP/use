@@ -103,10 +103,10 @@
                             </td>
                             <td>
                                 <div class="noset">
-                                    <input type="radio"  ng-click="item.checked=!item.checked" ng-checked="item.checked" name="no" class="no"/>缺省
+                                    <input type="radio"  ng-click="item.checked=!item.checked" ng-checked="item.checked" name="abnormal_no" class="no"/>缺省
                                 </div>
                                 <div class="customset">
-                                    <input type="radio"  ng-click="item.checked=!item.checked" ng-checked="item.checked" name="custom" class="custom"/>自定义
+                                    <input type="radio"  ng-click="item.checked=!item.checked" ng-checked="item.checked" name="abnormal_custom" class="custom"/>自定义
                                 </div>
                             </td>
                             <td>
@@ -120,12 +120,34 @@
                                     </ui-select>
                                 </div>
                                 <div class="abnormal_warn_right">
-
+                                    <ui-select ng-model="a" theme="bootstrap"
+                                               on-select="a=$select.selected">
+                                        <ui-select-match placeholder="--请选择-">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="item in selections">
+                                            <div ng-bind-html="item | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
                                 </div>
                             </td>
                             <td>
-                                <div class="camera_left">警告灯L1</div>
-                                <div class="camera_right">绿灯闪烁</div>
+                                <div class="abnormal_camera_left">
+                                    <ui-select ng-model="a" theme="bootstrap"
+                                               on-select="a=$select.selected">
+                                        <ui-select-match placeholder="--请选择-">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="item in selections">
+                                            <div ng-bind-html="item | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="abnormal_camera_right">
+                                    <ui-select ng-model="a" theme="bootstrap"
+                                               on-select="a=$select.selected">
+                                        <ui-select-match placeholder="--请选择-">{{$select.selected}}</ui-select-match>
+                                        <ui-select-choices repeat="item in selections">
+                                            <div ng-bind-html="item | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
                             </td>
 
                         </tr>
