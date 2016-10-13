@@ -91,18 +91,22 @@
                 <!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
             </div>
         </form>
-        <ul class="type-sel-tab">
+        <div class="type-sel-tab-pare">
+            <ul class="type-sel-tab">
 
-            <!-- <li><p><span class="icon-icon_warehouse_into"></span>待入库(0)</p></li>
-            <li><p><span class="icon-icon_warehouse_eyes"></span>入库监视(0)</p></li>
-            <li><p><span class="icon-icon_warehouse_out"></span>待出库(0)</p></li>
-            <li><p><span class="icon-icon_warehouse_complete"></span>已出库(0)</p></li>
-            <li><p><span class="icon-icon_warehouse_outcomplete"></span>完成出库(0)</p></li>
-            <li><p><span class="icon-icon_warehouse_delete"></span>已删除作废(0)</p></li> -->
-            <li ng-repeat="(key,value) in statusInfo" >
-                <p ng-click="typeSelTabClick(key)" ng-class="{true:'sel-tab-active'}[tabActive[key]]"><span class="{{statusIcon[key]}}"></span>{{value}}({{bigTotalItems_detail[key].total}})</p>
-            </li>
-        </ul>
+                <!-- <li><p><span class="icon-icon_warehouse_into"></span>待入库(0)</p></li>
+                <li><p><span class="icon-icon_warehouse_eyes"></span>入库监视(0)</p></li>
+                <li><p><span class="icon-icon_warehouse_out"></span>待出库(0)</p></li>
+                <li><p><span class="icon-icon_warehouse_complete"></span>已出库(0)</p></li>
+                <li><p><span class="icon-icon_warehouse_outcomplete"></span>完成出库(0)</p></li>
+                <li><p><span class="icon-icon_warehouse_delete"></span>已删除作废(0)</p></li> -->
+                <li ng-repeat="(key,value) in statusInfo" >
+                    <p ng-click="typeSelTabClick(key)" ng-class="{true:'sel-tab-active'}[tabActive[key]]"><span class="{{statusIcon[key]}}"></span>{{value}}({{bigTotalItems_detail[key].total}})</p>
+                </li>
+            </ul>
+            <div class="type-sel-bot">
+            </div>
+        </div>
 
         <table class="table table-bordered table-content">
             <thead>

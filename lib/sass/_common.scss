@@ -82,11 +82,13 @@
           background-color: #ffffff;
           border: solid 1px #e8ebf0;
           cursor: pointer;
+          vertical-align: middle;
           p{
             line-height: 2;
             text-align: center;
             font-size: 14px;
             color: #666666;
+            height: 100%;
             span{
               display: inline-block;
               height: 16px;
@@ -119,18 +121,20 @@
           height: 48px;
           background-color: #ffffff;
           border: solid 1px #e8ebf0;
+          vertical-align: middle;
           p{
             line-height: 2;
             text-align: center;
             font-size: 14px;
             color: #666666;
             display: inline-table;
+            height: 100%;
             span{
               display: block;
               float: left;
               width: 16px;
               height: 16px;
-              margin-top: 5px;
+              margin-top: 8px;
               margin-right: 10px;
               cursor: pointer;
             }
@@ -145,6 +149,10 @@
         }
       }
     }
+  }
+
+  .table-bordered {
+    border-top: 1px solid #e8ebf0;
   }
 
   .emptyDataList{
