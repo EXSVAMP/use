@@ -1,4 +1,4 @@
-<div ng-controller="warnDetailCtrl">
+<div ng-controller="warnDetailCtrl" name="warnDetail">
     <div class="main-top-bar">
         <p><span class="icon-icon_location"></span>警报管理>警报列表>详细信息</p>
     </div>
@@ -59,14 +59,14 @@
                     <div class="record-list">
                         <div class="record-item" ng-repeat="record in dataList">
                             <div class="item-row">
-                                <span>处理时间</span><span>2016-07-26T16:47:50</span>
+                                <span>处理时间</span><span>{{record.created_at}}</span>
                             </div>
                             <div class="item-row">
-                                <span>处理人</span><span>仓库管理员1号</span>
+                                <span>处理人</span><span>{{record.handle_user}}</span>
                             </div>
+                            <div style="clear: both">
                             <div class="item-row">
-                                <span>具体操作</span><span>[报警]读卡器:[编号:1][序列号:000b];摄像头:[编号:1][序列号:192.168.11.11];监视到事件:出库;
-                                原因:异常出入库,入</span>
+                                <span>具体操作</span><span>{{record.event_log.description}}</span>
                             </div>
                         </div>
                         <div class="list-bottom" ng-show="listLoadFlag==1">
