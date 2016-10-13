@@ -23,7 +23,8 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
     listService.init($scope,'/api/1/eventhandlelog/',{isAdd:true,autoRefresh:true,listElement:'.record-list'});
     $scope.params.event_log_id =  data.id;
     $scope.listCallback=function(data){
-        $scope.dataList=$scope.dataList.concat([{},{},{},{},{},{},{},{},{},{}]);
+        // $scope.dataList=$scope.dataList.concat([{},{},{},{},{},{},{},{},{},{}]);
+        $scope.dataList=data.data;
     };
     $scope.refresh();
 });
