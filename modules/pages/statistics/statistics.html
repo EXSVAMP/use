@@ -12,7 +12,7 @@
             <span class="icon-icon_RFIDcard"></span>
           </div>
           <div class="statistics-item-count">
-            <span class="statistics-item-count-c statistics-item-count-rfid">730</span>
+            <span class="statistics-item-count-c statistics-item-count-rfid">{{rfid_total}}</span>
             <span class="statistics-item-count-t">总计数量(个)</span>
           </div>
         </div>
@@ -26,10 +26,10 @@
                   <p>在使用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="680" max="730"><div class="statistics-show-label"><p>93.15%</p></div></uib-progressbar><uib-progressbar value="680" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="rfid_using" max="rfid_total"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[using_half]"><p>{{rfid_using_ratio}}</p></div></uib-progressbar><uib-progressbar value="rfid_using" max="rfid_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfid">
-                  <p>680<span>个</span></p>
+                  <p>{{rfid_using}}<span>个</span></p>
                 </div>
               </div>
 
@@ -38,10 +38,10 @@
                   <p>未使用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="20" max="730"><div class="statistics-show-label statistics-show-label-right"><p>0.027%</p></div></uib-progressbar><uib-progressbar value="20" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="rfid_unuse" max="rfid_total"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[unuse_half]"><p>{{rfid_unuse_ratio}}</p></div></uib-progressbar><uib-progressbar value="rfid_unuse" max="rfid_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfid">
-                  <p>20<span>个</span></p>
+                  <p>{{rfid_unuse}}<span>个</span></p>
                 </div>
               </div>
 
@@ -50,10 +50,10 @@
                   <p>损坏</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="10" max="730"><div class="statistics-show-label statistics-show-label-right"><p>0.007%</p></div></uib-progressbar><uib-progressbar value="10" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="rfid_broken" max="rfid_total"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[broken_half]"><p>{{rfid_broken_ratio}}</p></div></uib-progressbar><uib-progressbar value="rfid_broken" max="rfid_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfid">
-                  <p>10<span>个</span></p>
+                  <p>{{rfid_broken}}<span>个</span></p>
                 </div>
               </div>
 
@@ -62,10 +62,10 @@
                   <p>已删除停用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="15" max="730"><div class="statistics-show-label statistics-show-label-right"><p>0.013%</p></div></uib-progressbar><uib-progressbar value="15" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="rfid_deleted" max="rfid_total"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[deleted_half]"><p>{{rfid_deleted_ratio}}</p></div></uib-progressbar><uib-progressbar value="rfid_deleted" max="rfid_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfid">
-                  <p>15<span>个</span></p>
+                  <p>{{rfid_deleted}}<span>个</span></p>
                 </div>
               </div>
 
@@ -74,10 +74,10 @@
                   <p>丢失</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="5" max="730"><div class="statistics-show-label statistics-show-label-right"><p>0.021%</p></div></uib-progressbar><uib-progressbar value="5" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-rfid"><uib-progressbar value="rfid_replaced" max="rfid_total"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[replaced_half]"><p>{{rfid_replaced_ratio}}</p></div></uib-progressbar><uib-progressbar value="rfid_replaced" max="rfid_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfid">
-                  <p>5<span>个</span></p>
+                  <p>{{rfid_replaced}}<span>个</span></p>
                 </div>
               </div>
 
@@ -92,7 +92,7 @@
             <span class="icon-icon_camera"></span>
           </div>
           <div class="statistics-item-count">
-            <span class="statistics-item-count-c statistics-item-count-camera">730</span>
+            <span class="statistics-item-count-c statistics-item-count-camera">{{rfidcamera_total}}</span>
             <span class="statistics-item-count-t">总计数量(个)</span>
           </div>
         </div>
@@ -105,7 +105,7 @@
               <p><span class="icon-icon_monitor"></span><span>监视出入库</span></p>
             </div>
             <div class="camera-type-cont-count camera-type-cont-count-camera">
-              <p>400<span>个</span></p>
+              <p>{{monitor_total}}<span>个</span></p>
             </div>
           </div>
         </div>
@@ -119,10 +119,10 @@
                   <p>未使用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="93.15"><div class="statistics-show-label"><p>93.15%</p></div></uib-progressbar><uib-progressbar value="93.15"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="monitor_unuse" max="monitor_total"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[monitor_unuse_half]"><p>{{monitor_unuse_ratio}}</p></div></uib-progressbar><uib-progressbar value="monitor_unuse" max="monitor_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
-                  <p>680<span>个</span></p>
+                  <p>{{monitor_unuse}}<span>个</span></p>
                 </div>
               </div>
 
@@ -131,10 +131,10 @@
                   <p>在使用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="0.027"><div class="statistics-show-label statistics-show-label-right"><p>0.027%</p></div></uib-progressbar><uib-progressbar value="0.027"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="monitor_using" max="monitor_total"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[monitor_using_half]"><p>{{monitor_using_ratio}}</p></div></uib-progressbar><uib-progressbar value="monitor_using" max="monitor_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
-                  <p>20<span>个</span></p>
+                  <p>{{monitor_using}}<span>个</span></p>
                 </div>
               </div>
 
@@ -143,10 +143,10 @@
                   <p>已删除停用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="0.007"><div class="statistics-show-label statistics-show-label-right"><p>0.007%</p></div></uib-progressbar><uib-progressbar value="0.007"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="outin_storage_deleted" max="outin_storage_total"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[outin_storage_deleted_half]"><p>{{outin_storage_deleted_ratio}}</p></div></uib-progressbar><uib-progressbar value="outin_storage_deleted" max="outin_storage_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
-                  <p>10<span>个</span></p>
+                  <p>{{outin_storage_deleted}}<span>个</span></p>
                 </div>
               </div>
 
@@ -159,7 +159,7 @@
               <p><span class="icon-icon_stock_search"></span><span>在库盘点</span></p>
             </div>
             <div class="camera-type-cont-count camera-type-cont-count-camera">
-              <p>400<span>个</span></p>
+              <p>{{outin_storage_total}}<span>个</span></p>
             </div>
           </div>
         </div>
@@ -173,10 +173,10 @@
                   <p>未使用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="93.15"><div class="statistics-show-label"><p>93.15%</p></div></uib-progressbar><uib-progressbar value="93.15"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="outin_storage_unuse" max="outin_storage_total"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[outin_storage_unuse_half]"><p>{{outin_storage_unuse_ratio}}</p></div></uib-progressbar><uib-progressbar value="outin_storage_unuse" max="outin_storage_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
-                  <p>680<span>个</span></p>
+                  <p>{{outin_storage_unuse}}<span>个</span></p>
                 </div>
               </div>
 
@@ -185,10 +185,10 @@
                   <p>在使用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="0.027"><div class="statistics-show-label statistics-show-label-right"><p>0.027%</p></div></uib-progressbar><uib-progressbar value="0.027"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="outin_storage_using" max="outin_storage_total"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[outin_storage_using_half]"><p>{{outin_storage_using_ratio}}</p></div></uib-progressbar><uib-progressbar value="outin_storage_using" max="outin_storage_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
-                  <p>20<span>个</span></p>
+                  <p>{{outin_storage_using}}<span>个</span></p>
                 </div>
               </div>
 
@@ -197,10 +197,10 @@
                   <p>已删除停用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="0.007"><div class="statistics-show-label statistics-show-label-right"><p>0.007%</p></div></uib-progressbar><uib-progressbar value="0.007"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="outin_storage_deleted" max="outin_storage_total"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[outin_storage_deleted_half]"><p>{{outin_storage_deleted_ratio}}</p></div></uib-progressbar><uib-progressbar value="outin_storage_deleted" max="outin_storage_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
-                  <p>10<span>个</span></p>
+                  <p>{{outin_storage_deleted}}<span>个</span></p>
                 </div>
               </div>
 
@@ -213,7 +213,7 @@
               <p><span class="icon-icon_adjust_camera"></span><span>变焦摄像头</span></p>
             </div>
             <div class="camera-type-cont-count camera-type-cont-count-camera">
-              <p>400<span>个</span></p>
+              <p>{{zoom_total}}<span>个</span></p>
             </div>
           </div>
         </div>
@@ -227,10 +227,10 @@
                   <p>未使用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="93.15"><div class="statistics-show-label"><p>93.15%</p></div></uib-progressbar><uib-progressbar value="93.15"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="zoom_unuse" ng-max="{true:'',false:zoom_total}[zoom_total=0]"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[zoom_unuse_half]"><p>{{zoom_unuse_ratio}}</p></div></uib-progressbar><uib-progressbar value="zoom_unuse" ng-max="{true:'',false:zoom_total}[zoom_total=0]"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
-                  <p>680<span>个</span></p>
+                  <p>{{zoom_unuse}}<span>个</span></p>
                 </div>
               </div>
 
@@ -239,22 +239,22 @@
                   <p>在使用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="0.027"><div class="statistics-show-label statistics-show-label-right"><p>0.027%</p></div></uib-progressbar><uib-progressbar value="0.027"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="zoom_using" ng-max="{true:'',false:zoom_total}[zoom_total=0]"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[monitor_using_half]"><p>{{zoom_using_ratio}}</p></div></uib-progressbar><uib-progressbar value="zoom_using" ng-max="{true:'',false:zoom_total}[zoom_total=0]"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
-                  <p>20<span>个</span></p>
+                  <p>{{zoom_using}}<span>个</span></p>
                 </div>
               </div>
 
-              <div class="statistics-detail-cont-i">
+              <div class="statistics-detail-cont-i statistics-detail-cont-i-bot">
                 <div class="statistics-detail-cont-i-label">
                   <p>已删除停用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="0.007"><div class="statistics-show-label statistics-show-label-right"><p>0.007%</p></div></uib-progressbar><uib-progressbar value="0.007"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-camera"><uib-progressbar value="zoom_deleted" ng-max="{true:'',false:zoom_total}[zoom_total=0]"><div ng-class="{true:'statistics-show-label',false:'statistics-show-label statistics-show-label-right'}[zoom_deleted_half]"><p>{{zoom_deleted_ratio}}</p></div></uib-progressbar><uib-progressbar value="zoom_deleted" ng-max="{true:'',false:zoom_total}[zoom_total=0]"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-camera">
-                  <p>10<span>个</span></p>
+                  <p>{{zoom_deleted}}<span>个</span></p>
                 </div>
               </div>
 
@@ -270,7 +270,7 @@
             <span class="icon-icon_alert"></span>
           </div>
           <div class="statistics-item-count">
-            <span class="statistics-item-count-c statistics-item-count-alert">730</span>
+            <span class="statistics-item-count-c statistics-item-count-alert">{{rfidalarm_total}}</span>
             <span class="statistics-item-count-t">总计数量(个)</span>
           </div>
         </div>
@@ -284,10 +284,10 @@
                   <p>昨天报警</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-alert"><uib-progressbar value="680" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="680" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-alert"><uib-progressbar value="rfidalarm_yesterday" max="rfidalarm_total"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="rfidalarm_yesterday" max="rfidalarm_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-alert">
-                  <p>680<span>个</span></p>
+                  <p>{{rfidalarm_yesterday}}<span>个</span></p>
                 </div>
               </div>
 
@@ -296,10 +296,10 @@
                   <p>上周报警</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-alert"><uib-progressbar value="20" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="20" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-alert"><uib-progressbar value="rfidalarm_last_week" max="rfidalarm_total"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="rfidalarm_last_week" max="rfidalarm_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-alert">
-                  <p>20<span>个</span></p>
+                  <p>{{rfidalarm_last_week}}<span>个</span></p>
                 </div>
               </div>
 
@@ -308,10 +308,10 @@
                   <p>上月报警</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-alert"><uib-progressbar value="5" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="5" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-alert"><uib-progressbar value="rfidalarm_last_month" max="rfidalarm_total"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="rfidalarm_last_month" max="rfidalarm_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-alert">
-                  <p>5<span>个</span></p>
+                  <p>{{rfidalarm_last_month}}<span>个</span></p>
                 </div>
               </div>
 
@@ -330,7 +330,7 @@
             <span class="icon-icon_RFIDcardcontent"></span>
           </div>
           <div class="statistics-item-count">
-            <span class="statistics-item-count-c statistics-item-count-rfidcont">730</span>
+            <span class="statistics-item-count-c statistics-item-count-rfidcont">{{rfidcont_total}}</span>
             <span class="statistics-item-count-t">总计数量(个)</span>
           </div>
         </div>
@@ -344,10 +344,10 @@
                   <p>待入库</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="680" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="680" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="rfidcont_to_be_repertory" max="rfidcont_total"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="rfidcont_to_be_repertory" max="rfidcont_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfidcont">
-                  <p>680<span>个</span></p>
+                  <p>{{rfidcont_to_be_repertory}}<span>个</span></p>
                 </div>
               </div>
 
@@ -356,10 +356,10 @@
                   <p>入库监视</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="20" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="20" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="rfidcont_in_monitor" max="rfidcont_total"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="rfidcont_in_monitor" max="rfidcont_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfidcont">
-                  <p>20<span>个</span></p>
+                  <p>{{rfidcont_in_monitor}}<span>个</span></p>
                 </div>
               </div>
 
@@ -368,10 +368,10 @@
                   <p>待出库</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="5" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="5" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="rfidcont_to_be_out_repertory" max="rfidcont_total"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="rfidcont_to_be_out_repertory" max="rfidcont_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfidcont">
-                  <p>5<span>个</span></p>
+                  <p>{{rfidcont_to_be_out_repertory}}<span>个</span></p>
                 </div>
               </div>
 
@@ -380,10 +380,10 @@
                   <p>已出库</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="5" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="5" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="rfidcont_out_repertory" max="rfidcont_total"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="rfidcont_out_repertory" max="rfidcont_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfidcont">
-                  <p>5<span>个</span></p>
+                  <p>{{rfidcont_out_repertory}}<span>个</span></p>
                 </div>
               </div>
 
@@ -392,10 +392,10 @@
                   <p>完成出库</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="5" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="5" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="rfidcont_finish_out_repertory" max="rfidcont_total"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="rfidcont_finish_out_repertory" max="rfidcont_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfidcont">
-                  <p>5<span>个</span></p>
+                  <p>{{rfidcont_finish_out_repertory}}<span>个</span></p>
                 </div>
               </div>
 
@@ -404,10 +404,10 @@
                   <p>已删除停用</p>
                 </div>
                 <div class="statistics-detail-cont-i-cont">
-                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="5" max="730"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="5" max="730"></uib-progressbar></div>
+                 <div class="progressbar-wrapper progressbar-wrapper-rfidcont"><uib-progressbar value="rfidcont_deleted" max="rfidcont_total"><!-- <div class="statistics-show-label"><p>93.15%</p></div> --></uib-progressbar><uib-progressbar value="rfidcont_deleted" max="rfidcont_total"></uib-progressbar></div>
                 </div>
                 <div class="statistics-detail-cont-i-num statistics-detail-cont-i-num-rfidcont">
-                  <p>5<span>个</span></p>
+                  <p>{{rfidcont_deleted}}<span>个</span></p>
                 </div>
               </div>
 
