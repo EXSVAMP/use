@@ -7,7 +7,11 @@ app.config(function ($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
 });
 
-app.controller("MasterCtrl", function ($scope) {
+app.controller("MasterCtrl", function ($scope,$cookieStore) {
+    var accountInfo = $cookieStore.get("iotcloud-token");
+    if(accountInfo){
+         window.location.href = "/#card";
+    }
     window.onresize = function () {
         $scope.$apply();
     }
