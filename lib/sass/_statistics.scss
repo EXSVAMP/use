@@ -11,6 +11,19 @@
 			overflow: hidden;
 			background-color: #ffffff;
 			padding-top: 17px;
+			position: relative;
+			.statistics-alert-detail{
+				position: absolute;
+				right: 30px;
+    			top: 27px;
+				p{
+					a{
+						text-decoration: none;
+						font-size: 12px;
+						color: #45b6b0;
+					}
+				}
+			}
 			.statistics-item-title{
 				font-size: 14px;
 				color: #ffffff;
@@ -52,17 +65,18 @@
 						display: table-cell;
 						vertical-align: middle;
 					}
-					
+
 				}
 				.statistics-item-count{
 					float: right;
 					width: auto;
-					min-width: 88px;
+					//min-width: 88px;
 					height: 86px;
 					text-align: center;
 					.statistics-item-count-c{
 						font-size: 50px;
-						display: table;
+						//display: table;
+						display: block;
 					}
 					.statistics-item-count-rfid{
 						color: #45b6b0;

@@ -60,9 +60,11 @@
 				.dwn-arw-af-card::after,.up-arw-af-card::after{
     				content: "\e928";
     				position: absolute;
-    				top: 2px;
+    				//top: 2px;
+    				top: 4px;
     				right: 0px;
-    				font-size: 20px;
+    				//font-size: 20px;
+    				font-size: 16px;
     				-moz-osx-font-smoothing: grayscale;
     				font-family: "icomoon" !important;
     				font-style: normal;
@@ -87,11 +89,13 @@
               				color: #45b6b0;
               				background: none;
               				margin-top: 8px;
+              				font-size: 16px;
             			}
             			.rfid-delete{
               				color: #ff6b6b;
               				background: none;
               				margin-top: 8px;
+              				font-size: 16px;
             			}
 					}
 				}
