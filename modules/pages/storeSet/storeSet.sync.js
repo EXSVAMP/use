@@ -70,15 +70,12 @@ app.register.controller("storeSetCtrl", function ($scope, $http, $location, $uib
         $('#wms').zclip({
         path: '/statics/lib/zclip/ZeroClipboard.swf',
         copy: function(e){//复制内容
-            console.log("77777777");
             //return $('#ticket').text();
             return "777777";
         },
         afterCopy: function(e){//复制成功
-            //$("<span id='msg'/>").insertAfter($('#copy_input')).text('复制成功');
-            console.log("复制cheng g");
              ngDialog.open({
-                    template: '<p style=\"text-align: center\">复制cheng g</p>',
+                    template: '<p style=\"text-align: center\">复制成功</p>',
                     plain: true
                 });
         
