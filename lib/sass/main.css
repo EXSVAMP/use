@@ -2425,12 +2425,15 @@
         border: none;
         height: 22px;
         width: 60px; }
-        .poll-content .condition-sort table.table-time .ui-select-container .ui-select-match span {
+        .poll-content .condition-sort table.table-time .ui-select-container .ui-select-match span.ui-select-match-text {
           border: medium none;
           border-radius: 4px;
-          height: 18px;
-          padding: 0 0 0 5px;
-          width: 60px; }
+          height: 22px !important;
+          padding: 0;
+          width: 100%; }
+    .poll-content .condition-sort table.table-time thead tr th.pagination-items-per-page .btn {
+      border-left: 0px solid #e6e6e6;
+      border-radius: 4px; }
   .poll-content .condition-sort table.table-pagination-sort {
     float: right;
     margin: -10px 0 0;
@@ -2543,6 +2546,21 @@
     height: auto;
     margin-bottom: 130px;
     margin-top: 90px; }
+  .modal-md-info .download-result {
+    width: 350px;
+    margin: 0 auto 10px auto;
+    height: 34px; }
+    .modal-md-info .download-result .download-result-excel, .modal-md-info .download-result .download-result-txt {
+      float: left;
+      width: 160px;
+      height: 34px;
+      border-radius: 4px;
+      background-color: #5f9bdb;
+      font-size: 12px;
+      text-align: center;
+      color: #ffffff; }
+    .modal-md-info .download-result .download-result-txt {
+      float: right; }
 
 .modal-table-poll-wrapper {
   height: 288px;
@@ -2559,6 +2577,9 @@
 
 .poll-content-modal {
   min-width: 0; }
+
+.poll-info-modal-pag {
+  margin-bottom: 0; }
 
 .manual-content .manual-select {
   display: table;
