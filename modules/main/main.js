@@ -997,7 +997,8 @@ console.log(query_url);
     });
   }
 
-  $scope.download_excel = "http://211.152.46.42:9011/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0";
+  $scope.download_excel = "http://211.152.46.42:9011/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0&iotcloud_token=kEkE2vK2C8eQH9leFQAfR959Bf6Vl7CVLCVL03947er7ismNdkUDGgFOGxsUERHW";
+  //$scope.download_excel = "http://211.152.46.41:9030/hulk/storage/exportTag?warehouseId=37&storageIds=11776";
 
         $scope.submit_search = function(){
             var order_str = "";

@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("storeSetCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,url_junction,listService,params) {
+app.register.controller("storeSetCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,url_junction,listService,params,ngDialog) {
     var urlBase = baseUrl.getUrl();
     $scope.params={};
     $scope.searchStore=function(){
@@ -46,26 +46,48 @@ app.register.controller("storeSetCtrl", function ($scope, $http, $location, $uib
     };
     $scope.searchStore();
 
-    $scope.startcopy=function(obj){
+   //$scope.startcopy=function(obj){
 
-        var swfPath = ZeroClipboard.config("swfPath");
-        ZeroClipboard.clearData();
-        var client = new ZeroClipboard( document.getElementById("wms") );
-        console.log("<====@@@===>"+swfPath);
-        client.clearData("text/plain");
-        client.on("ready",function(event){
-            console.log("<====复制开启1===>");
-            client.on("copy",function(event){
-               console.log("<====复制过程====>");
-                event.clipboardData.setData("text/plain","1233eeddddeee");
-            });
-            client.on( 'aftercopy', function(event) {
-                console.log('Copied text to clipboard: ' + event.data['text/plain']);
-            } );
+        // var swfPath = ZeroClipboard.config("swfPath");
+        // ZeroClipboard.clearData();
+        // var client = new ZeroClipboard( document.getElementById("wms") );
+        // console.log("<====@@@===>"+swfPath);
+        // client.clearData("text/plain");
+        // client.on("ready",function(event){
+        //     console.log("<====复制开启1===>");
+        //     //client.on("copy",function(event){
+        //       console.log(client);
+        //         client.on("copy",function(event){
+        //        console.log("<====复制过程====>");
+        //         event.clipboardData.setData("text/plain","dddddddbbb");
+        //     });
+        //     client.on( 'aftercopy', function(event) {
+        //         console.log('Copied text to clipboard: ' + event.data['text/plain']);
+        //     } );
 
 
-        });
-    }
+        // });
+        $('#wms').zclip({
+        path: '/statics/lib/zclip/ZeroClipboard.swf',
+        copy: function(e){//复制内容
+            console.log("77777777");
+            //return $('#ticket').text();
+            return "777777";
+        },
+        afterCopy: function(e){//复制成功
+            //$("<span id='msg'/>").insertAfter($('#copy_input')).text('复制成功');
+            console.log("复制cheng g");
+             ngDialog.open({
+                    template: '<p style=\"text-align: center\">复制cheng g</p>',
+                    plain: true
+                });
+        
+        }
+    });
+        
+   //}
+
+
 
 
 
