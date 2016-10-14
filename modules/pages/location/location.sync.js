@@ -81,8 +81,19 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     $scope.warnhide=function(obj){
         obj.warnflag=false;
     }
-
-
+    //
+    // $scope.openfull=function(){
+    //     elem=document.getElementById("location");
+    //     if(elem.webkitRequestFullScreen){
+    //         elem.webkitRequestFullScreen();
+    //     }else if(elem.mozRequestFullScreen){
+    //         elem.mozRequestFullScreen();
+    //     }else if(elem.requestFullScreen){
+    //         elem.requestFullscreen();
+    //     }else{
+    //         //浏览器不支持全屏API或已被禁用
+    //     }
+    // }
 
 
 })
