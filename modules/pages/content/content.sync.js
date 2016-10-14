@@ -154,8 +154,10 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
                                   status:false,
                                   rfid_type:false,
                                   is_writed:false,
-                                  'card_serial_number': false,
-                                  'goods_location_name': false,
+                                  // 'card_serial_number': false,
+                                  // 'goods_location_name': false,
+                                  'rfid_card_id': false,
+                                  'goods_location_id': false,
                                   updated_at: false,
                                   created_at: false
                                 };
@@ -234,10 +236,10 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
     var order_str = "";
     for(var i in $scope.order[$scope.currentSelTab]){
       if($scope.order[$scope.currentSelTab][i]){
-        if(i == "goods_location_name]")
-          i = "goods_location.name";
-        if(i == "card_serial_number]")
-          i = "rfid_card.serial_number";
+        // if(i == "goods_location_name]")
+        //   i = "goods_location.name";
+        // if(i == "card_serial_number]")
+        //   i = "rfid_card.serial_number";
         if(order_str){
           order_str += ','+i
         }else{

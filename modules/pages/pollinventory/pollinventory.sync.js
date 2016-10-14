@@ -261,7 +261,10 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   }
 
   $scope.setIntervalTask();
- 
+
+   //var storehouse_type_info = localStorage.getItem("storeMap").toString();
+  // console.log(storehouse_type_info);
+  //console.log(JSON.stringify(storehouse_type_info));
   $scope.wsFunc3 = function(){
     var startTime = 0;
     var endTime = 0;
@@ -270,6 +273,8 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
+    //client.onSubscribeSuccess = onSubscribeSuccess;
+    //client.onSubscribeFailure = onSubscribeFailure;
 
     // connect the client
     client.connect({onSuccess:onConnect, userName: "iotweb", password: "123qwe!@#", mqttVersion: 3});
@@ -279,12 +284,12 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
       startTime = new Date().getMilliseconds();
       // Once a connection has been made, make a subscription and send a message.
       console.log("onConnect");
-      // client.subscribe("/World");
+     
+      client.subscribe("/exingcai/iot/clould/6/eventlog/warning", {onSuccess:onSubscribeSuccess,onFailure:onSubscribeFailure});
 
-      client.subscribe("/exingcai/iot/clould/6/eventlog/warning");
-      //message = new Paho.MQTT.Message("Hello");
-      //message.destinationName = "/World";
-      //client.send(message);
+      // message = new Paho.MQTT.Message("Hello");
+      // message.destinationName = "/World";
+      // client.send(message);
     }
 
     // called when the client loses its connection
@@ -303,6 +308,16 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
       console.log(message);
       console.log(message.toString());
     }
+
+    function onSubscribeSuccess() {
+    subscribed = true;
+    console.log("subscribed",subscribed);
+  };
+
+  function onSubscribeFailure(err) {
+    subscribed = false;
+    console.log("subscribe fail. ErrorCode: %s, ErrorMsg: %s",err.errCode,err.errorMessage);
+};
     
   }
   $scope.wsFunc3();

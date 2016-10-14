@@ -970,6 +970,35 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
             $scope.submit_search()
         };
 
+        $scope.downloadResult = function(itemId,file_type){
+            console.log(file_type);
+
+    var query_url = url_junction.getQuery({
+      schedule_id:itemId,
+      file_type:file_type
+    });
+console.log(query_url);
+    $http.get(baseUrl + "/api/2/inventory/result/download?schedule_id="+itemId+"&file_type="+file_type).success(function(data){
+      if(file_type == 1){
+        //console.log(file_type);
+        var blob = new Blob([data], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, "result.txt");//saveAs(blob,filename)
+      }else{
+        console.log(data);
+        //data =document.getElementById("content").value;  
+        //console.log(data);
+        var blob = new Blob([data], {type: "application/vnd.ms-excel;charset=utf-8"});
+        saveAs(blob, "result.xls");//saveAs(blob,filename)
+      }
+    }).error(function(data,state){
+      if(state == 403){
+        baseUrl.redirect()
+      }
+    });
+  }
+
+  $scope.download_excel = "http://211.152.46.42:9011/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0";
+
         $scope.submit_search = function(){
             var order_str = "";
             for(var i in $scope.order){

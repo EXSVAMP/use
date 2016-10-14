@@ -111,13 +111,15 @@
         <table class="table table-bordered table-content">
             <thead>
                 <tr>
-                    <th ng-click="switch_order('rfid_id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].id]"></span></p></th>
+                    <th ng-click="switch_order('id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].id]"></span></p></th>
                     <th ng-click="switch_order('rfid_id')"><p>RFID分配编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].rfid_id]"></span></p></th>
                     <th ng-click="switch_order('status')"><p>功能<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].status]"></span></p></th>
                     <th ng-click="switch_order('is_writed')"><p>是否写入<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].is_writed]"></span></p></th>
                     <th ng-click="switch_order('rfid_type')"><p>状态<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].rfid_type]"></span></p></th>
-                    <th ng-click="switch_order('goods_location_name')"><p>分配货位<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].goods_location_name]"></span></p></th>
-                    <th ng-click="switch_order('card_serial_number')"><p>RFID硬件卡<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].card_serial_number]"></span></p></th>
+                    <!-- <th ng-click="switch_order('goods_location_name')"><p>分配货位<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].goods_location_name]"></span></p></th>
+                    <th ng-click="switch_order('card_serial_number')"><p>RFID硬件卡<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].card_serial_number]"></span></p></th> -->
+                    <th ng-click="switch_order('goods_location_id')"><p>分配货位<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].goods_location_id]"></span></p></th>
+                    <th ng-click="switch_order('rfid_card_id')"><p>RFID硬件卡<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].rfid_card_id]"></span></p></th>
                     <th ng-click="switch_order('updated_at')"><p>更新时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].updated_at]"></span></p></th>
                     <th ng-click="switch_order('created_at')"><p>创建时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].created_at]"></span</p></span></th>
                     <th><p>操作</p></th>
@@ -138,8 +140,10 @@
                     <td><p>{{item.rfid_type_display}}</p></td>
                     <td><p>{{item.is_writed | opis_writed}}</p></td>
                     <td><p>{{item.status_display}}</p></td>
+                   <!--  <td><p>{{item.goods_location.name}}</p></td>
+                    <td><p>{{item.rfid_card.serial_number}}</p></td> -->
                     <td><p>{{item.goods_location.name}}</p></td>
-                    <td><p>{{item.rfid_card.serial_number}}</p></td>
+                    <td><p>{{item.rfid_card.id}}</p></td>
                     <td><p>{{item.updated_at}}</p></td>
                     <td><p>{{item.created_at}}</p></td>
                     <td><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit-content','modify',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
