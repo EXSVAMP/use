@@ -227,6 +227,24 @@
    		margin-bottom: 130px;
    		margin-top: 90px;
     }
+    .download-result{ 
+    	width: 350px;
+    	margin: 0 auto 10px auto;
+    	height: 34px;
+    	.download-result-excel,.download-result-txt{
+    		float: left;
+    		width: 160px;
+			height: 34px;
+			border-radius: 4px;
+			background-color: #5f9bdb;
+			font-size: 12px;
+			text-align: center;
+			color: #ffffff;
+    	}
+    	.download-result-txt{
+    		float: right;
+    	}
+    }
 }
 
 .modal-table-manual-wrapper{

@@ -1173,6 +1173,10 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
             $scope.submit_search()
         };
 
+         var iotcloud_token = $scope.header_username = $cookieStore.get("iotcloud-token").token;
+        $scope.download_excel = "http://211.152.46.42:9011/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0&iotcloud_token="+iotcloud_token;
+        $scope.download_txt = "http://211.152.46.42:9011/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=1&iotcloud_token="+iotcloud_token;
+
         $scope.submit_search = function(){
             var order_str = "";
             for(var i in $scope.order){

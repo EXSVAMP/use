@@ -77,6 +77,13 @@
         
       </table>
 
+      <div class="download-result" ng-show="bigTotalItems>0">
+       <!--  <button class="btn btn-primary download-result-excel" ng-click="downloadResult(item.data.id,0)"><span class="icon-icon_download"></span>下载检测报告(Excel)</button> -->
+        <a class="btn btn-primary download-result-excel" ng-href="{{download_excel}}" ><span class="icon-icon_download"></span>下载检测报告(Excel)</a>
+        <!-- <button class="btn btn-primary download-result-txt" ng-click="downloadResult(item.data.id,1)"><span class="icon-icon_download"></span>下载检测报告(Txt)</button> -->
+        <a class="btn btn-primary download-result-txt" ng-href="{{download_txt}}" ><span class="icon-icon_download"></span>下载检测报告(Txt)</a>
+      </div>
+
         <div class="pop-delete-com pop-delete-com-manual" ng-show="item.method=='delete'"><p><span></span>确定要删除这个检测吗？<br/>注意：删除以后不可以恢复！</p></div>
 
     </div>
