@@ -1,10 +1,7 @@
 var app = angular.module('RDash');
 app.register.controller("storeSetCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,url_junction,listService,params) {
     var urlBase = baseUrl.getUrl();
-    $scope.params={}
-
-
-
+    $scope.params={};
     $scope.searchStore=function(){
         $http.get(urlBase+"/api/1/storehouse/self/").success(function(data){
             if(data.code==200){
@@ -48,5 +45,28 @@ app.register.controller("storeSetCtrl", function ($scope, $http, $location, $uib
         });
     };
     $scope.searchStore();
+
+    $scope.startcopy=function(obj){
+
+        var swfPath = ZeroClipboard.config("swfPath");
+        ZeroClipboard.clearData();
+        var client = new ZeroClipboard( document.getElementById("wms") );
+        console.log("<====@@@===>"+swfPath);
+        client.clearData("text/plain");
+        client.on("ready",function(event){
+            console.log("<====复制开启1===>");
+            client.on("copy",function(event){
+               console.log("<====复制过程====>");
+                event.clipboardData.setData("text/plain","1233eeddddeee");
+            });
+            client.on( 'aftercopy', function(event) {
+                console.log('Copied text to clipboard: ' + event.data['text/plain']);
+            } );
+
+
+        });
+    }
+
+
 
 })
