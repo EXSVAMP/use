@@ -67,15 +67,16 @@ app.register.controller("storeSetCtrl", function ($scope, $http, $location, $uib
 
 
         // });
+      $scope.text="烟光凝而暮山紫";
         $('#wms').zclip({
         path: '/statics/lib/zclip/ZeroClipboard.swf',
         copy: function(e){//复制内容
             //return $('#ticket').text();
-            return "777777";
+            return $scope.text;
         },
         afterCopy: function(e){//复制成功
              ngDialog.open({
-                    template: '<p style=\"text-align: center\">复制成功</p>',
+                    template: '<p style=\"text-align: center\">复制'+$scope.text+'</p>',
                     plain: true
                 });
         
