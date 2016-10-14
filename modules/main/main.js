@@ -298,6 +298,7 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
         $scope.ok = function(){
             $http.get(baseUrl+"/api/1/user/logout/").success(function(data){
                 if(data.code=="200"){
+                    $cookieStore.remove("iotcloud-token");
                     window.location.href = "/login.html"
                 }
             }).error(function(){

@@ -398,15 +398,16 @@ td,th{
 .header-menu-pos li a:hover{
     background: #313d53;
     color: #fff;
+    text-decoration: none;
 }
 
 .header-menu-tag{
     display: block;
     float: left;
-    height: 14px;
+    height: 15px;
     margin-right: 8px;
     margin-top: 13px;
-    width: 14px;
+    width: 15px;
 }
 
 .header-menu-tag-user{
