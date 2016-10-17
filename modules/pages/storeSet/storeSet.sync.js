@@ -67,23 +67,63 @@ app.register.controller("storeSetCtrl", function ($scope, $http, $location, $uib
 
 
         // });
+    
+    
+    
+    
+    
       $scope.text="烟光凝而暮山紫";
-        $('#wms').zclip({
-        path: '/statics/lib/zclip/ZeroClipboard.swf',
-        copy: function(e){//复制内容
-            //return $('#ticket').text();
-            return $scope.text;
-        },
-        afterCopy: function(e){//复制成功
-             ngDialog.open({
-                    template: '<p style=\"text-align: center\">复制'+$scope.text+'</p>',
-                    plain: true
-                });
-        
-        }
-    });
-        
-   //}
+    
+    //
+    //     $('#wms').zclip({
+    //     path: '/statics/lib/zclip/ZeroClipboard.swf',
+    //     copy: function(e){//复制内容
+    //         //return $('#ticket').text();
+    //         return $scope.text;
+    //     },
+    //     afterCopy: function(e){//复制成功
+    //          ngDialog.open({
+    //                 template: '<p style=\"text-align: center\">复制'+$scope.text+'</p>',
+    //                 plain: true
+    //             });
+    //
+    //     }
+    // });
+    // $('#box').zclip({
+    //     path: '/statics/lib/zclip/ZeroClipboard.swf',
+    //     copy: function(e){//复制内容
+    //         //return $('#ticket').text();
+    //         return $scope.text;
+    //     },
+    //     afterCopy: function(e){//复制成功
+    //         ngDialog.open({
+    //             template: '<p style=\"text-align: center\">复制'+$scope.text+'</p>',
+    //             plain: true
+    //         });
+    //
+    //     }
+    // });
+
+
+     $scope.copy=function(obj,str){
+             var content=str;
+             $('#'+obj).zclip({
+                 path: '/statics/lib/zclip/ZeroClipboard.swf',
+                 copy: function(e){//复制内容
+                     //return $('#ticket').text();
+                     return content;
+                 },
+                 afterCopy: function(e){//复制成功
+                     ngDialog.open({
+                         template: '<p style=\"text-align: center\">复制'+content+'</p>',
+                         plain: true
+                     });
+
+                 }
+             });
+         }
+    $scope.copy("wms","烟光凝儿暮山紫");
+    $scope.copy("box","潦水尽寒潭清");
 
 
 
