@@ -64,12 +64,11 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
                     width :810  ,
                     height:500 ,
                     dock: false,
-                    bufferlength:10,
+                    primary: 'flash',
                     repeat:true,
                     events: {
                         onComplete: function () {
                             console.log("播放结束!!!");
-                            play.setControls(false);
                         },
                         // onVolume: function () { console.log("声音大小改变!!!"); },
                         // onReady: function () { console.log("准备就绪!!!"); },
