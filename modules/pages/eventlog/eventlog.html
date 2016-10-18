@@ -105,12 +105,12 @@
                    <li class="tab-item" ng-class="tabSwitch==1?'active':''" ng-click="tabSwitch=1;">
                        <a href="javascript:void(0)"><span class="icon icon-icon_video"></span><br/>视频地址</a></li>
                </ul>
-               <div class="detail-img detail-img1" ng-show="tabSwitch==0">
+               <div class="detail-img detail-img1" ng-show="tabSwitch==0" id="detail-img-url">
                    <img ng-src="{{detail.photo_url | img}}"/>
                    <div class="img-bottom-bar"><a ng-href="{{detail.photo_url}}" class="icon icon-icon_download" download></a><span class="icon icon-icon_expand" ng-click="showImg(detail.photo_url)"></span></div>
 
                </div>
-               <div class="detail-img" ng-show="tabSwitch==1">
+               <div class="detail-img" ng-show="tabSwitch==1" id="detail-img-video">
                    <img ng-src="{{detail.video_url | img:true}}" ng-show="!detail.video_url"/>
                    <div id="container"></div>
                </div>

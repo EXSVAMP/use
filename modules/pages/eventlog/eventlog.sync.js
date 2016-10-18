@@ -57,13 +57,23 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
                 $("#container").empty();
                // var width=$(".detail-img1").width();
                // var height=$(".detail-img1").height();
+            
+                $(window).resize(function(){
+                    var main_detail_tab_width = $(".main-content").width()-40-340;
+                    $("#container").width(main_detail_tab_width);
+                    $("#container").height((main_detail_tab_width*detail_img_url_ratio)+50);
+                });
+                var detail_img_url_w = $("#detail-img-url img").width();
+                var detail_img_url_h = $("#detail-img-url img").height();
+                var detail_img_url_ratio = detail_img_url_h/detail_img_url_w;
+                
                 var play=jwplayer ( "container" ). setup ({
                     autostart:true,
                     //flashplayer : "/statics/lib/player.swf" ,
                     flashplayer : "/statics/lib/jwplayer-7.7.1/jwplayer.flash.swf" ,
                     file : $scope.detail.video_url ,
-                    width :810  ,
-                    height:500 ,
+                    width: detail_img_url_w  ,
+                    height  : detail_img_url_h+50 ,
                     dock: false,
                     primary: 'flash',
                     //repeat:true,
