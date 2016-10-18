@@ -59,26 +59,27 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
                // var height=$(".detail-img1").height();
                 var play=jwplayer ( "container" ). setup ({
                     autostart:true,
-                    flashplayer : "/statics/lib/player.swf" ,
+                    //flashplayer : "/statics/lib/player.swf" ,
+                    flashplayer : "/statics/lib/jwplayer-7.7.1/jwplayer.flash.swf" ,
                     file : $scope.detail.video_url ,
                     width :810  ,
                     height:500 ,
                     dock: false,
                     primary: 'flash',
-                    repeat:true,
+                    //repeat:true,
                     events: {
                         onComplete: function () {
                             console.log("播放结束!!!");
                         },
-                        // onVolume: function () { console.log("声音大小改变!!!"); },
-                        // onReady: function () { console.log("准备就绪!!!"); },
-                        // onPlay: function () { console.log("开始播放!!!"); },
-                        // onPause: function () { console.log("暂停!!!"); },
-                        // onBufferChange: function () { console.log("缓冲改变!!!"); },
-                        // onBufferFull: function () { console.log("视频缓冲完成!!!"); },
-                        // onError: function (obj) { console.log("播放器出错!!!" + obj.message); },
-                        // onFullscreen: function (obj) { if (obj.fullscreen) { console.log("全屏"); } else { console.log("非全屏"); } },
-                        // onMute: function (obj) { console.log("静音/取消静音") }
+                        onVolume: function () { console.log("声音大小改变!!!"); },
+                         onReady: function () { console.log("准备就绪!!!"); },
+                         onPlay: function () { console.log("开始播放!!!"); },
+                        onPause: function () { console.log("暂停!!!"); },
+                        onBufferChange: function () { console.log("缓冲改变!!!"); },
+                         onBufferFull: function () { console.log("视频缓冲完成!!!"); },
+                         onError: function (obj) { console.log("播放器出错!!!" + obj.message); },
+                         onFullscreen: function (obj) { if (obj.fullscreen) { console.log("全屏"); } else { console.log("非全屏"); } },
+                         onMute: function (obj) { console.log("静音/取消静音") }
                     }
 
 
