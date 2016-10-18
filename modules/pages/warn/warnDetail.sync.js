@@ -6,6 +6,7 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
         $http.get(baseUrl.getUrl()+'/api/1/eventlog/'+data.id+"/").success(function(data){
             if(data.code==200){
                 $scope.detail = data.data;
+                $scope.detail.video_url= "http://o71xixzmn.bkt.clouddn.com/gz0120160616_172743_717000.flv";
                 var rfid_list_display = '';
                 angular.forEach($scope.detail.rfid_list,function(item){
                     if(rfid_list_display!=''){
@@ -13,7 +14,26 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
                     }
                     rfid_list_display+=item.rfid_id;
                 });
-                $scope.detail.rfid_list_display=rfid_list_display
+                $scope.detail.rfid_list_display=rfid_list_display;
+                $("#container").empty();
+                var play=jwplayer ( "container" ). setup ({
+                    autostart:true,
+                    //flashplayer : "/statics/lib/player.swf" ,
+                    flashplayer : "/statics/lib/jwplayer-7.7.1/jwplayer.flash.swf" ,
+                    file : $scope.detail.video_url,
+                    width :810  ,
+                    height:500 ,
+                    dock: false,
+                    primary: 'flash',
+                    //repeat:true,
+                    events: {
+                        onComplete: function () {
+                            console.log("播放结束!!!");
+                        }
+                    }
+
+                });
+
             }
         });
     }

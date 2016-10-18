@@ -20,7 +20,8 @@
                     <div class="img-bottom-bar"><a ng-href="{{detail.photo_url}}" class="icon icon-icon_download" download></a><span class="icon icon-icon_expand" ng-click="showImg(detail.photo_url)"></span></div>
                 </div>
                 <div class="detail-img" ng-show="tabSwitch==1">
-                    <img ng-src="{{detail.img2|img}}"/>
+                    <img ng-src="{{detail.video_url | img:true}}" ng-show="!detail.video_url"/>
+                    <div ng-show="detail.video_url"> <div id="container"></div> </div>
                 </div>
             </div>
             <div class="main-detail-content">

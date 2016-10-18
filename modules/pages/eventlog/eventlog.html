@@ -112,7 +112,8 @@
                </div>
                <div class="detail-img" ng-show="tabSwitch==1">
                    <img ng-src="{{detail.video_url | img:true}}" ng-show="!detail.video_url"/>
-                   <div id="container"></div>
+
+                  <div ng-show="detail.video_url"> <div id="container"></div> </div>
                </div>
                <div class="bottom-bar-group">
                    <span class="previous-group"  >上一组<span class="icon-icon_arrow_circleleft" ng-class="currentIndex<=0?'noclick':''" ng-disabled="currentIndex<=0" ng-click="currentIndex>0?showDetail(currentIndex-1):''"></span></span>
