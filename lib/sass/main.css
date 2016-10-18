@@ -2566,6 +2566,9 @@
   height: 288px;
   margin: 30px auto 30px auto; }
 
+.modal-table-poll-wrapper-empty {
+  height: auto; }
+
 .modal-table-poll {
   width: 820px !important;
   margin: auto;
@@ -2796,6 +2799,9 @@
 .modal-table-manual-wrapper {
   height: 288px;
   margin: 30px auto 30px auto; }
+
+.modal-table-manual-wrapper-empty {
+  height: auto; }
 
 .modal-table-manual {
   width: 820px !important;
@@ -3394,5 +3400,11 @@ textarea, p, section, strong, a, th, td, tr {
   background: #f5f5f5;
   margin: 0px;
   padding: 0px; }
+
+/*
+#content:fullscreen {
+    font-size: 18;
+    z-index: 1;
+}*/
 
 /*# sourceMappingURL=main.css.map */
