@@ -168,8 +168,8 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
         });
     };
 
-    $scope.live = function (appId, storage_list) {
-
+    $scope.live = function (appId, storage_list,ip_address) {
+        $scope.ipAddress=ip_address;
         $scope.open_hls_storage = storage_list[0];
         console.log($scope.open_hls_storage);
         $http.post(urlBase + "/api/2/livecontrol/tostorage/" + $scope.open_hls_storage + "/").success(function (dtata) {
@@ -180,7 +180,7 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
         $scope.liveStatus = true;
         $("#play").empty();
         var appId = appId;
-
+              
         var objectPlayer = new mpsPlayer({
             container: 'play',//播放器容器ID，必要参数
             uin: '21884',//用户ID

@@ -44,89 +44,90 @@ app.register.controller("storeSetCtrl", function ($scope, $http, $location, $uib
         }, function () {
         });
     };
+    $scope.wmsInfo=function(){
+        $http.get(urlBase+"/api/1/storehouse/reset/wms/").success(function(data){
+            if(data.code==200){
+                var data=data.data;
+                $scope.wms_token=data.token;
+            }
+        }).error(function (data, state) {
+            if (state == 403) {
+                baseUrl.redirect()
+            }
+        });
+    };
+
+    $scope.boxInfo=function(){
+        $http.get(urlBase+"/api/1/storehouse/reset/box/").success(function(data){
+            if(data.code==200){
+                var data=data.data;
+                $scope.box_token=data.token;
+            }
+        }).error(function (data, state) {
+            if (state == 403) {
+                baseUrl.redirect()
+            }
+        })
+    }
     $scope.searchStore();
-
-   //$scope.startcopy=function(obj){
-
-        // var swfPath = ZeroClipboard.config("swfPath");
-        // ZeroClipboard.clearData();
-        // var client = new ZeroClipboard( document.getElementById("wms") );
-        // console.log("<====@@@===>"+swfPath);
-        // client.clearData("text/plain");
-        // client.on("ready",function(event){
-        //     console.log("<====复制开启1===>");
-        //     //client.on("copy",function(event){
-        //       console.log(client);
-        //         client.on("copy",function(event){
-        //        console.log("<====复制过程====>");
-        //         event.clipboardData.setData("text/plain","dddddddbbb");
-        //     });
-        //     client.on( 'aftercopy', function(event) {
-        //         console.log('Copied text to clipboard: ' + event.data['text/plain']);
-        //     } );
+    $scope.wmsInfo();
+    $scope.boxInfo();
 
 
-        // });
-    
-    
-    
-    
-    
-      $scope.text="烟光凝而暮山紫";
-    
-    //
-    //     $('#wms').zclip({
-    //     path: '/statics/lib/zclip/ZeroClipboard.swf',
-    //     copy: function(e){//复制内容
-    //         //return $('#ticket').text();
-    //         return $scope.text;
-    //     },
-    //     afterCopy: function(e){//复制成功
-    //          ngDialog.open({
-    //                 template: '<p style=\"text-align: center\">复制'+$scope.text+'</p>',
-    //                 plain: true
-    //             });
-    //
-    //     }
-    // });
-    // $('#box').zclip({
-    //     path: '/statics/lib/zclip/ZeroClipboard.swf',
-    //     copy: function(e){//复制内容
-    //         //return $('#ticket').text();
-    //         return $scope.text;
-    //     },
-    //     afterCopy: function(e){//复制成功
-    //         ngDialog.open({
-    //             template: '<p style=\"text-align: center\">复制'+$scope.text+'</p>',
-    //             plain: true
-    //         });
-    //
-    //     }
-    // });
+    $('#wms').zclip({
+        path: '/statics/lib/zclip/ZeroClipboard.swf',
+        copy: function(e){//复制内容
+            //return $('#ticket').text();
+            return $scope.wms_token;
+        },
+        afterCopy: function(e){//复制成功
+            ngDialog.open({
+                template: '<p style=\"text-align: center\">wms票据复制成功</p>',
+                plain: true
+            });
 
+        }
+    });
+    $('#box').zclip({
+        path: '/statics/lib/zclip/ZeroClipboard.swf',
+        copy: function(e){//复制内容
+            //return $('#ticket').text();
+            return $scope.box_token;
+        },
+        afterCopy: function(e){//复制成功
+            ngDialog.open({
+                template: '<p style=\"text-align: center\">盒子票据复制成功</p>',
+                plain: true
+            });
 
-     $scope.copy=function(obj,str){
-             var content=str;
-             $('#'+obj).zclip({
-                 path: '/statics/lib/zclip/ZeroClipboard.swf',
-                 copy: function(e){//复制内容
-                     //return $('#ticket').text();
-                     return content;
-                 },
-                 afterCopy: function(e){//复制成功
-                     ngDialog.open({
-                         template: '<p style=\"text-align: center\">复制'+content+'</p>',
-                         plain: true
-                     });
+        }
+    });
 
-                 }
-             });
-         }
-    $scope.copy("wms","烟光凝儿暮山紫");
-    $scope.copy("box","潦水尽寒潭清");
+    $scope.reset=function(obj){
+        if(obj==0){
+            $http.post(urlBase+'/api/1/storehouse/reset/wms/').success(function(data){
+                if(data.code==200){
+                    $scope.wmsInfo();
+                    ngDialog.open({
+                        template: '<p style=\"text-align: center\">wms票据重置成功</p>',
+                        plain: true
+                    });
+                }
+            })
+        };
+        if(obj==1){
+            $http.post(urlBase+'/api/1/storehouse/reset/box/').success(function(data){
+                if(data.code==200){
+                    $scope.boxInfo();
+                    ngDialog.open({
+                        template: '<p style=\"text-align: center\">盒子票据重置成功</p>',
+                        plain: true
+                    });
+                }
+            })
+        }
 
-
-
+    }
 
 
 })

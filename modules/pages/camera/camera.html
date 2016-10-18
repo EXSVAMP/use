@@ -137,7 +137,7 @@
                             <td>{{items.status_display}}</td>
 
                             <td>{{items.ip_address}}</td>
-                            <td><a  ng-click="live(items.live_address,items.storage_list)" ng-show="items.live_address&&items.storage_list.length>0" title="{{items.live_address}}" target="_blank">地址</a></td>
+                            <td><a  ng-click="live(items.live_address,items.storage_list,items.ip_address)" ng-show="items.live_address&&items.storage_list.length>0" title="{{items.live_address}}" target="_blank">地址</a></td>
                             <!--<td>{{items.rfid_reader.serial_number}}</td>-->
                             <td><span tooltip-placement="bottom" uib-tooltip="{{items.description}}">{{items.description |characters:10 :true}}</span></td>
                             <!--<td>{{items.description}}</td>-->
