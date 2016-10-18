@@ -8,7 +8,9 @@ require('common/service/params');
 require('common/filters');
 
 
-
+var fullscreen_click = function(){
+    alert(234);
+};
 
 /**
  * Master Controller
@@ -145,7 +147,6 @@ function HttpInterceptor($q, $injector) {
 app.config(['$httpProvider', function($httpProvider){
     $httpProvider.interceptors.push(HttpInterceptor);
 }]);
-
 
 app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDialog, $rootScope){
     var baseUrl = baseUrl.getUrl();
@@ -950,7 +951,7 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
             rfid_content:false,
             store_house:false
         };
-
+        $scope.modal_table_poll_wrapper_empty = "";
         $scope.switch_order = function(key){
             $scope.order[key] = !$scope.order[key];
             $scope.submit_search()
@@ -1019,10 +1020,12 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
                     currentPageDataNum = $scope.dataList.length;
                     $scope.bigTotalItems = data.pageinfo.total_number;
                     $scope.total_page = data.pageinfo.total_page;
-                    if(currentPageDataNum == 0)
-                      $scope.emptyDataListShow = "emptyDataListShow";
+                    if(currentPageDataNum == 0){
+                        $scope.emptyDataListShow = "emptyDataListShow";
+                        $scope.modal_table_poll_wrapper_empty = "modal-table-poll-wrapper-empty";
+                    }
                     else{
-                      $scope.emptyDataListShow = "";
+                        $scope.emptyDataListShow = "";
                     }
 
                     // $scope.dataList =  [
@@ -1058,7 +1061,7 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
     }
 });
 
-app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, $timeout,items,baseUrl,url_junction,ngDialog){
+app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, $timeout,items,baseUrl,url_junction,ngDialog,$cookieStore){
     baseUrl = baseUrl.getUrl();
     $scope.item = items;
     if($scope.item.method == "info")
@@ -1154,6 +1157,8 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
             store_house:false
         };
 
+        $scope.modal_table_manual_wrapper_empty = "";
+
         $scope.switch_order = function(key){
             $scope.order[key] = !$scope.order[key];
             $scope.submit_search()
@@ -1202,10 +1207,12 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
                     currentPageDataNum = $scope.dataList.length;
                     $scope.bigTotalItems = data.pageinfo.total_number;
                     $scope.total_page = data.pageinfo.total_page;
-                    if(currentPageDataNum == 0)
-                      $scope.emptyDataListShow = "emptyDataListShow";
+                    if(currentPageDataNum == 0){
+                        $scope.emptyDataListShow = "emptyDataListShow";
+                        $scope.modal_table_manual_wrapper_empty = "modal-table-manual-wrapper-empty";
+                    }
                     else{
-                      $scope.emptyDataListShow = "";
+                        $scope.emptyDataListShow = "";
                     }
 
                     // $scope.dataList =  [

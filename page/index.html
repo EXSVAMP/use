@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" ng-app="RDash" name="index">
+<html lang="en" ng-app="RDash" name="index" id="body_ele" style="top:0;left:0;">
+<!-- <html lang="en" ng-app="RDash" name="index"> -->
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,6 +49,7 @@
         <script src="//cdn.bootcss.com/FileSaver.js/2014-11-29/FileSaver.js"></script>
         <!-- <script type="text/javascript" src="/lib/zeroclipboard/dist/ZeroClipboard.min.js"></script> -->
          <script type="text/javascript" src="/lib/zclip/jquery.zclip.js"></script>
+         <script type="text/javascript" src="/lib/js/jquery.fullscreen.js"></script>
         <!--<script type="text/javascript" src="/bower_components/d3/d3.js"></script>-->
         <!--&lt;!&ndash;<script type="text/javascript" src="http://cdn.aodianyun.com/lss/aodianplay/player.js"></script>&ndash;&gt;-->
         <!--<script type="text/javascript" src="http://cdn.aodianyun.com/mps/v1/lssplayer.js"></script>-->
@@ -55,7 +57,8 @@
         <link rel="stylesheet" href="/lib/css/mgMiniMap-1.3.0.css">
 
     </head>
-    <body ng-controller="MasterCtrl" ng-init="header_com_mask = false;header_com_logout_pop = false;header_com_repass_pop = false;">
+    <body ng-controller="MasterCtrl" ng-init="header_com_mask = false;header_com_logout_pop = false;header_com_repass_pop = false;" id="body_ele2" style="top:0;left:0;">
+    
         <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak ng-click="toggleE($event)">
             <link rel="import" href="/modules/partial/sidebar/sidebar.html?__inline"/>
             <div id="content-wrapper" style="min-height: 600px;">
@@ -73,9 +76,8 @@
         </div><!-- End Page Wrapper -->
 
         <link rel="import" href="/modules/partial/header/header.html?__inline"/>
-    
+   
     </body>
-
     <script type="text/javascript">
         require('main');
     </script>

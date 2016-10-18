@@ -6,7 +6,7 @@
     </div>
     <div class="modal-body row main-content poll-content poll-content-modal">
         <div ng-show="item.text">{{item.text}}</div>
-        <div class="modal-table-poll-wrapper" ng-show="item.method=='info'">
+        <div class="modal-table-poll-wrapper {{modal_table_poll_wrapper_empty}}" ng-show="item.method=='info'">
         <table class="table table-bordered table-content modal-table-poll" ng-show="item.method=='info'">
         <thead>
           <tr>

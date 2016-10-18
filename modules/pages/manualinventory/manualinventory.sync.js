@@ -210,17 +210,58 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
       });
     }
 
-    $scope.inventoryImmediately = function(store_house_id,schedule_id){
-      if(!store_house_id)
-        store_house_id = $scope.store_house_id;
-      if(!schedule_id)
-        schedule_id = $scope.schedule_id;
-      $http.post(baseUrl.getUrl() + "/api/2/inventory/",{store_house_id:store_house_id,schedule_id:schedule_id}).success(function(data){
+    Date.prototype.Format = function (fmt) { //author: meizz 
+    var o = {
+        "M+": this.getMonth() + 1, //月份 
+        "d+": this.getDate(), //日 
+        "h+": this.getHours(), //小时 
+        "m+": this.getMinutes(), //分 
+        "s+": this.getSeconds(), //秒 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+        "S": this.getMilliseconds() //毫秒 
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+    }
+
+    $scope.inventoryImmediately = function(){
+      $http.get(baseUrl.getUrl() + "/api/2/inventory/list/date").success(function(data){
         if(data.code==200){
-          ngDialog.open({
-              template: '<p style=\"text-align: center\">立即检测成功</p>',
+          $scope.dataList =  data.data;
+          var hasExcutingOne = false;
+          var excutingOneId = 0;
+          for(var i=0; i<$scope.dataList.length; i++){
+            if($scope.dataList[i].state == 1){
+              hasExcutingOne = true;
+              excutingOneId = $scope.dataList[i].id;
+              break;
+            }
+          }//end for
+          console.log("hasExcutingOne:"+hasExcutingOne);
+          //hasExcutingOne = true;
+          if(hasExcutingOne){
+            ngDialog.open({
+              template: '<p style=\"text-align: center\">错误信息：不能添加,30s内有其他任务</p>',
               plain: true
-          });
+            });
+          }else{
+            var startDate = new Date();
+            startDate.setSeconds(startDate.getSeconds()+5);
+            startDate = startDate.Format("yyyy-MM-dd hh:mm:ss");
+            $http.post(baseUrl.getUrl() + "/api/2/inventory/list/date", {"date":startDate}).success(function(data){
+              if(data.code=="200"){
+                $scope.submit_search();
+                ngDialog.open({
+                  template: '<p style=\"text-align: center\">立即检测成功</p>',
+                  plain: true
+                });
+              }
+            }).error(function(){
+                    alert("有点故障！")
+            })
+          }
         }
       }).error(function(data,state){
           if(state == 403){
