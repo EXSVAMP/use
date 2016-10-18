@@ -1,4 +1,3 @@
-var is_openfull = 0;
 var app = angular.module('RDash');
 app.register.controller("locationCtrl", function ($scope, $http, $timeout, $interval, $uibModal,baseUrl,$sce,$templateCache,$location) {
     var BaseUrl = baseUrl.getUrl();
@@ -7,11 +6,16 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     $scope.message = 'Please Wait...';
     $scope.backdrop = true;
     $scope.promise = null;
-
     $scope.fullscreenObj = false;
-    $scope.f12_press = false;
 
-    $scope.openfull_body=function(){
+    $scope.fullScreenStatus = function(){
+        return document.fullscreen ||
+                document.mozFullScreen ||
+                document.webkitIsFullScreen ||
+                false;
+    }
+
+    $scope.openfull_body = function(){
         elem=document.getElementById("body_ele");
         if(elem.webkitRequestFullScreen){
             elem.webkitRequestFullScreen();
@@ -21,9 +25,11 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
             elem.requestFullscreen();
         }else{
             //浏览器不支持全屏API或已被禁用
+            ngDialog.open({
+                template: '<p style=\"text-align: center\">浏览器不支持全屏API或已被禁用</p>',
+                plain: true
+            });
         }
-        // elem.style.background = "#ffffff";
-        // elem.style.overflow = "auto";
     }
 
     $scope.closeFull = function(){
@@ -31,45 +37,34 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
         $(".sideBar").show();
         $(".header_com").show();
         $("#page-wrapper").css("padding-left","200px");
-        $("html").attr("style","");
-        //$("#body_ele").fullScreen();
+        $("html").attr("style","top:0;left:0;");
     }
 
-     // $(window).on( 'fullscreenchange',function(){
-     //   console.log($scope.fullscreenObj);
-     //   if(!$scope.fullscreenObj){
-     //    $scope.closeFull();
-     //   }
-     //    //$scope.closeFull();
-     // } );
-     // $(window).on( 'mozfullscreenchange',function(){
-     //   console.log($scope.fullscreenObj);
-     //     if(!$scope.fullscreenObj){
-     //    $scope.closeFull();
-     //   }
-     // } );
-     // $(window).on( 'webkitfullscreenchange',function(){
-     //   console.log($scope.fullscreenObj);
-     //     if(!$scope.fullscreenObj){
-     //    $scope.closeFull();
-     //   }
-     // } );
+    $scope.openFull = function(){
+        $scope.fullscreenObj = true;
+        $(".sideBar").hide();
+        $(".header_com").hide();
+        $("#page-wrapper").css("padding-left","0");
+        $("html").css("background","#f3f3f3");
+    }
 
-     document.addEventListener("fullscreenchange", function () {  
+     $scope.custom_open_close_full = function(){
+        if($scope.fullScreenStatus())
+            $scope.openFull();
+        else
+            $scope.closeFull();
+     }
 
-    console.log((document.fullscreen)? "" : "not ";)}, false);  
+     $(window).on( 'fullscreenchange',function(){
+        $scope.custom_open_close_full();
+     });
 
-document.addEventListener("mozfullscreenchange", function () {  
-
-    fullscreenState.innerHTML = (document.mozFullScreen)? "" : "not ";}, false);  
-
-document.addEventListener("webkitfullscreenchange", function () {  
-
-    fullscreenState.innerHTML = (document.webkitIsFullScreen)? "" : "not ";}, false);
-
-document.addEventListener("msfullscreenchange", function () {
-
-    fullscreenState.innerHTML = (document.msFullscreenElement)? "" : "not ";}, false);
+     $(window).on( 'mozfullscreenchange',function(){
+        $scope.custom_open_close_full();
+     });
+     $(window).on( 'webkitfullscreenchange',function(){
+        c$scope.custom_open_close_full();
+     });
 
     var getData=function(){
         $scope.myPromise=$http.get(BaseUrl + "/api/1/location/init/").success(function(data){
@@ -129,26 +124,12 @@ document.addEventListener("msfullscreenchange", function () {
                     e.stopPropagation();
 
                     if($scope.fullscreenObj){
-                        is_openfull = 0;
-                        $scope.fullscreenObj = false;
-                        $(".sideBar").show();
-                        $(".header_com").show();
-                        $("#page-wrapper").css("padding-left","200px");
-                        $("html").attr("style","");
                         $("#body_ele").fullScreen();
+                         $scope.closeFull();
                     }else{
-                        is_openfull = 1;
-                        $scope.fullscreenObj = true;
-                        $(".sideBar").hide();
-                        $(".header_com").hide();
-                        $("#page-wrapper").css("padding-left","0");
                         $scope.openfull_body();
-                        //$("#body_ele").css("overflow","auto");
-                        //$("#body_ele").css("background","#fff");
-                        $("html").css("background","#f3f3f3");
                         $(window).mgMiniMap("update");
-                        //console.log("testtest");
-                        //console.log($("#body_ele").fullScreen);
+                         $scope.openFull();
                         
                     }
                 }); 

@@ -814,8 +814,12 @@ img.tip_2{
         /*background:url(../img/mini.png) no-repeat;*/
         z-index:10000!important;
         position: fixed;
-        left: 1130px!important;
-        top: 500px!important;
+        //left: 1130px!important;
+        //top: 500px!important;
+        left: auto!important;
+        top: auto!important;
+        bottom: 10px;
+        right: 10px;
     }
 }
 @media (min-width:1380px) {
@@ -823,8 +827,12 @@ img.tip_2{
         /*background:url(../img/mini.png) no-repeat;*/
         z-index:10000!important;
         position: fixed;
-        left: 1200px!important;
-        top: 500px!important;
+        //left: 1200px!important;
+        //top: 500px!important;
+        left: auto!important;
+        top: auto!important;
+        bottom: 10px;
+        right: 10px;
     }
 }
 .mgHandle{
