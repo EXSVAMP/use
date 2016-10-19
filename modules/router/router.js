@@ -1,6 +1,5 @@
 'use strict';
 
-
 var card = require("pages/card/card");
 var content = require("pages/content/content");
 var eventlog = require("pages/eventlog/eventlog");
@@ -23,7 +22,7 @@ var functionSet=require("pages/functionSet/functionSet");
  */
 var app = angular.module('RDash');
 app.config(function ($stateProvider, $urlRouterProvider,$controllerProvider) {
-    $urlRouterProvider.otherwise('/card');
+    $urlRouterProvider.otherwise('/statistics');
     $stateProvider
         .state('card', card)
         .state('content', content)
