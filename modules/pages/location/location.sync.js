@@ -101,7 +101,7 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
         $scope.custom_open_close_full();
      });
      $(window).on( 'webkitfullscreenchange',function(){
-        c$scope.custom_open_close_full();
+        $scope.custom_open_close_full();
      });
 
     var getData=function(){
