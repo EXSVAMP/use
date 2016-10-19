@@ -2,6 +2,11 @@ var app = angular.module('RDash');
 app.register.controller("warnDetailCtrl", function ($scope, $http, params,$location,baseUrl,$uibModal,utils,popService,listService) {
     utils.init($scope);
     var data = $location.search();
+    $scope.container={};
+    $("#detail-img-url").resize(function(){
+        $scope.container.width=$("#detail-img-video").width();
+        $scope.container.height=$("#detail-img-video").height();
+    })
     $scope.refreshData=function(){
         $http.get(baseUrl.getUrl()+'/api/1/eventlog/'+data.id+"/").success(function(data){
             if(data.code==200){
@@ -16,13 +21,17 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
                 });
                 $scope.detail.rfid_list_display=rfid_list_display;
                 $("#container").empty();
+                if($scope.tabSwitch==0){
+                    $scope.container.width=$("#detail-img-url img").width();
+                    $scope.container.height=$("#detail-img-url img").height();
+                }
                 var play=jwplayer ( "container" ). setup ({
                     autostart:true,
                     //flashplayer : "/statics/lib/player.swf" ,
                     flashplayer : "/statics/lib/jwplayer-7.7.1/jwplayer.flash.swf" ,
                     file : $scope.detail.video_url,
-                    width :810  ,
-                    height:500 ,
+                    width: $scope.container.width ,
+                    height:$scope.container.height,
                     dock: false,
                     primary: 'flash',
                     //repeat:true,
