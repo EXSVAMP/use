@@ -7,7 +7,7 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     $scope.backdrop = true;
     $scope.promise = null;
     $scope.fullscreenObj = false;
-
+    //$scope.icon_icon_compress = "";
     $scope.fullScreenStatus = function(){
         return document.fullscreen ||
                 document.mozFullScreen ||
@@ -37,15 +37,53 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
         $(".sideBar").show();
         $(".header_com").show();
         $("#page-wrapper").css("padding-left","200px");
+        $("#content-wrapper").css("padding-top","48px");
         $("html").attr("style","top:0;left:0;");
+        //$scope.icon_icon_compress = "";
+        $("#icon_icon_expand").addClass("icon-icon_expand");
+
+         //new alter
+        // $("#contain").width(3990);
+        // $("#contain").height(4235);
+
+        // $(".ungoods").width(500);
+        // $(".ungoods").height(900);
+
+        // $(".ungoods span").css("left","");
+        // $(".ungoods span").css("top",ungoods_span_t+"%");
     }
 
     $scope.openFull = function(){
+        //console.log($("#location").width());
+        //console.log($("#location").height());
+        //console.log($("body").width());
+        //console.log($("body").height());
         $scope.fullscreenObj = true;
         $(".sideBar").hide();
         $(".header_com").hide();
         $("#page-wrapper").css("padding-left","0");
+        $("#content-wrapper").css("padding-top","0");
         $("html").css("background","#f3f3f3");
+        //$scope.icon_icon_compress = "icon-icon_compress";
+        $("#icon_icon_expand").removeClass("icon-icon_expand");
+
+        //new alter
+        //$("#contain").width("100%");
+        //$("#contain").height("100%");
+
+        // var containW = 3990;
+        // var containH = 4235;
+
+        // var ungoodsW = 500/containW;
+        // var ungoodsH = 900/containH;
+        // $(".ungoods").width(ungoodsW+"%");
+        // $(".ungoods").height(ungoodsH+"%");
+
+        // var ungoods_span_l = 250/500;
+        // var ungoods_span_t = 650/900;
+        // $(".ungoods span").css("left",ungoods_span_l+"%");
+        // $(".ungoods span").css("top",ungoods_span_t+"%");        
+
     }
 
      $scope.custom_open_close_full = function(){
@@ -117,7 +155,7 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
 
                 //$(window).mgMiniMap({elements: '.board_1',liveScroll: true, draggable: true,debug:true,resizable:true});
                 $(window).mgMiniMap({elements: '.board_1',liveScroll: true, draggable: true,debug:true,resizable:true});
-                $(".mgNavigator").append("<div class='minimap-fullscreen' style='position: absolute;top: -60px;right: 0px;width:35px;height:35px;background:#000;text-align:center;cursor:pointer;'><span class='icon-icon_compress' style='font-size: 32px;color: #fff;'></span></div>");
+                $(".mgNavigator").append("<div class='minimap-fullscreen' style='position: absolute;top: -60px;right: 0px;width:35px;height:35px;background:#000;text-align:center;cursor:pointer;'><span class='icon-icon_compress icon-icon_expand' id='icon_icon_expand' style='font-size: 32px;color: #fff;'></span></div>");
                
                 $(".minimap-fullscreen").click(function(e){
                     e.preventDefault();
