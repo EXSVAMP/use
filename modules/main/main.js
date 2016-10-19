@@ -1072,24 +1072,46 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
     };
 
     $scope.addFunc = function(){
-        $timeout(function(){
-            $('.date-picker-add').datetimepicker({
-                format:'yyyy-mm-dd hh:ii',
-                language: 'zh',
-                orientation: "left",
-                todayHighlight: true,
-                autoclose:true,
-                templates:{
-                    leftArrow: '<i class="fa fa-angle-left"></i>',
-                    rightArrow: '<i class="fa fa-angle-right"></i>'
-                }
-            });
-        },100);
-
+        // $timeout(function(){
+        //     $('.date-picker-add').datetimepicker({
+        //         format:'yyyy-mm-dd hh:ii',
+        //         language: 'zh',
+        //         orientation: "left",
+        //         todayHighlight: true,
+        //         autoclose:true,
+        //         templates:{
+        //             leftArrow: '<i class="fa fa-angle-left"></i>',
+        //             rightArrow: '<i class="fa fa-angle-right"></i>'
+        //         }
+        //     });
+        // },100);
+$timeout(function(){
+        $('.date-picker-add').daterangepicker({ 
+            locale: {
+                format: 'YYYY-MM-DD HH:mm:ss' ,
+                applyLabel: '确定',
+                cancelLabel: '取消',
+                clearLabel: '清空',
+                fromLabel: '从',
+                toLabel: '至',
+                customRangeLabel: '自定义',
+                daysOfWeek: ['日', '一', '二', '三', '四', '五','六'],
+                monthNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+            },
+            singleDatePicker: true,
+            showDropdowns: true,
+            timePicker: true,
+            timePicker24Hour: true,
+            timePickerSeconds: true
+        });
+        $scope.startDate = "";
+},100);
         $scope.ok = function(){
             console.log("test");
             if($scope.startDate){
-                $http.post(baseUrl + "/api/2/inventory/list/date", {"date":$scope.startDate+":00"}).success(function(data){
+                //var startDateTemp = $scope.startDate+":00";
+                var startDateTemp = $scope.startDate;
+                $http.post(baseUrl + "/api/2/inventory/list/date", {"date":startDateTemp}).success(function(data){
                     if(data.code=="200"){
                         items.scope.submit_search();
                         ngDialog.open({
@@ -1113,25 +1135,50 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
         $scope.addFunc();
     }else if(items.method=="modify"){
 
-        $timeout(function(){
-            $('.date-picker-add').datetimepicker({
-                format:'yyyy-mm-dd hh:ii',
-                language: 'zh',
-                orientation: "left",
-                todayHighlight: true,
-                autoclose:true,
-                templates:{
-                    leftArrow: '<i class="fa fa-angle-left"></i>',
-                    rightArrow: '<i class="fa fa-angle-right"></i>'
-                }
-            });
+        // $timeout(function(){
+        //     $('.date-picker-add').datetimepicker({
+        //         format:'yyyy-mm-dd hh:ii',
+        //         language: 'zh',
+        //         orientation: "left",
+        //         todayHighlight: true,
+        //         autoclose:true,
+        //         templates:{
+        //             leftArrow: '<i class="fa fa-angle-left"></i>',
+        //             rightArrow: '<i class="fa fa-angle-right"></i>'
+        //         }
+        //     });
 
-            $scope.startDate = items.data.date;
-        },100);
+        //     $scope.startDate = items.data.date;
+        // },100);
+
+        $timeout(function(){
+        $('.date-picker-add').daterangepicker({ 
+            locale: {
+                format: 'YYYY-MM-DD HH:mm:ss' ,
+                applyLabel: '确定',
+                cancelLabel: '取消',
+                clearLabel: '清空',
+                fromLabel: '从',
+                toLabel: '至',
+                customRangeLabel: '自定义',
+                daysOfWeek: ['日', '一', '二', '三', '四', '五','六'],
+                monthNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+            },
+            singleDatePicker: true,
+            showDropdowns: true,
+            timePicker: true,
+            timePicker24Hour: true,
+            timePickerSeconds: true
+        });
+},100);
+
+        $scope.startDate = items.data.date;
 
         $scope.ok = function(){
             if($scope.startDate){
-                $http.put(baseUrl + "/api/2/inventory/list/date/"+items.data.id+"/", {"date":$scope.startDate+":00"}).success(function(data){
+                //var startDateTemp = $scope.startDate+":00";
+                var startDateTemp = $scope.startDate;
+                $http.put(baseUrl + "/api/2/inventory/list/date/"+items.data.id+"/", {"date":startDateTemp}).success(function(data){
                     items.scope.submit_search();
                 }).error(function(){
                     alert("有点故障！")

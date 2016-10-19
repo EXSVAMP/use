@@ -7,6 +7,8 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     $scope.backdrop = true;
     $scope.promise = null;
     $scope.fullscreenObj = false;
+    var scale_ratio_width = 1;
+    var scale_ratio_height = 1;
     //$scope.icon_icon_compress = "";
     $scope.fullScreenStatus = function(){
         return document.fullscreen ||
@@ -165,6 +167,21 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
                         $("#body_ele").fullScreen();
                          $scope.closeFull();
                     }else{
+                        var location_width = $("#location").width();
+                        var location_height = $("#location").height();
+                        // var window_width = $(window).width();
+                        // var window_height = $(window).height();
+                        var window_width = window.innerWidth;
+                        var window_height = window.innerHeight;
+                        console.log("testtest22");
+                        console.log(window_width+","+window_height);
+                        console.log(location_width+","+location_height);
+
+                        scale_ratio_width = window_width/location_width;
+                        scale_ratio_height = window_height/location_height;
+                        $("#location").css("transform","scale("+scale_ratio_width+","+scale_ratio_height+")");
+                        $("#location").css("transform-origin","0 0");
+
                         $scope.openfull_body();
                         $(window).mgMiniMap("update");
                          $scope.openFull();

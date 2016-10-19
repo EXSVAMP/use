@@ -43,7 +43,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   //user sel status but not click search
   $scope.statusTemp = "-1";
   $scope.numbers = [10,20,30,40,50];
-  $scope.numbers2 = [5,6,7,8,9,10];
+  $scope.numbers2 = [2,3,4,5];
     $scope.order = {
       id: false,
       status:false,
@@ -58,7 +58,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   $scope.endDate = "";
   $scope.endDateTemp = "";
 
-  $scope.intervalTaskTime = 5;
+  $scope.intervalTaskTime = 2;
   $scope.timeSetEnable = true;
   $scope.firstIn = true;
 
@@ -120,10 +120,10 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   		
     var from = $scope.startDateTemp;
     var to = $scope.endDateTemp;
-    if(from)
-      from += ':00';
-    if(to)
-      to += ':00';
+    // if(from)
+    //   from += ':00';
+    // if(to)
+    //   to += ':00';
     var query_url = url_junction.getQuery({
       from:from,
       to:to,
@@ -169,19 +169,38 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
   $scope.submit_search(1,-1);
 
-  $timeout(function(){
-    $('.date-picker').datetimepicker({
-      format:'yyyy-mm-dd hh:ii',
-      language: 'zh',
-      orientation: "left",
-      todayHighlight: true,
-      autoclose:true,
-      templates:{
-        leftArrow: '<i class="fa fa-angle-left"></i>',
-        rightArrow: '<i class="fa fa-angle-right"></i>'
-      }
-    });
-  },100);
+  // $timeout(function(){
+  //   $('.date-picker').datetimepicker({
+  //     format:'yyyy-mm-dd hh:ii',
+  //     language: 'zh',
+  //     orientation: "left",
+  //     todayHighlight: true,
+  //     autoclose:true,
+  //     templates:{
+  //       leftArrow: '<i class="fa fa-angle-left"></i>',
+  //       rightArrow: '<i class="fa fa-angle-right"></i>'
+  //     }
+  //   });
+  // },100);
+
+  $('.date-picker').daterangepicker({ 
+    locale: {
+      format: 'YYYY-MM-DD HH:mm:ss' ,
+      applyLabel: '确定',
+      cancelLabel: '取消',
+      clearLabel: '清空',
+      fromLabel: '从',
+      toLabel: '至',
+      customRangeLabel: '自定义',
+      daysOfWeek: ['日', '一', '二', '三', '四', '五','六'],
+      monthNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+    },
+    singleDatePicker: true,
+    showDropdowns: true,
+    timePicker: true,
+    timePicker24Hour: true,
+    timePickerSeconds: true
+  });
 
   $scope.addIntervalTask = function(){
     $http.post(baseUrl.getUrl() + "/api/2/inventory/list/interval",{interval:$scope.intervalTaskTime}).success(function(data){

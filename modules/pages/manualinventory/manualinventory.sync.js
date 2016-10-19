@@ -121,10 +121,10 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
   		
       var from = $scope.startDateTemp;
       var to = $scope.endDateTemp;
-      if(from)
-        from += ':00';
-      if(to)
-        to += ':00';
+      // if(from)
+      //   from += ':00';
+      // if(to)
+      //   to += ':00';
       var query_url = url_junction.getQuery({
       from:from,
       to:to,
@@ -169,21 +169,67 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
 
     $scope.submit_search(1,-1);
 
-    $timeout(function(){
-      $('.date-picker').datetimepicker({
-        format:'yyyy-mm-dd hh:ii',
-        language: 'zh',
-        orientation: "left",
-        todayHighlight: true,
-        autoclose:true,
-        templates:{
-          leftArrow: '<i class="fa fa-angle-left"></i>',
-          rightArrow: '<i class="fa fa-angle-right"></i>'
-        }
-      });
-    },100);
+    // $timeout(function(){
+    //   $('.date-picker').datetimepicker({
+    //     format:'yyyy-mm-dd hh:ii',
+    //     language: 'zh',
+    //     orientation: "left",
+    //     todayHighlight: true,
+    //     autoclose:true,
+    //     templates:{
+    //       leftArrow: '<i class="fa fa-angle-left"></i>',
+    //       rightArrow: '<i class="fa fa-angle-right"></i>'
+    //     }
+    //   });
+    // },100);
+
+    $('.date-picker').daterangepicker({ 
+      locale: {
+        format: 'YYYY-MM-DD HH:mm:ss' ,
+        applyLabel: '确定',
+        cancelLabel: '取消',
+        clearLabel: '清空',
+        fromLabel: '从',
+        toLabel: '至',
+        customRangeLabel: '自定义',
+        daysOfWeek: ['日', '一', '二', '三', '四', '五','六'],
+        monthNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+      },
+      singleDatePicker: true,
+      showDropdowns: true,
+      timePicker: true,
+      timePicker24Hour: true,
+      timePickerSeconds: true
+    });
 
     $scope.hasExcutingOne = function(){
+      $http.get(baseUrl.getUrl() + "/api/2/inventory/list/date").success(function(data){
+        if(data.code==200){
+          $scope.dataList =  data.data;
+          var hasExcutingOne = false;
+          var excutingOneId = 0;
+          for(var i=0; i<$scope.dataList.length; i++){
+            if($scope.dataList[i].state == 1){
+              hasExcutingOne = true;
+              excutingOneId = $scope.dataList[i].id;
+              break;
+            }
+          }//end for
+          console.log("hasExcutingOne:"+hasExcutingOne);
+          //hasExcutingOne = true;
+          if(hasExcutingOne){
+            $scope.open('md-inventory-manual','inventory',excutingOneId);
+          }else
+            $scope.open('md-add-manual','add',0);
+        }
+      }).error(function(data,state){
+          if(state == 403){
+              baseUrl.redirect()
+          }
+      });
+    }
+
+    $scope.inventoryImmediately = function(){
       $http.get(baseUrl.getUrl() + "/api/2/inventory/list/date").success(function(data){
         if(data.code==200){
           $scope.dataList =  data.data;
@@ -226,7 +272,7 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
     return fmt;
     }
 
-    $scope.inventoryImmediately = function(){
+    $scope.inventoryImmediately_2 = function(){
       $http.get(baseUrl.getUrl() + "/api/2/inventory/list/date").success(function(data){
         if(data.code==200){
           $scope.dataList =  data.data;
