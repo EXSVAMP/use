@@ -2,6 +2,7 @@ var app = angular.module('RDash');
 app.register.controller("warnDetailCtrl", function ($scope, $http, params,$location,baseUrl,$uibModal,utils,popService,listService) {
     utils.init($scope);
     var data = $location.search();
+    var play;
     $scope.container={};
     $("#detail-img-url").resize(function(){
         $scope.container.width=$("#detail-img-video").width();
@@ -11,7 +12,7 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
         $http.get(baseUrl.getUrl()+'/api/1/eventlog/'+data.id+"/").success(function(data){
             if(data.code==200){
                 $scope.detail = data.data;
-                $scope.detail.video_url= "http://o71xixzmn.bkt.clouddn.com/gz0120160616_172743_717000.flv";
+                // $scope.detail.video_url= "http://o71xixzmn.bkt.clouddn.com/gz0120160616_172743_717000.flv";
                 var rfid_list_display = '';
                 angular.forEach($scope.detail.rfid_list,function(item){
                     if(rfid_list_display!=''){
@@ -25,7 +26,7 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
                     $scope.container.width=$("#detail-img-url img").width();
                     $scope.container.height=$("#detail-img-url img").height();
                 }
-                var play=jwplayer ( "container" ). setup ({
+                 play=jwplayer ( "container" ). setup ({
                     autostart:true,
                     //flashplayer : "/statics/lib/player.swf" ,
                     flashplayer : "/statics/lib/jwplayer-7.7.1/jwplayer.flash.swf" ,
@@ -55,5 +56,10 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
         // $scope.dataList=$scope.dataList.concat([{},{},{},{},{},{},{},{},{},{}]);
         $scope.dataList=data.data;
     };
+    $scope.replay=function(){
+        if($scope.detail.video_url){
+            play.stop();
+        }
+    }
     $scope.refresh();
 });

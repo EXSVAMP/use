@@ -100,7 +100,7 @@
        <div class="eventlog_detail" ng-show="dataList.length>0">
            <div class="main-detail-tab">
                <ul class="nav nav-tabs">
-                   <li class="tab-item" style="margin-left:20px;" ng-class="tabSwitch==0?'active':''" ng-click="tabSwitch=0;">
+                   <li class="tab-item" style="margin-left:20px;" ng-class="tabSwitch==0?'active':''" ng-click="tabSwitch=0;replay()">
                        <a href="javascript:void(0)"><span class="icon icon-icon_picture"></span><br/>照片地址</a></li>
                    <li class="tab-item" ng-class="tabSwitch==1?'active':''" ng-click="tabSwitch=1;">
                        <a href="javascript:void(0)"><span class="icon icon-icon_video"></span><br/>视频地址</a></li>
