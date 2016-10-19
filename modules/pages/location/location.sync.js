@@ -54,6 +54,10 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     }
 
     $scope.openFull = function(){
+        //console.log($("#location").width());
+        //console.log($("#location").height());
+        //console.log($("body").width());
+        //console.log($("body").height());
         $scope.fullscreenObj = true;
         $(".sideBar").hide();
         $(".header_com").hide();
