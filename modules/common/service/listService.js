@@ -12,7 +12,7 @@ app.factory('listService', function ($http,baseUrl,url_junction) {
             if(!$scope.order)$scope.order = {id:false};         //排序字段,true时带入descent
             $scope.params = {index:1,number:10,descent:''};     //查询条件,页码,每页条数,排序字段
             $scope.refresh=function(page,callback){
-               
+
                 if(angular.isNumber(page)&&page>$scope.totalPage)return;
                 if(angular.isNumber(page)){
                     $scope.params.index=page
