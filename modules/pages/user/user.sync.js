@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("userCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,url_junction,listService,params) {
+app.register.controller("userCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,url_junction,listService,params, PageHandle) {
 	var urlBase = baseUrl.getUrl();
 	$scope.choice = {};
 	$scope.role = "-1";
@@ -10,11 +10,12 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
     $scope.usernameTemp = "";
 	$scope.dataList = {};
 	$scope.index = 1;
+    $scope.index_sel = "";
 	$scope.number = 8;
     $scope.maxSize = 5;
     $scope.numbers = [8,16,24,32,40];
-    $scope.roleList = [{key:0,value:"仓库主管"},{key:1,value:"仓库管理员"},{key:2,value:"仓库盒子"},{key:3,value:"云仓系统"},{key:4,value:"其它"},{key:-1,value:"--请选择-"}];
-    $scope.statusList = [{key:true,value:"激活"},{key:false,value:"未激活"},{key:-1,value:"--请选择-"}];
+    $scope.roleList = [{key:0,value:"仓库主管"},{key:1,value:"仓库管理员"},{key:2,value:"仓库盒子"},{key:3,value:"云仓系统"},{key:4,value:"其它"},{key:-1,value:"-------------"}];
+    $scope.statusList = [{key:true,value:"激活"},{key:false,value:"未激活"},{key:-1,value:"-------------"}];
     //$scope.listLoadFlag = 1;
 
     $scope.open = function (size, method,index){
@@ -79,7 +80,12 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
       $scope.submit_search();
     }
     $scope.setPage = function (pageNo) {
-        $scope.submit_search();
+        if(PageHandle.setPageInput($scope.index_sel,$scope.total_page)){
+            $scope.index = $scope.index_sel;
+            $scope.index_sel = "";
+            $scope.submit_search();
+        }else
+            $scope.index_sel = "";
     };
     $scope.changePage = function(a){
         $scope.submit_search()
@@ -120,6 +126,7 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
       descent:order_str,
       number:$scope.number,
       index:$scope.index,
+      is_active:$scope.status
     });
 
       $http.get(urlBase+"/api/1/user/"+ query_url).success(function(data){

@@ -13,6 +13,7 @@ app.register.controller("accountCtrl", function ($scope, $http, $location, $uibM
                 is_active = "未激活"; 
             $scope.active =  is_active;
             $scope.joindate = user.date_joined;
+            $scope.lastlogindate = user.last_login;
         }
     }).error(function(data,state){
         if(state == 403){

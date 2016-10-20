@@ -65,7 +65,7 @@
             		</ui-select-choices>
           		</ui-select>
 			</div>
-			<!-- <div class="form-group">
+			<div class="form-group">
     			<label for="status">状态:</label> 
     			<ui-select ng-model="status2" theme="bootstrap" on-select="statusSel(status2)">
             		<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
@@ -73,7 +73,7 @@
               			<div ng-bind-html="item.value"></div>
             		</ui-select-choices>
           		</ui-select>
-			</div> -->
+			</div>
 			<div class="form-group">
     			<label for="username">用户名:</label> 
     			 <input type="text" class="form-control" id="username" placeholder="请输入用户名" ng-model="username">
@@ -147,7 +147,7 @@
 				<div class="table-content-user-detail">
 					<p>
 						<span class="table-content-user-title">最后登录时间</span>
-						<span class="table-content-user-name"></span>
+						<span class="table-content-user-name">{{item.last_login}}</span>
 					</p>
 				</div>
 
@@ -170,7 +170,7 @@
              </uib-pagination>
               <div class="pagination-detail">
                 <span>共{{total_page}}页</span>
-                <span>跳至<input type="text" ng-model="index"/>页</span>
+                <span>跳至<input type="text" ng-model="index_sel"/>页</span>
                 <span><button id="" ng-click="setPage()">确定</button></span>
               </div>
             </th>
