@@ -1,7 +1,9 @@
 var app = angular.module('RDash');
-app.register.controller("readerCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,url_junction,listService,params) {
+app.register.controller("readerCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,url_junction,listService,params,PageHandle) {
 	var urlBase = baseUrl.getUrl();
-	$scope.choice = {func_type:{},status:{}};
+	//$scope.choice = {func_type:{},status:{}};
+    $scope.choice = {func_type:[],status:[]};
+    $scope.choice_hash = {func_type:{},status:{}};
     //$scope.choice2 = {func_type:{},status:{}};
 	$scope.func_type = '-1';
     $scope.status = "-1";
@@ -13,8 +15,10 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
     $scope.serial_numberTemp = "";
 	$scope.dataList = {};
 	$scope.index = 1;
+    $scope.index_sel = "";
 	$scope.number = 10;
     $scope.maxSize = 5;
+    $scope.total_page = 0;
     //$scope.bigCurrentPage = 1;
     $scope.numbers = [10,20,30,40,50];
     $scope.listLoadFlag = 1;
@@ -41,6 +45,7 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
                             method:"add",
                             //status_disable:true,
                             choice:$scope.choice,
+                            choice_hash:$scope.choice_hash,
                             scope:$scope
                         }
                     }else{
@@ -50,6 +55,7 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
                            	//status_disable:false,
                             data:$scope.dataList[index],
                             choice:$scope.choice,
+                            choice_hash:$scope.choice_hash,
                             scope:$scope
                         }
                     }
@@ -63,19 +69,20 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
 
     $http.get(urlBase + "/api/1/common/choices/?key=rfidreader").success(function(data){
         if(data.code==200){
-            //var func_type_t = data.data.func_type;
-            //var func_type_t2 = data.data.func_type;
-            $scope.choice["func_type"] = data.data.func_type;
-            $scope.choice["status"] = data.data.status;
-            //$scope.choice2["func_type"] = func_type_t2;
-            //$scope.choice2["status"] = data.data.status;
-            //console.log("--555:"+JSON.stringify($scope.choice2));
-            //console.log("--555:"+JSON.stringify($scope.choice));
-            $scope.choice["func_type"][-1] = "--请选择-";
-            $scope.choice["status"][-1] = "--请选择-";
-            //console.log("--:"+JSON.stringify($scope.choice2));
-            //console.log("--:"+JSON.stringify($scope.choice));
-            //console.log($scope.choice["func_type"][300]);
+
+
+            for(var dataSelItem in data.data.func_type){
+                //console.log(dataSelItem+"--"+data.data.func_type[dataSelItem]);
+                $scope.choice_hash["func_type"][dataSelItem] = data.data.func_type[dataSelItem];
+                $scope.choice["func_type"].push({id: dataSelItem,name:data.data.func_type[dataSelItem]});
+            }
+            $scope.choice["func_type"].push({id: -1,name:"-------------"});
+            for(var dataSelItem in data.data.status){
+                //console.log(dataSelItem+"--"+data.data.status[dataSelItem]);
+                $scope.choice_hash["status"][dataSelItem] = data.data.status[dataSelItem];
+                $scope.choice["status"].push({id: dataSelItem,name:data.data.status[dataSelItem]});
+            }
+             $scope.choice["status"].push({id: -1,name:"-------------"});
         }else{
             alert(data);
         }
@@ -94,10 +101,14 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
         created_at:false
     };
     $scope.func_typeSelFunc = function(data){
-    	$scope.func_type = data.key;
+        //console.log(data.id);
+        $scope.func_typeTemp = data.id;
+        //console.log($scope.func_typeTemp);
     }
     $scope.statusSelFunc = function(data){
-    	$scope.status = data.key;
+        //console.log(data.id);
+        $scope.statusTemp = data.id;
+        //console.log($scope.status);
     }
     $scope.switch_order = function(key){
         $scope.order[key] = !$scope.order[key];
@@ -109,7 +120,12 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
       $scope.submit_search();
     }
     $scope.setPage = function (pageNo) {
-        $scope.submit_search();
+        if(PageHandle.setPageInput($scope.index_sel,$scope.total_page)){
+            $scope.index = $scope.index_sel;
+            $scope.index_sel = "";
+            $scope.submit_search();
+        }else
+            $scope.index_sel = "";
     };
     $scope.changePage = function(a){
         //console.log("$scope.index3:"+$scope.index);
@@ -151,12 +167,13 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
       number:$scope.number,
       index:$scope.index
     });
+      
     $http.get(urlBase+"/api/1/reader/"+ query_url).success(function(data){
       if(data.code==200){
         $scope.listLoadFlag = 2;
         $scope.dataList=data.data;
         $scope.total=data.pageinfo.total_number;
-        $scope.totalPage=data.pageinfo.total_page;
+        $scope.total_page=data.pageinfo.total_page;
         $scope.currentPageDataNum = data.data.length;
         if($scope.currentPageDataNum == 0)
           $scope.emptyDataListShow = "emptyDataListShow";

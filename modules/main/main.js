@@ -50,6 +50,22 @@ app.filter("poll_state",function(){
     return input;
   };
 });
+app.filter("time_format",function(){
+    return function(input){
+        var date = new Date(input);
+        var getHours = date.getHours();
+        if(getHours<10)
+            getHours = "0"+getHours; 
+        var getMinutes = date.getMinutes();
+        if(getMinutes<10)
+            getMinutes = "0"+getMinutes; 
+        var getSeconds = date.getSeconds();
+        if(getSeconds<10)
+            getSeconds = "0"+getSeconds; 
+        input = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+getHours+":"+getMinutes+":"+getSeconds;
+        return input;
+    }
+});
 app.factory('PageHandle',function(ngDialog){
     return{
         setPageInput: function(sPageInput,iMaxPage){
@@ -95,6 +111,7 @@ app.service("baseUrl",function(){
             var query_url = '';
             for(var i in dic){
                 if(dic[i] && dic[i]!='-1'){
+                     console.log(i+dic[i]);
                     if(query_url==""){
                         query_url+="?"+i+"="+dic[i]
                     }else{
@@ -386,7 +403,7 @@ app.controller("AlertCtrl",function($scope, $rootScope){
 
 app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,ngDialog,items,baseUrl) {
     baseUrl = baseUrl.getUrl();
-    console.log(items)
+    //console.log(items)
     $scope.item = items;
     $scope.status = items.data.status;
     $scope.choice={};
@@ -430,7 +447,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,ng
                 $uibModalInstance.close();
             }else
                 ngDialog.open({
-                    template: '<p style=\"text-align: center\">序列号不能为空</p>',
+                    template: '<p style=\"text-align: center\">请输入序列号</p>',
                     plain: true
                 });
         }else if($scope.item.method=="delete"){
@@ -450,7 +467,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,ng
                 $uibModalInstance.close();
             }else
                 ngDialog.open({
-                    template: '<p style=\"text-align: center\">序列号不能为空</p>',
+                    template: '<p style=\"text-align: center\">请输入序列号</p>',
                     plain: true
                 });
         }else if($scope.item.method=="replace"){
@@ -463,7 +480,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,ng
                 $uibModalInstance.close();
             }else
                 ngDialog.open({
-                    template: '<p style=\"text-align: center\">序列号不能为空</p>',
+                    template: '<p style=\"text-align: center\">请输入序列号</p>',
                     plain: true
                 });
         }
@@ -651,18 +668,31 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
         $scope.rfid_type = items.data.rfid_type;
         $scope.currentSelTab = items.data.status;
         for(var i=0; i< $scope.rfid_type_Items.length; i++){
+
             if(items.scope.rfid_type_Items[i].id == $scope.rfid_type){
+                $scope.rfid_typeTemp = items.scope.rfid_type_Items[i].id;
                 $scope.type = items.scope.rfid_type_Items[i];
                 break;
             }
         }
         for(statusItem in items.scope.statusInfo){
             if(statusItem == $scope.currentSelTab){
+                 $scope.rfid_statusTemp = statusItem;
                 //alert(statusItem+","+items.scope.statusInfo[statusItem]);
                 $scope.status = {key:statusItem,value:items.scope.statusInfo[statusItem]};
                 //$scope.status = {key:"200",value: "入库监视"};
                 break;
             }
+        }
+
+        $scope.changeType=function(data){
+            $scope.rfid_typeTemp = data.id;
+            console.log($scope.rfid_typeTemp);
+        }
+
+        $scope.changeStatus=function(data){
+            $scope.rfid_statusTemp = data.key;
+            console.log($scope.rfid_statusTemp);
         }
 
         //$scope.type = $scope.rfid_type;
@@ -682,8 +712,9 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
         // }).error(function(){
         //     console.log("有错误！")
         // });
+
         $scope.ok = function(){
-            $http.put(baseUrl+"/api/1/content/"+$scope.item.data.id+"/",{"rfid_card_id":$scope.rfid_card,"rfid_type":$scope.rfid_type,"status":$scope.currentSelTab}).success(function(data){
+            $http.put(baseUrl+"/api/1/content/"+$scope.item.data.id+"/",{"rfid_type":$scope.rfid_typeTemp,"status": $scope.rfid_statusTemp}).success(function(data){
                 if(data.code=="200"){
                     items.scope.submit_search($scope.item.scope.currentSelTab, 1);
                     items.scope.refresh_stat(true);
@@ -692,6 +723,10 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
             $uibModalInstance.close();
         };
     }else if(items.method=="delete"){
+        $scope.rfid_type_Items = items.scope.rfid_type_Items;
+        $scope.rfid_type_Items = $scope.rfid_type_Items.slice(0,$scope.rfid_type_Items.length-1);
+        $scope.statusInfo = items.scope.statusInfo;
+        //console.log($scope.item.data);
         $scope.ok = function(){
             $http.delete(baseUrl+"/api/1/content/"+$scope.item.data.id+"/").success(function(data){
                 if(data.code=="200"){
@@ -719,12 +754,14 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
     };
     $scope.func_typeSelFunc = function(data){
         $scope.func_type = data.key;
+        console.log(data.key);
     }
     $scope.statusSelFunc = function(data){
         $scope.status = data.key;
+        console.log(data.key);
     }
     if(items.method=="add"){
-        var choiceStr = JSON.stringify(items.choice);
+        var choiceStr = JSON.stringify(items.choice_hash);
         var choiceArr = JSON.parse(choiceStr);
         $scope.choice = choiceArr;
         for(var temp in choiceArr.func_type){
@@ -764,14 +801,14 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
             $uibModalInstance.close();
          }else
             ngDialog.open({
-                template: '<p style=\"text-align: center\">序列号不能为空</p>',
+                template: '<p style=\"text-align: center\">序列号为必填项</p>',
                 plain: true
             });
 
         };
     }else if(items.method=="modify"){
         //$scope.choice = items.choice;
-        var choiceStr = JSON.stringify(items.choice);
+        var choiceStr = JSON.stringify(items.choice_hash);
         var choiceArr = JSON.parse(choiceStr);
         $scope.choice = choiceArr;
         for(var temp in choiceArr.func_type){
@@ -815,7 +852,7 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
                 $uibModalInstance.close();
             }else
                 ngDialog.open({
-                    template: '<p style=\"text-align: center\">序列号不能为空</p>',
+                    template: '<p style=\"text-align: center\">序列号为必填项</p>',
                     plain: true
                 });
         };

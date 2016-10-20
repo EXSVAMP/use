@@ -115,8 +115,8 @@
     				<td><p>{{item.id}}</p></td>
       				<td><p>{{item.serial_number}}</p></td>
       				<td><p>{{item.status_display}}</p></td>
-      				<td><p>{{item.updated_at}}</p></td>
-      				<td><p>{{item.created_at}}</p></td>
+      				<td><p>{{item.updated_at | time_format}}</p></td>
+      				<td><p>{{item.created_at | time_format}}</p></td>
       				<td><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
     			</tr>
     		</tbody>
@@ -124,7 +124,7 @@
 
     	<div class="emptyDataList {{emptyDataListShow}}">
 
-    		<p><span class="icon-icon_RFIDcard"></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
+    		<p><span class="icon-icon_RFIDcard"></span><span>对不起，您搜索的内容不存在，<br/>请重新搜索</span></p>
  
     	</div>
       <table class="table table-pagination" ng-show="bigTotalItems>0">

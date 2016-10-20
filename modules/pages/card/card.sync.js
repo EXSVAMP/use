@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,PageHandle) {
+app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, PageHandle) {
 	//console.log("Test app.register.controller");
   var urlBase = baseUrl.getUrl();
 	// $scope.state = [
@@ -122,6 +122,7 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
     $scope.setPage = function (pageNo) {
       if(PageHandle.setPageInput($scope.index_sel,$scope.total_page)){
         $scope.index = $scope.index_sel;
+        $scope.index_sel = "";
         $scope.submit_search();
       }else
         $scope.index_sel = "";
@@ -160,6 +161,7 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
   		if(pk)
   		  params += "&pk="+pk;
 
+      //console.log($scope.status);
     	if($scope.status && $scope.status != -1)
         params += "&status="+$scope.status;
 

@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("contentCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, url_junction, $rootScope) {
+app.register.controller("contentCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, url_junction, $rootScope, PageHandle) {
   
   $scope.queryParam={
     rfid_type_Id: undefined
@@ -75,10 +75,12 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
   $scope.goods_location_name = "";
   $scope.currentSelTab = "";
   $scope.query_result = {};
+  $scope.bigTotalItems = 0;
+  $scope.index = 1;
+  $scope.index_sel = "";
+  // $scope.bigTotalItems = {
 
-  $scope.bigTotalItems = {
-
-  };
+  // };
   $scope.bigTotalItems_detail = {
 
   };
@@ -109,12 +111,12 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
       for(dataItem in dataTemp){
         $scope.rfid_type_Items.push({id:dataItem,name:dataTemp[dataItem]});
       }
-      $scope.rfid_type_Items.push({id:-1,name:"--请选择-"});
+      $scope.rfid_type_Items.push({id:-1,name:"-------------"});
       dataTemp= $scope.choice.data.is_writed;
       for(dataItem in dataTemp){
         $scope.is_writed_Items.push({id:dataItem,name:dataTemp[dataItem]});
       }
-      $scope.is_writed_Items.push({id:-1,name:"--请选择-"});
+      $scope.is_writed_Items.push({id:-1,name:"-------------"});
 
     }else{
       alert(data.message)
@@ -185,8 +187,14 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
     $scope.submit_search($scope.currentSelTab,1);
   };
   $scope.setPage = function() {
-    $scope.bigCurrentPage[$scope.currentSelTab] = $scope.index;
-    $scope.submit_search($scope.currentSelTab,1);
+    if(PageHandle.setPageInput($scope.index_sel,$scope.total_page)){
+      $scope.index = $scope.index_sel;
+      $scope.index_sel = "";
+      $scope.bigCurrentPage[$scope.currentSelTab] = $scope.index;
+      $scope.submit_search($scope.currentSelTab,1);
+    }else
+      $scope.index_sel = "";
+
   };
   $scope.changePage = function(){
     $scope.bigCurrentPage[$scope.currentSelTab] = $scope.index;
@@ -216,7 +224,8 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
 
   $scope.submit_search = function(status,type,method){  //search type 0:搜索1:更新
     //$scope.table_hide = false;
-    //console.log($scope.currentSelTab+",type:"+type);
+    //console.log($scope.bigCurrentPage[$scope.currentSelTab]+",type:"+type);
+
     if(type==0){
       rfid_card_id = $scope.rfid_card_idTemp;
       rfid_id = $scope.rfid_idTemp;
@@ -224,6 +233,7 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
       is_writed = $scope.is_writed;
       card_serial_number = $scope.card_serial_numberTemp;
       goods_location_name = $scope.goods_location_nameTemp;
+      $scope.index = 1;
 
     }else{
       //console.log("status:"+status);
@@ -231,7 +241,7 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
         $scope.currentSelTab=status;
         //$scope.bigCurrentPage[$scope.currentSelTab] = 1;
       }
-
+      $scope.index = $scope.bigCurrentPage[$scope.currentSelTab];
     }
     var order_str = "";
     for(var i in $scope.order[$scope.currentSelTab]){
@@ -257,7 +267,7 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
       "goods_location.name": goods_location_name,
       descent:order_str,
       number:$scope.number[$scope.currentSelTab],
-      index:$scope.bigCurrentPage[$scope.currentSelTab],
+      index:$scope.bigCurrentPage[$scope.currentSelTab]
     });
     $http.get(urlBase+"/api/1/content/"+ query_url).success(function(data){
       if(data.code==200){
@@ -267,6 +277,7 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
 
         $scope.bigTotalItems = data.pageinfo.total_number;
         $scope.total_page = data.pageinfo.total_page;
+       //bigTotalItems console.log("total_page:"+ $scope.total_page);
         if($scope.first_search == 0 && type == 0)
           $scope.bigTotalItems_detail[$scope.currentSelTab].total =  data.pageinfo.total_number;
         //alert($scope.currentPageDataNum);

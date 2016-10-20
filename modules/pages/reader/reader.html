@@ -59,9 +59,9 @@
 			<div class="form-group">
     			<label for="func_type">功能类型:</label> 
     			<ui-select ng-model="func_typeSel" theme="bootstrap" on-select="func_typeSelFunc(func_typeSel)">
-            		<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
-            		<ui-select-choices repeat="(key,value) in choice['func_type']">
-              			<div ng-bind-html="value.value"></div>
+            		<ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+            		<ui-select-choices repeat="item in choice['func_type']">
+              			<div ng-bind-html="item.name"></div>
               			<!-- <small ng-bind-html="item.email"></small> -->
             		</ui-select-choices>
           		</ui-select>
@@ -69,9 +69,11 @@
       <div class="form-group">
           <label for="status">读写器状态:</label> 
           <ui-select ng-model="statusSel" theme="bootstrap" on-select="statusSelFunc(statusSel)">
-                <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
-                <ui-select-choices repeat="(key,value) in choice['status']">
-                    <div ng-bind-html="value.value"></div>
+                <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
+                <!-- <ui-select-choices repeat="(key,value) in choice['status']">
+                    <div ng-bind-html="value.value"></div> -->
+                    <ui-select-choices repeat="item in choice['status']">
+                    <div ng-bind-html="item.name"></div>
                     <!-- <small ng-bind-html="item.email"></small> -->
                 </ui-select-choices>
               </ui-select>
@@ -120,8 +122,8 @@
               <td><p>{{item.func_type_display}}</p></td>
               <td><p>{{item.ip_address}}</p></td>
               <td><p>{{item.description}}</p></td>
-      				<td><p>{{item.updated_at}}</p></td>
-      				<td><p>{{item.created_at}}</p></td>
+      				<td><p>{{item.updated_at | time_format}}</p></td>
+      				<td><p>{{item.created_at | time_format}}</p></td>
       				<td><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit-reader','replace',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
     			</tr>
     		</tbody>
@@ -152,7 +154,7 @@
              </uib-pagination>
               <div class="pagination-detail">
                 <span>共{{total_page}}页</span>
-                <span>跳至<input type="text" ng-model="index"/>页</span>
+                <span>跳至<input type="text" ng-model="index_sel"/>页</span>
                 <span><button id="" ng-click="setPage()">确定</button></span>
               </div>
             </th>
