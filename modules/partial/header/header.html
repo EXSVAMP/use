@@ -6,7 +6,7 @@
     	</div>
     	<div class="modal-body row">
             <div ng-show="item.text">{{item.text}}</div>
-        	<form role="form" id="repass_form" name="repass_form" ng-show="item.method=='modify'" class="pop-edit-form-com edit-form-header">
+        	<form role="form" id="repass" name="repass" ng-show="item.method=='modify'" class="pop-edit-form-com edit-form-header">
                 <div class="form-group repass-form-group">
                     <label for="repass_old_password" class="repass_label"><span>*</span>旧密码</label>
 				    <input class="form-control repass_in" type="password" id="repass_old_password" name="repass_old_password" ng-model="repass_old_password" ng-maxlength="20" placeholder="请输入旧密码" ng-click="repass_in_click()" ng-keyup="repass_in_click()" ng-blur="repass_in_blur()" required/>

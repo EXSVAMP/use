@@ -22,13 +22,13 @@
     		</div>
     		<div class="form-group">
     			<label for="regUserpass"><span>*</span>密码</label>	
-    			<input type="text" class="form-control" name="regUserpass" placeholder="密码设置为6-20位" required ng-maxlength="20" ng-minlength="6" ng-model="information.password"/>
+    			<input type="password" class="form-control" name="regUserpass" placeholder="密码设置为6-20位" required ng-maxlength="20" ng-minlength="6" ng-model="information.password"/>
     			<span class="errorInfoReg" ng-show="register.regUserpass.$touched&&register.regUserpass.$error.required">必填</span>
             	<span class="errorInfoReg" ng-show="register.regUserpass.$touched&&register.regUserpass.$invalid">密码设置为6-20位</span>
     		</div>
     		<div class="form-group">
     			<label for="regUserrepass"><span>*</span>确认密码</label>	
-    			<input type="text" class="form-control" name="regUserrepass" placeholder="确认一遍密码" required ng-model="information.re_password"/>
+    			<input type="password" class="form-control" name="regUserrepass" placeholder="确认一遍密码" required ng-model="information.re_password"/>
     			<span class="errorInfoReg" ng-show="register.regUserrepass.$touched&&register.regUserrepass.$error.required">必填</span>
             	<span class="errorInfoReg" ng-show="register.regUserrepass.$touched&&register.regUserrepass.$invalid">确认密码跟密码不一致</span>
     		</div>

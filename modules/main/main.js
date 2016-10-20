@@ -285,6 +285,7 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
         }
 
         $scope.repass_in_click = function(){
+            //console.log(2);
             $scope.repass_test=false;
             getRepassInputsVal();
         }
@@ -300,6 +301,7 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
         }
 
         $scope.repass_in_blur = function(){
+            //console.log(1);
             $scope.repass_test=true;
             getRepassInputsVal();
         }
@@ -315,6 +317,7 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
         }
 
         $scope.ok = function(){
+            //console.log($scope.btn_ok_fail);
             if($scope.btn_ok_fail == ""){
                 var data = {
                     username: $cookieStore.get("iotcloud-token").loginName,
@@ -322,6 +325,22 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
                     password: $scope.repass_re_password,
                     re_password: $scope.repass_reconfirm_password
                 };
+                if(!old_password || !password || !re_password){
+                    ngDialog.open({
+                        template: '<p style=\"text-align: center\">旧密码，新密码，重复新密码为必填项</p>',
+                        plain: true
+                    });
+                }else if(password.length<6 || password > 20)
+                    ngDialog.open({
+                        template: '<p style=\"text-align: center\">密码设为6-20位</p>',
+                        plain: true
+                    });
+                else if(password != re_password)
+                    ngDialog.open({
+                        template: '<p style=\"text-align: center\">重复新密码与新密码不相同</p>',
+                        plain: true
+                    });
+                else
                 $http.post(baseUrl+"/api/1/user/repassword/", data)
                     .success(function(res){
                         if(res.code=='200'){
@@ -334,7 +353,7 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
                             });
                 })
             }
-            $uibModalInstance.close();
+            //$uibModalInstance.close();
         };
     
     }else if(items.method=="delete"){
@@ -908,7 +927,17 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
         $scope.status2 = {key:false,value:"未激活"};
         $scope.ok = function(){
           if($scope.username){
-            if($scope.password){
+            var usernameLen = $scope.username.length;
+            var usernameLenValid = false;
+            if(usernameLen>0 && usernameLen<=20)
+                usernameLenValid = true;
+
+            var passwordLen = $scope.password.length;
+            var passwordLenValid = false;
+            if(passwordLen>=6 && passwordLen<=20)
+                passwordLenValid = true;
+
+            if($scope.password && usernameLenValid && passwordLenValid){
                 if($scope.password == $scope.re_password){
                     var query_url = url_junction.getDict({
                         user_role_type:$scope.role,
@@ -925,19 +954,30 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
                         alert("error")
                     });
                     $uibModalInstance.close();
-                }else
+                }else 
                     ngDialog.open({
-                        template: '<p style=\"text-align: center\">确认密码与密码不一致</p>',
+                        template: '<p style=\"text-align: center\">密码与重复密码不一致</p>',
                         plain: true
                     });
-            }else
+            }else if(!usernameLenValid){
                 ngDialog.open({
-                    template: '<p style=\"text-align: center\">密码不能为空</p>',
+                    template: '<p style=\"text-align: center\">用户名长度为20</p>',
                     plain: true
                 });
+            }else if(!$scope.password){
+                ngDialog.open({
+                    template: '<p style=\"text-align: center\">用户名，密码，重复密码为必填项</p>',
+                    plain: true
+                });
+            }else if(!passwordLenValid){
+                 ngDialog.open({
+                    template: '<p style=\"text-align: center\">密码长度为6-20</p>',
+                    plain: true
+                });
+            }
          }else
             ngDialog.open({
-                template: '<p style=\"text-align: center\">用户名不能为空</p>',
+                template: '<p style=\"text-align: center\">用户名，密码，重复密码为必填项</p>',
                 plain: true
             });
 

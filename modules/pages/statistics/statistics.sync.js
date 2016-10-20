@@ -26,7 +26,11 @@ app.register.controller("statisticsCtrl", function ($scope, $http, $location, $u
 		var f = Math.round(x*100000)/(y*100000); 
 		var s2 = "0%";
 		var isHalf = false;
-		if(f > 0){             
+    if(f == 1){
+      s2 = "100%";
+      isHalf = true;
+    }
+		else if(f > 0){             
 			var s = f.toString();              
 			var rs = s.indexOf('.');              
 			if (rs < 0) {   
@@ -288,6 +292,7 @@ app.register.controller("statisticsCtrl", function ($scope, $http, $location, $u
   				var r_monitor_using_info = $scope.toDecimal(r_monitor.using,r_monitor.total);
   				$scope.r_monitor_using_ratio = r_monitor_using_info.s2;
   				$scope.r_monitor_using_half = r_monitor_using_info.isHalf;
+
 
   				$scope.r_monitor_unuse = r_monitor.unuse;
   				var r_monitor_unuse_info = $scope.toDecimal(r_monitor.unuse,r_monitor.total);
