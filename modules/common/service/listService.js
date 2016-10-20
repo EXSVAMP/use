@@ -12,15 +12,15 @@ app.factory('listService', function ($http,baseUrl,url_junction) {
             if(!$scope.order)$scope.order = {id:false};         //排序字段,true时带入descent
             $scope.params = {index:1,number:10,descent:''};     //查询条件,页码,每页条数,排序字段
             $scope.refresh=function(page,callback){
-               
-                if(angular.isNumber(page)&&page>$scope.totalPage)return;
-                if(angular.isNumber(page)){
-                    $scope.params.index=page
-                }else if(!angular.isUndefined(page)&&page!=null&&page!==''){
-                    return;
-                }
-                if($scope.totalPage&&$scope.params.index>$scope.totalPage)return;
-                if(!$scope.params.index)return;
+
+                // if(angular.isNumber(page)&&page>$scope.totalPage)return;
+                // if(angular.isNumber(page)){
+                //     $scope.params.index=page
+                // }else if(!angular.isUndefined(page)&&page!=null&&page!==''){
+                //     return;
+                // }
+                // if($scope.totalPage&&$scope.params.index>$scope.totalPage)return;
+                // if(!$scope.params.index)return;
                 var descent = '';
                 var order = $scope.order;
                 for(var key in order){
@@ -46,7 +46,7 @@ app.factory('listService', function ($http,baseUrl,url_junction) {
                         if(callback&&angular.isFunction(callback))callback(data);
                         if($scope.listCallback&&angular.isFunction($scope.listCallback))$scope.listCallback(data);
                     }else{
-                        alert(data.message)
+                        // alert(data.message)
                     }
                 });
             }

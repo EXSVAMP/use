@@ -444,6 +444,16 @@
   .modal-md .modal-body .form-group {
     margin: 20px; }
 
+.daterangepicker select.monthselect, .daterangepicker select.yearselect {
+  width: 45% !important; }
+
+.daterangepicker.ltr .ranges, .daterangepicker.ltr .calendar {
+  float: none !important; }
+
+.daterangepicker.ltr .ranges .range_inputs {
+  width: 145px;
+  margin: auto; }
+
 .btn-disable {
   background-color: #c1c7cc;
   color: #fff; }

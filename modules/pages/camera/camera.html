@@ -179,8 +179,8 @@
                     <uib-pagination items-per-page="number" total-items="bigTotalItems" ng-change="changePage()" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" num-pages="numPages" previous-text="上一页" next-text="下一页"></uib-pagination>
                     <div class="pagination-detail">
                         <span>共{{total_page}}页</span>
-                        <span>跳至<input type="text" ng-model="bigCurrentPage"/>页</span>
-                        <span><button id="" ng-click="changePage()">确定</button></span>
+                        <span>跳至<input type="text" ng-model="index_sel"/>页</span>
+                        <span><button ng-click="setPage()">确定</button></span>
                     </div>
                 </th>
 
