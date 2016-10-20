@@ -50,6 +50,31 @@ app.filter("poll_state",function(){
     return input;
   };
 });
+app.factory('PageHandle',function(ngDialog){
+    return{
+        setPageInput: function(sPageInput,iMaxPage){
+            var isNum = /^\d+$/.test(sPageInput);
+            if(!isNum){
+                ngDialog.open({
+                    template: '<p style=\"text-align: center\">输入页码不正确</p>',
+                    plain: true
+                });
+                return false;
+            }else{
+                sPageInput = parseInt(sPageInput);
+                if(sPageInput == 0 || sPageInput > iMaxPage){
+                    ngDialog.open({
+                        template: '<p style=\"text-align: center\">输入页码不正确</p>',
+                        plain: true
+                    });
+                    return false;
+                }
+                    
+            }
+            return true;
+        }
+    }
+});
 
 app.config(function($httpProvider){
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';

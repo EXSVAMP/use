@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope) {
+app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope,PageHandle) {
 	//console.log("Test app.register.controller");
   var urlBase = baseUrl.getUrl();
 	// $scope.state = [
@@ -67,6 +67,7 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
     $scope.choice = {};
 
   	$scope.index = 1;
+    $scope.index_sel = "";
   	$scope.number = 10;
     $scope.maxSize = 5;
   	$scope.status = "-1";
@@ -101,7 +102,8 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
             for(dataItem in dataTemp){
               $scope.state.push({name:dataTemp[dataItem],flag:dataItem});
             }
-            $scope.state.push({name:"--请选择-",flag:-1});
+            // $scope.state.push({name:"--请选择-",flag:-1});
+            $scope.state.push({name:"-------------",flag:-1});
         }else{
             alert(data.message)
         }
@@ -118,8 +120,13 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
     }
 
     $scope.setPage = function (pageNo) {
+      if(PageHandle.setPageInput($scope.index_sel,$scope.total_page)){
+        $scope.index = $scope.index_sel;
         $scope.submit_search();
+      }else
+        $scope.index_sel = "";
     };
+
     $scope.changePage = function(a){
         $scope.submit_search()
     };
