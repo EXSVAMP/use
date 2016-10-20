@@ -475,7 +475,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,ng
 
 });
 
-app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,items,url_junction){
+app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,items,url_junction,ngDialog){
     baseUrl = baseUrl.getUrl();
     scope=items.scope;
     $scope.item=items;
@@ -514,6 +514,13 @@ app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,it
                 live_address:$scope.live_address
 
             });
+            if($scope.serial_number==""){
+                ngDialog.open({
+                    template: '<p style=\"text-align: center\">请填写序列号</p>',
+                    plain: true
+                });
+                return false;
+            }
             if( $scope.serial_number!="") {
                 $http.post(baseUrl + "/api/1/camera/", query_url).success(function (data) {
                     if (data.code == 200) {
@@ -538,7 +545,7 @@ app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,it
         $scope.live_address=items.data.live_address;
         $scope.ok = function(){
             $scope.pk = items.data.id;
-            var query_url = {
+            var query_url =url_junction.getDict({
                 func_type:$scope.func_type,
                 status:$scope.state,
                 serial_number:$scope.serial_number,
@@ -546,7 +553,7 @@ app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,it
                 storage_names:$scope.storage_names,
                 ip_address:$scope.ip_address,
                 live_address:$scope.live_address
-            };
+            });
             $http.put(baseUrl+"/api/1/camera/"+$scope.item.data.id+"/",query_url).success(function(data){
                 if(data.code=="200"){
                     items.scope.submit_search();

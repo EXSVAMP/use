@@ -108,8 +108,8 @@
                                     last-text="末页" next-text="下一页" previous-text="上一页"></uib-pagination>
                     <div class="pagination-detail">
                         <span>共{{totalPage}}页</span>
-                        <span>跳至<input type="text" ng-model="jumpToPage"/>页</span>
-                        <span><button ng-click="refresh(jumpToPage);jumpToPage='';">确定</button></span>
+                        <span>跳至<input type="text" ng-model="index_sel"/>页</span>
+                        <span><button ng-click="setPage()">确定</button></span>
                     </div>
                 </th>
             </tr>

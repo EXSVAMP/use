@@ -1,6 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction) {
-    console.log("5678sss");
+app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction,PageHandle) {
     var urlBase = baseUrl.getUrl();
 
 
@@ -167,7 +166,13 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
         }, function () {
         });
     };
-
+    $scope.setPage = function (pageNo) {
+        if(PageHandle.setPageInput($scope.index_sel,$scope.total_page)){
+            $scope.bigCurrentPage = $scope.index_sel;
+            $scope.submit_search();
+        }else
+            $scope.index_sel = "";
+    };
     $scope.live = function (appId, storage_list,ip_address) {
         $scope.ipAddress=ip_address;
         $scope.open_hls_storage = storage_list[0];

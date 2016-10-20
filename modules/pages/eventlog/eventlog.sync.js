@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$location,baseUrl,listService,global,utils,popService) {
+app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$location,baseUrl,listService,global,utils,popService,PageHandle) {
     $scope.selections={};
     $scope.camera=[];
     $scope.reader=[];
@@ -113,5 +113,12 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
             play.stop();
         }
     }
+    $scope.setPage = function (pageNo) {
+        if(PageHandle.setPageInput($scope.index_sel,$scope.totalPage)){
+            $scope.params.index = $scope.index_sel;
+            $scope.refresh();
+        }else
+            $scope.index_sel = "";
+    };
     $scope.handleEvent = popService.handleEvent;
 });

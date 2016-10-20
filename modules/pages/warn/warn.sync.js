@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("warnCtrl", function ($scope, $http,baseUrl, $timeout,$location,listService,global) {
+app.register.controller("warnCtrl", function ($scope, $http,baseUrl, $timeout,$location,listService,global,PageHandle) {
     listService.init($scope,'/api/1/eventlog/');
     $scope.params.event_feedback_type="1";
     $scope.jumpToPage=0;
@@ -33,4 +33,11 @@ app.register.controller("warnCtrl", function ($scope, $http,baseUrl, $timeout,$l
             }
         });
     });
+    $scope.setPage = function (pageNo) {
+        if(PageHandle.setPageInput($scope.index_sel,$scope.totalPage)){
+            $scope.params.index = $scope.index_sel;
+            $scope.refresh();
+        }else
+            $scope.index_sel = "";
+    };
 });
