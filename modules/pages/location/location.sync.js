@@ -179,8 +179,8 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
 
                         scale_ratio_width = window_width/location_width;
                         scale_ratio_height = window_height/location_height;
-                        $("#location").css("transform","scale("+scale_ratio_width+","+scale_ratio_height+")");
-                        $("#location").css("transform-origin","0 0");
+                        //$("#location").css("transform","scale("+scale_ratio_width+","+scale_ratio_height+")");
+                        //$("#location").css("transform-origin","0 0");
 
                         $scope.openfull_body();
                         $(window).mgMiniMap("update");

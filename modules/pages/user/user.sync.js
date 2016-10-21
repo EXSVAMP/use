@@ -3,7 +3,7 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
 	var urlBase = baseUrl.getUrl();
 	$scope.choice = {};
 	$scope.role = "-1";
-    $scope.status = "";
+    $scope.status = "-1";
     $scope.roleTemp = "-1";
     $scope.statusTemp = "";
     $scope.username = "";
@@ -69,6 +69,7 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
     }
     $scope.statusSel = function(data){
     	$scope.statusTemp = data.key;
+        console.log($scope.statusTemp);
     }
     $scope.switch_order = function(key){
         $scope.order[key] = !$scope.order[key];
@@ -118,7 +119,7 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
         $scope.status = 1;
        else if($scope.status == false) 
         $scope.status = 0;
-
+    
       var query_url = url_junction.getQuery({
       user_role_type:$scope.role,
       //is_active:$scope.status,
@@ -127,7 +128,10 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
       number:$scope.number,
       index:$scope.index,
       is_active:$scope.status
-    });
+      });
+      if($scope.status == 0 && query_url.indexOf("is_active")<0){
+        query_url +=
+      }
 
       $http.get(urlBase+"/api/1/user/"+ query_url).success(function(data){
       if(data.code==200){

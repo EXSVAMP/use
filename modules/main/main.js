@@ -111,7 +111,6 @@ app.service("baseUrl",function(){
             var query_url = '';
             for(var i in dic){
                 if(dic[i] && dic[i]!='-1'){
-                     console.log(i+dic[i]);
                     if(query_url==""){
                         query_url+="?"+i+"="+dic[i]
                     }else{
