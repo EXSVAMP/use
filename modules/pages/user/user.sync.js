@@ -5,7 +5,7 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
 	$scope.role = "-1";
     $scope.status = "-1";
     $scope.roleTemp = "-1";
-    $scope.statusTemp = "";
+    $scope.statusTemp = "-1";
     $scope.username = "";
     $scope.usernameTemp = "";
 	$scope.dataList = {};
@@ -66,6 +66,7 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
 
     $scope.roleSel = function(data){
     	$scope.roleTemp = data.key;
+        console.log($scope.roleTemp);
     }
     $scope.statusSel = function(data){
     	$scope.statusTemp = data.key;
@@ -114,7 +115,7 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
           }
         }
       };
-
+console.log("$scope.status:"+$scope.status);
       if($scope.status == true)
         $scope.status = 1;
        else if($scope.status == false) 
