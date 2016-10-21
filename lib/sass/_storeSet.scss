@@ -101,7 +101,7 @@
 .modal-edit{
   width: 490px;
   .modal-content{
-    height: 443px;
+    height: auto;
   }
   position: absolute;
   top: 50%;
@@ -121,7 +121,7 @@
   };
   .form-group-selin{
     float: left;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 0px;
@@ -139,6 +139,12 @@
       border: solid 1px #ccc;
       border-radius: 4px;
       color: #888888 !important;
+    };
+    .errorInfoReg{
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+      display: inline-block;
     }
   };
   .store_modal-footer{
@@ -146,6 +152,7 @@
     .storeBtn{
       width:100%;
       margin-top: 20px;
+      margin-bottom: 30px;
       .btn-solid-back{
         width: 80px;
         height: 34px;

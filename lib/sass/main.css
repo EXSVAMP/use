@@ -629,6 +629,8 @@
       text-align: center;
       color: #45b6b0;
       padding-bottom: 8px; }
+    .login .center form .register_res_fail {
+      color: #ff0000; }
     .login .center form .register_ok_skip, .login .center form .register_fail_skip {
       font-size: 14px;
       text-align: center;
@@ -2933,7 +2935,7 @@
   margin-top: -245px;
   margin-left: -220px; }
   .modal-edit .modal-content {
-    height: 443px; }
+    height: auto; }
   .modal-edit .modal-header {
     width: 100%;
     height: 57px;
@@ -2945,7 +2947,7 @@
       margin-right: 10px; }
   .modal-edit .form-group-selin {
     float: left;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 0px;
@@ -2961,11 +2963,17 @@
       border: solid 1px #ccc;
       border-radius: 4px;
       color: #888888 !important; }
+    .modal-edit .form-group-selin .errorInfoReg {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+      display: inline-block; }
   .modal-edit .store_modal-footer {
     text-align: center; }
     .modal-edit .store_modal-footer .storeBtn {
       width: 100%;
-      margin-top: 20px; }
+      margin-top: 20px;
+      margin-bottom: 30px; }
       .modal-edit .store_modal-footer .storeBtn .btn-solid-back {
         width: 80px;
         height: 34px;
