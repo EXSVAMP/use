@@ -252,11 +252,11 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
           $scope.firstIn = false;
           $http.get(baseUrl.getUrl() + "/api/2/inventory/list/interval/isexist").success(function(data){
             if(data.code==200){
-              if(data.data == 1){
+              if(data.data.is_exist == 1){
                 $scope.timeSetEnable = false;
               }else{
-                if(data.interval)
-                  $scope.number3 = data.interval;
+                if(data.data.schedule.interval)
+                  $scope.number3 = data.data.schedule.interval;
               }
 
             }
