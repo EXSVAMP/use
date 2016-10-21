@@ -1,53 +1,50 @@
 <div ng-controller="manualinventoryCtrl" name="manualinventory">
 
-<script type="text/ng-template" id="myModalContent.html">
+  <script type="text/ng-template" id="myModalContent.html">
     <div class="modal-header modal-header-manual">
-        <h3 class="modal-title"><span class="icon-icon_manual_test"></span>{{item.title}}</h3>
-        <span class="icon-icon_cancel modal-cancel-manual" ng-click="cancel()" ng-show="item.method=='info'"></span>
+      <h3 class="modal-title"><span class="icon-icon_manual_test"></span>{{item.title}}</h3>
+      <span class="icon-icon_cancel modal-cancel-manual" ng-click="cancel()" ng-show="item.method=='info'"></span>
     </div>
     <div class="modal-body row main-content manual-content manual-content-modal">
-        <div ng-show="item.text">{{item.text}}</div>
+      <div ng-show="item.text">{{item.text}}</div>
 
-        <form role="form" class="pop-add-form-com add-form-manual" ng-show="item.method=='add'||item.method=='modify'">
-          <div class="form-group">
-            <label for="startDate">检测时间:</label>
-              <div class="form-row">
-                <div class="date-area">
-                  <span class="icon-icon_calendar"></span>
-                    <input type="text" class="normal date-picker-add" ng-model="startDate"/>
-                    </div>
-              </div>
+      <form role="form" class="pop-add-form-com add-form-manual" ng-show="item.method=='add'||item.method=='modify'">
+        <div class="form-group">
+          <label for="startDate">检测时间:</label>
+          <div class="form-row">
+            <div class="date-area">
+              <span class="icon-icon_calendar"></span>
+              <input type="text" class="normal date-picker-add" ng-model="startDate"/>
+            </div>
           </div>
-        </form>
-        <div class="modal-table-manual-wrapper {{modal_table_manual_wrapper_empty}}" ng-show="item.method=='info'">
+        </div>
+      </form>
+      <div class="modal-table-manual-wrapper {{modal_table_manual_wrapper_empty}}" ng-show="item.method=='info'">
         <table class="table table-bordered table-content modal-table-manual" ng-show="item.method=='info'">
-        <thead>
-          <tr>
+          <thead>
+            <tr>
               <th ng-click="switch_order('id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.id]"></span></p></th>
               <th ng-click="switch_order('rfid_card')"><p>卡号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.rfid_card]"></span></p></th>
               <th ng-click="switch_order('rfid_content')"><p>RFID分配编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.rfid_content]"></span></p></span></th>
               <th ng-click="switch_order('store_house')"><p>货位<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.store_house]"></span></p></th>
               <th><p>检测结果</p></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="item in dataList">
-            <td><p>{{item.id}}</p></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in dataList">
+              <td><p>{{item.id}}</p></td>
               <td><p>{{item.rfid_card}}</p></td>
               <td><p>{{item.rfid_content}}</p></td>
               <td><p>{{item.store_house}}</p></td>
               <td><p>{{item.event_log}}</p></td>
               
-          </tr>
-        </tbody>
-      </table>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="emptyDataList {{emptyDataListShow}}">
-
         <p><span class="icon-icon_realtime_text"></span><span>对不起，您搜索的内容不存在。<br/>请重新搜索。</span></p>
- 
       </div>
-
       <table class="table table-pagination" ng-show="bigTotalItems>0">
         <thead>
           <tr>
@@ -63,8 +60,8 @@
               </div>
             </th> -->
             <th>
-             <uib-pagination items-per-page="number" total-items="bigTotalItems" ng-change="changePage()" ng-model="index" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" num-pages="numPages" previous-text="上一页" next-text="下一页">
-             </uib-pagination>
+              <uib-pagination items-per-page="number" total-items="bigTotalItems" ng-change="changePage()" ng-model="index" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" num-pages="numPages" previous-text="上一页" next-text="下一页">
+              </uib-pagination>
               <div class="pagination-detail">
                 <span>共{{total_page}}页</span>
                 <span>跳至<input type="text" ng-model="index"/>页</span>
@@ -78,16 +75,14 @@
       </table>
 
       <div class="download-result" ng-show="bigTotalItems>0">
-       <!--  <button class="btn btn-primary download-result-excel" ng-click="downloadResult(item.data.id,0)"><span class="icon-icon_download"></span>下载检测报告(Excel)</button> -->
         <a class="btn btn-primary download-result-excel" ng-href="{{download_excel}}" ><span class="icon-icon_download"></span>下载检测报告(Excel)</a>
-        <!-- <button class="btn btn-primary download-result-txt" ng-click="downloadResult(item.data.id,1)"><span class="icon-icon_download"></span>下载检测报告(Txt)</button> -->
         <a class="btn btn-primary download-result-txt" ng-href="{{download_txt}}" ><span class="icon-icon_download"></span>下载检测报告(Txt)</a>
       </div>
 
-        <div class="pop-delete-com pop-delete-com-manual" ng-show="item.method=='delete'"><p><span></span>确定要删除这个检测吗？<br/>注意：删除以后不可以恢复！</p></div>
+      <div class="pop-delete-com pop-delete-com-manual" ng-show="item.method=='delete'"><p><span></span>确定要删除这个检测吗？<br/>注意：删除以后不可以恢复！</p></div>
 
     </div>
-    <div class="pop-inventory-manual" ng-show="item.method=='inventory'"><p><span>编号{{item.data.id}}正在检测中</span><br/><span><!-- 下一次可检测时间为：2016-09-09 12:12:12 --></span></p></div>
+    <div class="pop-inventory-manual" ng-show="item.method=='inventory'"><p><!-- <span>编号{{item.data.id}}正在检测中</span><br/> --><span>下一次可检测时间为：{{inventory_time}}</span></p></div>
 
     </div>
     <div class="modal-footer" ng-show="item.method!='info'">
@@ -97,7 +92,7 @@
         <button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
       </div>
     </div>
-</script>
+  </script>
 
 	<div class="main-top-bar manual-bar">
 		<p><span class="icon-icon_location"></span>在线管理>手动检测</p>
@@ -106,35 +101,31 @@
 		<form role="form" class="search-bar manual-select">
 			<div class="form-group">
     		<label for="name">检测状态:</label> 
-    		<!-- <ui-select ng-model="state.name" theme="bootstrap"> -->
         <ui-select ng-model="statusSel" theme="bootstrap" on-select="statusSelFunc(statusSel)">
           <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
           <ui-select-choices repeat="item in state">
             <div ng-bind-html="item.name"></div>
-            <!-- <small ng-bind-html="item.email"></small> -->
           </ui-select-choices>
         </ui-select>
 			</div>
 			<div class="form-group form-group-selin" style="width:540px;">
-                <label>检测时间:</label>
-                <div class="form-row">
-                    <div class="date-area">
-                        <span class="icon-icon_calendar"></span>
-                        <input type="text" class="normal date-picker" ng-model="startDate"/>
-                    </div>
-                    <span style="margin:0 10px;float:left;position: relative;top:10px;">至</span>
-                    <div class="date-area">
-                        <span class="icon-icon_calendar"></span>
-                        <input type="text" class="normal date-picker" ng-model="endDate"/>
-                    </div>
-                </div>
-            </div>
+        <label>检测时间:</label>
+        <div class="form-row">
+          <div class="date-area">
+            <span class="icon-icon_calendar"></span>
+            <input type="text" class="normal date-picker" ng-model="startDate"/>
+          </div>
+          <span style="margin:0 10px;float:left;position: relative;top:10px;">至</span>
+          <div class="date-area">
+            <span class="icon-icon_calendar"></span>
+            <input type="text" class="normal date-picker" ng-model="endDate"/>
+          </div>
+        </div>
+      </div>
 			<div class="btns-group">
 				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;startDateTemp=startDate;endDateTemp=endDate;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
 				<button type="button" class="btn btn-rfid-add" ng-click="open('md-add-manual','add',$index)"><span class="icon-icon_plus"></span>增加</button>
-        <!-- <button type="button" class="btn btn-rfid-add" ng-click="hasExcutingOne()"><span class="icon-icon_plus"></span>增加</button> -->
-       <!--  <button type="button" class="btn btn-rfid-inventory" ng-click="open('md-inventory-manual','inventory',$index)">立即检测</button> -->
-        <button type="button" class="btn btn-rfid-inventory" ng-click="inventoryImmediately()">立即预约</button>
+        <button type="button" class="btn btn-rfid-inventory" ng-click="inventoryImmediately()">立即检测</button>
 			</div>
 		</form>
 
@@ -174,8 +165,8 @@
     			<tr ng-repeat="item in dataList">
     				<td><p>{{item.id}}</p></td>
       				<td><p>{{item.state | poll_state}}</p></td>
-      				<td><p>{{item.date}}</p></td>
-      				<td><p>{{item.updated_at}}</p></td>
+      				<td><p>{{item.date | time_format}}</p></td>
+      				<td><p>{{item.updated_at | time_format}}</p></td>
       				<td ng-show="item.state == 0"><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','modify',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span><!-- <span class="manual_once" ng-click="inventoryOnce(item.store_house,item.id)">立即检测</span> --></p></td>
               <td ng-show="item.state == 1"><p></p></td>
               <td ng-show="item.state == 2 || item.state == 3"><p><!-- <span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span> --><span class="rfid-delete rfid-delete-manual icon-icon_information" ng-click="open('md-info-manual','info',$index)"></span><span class="rfid-delete-tip" ng-click="open('md-info-manual','info',$index)">查看结果</span></p></td>
@@ -207,7 +198,7 @@
              </uib-pagination>
               <div class="pagination-detail">
                 <span>共{{total_page}}页</span>
-                <span>跳至<input type="text" ng-model="index"/>页</span>
+                <span>跳至<input type="text" ng-model="index_sel"/>页</span>
                 <span><button id="" ng-click="setPage()">确定</button></span>
               </div>
             </th>

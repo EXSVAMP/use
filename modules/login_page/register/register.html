@@ -16,9 +16,9 @@
     	<div ng-show="register_success==1">
     		<div class="form-group">
     			<label for="regUsername"><span>*</span>用户名</label>	
-    			<input type="text" class="form-control" name="regUsername" placeholder="用户名不宜超过20个字符" required ng-maxlength="20" ng-model="information.username"/>
+    			<input type="text" class="form-control" name="regUsername" placeholder="用户名不宜超过30个字符" required ng-maxlength="30" ng-model="information.username"/>
     			<span class="errorInfoReg" ng-show="register.regUsername.$touched&&register.regUsername.$error.required">必填</span>
-            	<span class="errorInfoReg" ng-show="register.regUsername.$touched&&register.regUsername.$invalid">用户名不宜超过20个字符</span>
+            	<span class="errorInfoReg" ng-show="register.regUsername.$touched&&register.regUsername.$invalid">用户名不宜超过30个字符</span>
     		</div>
     		<div class="form-group">
     			<label for="regUserpass"><span>*</span>密码</label>

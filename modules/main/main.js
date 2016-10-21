@@ -920,6 +920,7 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
             $scope.status = "0";
         }
     }
+    var usernameMaxLen = 30;
     if(items.method=="add"){
         $scope.disAlter = false;
         $scope.role2 = {key:4,value:"其它"};
@@ -928,7 +929,7 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
           if($scope.username){
             var usernameLen = $scope.username.length;
             var usernameLenValid = false;
-            if(usernameLen>0 && usernameLen<=20)
+            if(usernameLen>0 && usernameLen<=usernameMaxLen)
                 usernameLenValid = true;
 
             var passwordLen = $scope.password.length;
@@ -960,7 +961,7 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
                     });
             }else if(!usernameLenValid){
                 ngDialog.open({
-                    template: '<p style=\"text-align: center\">用户名最长为20位</p>',
+                    template: '<p style=\"text-align: center\">用户名最长为'+usernameMaxLen+'位</p>',
                     plain: true
                 });
             }else if(!$scope.password){
@@ -1401,11 +1402,28 @@ $timeout(function(){
             $uibModalInstance.close();
         };
     }else if(items.method=="inventory"){
+        $scope.inventory_time = items.scope.inventoryImmediatelyTime;
         $scope.ok = function(){
             //$uibModalInstance.close();
             //items.scope.open('md-add-manual','add',0);
-            $scope.item.method="add";
-            $scope.addFunc();
+
+            // $scope.item.method="add";
+            // $scope.addFunc();
+
+            $http.post(baseUrl + "/api/2/inventory/list/date", {"date":$scope.inventory_time}).success(function(data){
+                    if(data.code=="200"){
+                        items.scope.submit_search();
+                        ngDialog.open({
+                            template: '<p style=\"text-align: center\">新增检测时间成功</p>',
+                            plain: true
+                        });
+                    }
+                }).error(function(){
+                    alert("有点故障！")
+                })
+                $uibModalInstance.close();
+            
+
         };
     }
 });
