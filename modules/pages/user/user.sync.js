@@ -115,12 +115,11 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
           }
         }
       };
-console.log("$scope.status:"+$scope.status);
+
       if($scope.status == true)
         $scope.status = 1;
        else if($scope.status == false) 
         $scope.status = 0;
-    console.log("$scope.status:"+$scope.status);
     
       var query_url = url_junction.getQuery({
       user_role_type:$scope.role,
