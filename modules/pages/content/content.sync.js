@@ -5,6 +5,9 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
     rfid_type_Id: undefined
 
   };
+
+  $scope.query_url_now = "";
+
   var urlBase=baseUrl.getUrl();
   $scope.open = function (size, method,index){
     var modalInstance = $uibModal.open({
@@ -222,6 +225,14 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
     }
   }
 
+  $scope.refresh_stat_search_all = function (){
+    for(var key in $scope.statusInfo){
+     
+        $scope.submit_search_getTotal(key,$scope.query_url_now);
+      
+    }
+  }
+
   $scope.submit_search = function(status,type,method){  //search type 0:搜索1:更新
     //$scope.table_hide = false;
     //console.log($scope.bigCurrentPage[$scope.currentSelTab]+",type:"+type);
@@ -269,6 +280,9 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
       number:$scope.number[$scope.currentSelTab],
       index:$scope.bigCurrentPage[$scope.currentSelTab]
     });
+
+    $scope.query_url_now = query_url;
+
     $http.get(urlBase+"/api/1/content/"+ query_url).success(function(data){
       if(data.code==200){
         $scope.query_result[$scope.currentSelTab] = data.data;

@@ -1,7 +1,7 @@
 //"use strict"
 //var scope = ["$scope","$http","$timeout","$uibModal",'baseUrl',"$interval", function($scope, $http, $timeout, $uibModal, baseUrl, $interval) {
 var app = angular.module('Login');
-app.register.controller("registerCtrl", function ($scope, $http, $location, $timeout, $interval, $uibModal, $cookieStore, baseUrl, $rootScope) {
+app.register.controller("registerCtrl", function ($scope, $http, $location, $timeout, $interval, $uibModal, $cookieStore, baseUrl, $rootScope, ngDialog) {
     var BaseUrl = baseUrl.getUrl();
     $scope.regstep1 = "reg-step-i reg-step-i-active";
     $scope.regstep2 = "reg-step-i";
@@ -24,17 +24,42 @@ app.register.controller("registerCtrl", function ($scope, $http, $location, $tim
         connect_info:"",
         wms_id:""
     };
+    console.log($scope.information.password);
     $scope.goNext = function(iNext){
         if(iNext == 2){
             var username = $scope.information.username;
+            console.log($scope.information.password);
             var userpass = $scope.information.password;
             var userre_pass = $scope.information.re_password;
+            console.log(username+","+userpass+","+userre_pass);
             if(username && userpass && userre_pass){
-                $scope.register_success = 2;
-                $scope.regstep2 = "reg-step-i reg-step-i-active";
-                $scope.regarrow2 = "/statics/lib/img/icon_arrow_32_32_01 copy.png";
+                console.log(123);
+                if(username.length>20){
+                    ngDialog.open({
+                        template: '<p style=\"text-align: center\">用户名最长20位</p>',
+                        plain: true
+                    });
+                }else if(userpass.length<6 || userpass.length>20){
+                    ngDialog.open({
+                        template: '<p style=\"text-align: center\">密码设为6-20位</p>',
+                        plain: true
+                    });
+                }else if(userre_pass != userpass){
+                    ngDialog.open({
+                        template: '<p style=\"text-align: center\">确认密码与密码不一致</p>',
+                        plain: true
+                    });
+                }else{
+                    $scope.register_success = 2;
+                    $scope.regstep2 = "reg-step-i reg-step-i-active";
+                    $scope.regarrow2 = "/statics/lib/img/icon_arrow_32_32_01 copy.png";
+                }
+                
             }else
-                alert("信息填写不全！");
+                ngDialog.open({
+                    template: '<p style=\"text-align: center\">用户名，密码，重复密码为必填项</p>',
+                    plain: true
+                });
         }else if(iNext == 3){
             var name = $scope.information.name;
             var address = $scope.information.address;

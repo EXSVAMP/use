@@ -325,17 +325,18 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
                     password: $scope.repass_re_password,
                     re_password: $scope.repass_reconfirm_password
                 };
-                if(!old_password || !password || !re_password){
+                console.log(data.password.length);
+                if(!data.old_password || !data.password || !data.re_password){
                     ngDialog.open({
                         template: '<p style=\"text-align: center\">旧密码，新密码，重复新密码为必填项</p>',
                         plain: true
                     });
-                }else if(password.length<6 || password > 20)
+                }else if(data.password.length<6 || data.password.length > 20)
                     ngDialog.open({
                         template: '<p style=\"text-align: center\">密码设为6-20位</p>',
                         plain: true
                     });
-                else if(password != re_password)
+                else if(data.password != data.re_password)
                     ngDialog.open({
                         template: '<p style=\"text-align: center\">重复新密码与新密码不相同</p>',
                         plain: true
@@ -345,12 +346,7 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
                     .success(function(res){
                         if(res.code=='200'){
                             window.location.href = "/login.html"
-                        }else
-                            //$rootScope.alert_pop("密码修改出错:"+res.description);
-                            ngDialog.open({
-                                template: '<p style=\"text-align: center\">密码修改出错:'+res.description+'</p>',
-                                plain: true
-                            });
+                        }
                 })
             }
             //$uibModalInstance.close();
@@ -681,7 +677,8 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
             $http.post(baseUrl+"/api/1/content/",{"rfid_card_id":$scope.rfid_card,"rfid_type":$scope.rfid_type,"status":$scope.status}).success(function(data){
                 if(data.code==200){
                     items.scope.submit_search($scope.item.scope.status, 1);
-                    items.scope.refresh_stat();
+                    //items.scope.refresh_stat();
+                    items.scope.refresh_stat_search_all();
                 }
             });
             $uibModalInstance.close();
@@ -743,7 +740,8 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
             $http.put(baseUrl+"/api/1/content/"+$scope.item.data.id+"/",{"rfid_type":$scope.rfid_typeTemp,"status": $scope.rfid_statusTemp}).success(function(data){
                 if(data.code=="200"){
                     items.scope.submit_search($scope.item.scope.currentSelTab, 1);
-                    items.scope.refresh_stat(true);
+                    //items.scope.refresh_stat(true);
+                    items.scope.refresh_stat_search_all();
                 }
             });
             $uibModalInstance.close();
@@ -757,7 +755,8 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
             $http.delete(baseUrl+"/api/1/content/"+$scope.item.data.id+"/").success(function(data){
                 if(data.code=="200"){
                     $scope.item.scope.submit_search($scope.item.scope.currentSelTab, 1);
-                    $scope.item.scope.refresh_stat(true);
+                    //$scope.item.scope.refresh_stat(true);
+                    items.scope.refresh_stat_search_all();
                 }
             });
             $uibModalInstance.close();
@@ -961,7 +960,7 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
                     });
             }else if(!usernameLenValid){
                 ngDialog.open({
-                    template: '<p style=\"text-align: center\">用户名长度为20</p>',
+                    template: '<p style=\"text-align: center\">用户名最长为20位</p>',
                     plain: true
                 });
             }else if(!$scope.password){
