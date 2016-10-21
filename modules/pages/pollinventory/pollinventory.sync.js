@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("pollinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout,ngDialog) {
+app.register.controller("pollinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout, ngDialog, PageHandle) {
 	//console.log("Test app.register.controller");
   var urlBase = baseUrl.getUrl();
   $scope.open = function (size, method,index){
@@ -37,6 +37,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   $scope.currentPageDataNum = 0;
 
   $scope.index = 1;
+  $scope.index_sel = "";
   $scope.number = 10;
   $scope.maxSize = 5;
   $scope.status = "-1";
@@ -51,7 +52,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
       date:false
     };
 
-  $scope.state = [{flag:0,name:'未执行'},{flag:1,name:'正在执行'},{flag:2,name:'已执行'},{flag:3,name:'执行异常'},{flag:-1,name:'--请选择-'}];
+  $scope.state = [{flag:0,name:'未执行'},{flag:1,name:'正在执行'},{flag:2,name:'已执行'},{flag:3,name:'执行异常'},{flag:-1,name:'-------------'}];
 
   $scope.startDate = "";
   $scope.startDateTemp = "";
@@ -61,6 +62,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   $scope.intervalTaskTime = 2;
   $scope.timeSetEnable = true;
   $scope.firstIn = true;
+  $scope.number3 = 2;
 
   $scope.statusSelFunc = function(data){
     $scope.statusTemp = data.flag;
@@ -93,7 +95,12 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   }
 
   $scope.setPage = function (pageNo) {
-    $scope.submit_search();
+    if(PageHandle.setPageInput($scope.index_sel,$scope.total_page)){
+      $scope.index = $scope.index_sel;
+      $scope.index_sel = "";
+      $scope.submit_search();
+    }else
+      $scope.index_sel = "";
   };
   $scope.changePage = function(a){
     $scope.submit_search()
@@ -247,7 +254,11 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
             if(data.code==200){
               if(data.data == 1){
                 $scope.timeSetEnable = false;
+              }else{
+                if(data.interval)
+                  $scope.number3 = data.interval;
               }
+
             }
           }).error(function(data,state){
             if(state == 403){
@@ -281,9 +292,6 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
   $scope.setIntervalTask();
 
-   //var storehouse_type_info = localStorage.getItem("storeMap").toString();
-  // console.log(storehouse_type_info);
-  //console.log(JSON.stringify(storehouse_type_info));
   $scope.wsFunc3 = function(){
     var startTime = 0;
     var endTime = 0;

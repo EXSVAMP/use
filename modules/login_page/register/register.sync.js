@@ -34,9 +34,9 @@ app.register.controller("registerCtrl", function ($scope, $http, $location, $tim
             //console.log(username+","+userpass+","+userre_pass);
             if(username && userpass && userre_pass){
                //console.log(123);
-                if(username.length>20){
+                if(username.length>30){
                     // ngDialog.open({
-                    //     template: '<p style=\"text-align: center\">用户名最长20位</p>',
+                    //     template: '<p style=\"text-align: center\">用户名最长30位</p>',
                     //     plain: true
                     // });
                 }else if(userpass.length<6 || userpass.length>20){

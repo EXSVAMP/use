@@ -127,7 +127,7 @@
                         <input type="checkbox" class="time-set" ng-checked="{false:'',true:'checked'}[timeSetEnable]" ng-click="timeSetEnableFunc()"/>
                         <span class="pagination-tip2">每</span>
                         <ui-select ng-model="number3" theme="bootstrap" on-select="setShowNum2(number3)">
-                          <ui-select-match placeholder="5">{{$select.selected}}</ui-select-match>
+                          <ui-select-match placeholder="2">{{$select.selected}}</ui-select-match>
                           <ui-select-choices repeat="item in numbers2">
                               <div ng-bind-html="item"></div>
                               <!-- <small ng-bind-html="item.email"></small> -->
@@ -174,8 +174,8 @@
     			<tr ng-repeat="item in dataList">
     				<td><p>{{item.id}}</p></td>
       				<td><p>{{item.state | poll_state}}</p></td>
-      				<td><p>{{item.date}}</p></td>
-      				<td><p>{{item.updated_at}}</p></td>
+      				<td><p>{{item.date | time_format}}</p></td>
+      				<td><p>{{item.updated_at | time_format}}</p></td>
       				<td ng-show="item.state == 0"><p><!-- <span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span> --><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
               <td ng-show="item.state == 1"><p></p></td>
               <td ng-show="item.state == 2 || item.state == 3"><p><!-- <span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span> --><span class="rfid-delete rfid-delete-poll icon-icon_information" ng-click="open('md-info','info',$index)"></span><span class="rfid-delete-tip" ng-click="open('md-info','info',$index)">查看结果</span></p></td>
@@ -207,7 +207,7 @@
              </uib-pagination>
               <div class="pagination-detail">
                 <span>共{{total_page}}页</span>
-                <span>跳至<input type="text" ng-model="index"/>页</span>
+                <span>跳至<input type="text" ng-model="index_sel"/>页</span>
                 <span><button id="" ng-click="setPage()">确定</button></span>
               </div>
             </th>

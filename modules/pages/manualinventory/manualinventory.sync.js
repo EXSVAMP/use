@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("manualinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout,ngDialog) {
+app.register.controller("manualinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout, ngDialog, PageHandle) {
 	//console.log("Test app.register.controller");
   var urlBase = baseUrl.getUrl();
   $scope.open = function (size, method,index){
@@ -41,7 +41,7 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
                         return {
                             title:"预约检测",
                             method:"inventory",
-                            data:$scope.dataList[index],
+                            //data:$scope.dataList[index],
                             scope:$scope
                         }
                     }
@@ -58,6 +58,7 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
     $scope.choice = {};
 
   	$scope.index = 1;
+    $scope.index_sel = "";
   	$scope.number = 10;
     $scope.maxSize = 5;
   	$scope.status = "-1";
@@ -72,12 +73,15 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
         date:false
     };
 
-    $scope.state = [{flag:0,name:'未执行'},{flag:1,name:'正在执行'},{flag:2,name:'已执行'},{flag:3,name:'执行异常'},{flag:-1,name:'--请选择-'}];
+    $scope.state = [{flag:0,name:'未执行'},{flag:1,name:'正在执行'},{flag:2,name:'已执行'},{flag:3,name:'执行异常'},{flag:-1,name:'-------------'}];
 
     $scope.startDate = "";
     $scope.startDateTemp = "";
     $scope.endDate = "";
     $scope.endDateTemp = "";
+
+    $scope.inventoryImmediatelyTime = "";
+
     $scope.statusSelFunc = function(data){
       $scope.statusTemp = data.flag;
     }
@@ -94,7 +98,12 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
     }
 
     $scope.setPage = function (pageNo) {
+      if(PageHandle.setPageInput($scope.index_sel,$scope.total_page)){
+        $scope.index = $scope.index_sel;
+        $scope.index_sel = "";
         $scope.submit_search();
+      }else
+        $scope.index_sel = "";
     };
     $scope.changePage = function(a){
         $scope.submit_search()
@@ -230,6 +239,24 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
     }
 
     $scope.inventoryImmediately = function(){
+      $http.post(baseUrl.getUrl() + "/api/2/inventory/execute").success(function(data){
+        if(data.code==200){
+            //$scope.inventoryImmediatelyTime = data.data;
+            //$scope.open('md-inventory-manual','inventory',0);
+          $scope.submit_search();
+          ngDialog.open({
+            template: '<p style=\"text-align: center\">立即检测成功</p>',
+            plain: true
+          });
+        }
+      }).error(function(data,state){
+          if(state == 403){
+              baseUrl.redirect()
+          }
+      });
+    }
+
+    $scope.inventoryImmediately_old = function(){
       $http.get(baseUrl.getUrl() + "/api/2/inventory/list/date").success(function(data){
         if(data.code==200){
           $scope.dataList =  data.data;
@@ -272,7 +299,7 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
     return fmt;
     }
 
-    $scope.inventoryImmediately_2 = function(){
+    $scope.inventoryImmediately_old2 = function(){
       $http.get(baseUrl.getUrl() + "/api/2/inventory/list/date").success(function(data){
         if(data.code==200){
           $scope.dataList =  data.data;
