@@ -119,6 +119,7 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
         $scope.status = 1;
        else if($scope.status == false) 
         $scope.status = 0;
+    console.log("$scope.status:"+$scope.status);
     
       var query_url = url_junction.getQuery({
       user_role_type:$scope.role,
@@ -129,8 +130,12 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
       index:$scope.index,
       is_active:$scope.status
       });
+
       if($scope.status == 0 && query_url.indexOf("is_active")<0){
-        query_url +=
+        query_url += "&is_active=0";
+      }
+      if($scope.role == 0 && query_url.indexOf("user_role_type")<0){
+        query_url += "&user_role_type=0";
       }
 
       $http.get(urlBase+"/api/1/user/"+ query_url).success(function(data){
