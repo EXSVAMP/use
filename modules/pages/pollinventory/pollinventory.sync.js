@@ -47,7 +47,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   $scope.numbers2 = [2,3,4,5];
     $scope.order = {
       id: false,
-      status:false,
+      state:false,
       updated_at:false,
       date:false
     };
