@@ -68,7 +68,7 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
   	$scope.numbers2 = [5,6,7,8,9,10];
     $scope.order = {
         id: false,
-        status:false,
+        state:false,
         updated_at:false,
         date:false
     };

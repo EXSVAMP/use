@@ -797,10 +797,10 @@
   width: 100%; }
 
 .main-top-bar {
-  min-width: 1240px; }
+  min-width: 1100px; }
 
 .main-content {
-  min-width: 1240px;
+  min-width: 1100px;
   width: 100%; }
 
 .ngdialog-content {
@@ -1772,7 +1772,7 @@
   margin-top: 10px; }
 
 .user-content {
-  min-width: 1240px; }
+  min-width: 1100px; }
   .user-content .user-select {
     display: table;
     height: auto;
@@ -1846,7 +1846,7 @@
     height: auto;
     overflow: hidden;
     width: 100%;
-    min-width: 1200px; }
+    min-width: 1100px; }
     .user-content .table-content-user li {
       float: left;
       width: 25%;
@@ -1972,6 +1972,9 @@
 .pop-delete-com-user {
   width: 260px;
   margin-top: 10px; }
+
+.form-group {
+  margin-right: 50px !important; }
 
 .account-content {
   width: 940px;
