@@ -22,6 +22,7 @@ app.register.controller("loginCtr", function ($scope, $http, $location, $uibModa
                  });
                  $cookieStore.put("passlen",$scope.person.password);
                  localStorage.setItem("storeMap",data.data.storehouse.storehouse_type);
+                 localStorage.setItem("storeHouseId",data.data.storehouse.id);
                  if($scope.remember_account){
                     localStorage.setItem("iotcloud-account",$scope.person.username);
                  }else{

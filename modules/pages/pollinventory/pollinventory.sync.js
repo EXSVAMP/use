@@ -151,10 +151,11 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
         else{
           $scope.emptyDataListShow = "";
         }
-         if($scope.dataList.length > 0){
-            $scope.store_house_id = $scope.dataList[0].store_house;
-            $scope.schedule_id = $scope.dataList[0].schedule_type.id;
-          }
+         // if($scope.dataList.length > 0){
+         //    $scope.store_house_id = $scope.dataList[0].store_house;
+         //    $scope.schedule_id = $scope.dataList[0].schedule_type.id;
+         //  }
+
           //console.log("testtest:"+$scope.store_house_id);
           //$scope.wsFunc();
         // $scope.dataList =  [
@@ -293,9 +294,6 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   $scope.setIntervalTask();
 
   $scope.wsFunc3 = function(){
-    var startTime = 0;
-    var endTime = 0;
-   
     client = new Paho.MQTT.Client("139.196.148.70", 8083,"myclientid_" + parseInt(Math.random() * 100, 10));
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
@@ -308,11 +306,13 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
       
     // called when the client connects
     function onConnect() {
-      startTime = new Date().getMilliseconds();
       // Once a connection has been made, make a subscription and send a message.
       console.log("onConnect");
+
+      var store_house_id = localStorage.getItem("storeHouseId");
+      console.log("store_house_id:"+store_house_id);
      
-      client.subscribe("/exingcai/iot/clould/6/eventlog/warning", {onSuccess:onSubscribeSuccess,onFailure:onSubscribeFailure});
+      client.subscribe("exingcai/iot/clould/"+store_house_id+"/eventlog/warning", {onSuccess:onSubscribeSuccess,onFailure:onSubscribeFailure});
 
       // message = new Paho.MQTT.Message("Hello");
       // message.destinationName = "/World";
@@ -321,8 +321,6 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
     // called when the client loses its connection
     function onConnectionLost(responseObject) {
-      endTime = new Date().getMilliseconds();
-      console.log("endTime-startTime:"+(endTime-startTime));
       console.log("responseObject.errorCode:"+responseObject.errorCode);
       if (responseObject.errorCode !== 0) {
         console.log("onConnectionLost:"+responseObject.errorMessage);
