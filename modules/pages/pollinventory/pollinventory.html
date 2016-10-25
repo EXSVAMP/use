@@ -54,8 +54,8 @@
              </uib-pagination>
               <div class="pagination-detail">
                 <span>共{{total_page}}页</span>
-                <span>跳至<input type="text" ng-model="index"/>页</span>
-                <span><button id="" ng-click="setPage()">确定</button></span>
+                  <span>跳至<input type="text" ng-model="index_sel"/>页</span>
+                  <span><button ng-click="setPage()">确定</button></span>
               </div>
             </th>
 
@@ -124,9 +124,9 @@
         <thead>
                 <tr>
                   <th class="pagination-items-per-page">
-                        <input type="checkbox" class="time-set" ng-checked="{false:'',true:'checked'}[timeSetEnable]" ng-click="timeSetEnableFunc()"/>
+                        <input type="checkbox" class="time-set" ng-disabled="loadFlag==0" ng-checked="{false:'',true:'checked'}[timeSetEnable]" ng-click="timeSetEnableFunc()"/>
                         <span class="pagination-tip2">每</span>
-                        <ui-select ng-model="number3" theme="bootstrap" on-select="setShowNum2(number3)">
+                        <ui-select ng-model="number3" ng-disabled="loadFlag==0" theme="bootstrap" on-select="setShowNum2(number3)">
                           <ui-select-match placeholder="2">{{$select.selected}}</ui-select-match>
                           <ui-select-choices repeat="item in numbers2">
                               <div ng-bind-html="item"></div>

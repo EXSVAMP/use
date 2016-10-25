@@ -21,11 +21,12 @@
   .ui-select-choices{
     width: $widthVal !important;
     min-width: $widthVal !important;
-    overflow: hidden;
+    //overflow: hidden;
     padding:0;
     margin:0;
-    height: auto !important;
-    max-height: 1000px !important;
+    height: auto;
+    //overflow-y: scroll;
+    //max-height: 1000px !important;
     li{
       width: $widthVal;
       overflow: hidden;

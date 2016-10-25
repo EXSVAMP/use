@@ -50,7 +50,7 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
         $http.get(baseUrl.getUrl()+'/api/1/eventlog/'+ $scope.detail.id+"/").success(function(data){
             if(data.code==200){
                 $scope.detail = data.data;
-                $scope.detail.video_url= "http://o71xixzmn.bkt.clouddn.com/gz0120160616_172743_717000.flv";
+                // $scope.detail.video_url= "http://o71xixzmn.bkt.clouddn.com/gz0120160616_172743_717000.flv";
                 // $scope.detail.img2='http://img0.imgtn.bdimg.com/it/u=3761389663,2619900045&fm=11&gp=0.jpg';
                 var rfid_list_display = '';
                 angular.forEach($scope.detail.rfid_list,function(item){

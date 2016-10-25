@@ -2,6 +2,7 @@ var app = angular.module('RDash');
 app.register.controller("pollinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout, ngDialog, PageHandle) {
 	//console.log("Test app.register.controller");
   var urlBase = baseUrl.getUrl();
+
   $scope.open = function (size, method,index){
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
@@ -108,6 +109,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
 
   $scope.submit_search = function(iStartIdx,iStatus){
     //console.log("test:"+$scope.startDate);
+
     if(iStartIdx)
       $scope.index = iStartIdx;
     if(iStatus)
@@ -211,6 +213,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   });
 
   $scope.addIntervalTask = function(){
+    $scope.loadFlag=0;//未调用
     $http.post(baseUrl.getUrl() + "/api/2/inventory/list/interval",{interval:$scope.intervalTaskTime}).success(function(data){
       if(data.code==200){
         //sel interval time
@@ -220,6 +223,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
           plain: true
         });
           //}
+        $scope.loadFlag=1;//调用结束
       }
     }).error(function(data,state){
       if(state == 403){
@@ -232,6 +236,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
     //console.log($scope.timeSetEnable);
     if($scope.timeSetEnable){
       if(iFlag == 0){
+        $scope.loadFlag=0;//未调用
         // console.log("$scope.intervalTaskTime:"+$scope.intervalTaskTime);
         $http.put(baseUrl.getUrl() + "/api/2/inventory/list/interval/delete",{interval:$scope.intervalTaskTime}).success(function(data){
           if(data.code==200){
@@ -242,6 +247,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
                 plain: true
               });
             }
+            $scope.loadFlag=1;//调用
           }
         }).error(function(data,state){
           if(state == 403){
@@ -274,6 +280,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   }
 
   $scope.cancelIntervalTask = function(){
+    $scope.loadFlag=0;//未调用
       $http.delete(baseUrl.getUrl() + "/api/2/inventory/list/interval/delete").success(function(data){
         if(data.code==200){
           //sel interval time
@@ -282,6 +289,7 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
               template: '<p style=\"text-align: center\">删除盘点间隔时间任务成功</p>',
               plain: true
             });
+          $scope.loadFlag=1;//调用结束
           //}
         }
       }).error(function(data,state){
@@ -294,7 +302,8 @@ app.register.controller("pollinventoryCtrl", function ($scope, $http, $location,
   $scope.setIntervalTask();
 
   $scope.wsFunc3 = function(){
-    client = new Paho.MQTT.Client("139.196.148.70", 8083,"myclientid_" + parseInt(Math.random() * 100, 10));
+    // var url="139.196.148.70";
+    client = new Paho.MQTT.Client("211.152.46.42", 8083,"myclientid_" + parseInt(Math.random() * 100, 10));
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;

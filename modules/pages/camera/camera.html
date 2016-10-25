@@ -141,8 +141,8 @@
                             <!--<td>{{items.rfid_reader.serial_number}}</td>-->
                             <td><span tooltip-placement="bottom" uib-tooltip="{{items.description}}">{{items.description |characters:10 :true}}</span></td>
                             <!--<td>{{items.description}}</td>-->
-                            <td>{{items.updated_at}}</td>
-                            <td>{{items.created_at}}</td>
+                            <td>{{items.updated_at | time_format}}</td>
+                            <td>{{items.created_at | time_format}}</td>
                             <td>
                                 <p><span class="icon-icon_edit"   ng-click="open('md','modify',$index)"></span>
                                     <span class="icon-icon_cancel" ng-click="open('sm','delete',$index)"></span></p>

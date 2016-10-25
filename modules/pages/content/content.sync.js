@@ -81,6 +81,7 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
   $scope.bigTotalItems = 0;
   $scope.index = 1;
   $scope.index_sel = "";
+  $scope.indexselect="10";
   // $scope.bigTotalItems = {
 
   // };
@@ -204,6 +205,7 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
     $scope.submit_search($scope.currentSelTab,1);
   };
   $scope.setShowNum = function(data){
+    $scope.indexselect=data;
       $scope.number[$scope.currentSelTab] = data;
       $scope.index = 1;
       $scope.bigCurrentPage[$scope.currentSelTab] = $scope.index;
@@ -277,7 +279,7 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
       "rfid_card.serial_number": card_serial_number,
       "goods_location.name": goods_location_name,
       descent:order_str,
-      number:$scope.number[$scope.currentSelTab],
+      number:$scope.indexselect,
       index:$scope.bigCurrentPage[$scope.currentSelTab]
     });
 

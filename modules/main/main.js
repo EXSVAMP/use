@@ -52,17 +52,18 @@ app.filter("poll_state",function(){
 });
 app.filter("time_format",function(){
     return function(input){
-        var date = new Date(input);
-        var getHours = date.getHours();
-        if(getHours<10)
-            getHours = "0"+getHours; 
-        var getMinutes = date.getMinutes();
-        if(getMinutes<10)
-            getMinutes = "0"+getMinutes; 
-        var getSeconds = date.getSeconds();
-        if(getSeconds<10)
-            getSeconds = "0"+getSeconds; 
-        input = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+getHours+":"+getMinutes+":"+getSeconds;
+        // var date = new Date(input);
+        // var getHours = date.getHours();
+        // if(getHours<10)
+        //     getHours = "0"+getHours;
+        // var getMinutes = date.getMinutes();
+        // if(getMinutes<10)
+        //     getMinutes = "0"+getMinutes;
+        // var getSeconds = date.getSeconds();
+        // if(getSeconds<10)
+        //     getSeconds = "0"+getSeconds;
+        // input = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+getHours+":"+getMinutes+":"+getSeconds;
+        input=input.replace("T"," ");
         return input;
     }
 });
@@ -1037,7 +1038,7 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
     }
 });
 
-app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,items,baseUrl,url_junction,ngDialog,$cookieStore){
+app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,items,baseUrl,url_junction,ngDialog,$cookieStore,PageHandle){
     baseUrl = baseUrl.getUrl();
     $scope.item = items;
     if($scope.item.method == "info")
@@ -1073,7 +1074,11 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
         }
 
         $scope.setPage = function (pageNo) {
-            $scope.submit_search();
+            if(PageHandle.setPageInput($scope.index_sel,$scope.total_page)){
+                $scope.index = $scope.index_sel;
+                $scope.submit_search();
+            }else
+                $scope.index_sel = "";
         };
 
         $scope.changePage = function(a){
@@ -1170,7 +1175,7 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
     }
 });
 
-app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, $timeout,items,baseUrl,url_junction,ngDialog,$cookieStore){
+app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, $timeout,items,baseUrl,url_junction,ngDialog,$cookieStore,PageHandle){
     baseUrl = baseUrl.getUrl();
     $scope.item = items;
     if($scope.item.method == "info")
@@ -1327,7 +1332,11 @@ $timeout(function(){
         }
 
         $scope.setPage = function (pageNo) {
-            $scope.submit_search();
+            if(PageHandle.setPageInput($scope.index_sel,$scope.total_page)){
+                $scope.index = $scope.index_sel;
+                $scope.submit_search();
+            }else
+                $scope.index_sel = "";
         };
 
         $scope.changePage = function(a){

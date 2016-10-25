@@ -48,11 +48,9 @@
       .main-content .search-bar .form-group .ui-select-choices {
         width: 250px !important;
         min-width: 250px !important;
-        overflow: hidden;
         padding: 0;
         margin: 0;
-        height: auto !important;
-        max-height: 1000px !important; }
+        height: auto; }
         .main-content .search-bar .form-group .ui-select-choices li {
           width: 250px;
           overflow: hidden;
@@ -263,11 +261,9 @@
       .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-choices {
         width: 60px !important;
         min-width: 60px !important;
-        overflow: hidden;
         padding: 0;
         margin: 0;
-        height: auto !important;
-        max-height: 1000px !important; }
+        height: auto; }
         .main-content table.table-pagination thead tr th.pagination-items-per-page .ui-select-choices li {
           width: 60px;
           overflow: hidden;
@@ -991,11 +987,9 @@
   .edit-form-card .form-group .ui-select-choices {
     width: 360px !important;
     min-width: 360px !important;
-    overflow: hidden;
     padding: 0;
     margin: 0;
-    height: auto !important;
-    max-height: 1000px !important; }
+    height: auto; }
     .edit-form-card .form-group .ui-select-choices li {
       width: 360px;
       overflow: hidden;
@@ -1187,11 +1181,9 @@
   .edit-form-content .form-group-selin .ui-select-choices {
     width: 360px !important;
     min-width: 360px !important;
-    overflow: hidden;
     padding: 0;
     margin: 0;
-    height: auto !important;
-    max-height: 1000px !important; }
+    height: auto; }
     .edit-form-content .form-group-selin .ui-select-choices li {
       width: 360px;
       overflow: hidden;
@@ -1744,11 +1736,9 @@
     .edit-form-reader .form-group .ui-select-choices {
       width: 360px !important;
       min-width: 360px !important;
-      overflow: hidden;
       padding: 0;
       margin: 0;
-      height: auto !important;
-      max-height: 1000px !important; }
+      height: auto; }
       .edit-form-reader .form-group .ui-select-choices li {
         width: 360px;
         overflow: hidden;
@@ -1944,11 +1934,9 @@
   .edit-form-user .form-group .ui-select-choices {
     width: 360px !important;
     min-width: 360px !important;
-    overflow: hidden;
     padding: 0;
     margin: 0;
-    height: auto !important;
-    max-height: 1000px !important; }
+    height: auto; }
     .edit-form-user .form-group .ui-select-choices li {
       width: 360px;
       overflow: hidden;
@@ -2520,11 +2508,9 @@
   .edit-form-poll .form-group .ui-select-choices {
     width: 360px !important;
     min-width: 360px !important;
-    overflow: hidden;
     padding: 0;
     margin: 0;
-    height: auto !important;
-    max-height: 1000px !important; }
+    height: auto; }
     .edit-form-poll .form-group .ui-select-choices li {
       width: 360px;
       overflow: hidden;
@@ -2754,11 +2740,9 @@
   .edit-form-manual .form-group .ui-select-choices {
     width: 360px !important;
     min-width: 360px !important;
-    overflow: hidden;
     padding: 0;
     margin: 0;
-    height: auto !important;
-    max-height: 1000px !important; }
+    height: auto; }
     .edit-form-manual .form-group .ui-select-choices li {
       width: 360px;
       overflow: hidden;

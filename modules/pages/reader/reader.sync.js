@@ -164,6 +164,7 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
       func_type:$scope.func_type,
       description:$scope.descriptionTemp,
       serial_number:$scope.serial_numberTemp,
+      descent:order_str,
       number:$scope.number,
       index:$scope.index
     });
