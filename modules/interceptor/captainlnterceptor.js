@@ -23,6 +23,10 @@ function RDashInterceptor() {
                 if (response.headers) {
                     var location=$location.path();
                     var storeMap=localStorage.getItem("storeMap");
+                    if(location.indexOf("pollinventory")==-1&&location.indexOf("manualinventory")==-1){
+                        $(".daterangepicker").hide();
+                    }
+
                     if(location.indexOf("location")==-1||storeMap==""){
                         var obj=$(".mgNavigator");
                         if($(".mgNavigator").length>0){

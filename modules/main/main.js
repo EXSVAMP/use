@@ -63,10 +63,14 @@ app.filter("time_format",function(){
         // if(getSeconds<10)
         //     getSeconds = "0"+getSeconds;
         // input = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+getHours+":"+getMinutes+":"+getSeconds;
-        input=input.replace("T"," ");
+
+        if(input!=undefined){
+            input=input.replace("T"," ");
+        }
         return input;
     }
 });
+
 app.factory('PageHandle',function(ngDialog){
     return{
         setPageInput: function(sPageInput,iMaxPage){
@@ -1185,6 +1189,101 @@ app.controller("ModalManualinventory", function($scope,$uibModalInstance,$http, 
         $uibModalInstance.dismiss('cancel');
     };
 
+    function GetPageScroll()
+    {
+        var x, y;
+        if(window.pageYOffset)
+        {    // all except IE
+            y = window.pageYOffset;
+            x = window.pageXOffset;
+        } else if(document.documentElement && document.documentElement.scrollTop)
+        {    // IE 6 Strict
+            y = document.documentElement.scrollTop;
+            x = document.documentElement.scrollLeft;
+        } else if(document.body) {    // all other IE
+            y = document.body.scrollTop;
+            x = document.body.scrollLeft;
+        }
+        return {X:x, Y:y};
+    }
+    var t = true;
+    var scrolltop_m = 0;
+    $(window).scroll(function () {
+        // var scrolltop = $(window).scrollTop();
+        // var scrolltop1 = $(".daterangepicker:last").css("top");
+        // if (scrolltop1.indexOf("px") > 0)
+        //     scrolltop1 = scrolltop1.substring(0, scrolltop1.length - 2);
+        //
+        // $(".daterangepicker:last").css("top", (scrolltop1 + scrolltop) + "px");
+    });
+    var b = 0;
+    var c = 0;
+    var d = 0;
+    $scope.add_click_func = function(){
+
+
+            $(".daterangepicker:last").css("position", "fixed");
+
+            // var scrolltop1 = $(".daterangepicker:last").css("top");
+            // if (scrolltop1.indexOf("px") > 0)
+            //     scrolltop1 = scrolltop1.substring(0, scrolltop1.length - 2);
+            //
+            // $(".daterangepicker:last").css("top", (scrolltop1 - GetPageScroll().Y) + "px");
+            // b = scrolltop1 - GetPageScroll().Y;
+            // console.log("b:"+b);
+            // c = GetPageScroll().Y;
+        // console.log($(window).innerHeight());
+        // console.log($(window).innerWidth());
+        console.log( $(".daterangepicker:last").css("top"));
+         //$(".daterangepicker:last").css("top",($(window).innerHeight()*0.5)+"px");
+        // $(".daterangepicker:last").css("left",($(window).innerWidth()*0.5)+"px");
+        // var scrolltop1 = $(".modal-md-edit").css("top");
+        // if (scrolltop1.indexOf("px") > 0)
+        //     scrolltop1 = scrolltop1.substring(0, scrolltop1.length - 2);
+        //console.log(scrolltop1);
+        //$(".daterangepicker:last").css("top",scrolltop1+"px");
+        //console.log($(window).innerHeight()*0.5);
+        $(".daterangepicker:last").css("top",($(window).height()*0.5)+"px");
+            $(window).resize(function () {
+                // var scrolltop = $(window).scrollTop();
+                // var scrolltop1 = $(".daterangepicker:last").css("top");
+                // if (scrolltop1.indexOf("px") > 0)
+                //     scrolltop1 = scrolltop1.substring(0, scrolltop1.length - 2);
+                //
+                // $(".daterangepicker:last").css("top", (scrolltop1 - scrolltop) + "px");
+                //$(".daterangepicker:last").css("top",($(window).innerHeight()*0.5)+"px");
+
+                // var scrolltop1 = $(".modal-md-edit").css("top");
+                // if (scrolltop1.indexOf("px") > 0)
+                //     scrolltop1 = scrolltop1.substring(0, scrolltop1.length - 2);
+                //
+                // $(".daterangepicker:last").css("top",scrolltop1+"px");
+                //$(".daterangepicker:last").css("top",($(window).innerHeight()*0.5)+"px");
+
+                $(".daterangepicker:last").css("top",($(window).height()*0.5)+"px");
+            });
+            $(window).scroll(function () {
+                //$(".daterangepicker:last").css("top",($(window).innerHeight()*0.5)+"px");
+                //console.log(1);
+                // var scrolltop = $(window).scrollTop();
+                // var scrolltop1 = $(".daterangepicker:last").css("top");
+                // if (scrolltop1.indexOf("px") > 0)
+                //     scrolltop1 = scrolltop1.substring(0, scrolltop1.length - 2);
+                // console.log(1+","+scrolltop+","+scrolltop1+","+GetPageScroll().Y+","+b);
+                //
+                // $(".daterangepicker:last").css("top", (b +GetPageScroll().Y) + "px");
+                // d = GetPageScroll().Y ;
+                //$(".daterangepicker:last").css("top",($(window).innerHeight()*0.5)+"px");
+            });
+
+
+    }
+
+    $('.daterangepicker:last').on('cancel.daterangepicker',function(ev, picker){
+
+        $scope.startDate="";
+
+    })
     $scope.addFunc = function(){
         // $timeout(function(){
         //     $('.date-picker-add').datetimepicker({
@@ -1204,8 +1303,8 @@ $timeout(function(){
             locale: {
                 format: 'YYYY-MM-DD HH:mm:ss' ,
                 applyLabel: '确定',
-                cancelLabel: '取消',
-                clearLabel: '清空',
+                cancelLabel: '清空',
+                // clearLabel: '清空',
                 fromLabel: '从',
                 toLabel: '至',
                 customRangeLabel: '自定义',
@@ -1246,7 +1345,12 @@ $timeout(function(){
     }
 
     if(items.method=="add"){
+
+
+        //$scope.add_click_func();
+
         $scope.addFunc();
+        // document.documentElement.style.position = 'fixed';
     }else if(items.method=="modify"){
 
         // $timeout(function(){
@@ -1265,13 +1369,15 @@ $timeout(function(){
         //     $scope.startDate = items.data.date;
         // },100);
 
+
+        $scope.add_click_func();
+
         $timeout(function(){
         $('.date-picker-add').daterangepicker({ 
             locale: {
                 format: 'YYYY-MM-DD HH:mm:ss' ,
                 applyLabel: '确定',
-                cancelLabel: '取消',
-                clearLabel: '清空',
+                cancelLabel: '清空',
                 fromLabel: '从',
                 toLabel: '至',
                 customRangeLabel: '自定义',

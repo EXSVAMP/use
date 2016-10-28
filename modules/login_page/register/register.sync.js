@@ -79,7 +79,7 @@ app.register.controller("registerCtrl", function ($scope, $http, $location, $tim
                     var toDo = function () {
                         $scope.countdown1--;
                         if($scope.countdown1 == 1){
-                            window.location.href = "/login";
+                            window.location.href = "/login.html";
                         }
                     };
                     $interval(toDo, 1000, 5);

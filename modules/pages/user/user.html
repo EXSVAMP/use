@@ -142,13 +142,13 @@
 				<div class="table-content-user-detail">
 					<p>
 						<span class="table-content-user-title">创建时间</span>
-						<span class="table-content-user-name">{{item.date_joined}}</span>
+						<span class="table-content-user-name">{{item.date_joined |time_format}}</span>
 					</p>
 				</div>
 				<div class="table-content-user-detail">
 					<p>
 						<span class="table-content-user-title">最后登录时间</span>
-						<span class="table-content-user-name">{{item.last_login}}</span>
+						<span class="table-content-user-name">{{item.last_login |time_format}}</span>
 					</p>
 				</div>
 

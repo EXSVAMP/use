@@ -185,7 +185,8 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
         $scope.liveStatus = true;
         $("#play").empty();
         var appId = appId;
-              
+
+
         var objectPlayer = new mpsPlayer({
             container: 'play',//播放器容器ID，必要参数
             uin: '21884',//用户ID
@@ -197,6 +198,24 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
             isclickplay: false,//是否单击播放，默认为false
             isfullscreen: true//是否双击全屏，默认为true
         });
+
+        //登陆到MQTT的密钥 以后希望从该系统中分发获取,动态的
+        var pub = "pub_4680fb56141e58d6ac477bf0d39e1fb2";
+        var sub = "sub_6e978bbdd650bc1e22614eb93064f670";
+
+        // ROP.Enter(pub,sub);//必须的
+        // clearInterval(timer_beat);
+        // timer_beat = window.setInterval(HeartBeat,20000);
+        // //发送心跳包函数
+        // function HeartBeat()
+        // {
+        //     var jstr =
+        //     {
+        //         appID:appId //appID，用来确定频道位置以后会换成新的标记
+        //
+        //     };
+        //     ROP.Publish(JSON.stringify(jstr),'beat');//发送MQTT指令
+        // }
 
 
     };

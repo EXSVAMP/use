@@ -6,7 +6,7 @@ module.exports = {
 
 
     //注意如果开启压缩，应采取此方式注入对象，否则压缩后将找不到
-   // controller : 'pollinventoryCtrl',
+   controller : 'pollinventoryCtrl',
     resolve: {
         loadCtrl: ["$q", function($q) {
             var deferred = $q.defer();

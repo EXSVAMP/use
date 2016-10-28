@@ -41,27 +41,27 @@
     	<div ng-show="register_success==2">
     		<div class="form-group">
     			<label for="regCompName"><span>*</span>仓库名称</label>	
-    			<input type="text" class="form-control" name="regCompName" placeholder="仓库名称" required ng-model="information.name" ng-maxlength="30" ng-minlength="6"/>
+    			<input type="text" class="form-control" name="regCompName" placeholder="仓库名称" required ng-model="information.name" ng-maxlength="30" ng-minlength="1"/>
     			<span class="errorInfoReg" ng-show="register.regCompName.$touched&&register.regCompName.$error.required">必填</span>
-                <span class="errorInfoReg" ng-show="register.regCompName.$touched&&register.regCompName.$invalid">仓库名称为6-30位</span>
+                <span class="errorInfoReg" ng-show="register.regCompName.$touched&&register.regCompName.$invalid">仓库名称为1-30位</span>
     		</div>
     		<div class="form-group">
     			<label for="regCompAddress"><span>*</span>仓库地址</label>	
-    			<input type="text" class="form-control" name="regCompAddress" placeholder="仓库地址" required ng-model="information.address" ng-maxlength="50" ng-minlength="6"/>
+    			<input type="text" class="form-control" name="regCompAddress" placeholder="仓库地址" required ng-model="information.address" ng-maxlength="50" ng-minlength="1"/>
     			<span class="errorInfoReg" ng-show="register.regCompAddress.$touched&&register.regCompAddress.$error.required">必填</span>
-                <span class="errorInfoReg" ng-show="register.regCompAddress.$touched&&register.regCompAddress.$invalid">仓库地址为6-50位</span>
+                <span class="errorInfoReg" ng-show="register.regCompAddress.$touched&&register.regCompAddress.$invalid">仓库地址为1-50位</span>
     		</div>
     		<div class="form-group">
     			<label for="regCompContact"><span>*</span>仓库联系人</label>	
-    			<input type="text" class="form-control" name="regCompContact" placeholder="仓库联系人" required ng-model="information.connect_username" ng-maxlength="20" ng-minlength="6"/>
+    			<input type="text" class="form-control" name="regCompContact" placeholder="仓库联系人" required ng-model="information.connect_username" ng-maxlength="20" ng-minlength="1"/>
     			<span class="errorInfoReg" ng-show="register.regCompContact.$touched&&register.regCompContact.$error.required">必填</span>
-                <span class="errorInfoReg" ng-show="register.regCompContact.$touched&&register.regCompContact.$invalid">仓库联系人为6-20位</span>
+                <span class="errorInfoReg" ng-show="register.regCompContact.$touched&&register.regCompContact.$invalid">仓库联系人为1-20位</span>
     		</div>
     		<div class="form-group">
     			<label for="regCompPhone"><span>*</span>仓库联系方式</label>	
-    			<input type="text" class="form-control" name="regCompPhone" placeholder="仓库联系方式" required ng-model="information.connect_info" ng-maxlength="30" ng-minlength="6"/>
+    			<input type="text" class="form-control" name="regCompPhone" placeholder="仓库联系方式" required ng-model="information.connect_info" ng-maxlength="30" ng-minlength="1"/>
     			<span class="errorInfoReg" ng-show="register.regCompPhone.$touched&&register.regCompPhone.$error.required">必填</span>
-                <span class="errorInfoReg" ng-show="register.regCompPhone.$touched&&register.regCompPhone.$invalid">仓库联系方式为6-30位</span>
+                <span class="errorInfoReg" ng-show="register.regCompPhone.$touched&&register.regCompPhone.$invalid">仓库联系方式为1-30位</span>
     		</div>
     		<div class="btns-group">
     			<button type="button" class="btn pull-left btn-backlogin" ng-click="goPre(1)">上一步</button>

@@ -211,5 +211,59 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     //     }
     // }
 
+    $scope.wsFunc3 = function(){
+        // var url="139.196.148.70";
+        client = new Paho.MQTT.Client("211.152.46.42", 8083,"myclientid_" + parseInt(Math.random() * 100, 10));
+        // set callback handlers
+        client.onConnectionLost = onConnectionLost;
+        client.onMessageArrived = onMessageArrived;
+        //client.onSubscribeSuccess = onSubscribeSuccess;
+        //client.onSubscribeFailure = onSubscribeFailure;
 
+        // connect the client
+        client.connect({onSuccess:onConnect, userName: "iotweb", password: "123qwe!@#", mqttVersion: 3});
+
+        // called when the client connects
+        function onConnect() {
+            // Once a connection has been made, make a subscription and send a message.
+            console.log("onConnect");
+
+            var store_house_id = localStorage.getItem("storeHouseId");
+            console.log("store_house_id:"+store_house_id);
+
+            client.subscribe("exingcai/iot/clould/"+store_house_id+"/eventlog/warning", {onSuccess:onSubscribeSuccess,onFailure:onSubscribeFailure});
+
+            // message = new Paho.MQTT.Message("Hello");
+            // message.destinationName = "/World";
+            // client.send(message);
+        }
+
+        // called when the client loses its connection
+        function onConnectionLost(responseObject) {
+            console.log("responseObject.errorCode:"+responseObject.errorCode);
+            if (responseObject.errorCode !== 0) {
+                console.log("onConnectionLost:"+responseObject.errorMessage);
+            }
+        }
+
+        // called when a message arrives
+        function onMessageArrived(message) {
+            console.log("onMessageArrived:"+message.payloadString);
+            console.log(message);
+            var data=JSON.parse(message.payloadString)
+            console.log(data);
+        }
+
+        function onSubscribeSuccess() {
+            subscribed = true;
+            console.log("subscribed",subscribed);
+        };
+
+        function onSubscribeFailure(err) {
+            subscribed = false;
+            console.log("subscribe fail. ErrorCode: %s, ErrorMsg: %s",err.errCode,err.errorMessage);
+        };
+
+    }
+    $scope.wsFunc3();
 })

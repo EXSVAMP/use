@@ -948,12 +948,22 @@
     .card-content table.table-content tbody tr td p .rfid-edit {
       color: #45b6b0;
       background: none;
-      margin-top: 8px;
+      margin-top: 0px;
+      font-size: 16px; }
+    .card-content table.table-content tbody tr td p .rfid-edit2 {
+      color: #c1c7cc;
+      background: none;
+      margin-top: 0px;
       font-size: 16px; }
     .card-content table.table-content tbody tr td p .rfid-delete {
       color: #ff6b6b;
       background: none;
-      margin-top: 8px;
+      margin-top: 0px;
+      font-size: 16px; }
+    .card-content table.table-content tbody tr td p .rfid-delete2 {
+      color: #c1c7cc;
+      background: none;
+      margin-top: 0px;
       font-size: 16px; }
   .card-content .emptyDataList p span:first-child {
     background: none;
@@ -2588,6 +2598,8 @@
 .poll-info-modal-pag {
   margin-bottom: 0; }
 
+.manual-content .search-bar .form-group {
+  margin-right: 0px !important; }
 .manual-content .manual-select {
   display: table;
   height: auto;
@@ -2840,6 +2852,9 @@
 
 .manual-content-modal {
   min-width: 0; }
+
+.daterangepicker:nth-child(3) {
+  position: fixed !important; }
 
 .storeSet_content .main-content .search-bar {
   padding: 0px 20px;

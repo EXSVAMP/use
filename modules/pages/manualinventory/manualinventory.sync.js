@@ -2,7 +2,8 @@ var app = angular.module('RDash');
 app.register.controller("manualinventoryCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, $timeout, ngDialog, PageHandle) {
 	//console.log("Test app.register.controller");
   var urlBase = baseUrl.getUrl();
-  $scope.open = function (size, method,index){
+    
+    $scope.open = function (size, method,index){
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             controller: 'ModalManualinventory',
@@ -50,6 +51,7 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
         });
         modalInstance.result.then(function(selectedItem) {
             $scope.selected = selectedItem;
+
         }, function(){});
     };
 
@@ -192,25 +194,40 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
     //   });
     // },100);
 
-    $('.date-picker').daterangepicker({ 
-      locale: {
-        format: 'YYYY-MM-DD HH:mm:ss' ,
-        applyLabel: '确定',
-        cancelLabel: '取消',
-        clearLabel: '清空',
-        fromLabel: '从',
-        toLabel: '至',
-        customRangeLabel: '自定义',
-        daysOfWeek: ['日', '一', '二', '三', '四', '五','六'],
-        monthNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
-      },
-      singleDatePicker: true,
-      showDropdowns: true,
-      timePicker: true,
-      timePicker24Hour: true,
-      timePickerSeconds: true
-    });
+    $('.date-picker').daterangepicker({
+        locale: {
+            format: 'YYYY-MM-DD HH:mm:ss' ,
+            applyLabel: '确定',
+            cancelLabel: '清空',
+            fromLabel: '从',
+            toLabel: '至',
+            customRangeLabel: '自定义',
+            daysOfWeek: ['日', '一', '二', '三', '四', '五','六'],
+            monthNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
 
+        },
+        // autoUpdateInput:false,
+        startDate:false,
+        endDate: false,
+        maxDate:null,
+        singleDatePicker: true,
+        showDropdowns: true,
+        timePicker: true,
+        timePicker24Hour: true,
+        timePickerSeconds: true
+    });
+    // $('.date-picker').on('outsideClick.daterangepicker',function(ev, picker){
+    //   $scope.startDate="";
+    //   // $scope.endDate = "";
+    //   // $scope.startDate= this.oldStartDate;
+    //   // $scope.endDate = this.oldEndDate;
+    // });
+    $('.date-picker1').on('cancel.daterangepicker',function(ev, picker){
+        $scope.startDate="";
+    })
+    $('.date-picker2').on('cancel.daterangepicker',function(ev, picker){
+        $scope.endDate = "";
+    })
     $scope.hasExcutingOne = function(){
       $http.get(baseUrl.getUrl() + "/api/2/inventory/list/date").success(function(data){
         if(data.code==200){

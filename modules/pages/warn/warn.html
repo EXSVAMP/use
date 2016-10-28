@@ -80,7 +80,7 @@
                 <td><p>{{item.event_type_display}}</p></td>
                 <td><p>{{item.event_feedback_type_display}}</p></td>
                 <td><p>{{item.handle_result_display}}</p></td>
-                <td><p>{{item.event_datetime}}</p></td>
+                <td><p>{{item.event_datetime |time_format}}</p></td>
                 <td><p><a href="javascript:void(0)" ng-click="jumpToDetail(item)"><span
                         class="icon-icon_information"></span>查看详情</a></p></td>
             </tr>

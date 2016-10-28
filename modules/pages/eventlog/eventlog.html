@@ -133,7 +133,7 @@
                </div>
                <div class="form-group">
                    <span class="col-lg-2">事件发生时间</span>
-                   <span class="col-lg-4">{{detail.event_datetime}}</span>
+                   <span class="col-lg-4">{{detail.event_datetime |time_format}}</span>
                    <span class="col-lg-2">摄像头</span>
                    <span class="col-lg-4">{{detail.camera.serial_number}}</span>
                </div>
@@ -173,7 +173,7 @@
                         </li>
                         <li>
                             <span>事件发生时间</span>
-                            <span>{{item.created_at}}</span>
+                            <span>{{item.created_at | time_format}}</span>
                         </li>
 
                     </ul>

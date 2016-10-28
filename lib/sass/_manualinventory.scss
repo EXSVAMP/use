@@ -1,4 +1,7 @@
 .manual-content{
+	.search-bar .form-group{
+		margin-right: 0px!important;
+	}
 	.manual-select{
 		display: table;
   		height: auto;
@@ -308,3 +311,5 @@
 .manual-content-modal{
 	min-width: 0;
 }
+
+.daterangepicker:nth-child(3){position: fixed!important;}

@@ -10,36 +10,36 @@
                         <span>*</span>
                         <span>仓库名称</span>
                     </label>
-                    <input type="text" placeholder="仓库名称" name="store_name"required ng-model="params.name" ng-maxlength="30" ng-minlength="6">
+                    <input type="text" placeholder="仓库名称" name="store_name"required ng-model="params.name" ng-maxlength="30" ng-minlength="1">
                     <span class="errorInfoReg" ng-show="store.store_name.$touched&&store.store_name.$error.required">必填</span>
-                    <span class="errorInfoReg" ng-show="store.store_name.$touched&&store.store_name.$invalid">仓库名称为6-30位</span>
+                    <span class="errorInfoReg" ng-show="store.store_name.$touched&&store.store_name.$invalid">仓库名称为1-30位</span>
                 </div>
                  <div class="form-group form-group-selin">
                      <label>
                          <span>*</span>
                          <span>仓库地址</span>
                      </label>
-                     <input type="text" placeholder="仓库地址" name="store_address" required  ng-model="params.address" ng-maxlength="30" ng-minlength="6">
+                     <input type="text" placeholder="仓库地址" name="store_address" required  ng-model="params.address" ng-maxlength="30" ng-minlength="1">
                      <span class="errorInfoReg" ng-show="store.store_address.$touched&&store.store_address.$error.required">必填</span>
-                     <span class="errorInfoReg" ng-show="store.store_address.$touched&&store.store_address.$invalid">仓库名称为6-50位</span>
+                     <span class="errorInfoReg" ng-show="store.store_address.$touched&&store.store_address.$invalid">仓库名称为1-50位</span>
                  </div>
                  <div class="form-group form-group-selin">
                      <label>
                          <span>*</span>
                          <span>仓库联系人</span>
                      </label>
-                     <input type="text" placeholder="仓库联系人" name="store_connect_username" required ng-model="params.connect_username" ng-maxlength="30" ng-minlength="6">
+                     <input type="text" placeholder="仓库联系人" name="store_connect_username" required ng-model="params.connect_username" ng-maxlength="30" ng-minlength="1">
                      <span class="errorInfoReg" ng-show="store.store_connect_username.$touched&&store.store_connect_username.$error.required">必填</span>
-                     <span class="errorInfoReg" ng-show="store.store_connect_username.$touched&&store.store_connect_username.$invalid">仓库名称为6-20位</span>
+                     <span class="errorInfoReg" ng-show="store.store_connect_username.$touched&&store.store_connect_username.$invalid">仓库名称为1-20位</span>
                  </div>
                  <div class="form-group form-group-selin">
                      <label>
                          <span>*</span>
                          <span>仓库联系方式</span>
                      </label>
-                     <input type="text" placeholder="仓库联系方式" name="store_connect_info" required ng-model="params.connect_info" ng-maxlength="30" ng-minlength="6">
+                     <input type="text" placeholder="仓库联系方式" name="store_connect_info" required ng-model="params.connect_info" ng-maxlength="30" ng-minlength="1">
                      <span class="errorInfoReg" ng-show="store.store_connect_info.$touched&&store.store_connect_info.$error.required">必填</span>
-                     <span class="errorInfoReg" ng-show="store.store_connect_info.$touched&&store.store_connect_info.$invalid">仓库名称为6-30位</span>
+                     <span class="errorInfoReg" ng-show="store.store_connect_info.$touched&&store.store_connect_info.$invalid">仓库名称为1-30位</span>
                  </div>
             </form>
              <div style="clear: both"></div>
