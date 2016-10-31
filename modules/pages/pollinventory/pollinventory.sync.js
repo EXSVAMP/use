@@ -88,6 +88,12 @@ define('pages/pollinventory/pollinventory.sync', function(require, exports, modu
 
     $scope.switch_order = function(key){
       $scope.order[key] = !$scope.order[key];
+      //单个排序
+       // for(var i in $scope.order){
+       //   if(i!==key){
+       //     $scope.order[i]=false;
+       //   }
+       // }
       $scope.submit_search()
     };
 
