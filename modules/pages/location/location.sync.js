@@ -35,6 +35,7 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
         }
     }
 
+
     $scope.closeFull = function(){
         $scope.fullscreenObj = false;
         $(".sideBar").show();

@@ -1598,7 +1598,7 @@
             color: #337ab7; }
   .main-content .main-detail .main-detail-content {
     width: 100%;
-    min-width: 850px;
+    min-width: 80px;
     background-color: #fff;
     overflow: auto; }
     .main-content .main-detail .main-detail-content .form-group {
