@@ -6,7 +6,8 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     $scope.message = 'Please Wait...';
     $scope.backdrop = true;
     $scope.promise = null;
-    $scope.fullscreenObj = false;
+    $scope.fullscreenObj = false
+    $scope.warnInfo="";//新增
     var scale_ratio_width = 1;
     var scale_ratio_height = 1;
     //$scope.icon_icon_compress = "";
@@ -138,6 +139,8 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
                         var status=list[i].status;
                         var name;
                         if(status==2){
+                            //异常RFID
+                            $scope.rfid_id=list[i].content.rfid_id;
                             name=list[i].name;
                             var des="";
                             var eventsList=list[i].events;
@@ -150,8 +153,8 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
                         }
 
                     }
-
-                    return $sce.trustAsHtml(res);
+                    $scope.warnInfo=res;
+                    return $sce.trustAsHtml($scope.warnInfo);
 
                 }
 
@@ -213,6 +216,11 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
 
     $scope.wsFunc3 = function(){
         // var url="139.196.148.70";
+        // var testSocket=new WebSocket("211.152.46.42",8083);
+        // testSocket.send("123");
+        // testSocket.onopen=function (event) {
+        //
+        // }
         client = new Paho.MQTT.Client("211.152.46.42", 8083,"myclientid_" + parseInt(Math.random() * 100, 10));
         // set callback handlers
         client.onConnectionLost = onConnectionLost;
@@ -251,6 +259,9 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
             console.log("onMessageArrived:"+message.payloadString);
             console.log(message);
             var data=JSON.parse(message.payloadString)
+            var rfid_list=data.rfid_list;
+            var event_feedback_detail_display=data.event_feedback_detail_display;
+
             console.log(data);
         }
 

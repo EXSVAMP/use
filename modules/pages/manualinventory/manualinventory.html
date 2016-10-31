@@ -14,7 +14,7 @@
           <div class="form-row">
             <div class="date-area">
               <span class="icon-icon_calendar"></span>
-              <input type="text" class="normal date-picker-add" ng-model="startDate" ng-click="add_click_func()"/>
+              <input type="text" class="normal date-picker-add"  ng-model="startDate" ng-click="add_click_func()"/>
             </div>
           </div>
         </div>
@@ -155,7 +155,7 @@
   			<thead>
     			<tr>
       				<th ng-click="switch_order('id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.id]"></span></p></th>
-      				<th ng-click="switch_order('state')"><p>检测状态<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.state]"></span></p></th>
+      				<th ng-click="switch_order('status')"><p>检测状态<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.status]"></span></p></th>
       				<th ng-click="switch_order('date')"><p>检测时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.date]"></span></p></th>
               <th ng-click="switch_order('updated_at')"><p>更新时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.updated_at]"></span></p></th>
               <th><p>操作</p></th>
@@ -164,12 +164,12 @@
   			<tbody>
     			<tr ng-repeat="item in dataList">
     				<td><p>{{item.id}}</p></td>
-      				<td><p>{{item.state | poll_state}}</p></td>
+      				<td><p>{{item.status | poll_state}}</p></td>
       				<td><p>{{item.date | time_format}}</p></td>
       				<td><p>{{item.updated_at | time_format}}</p></td>
-      				<td ng-show="item.state == 0"><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','modify',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span><!-- <span class="manual_once" ng-click="inventoryOnce(item.store_house,item.id)">立即检测</span> --></p></td>
-              <td ng-show="item.state == 1"><p></p></td>
-              <td ng-show="item.state == 2 || item.state == 3"><p><!-- <span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span> --><span class="rfid-delete rfid-delete-manual icon-icon_information" ng-click="open('md-info-manual','info',$index)"></span><span class="rfid-delete-tip" ng-click="open('md-info-manual','info',$index)">查看结果</span></p></td>
+      				<td ng-show="item.status == 0"><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','modify',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span><!-- <span class="manual_once" ng-click="inventoryOnce(item.store_house,item.id)">立即检测</span> --></p></td>
+              <td ng-show="item.status == 1"><p></p></td>
+              <td ng-show="item.status == 2 || item.status == 3"><p><!-- <span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span> --><span class="rfid-delete rfid-delete-manual icon-icon_information" ng-click="open('md-info-manual','info',$index)"></span><span class="rfid-delete-tip" ng-click="open('md-info-manual','info',$index)">查看结果</span></p></td>
     			</tr>
     		</tbody>
     	</table>

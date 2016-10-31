@@ -169,6 +169,7 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
     $scope.setPage = function (pageNo) {
         if(PageHandle.setPageInput($scope.index_sel,$scope.total_page)){
             $scope.bigCurrentPage = $scope.index_sel;
+            $scope.index_sel = "";
             $scope.submit_search();
         }else
             $scope.index_sel = "";

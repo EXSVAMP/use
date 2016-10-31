@@ -70,7 +70,7 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
   	$scope.numbers2 = [5,6,7,8,9,10];
     $scope.order = {
         id: false,
-        state:false,
+        status:false,
         updated_at:false,
         date:false
     };
@@ -139,12 +139,14 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
       var query_url = url_junction.getQuery({
       from:from,
       to:to,
-      state:$scope.status,
+      status:$scope.status,
       descent:order_str,
       number:$scope.number,
       index:$scope.index
     });
-  
+        if($scope.status==0&&query_url.indexOf('status')<0){
+            query_url += "&status=0";
+        }
   		$http.get(baseUrl.getUrl() + "/api/2/inventory/list/date"+query_url).success(function(data){
         if(data.code==200){
           $scope.dataList =  data.data;

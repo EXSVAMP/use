@@ -50,7 +50,7 @@ define('pages/pollinventory/pollinventory.sync', function(require, exports, modu
     $scope.numbers2 = [2,3,4,5];
     $scope.order = {
       id: false,
-      state:false,
+      status:false,
       updated_at:false,
       date:false
     };
@@ -138,13 +138,13 @@ define('pages/pollinventory/pollinventory.sync', function(require, exports, modu
       var query_url = url_junction.getQuery({
         from:from,
         to:to,
-        state:$scope.status,
+        status:$scope.status,
         descent:order_str,
         number:$scope.number,
         index:$scope.index
       });
-      if($scope.status==0&&query_url.indexOf('state')<0){
-        query_url += "&state=0";
+      if($scope.status==0&&query_url.indexOf('status')<0){
+        query_url += "&status=0";
       }
       $scope.store_house_id = 0;
       $http.get(baseUrl.getUrl() + "/api/2/inventory/list/interval"+query_url).success(function(data){
@@ -287,7 +287,7 @@ define('pages/pollinventory/pollinventory.sync', function(require, exports, modu
             $scope.firstIn = false;
             $http.get(baseUrl.getUrl() + "/api/2/inventory/list/interval/isexist").success(function(data){
               if(data.code==200){
-                if(data.data.is_exist == 1){
+                if(data.data.is_exist == 0){
                   $scope.timeSetEnable = false;
                 }else{
                   if(data.data.schedule.interval)
