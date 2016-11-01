@@ -1,7 +1,7 @@
-angular.module("Login", ['ui.bootstrap', 'ui.router', 'ngCookies', 'ngDialog'])
+angular.module("RDash", ['ui.bootstrap', 'ui.router', 'ngCookies', 'ngDialog'])
 require('login_router');
-
-var app = angular.module('Login');
+require('common/constant');
+var app = angular.module('RDash');
 
 app.config(function ($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
@@ -17,8 +17,8 @@ app.controller("MasterCtrl", function ($scope,$cookieStore) {
     }
 });
 
-app.service("baseUrl",function(){
-    var url="http://211.152.46.42:9011";
+app.service("baseUrl",function(constant){
+    var url=constant.url;
      // var url="http://172.16.83.149:9011";
     return {
         getUrl:function(){

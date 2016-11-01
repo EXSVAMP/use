@@ -4,7 +4,7 @@
 var login = require("login_page/login/login");
 var register = require("login_page/register/register");
 
-var app = angular.module('Login');
+var app = angular.module('RDash');
 app.config(function ($stateProvider, $urlRouterProvider, $controllerProvider) {
     $urlRouterProvider.otherwise('/login');
 
