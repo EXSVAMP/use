@@ -7,7 +7,7 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     $scope.backdrop = true;
     $scope.promise = null;
     $scope.fullscreenObj = false
-    $scope.warnInfo="";//新增
+    // $scope.warnInfo="";
     var scale_ratio_width = 1;
     var scale_ratio_height = 1;
     //$scope.icon_icon_compress = "";
@@ -34,7 +34,6 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
             });
         }
     }
-
 
     $scope.closeFull = function(){
         $scope.fullscreenObj = false;
@@ -140,8 +139,7 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
                         var status=list[i].status;
                         var name;
                         if(status==2){
-                            //异常RFID
-                            $scope.rfid_id=list[i].content.rfid_id;
+                            //yi
                             name=list[i].name;
                             var des="";
                             var eventsList=list[i].events;
@@ -154,8 +152,8 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
                         }
 
                     }
-                    $scope.warnInfo=res;
-                    return $sce.trustAsHtml($scope.warnInfo);
+                    // $scope.warnInfo=res;
+                    return $sce.trustAsHtml(res);
 
                 }
 
