@@ -117,6 +117,7 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
         if(PageHandle.setPageInput($scope.index_sel,$scope.totalPage)){
             $scope.params.index = $scope.index_sel;
             $scope.index_sel = "";
+
             $scope.refresh();
         }else
             $scope.index_sel = "";

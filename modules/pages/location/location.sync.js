@@ -35,6 +35,24 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
         }
     }
 
+
+   var size=1.0;
+  $scope.zoomin= function(){
+       size=size-0.1;
+      $scope.set();
+   }
+  $scope.set=function(){
+      document.body.style.cssText=document.body.style.cssText+';-webkit-transform:scale('+size+');-webkit-transform-origin:0 0;';
+  }
+
+
+
+
+
+
+
+
+
     $scope.closeFull = function(){
         $scope.fullscreenObj = false;
         $(".sideBar").show();

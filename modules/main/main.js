@@ -97,7 +97,28 @@ app.factory('PageHandle',function(ngDialog){
         }
     }
 });
-
+app.service('sideState',function(){
+    $scope.sideState={
+        "statistics":false,
+        "card":false,
+        "content":false,
+        "camera":false,
+        "reader":false,
+        "eventlog":false,
+        "warn":false,
+        "user":false,
+        "account":false,
+        "location":false,
+        "pollinventory":false,
+        "manualinventory":false
+    }
+    return {
+        getState:function(state){
+            
+        }
+    }
+    
+})
 app.config(function($httpProvider){
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -215,7 +236,7 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
 app.controller("headerCtrl",function($scope, $cookieStore, $http, $uibModal, baseUrl, ngDialog, $rootScope){
 	var baseUrl = baseUrl.getUrl();
 	$scope.header_username = $cookieStore.get("iotcloud-token").loginName;
-	$scope.old_password_len = $cookieStore.get("passlen");
+	// $scope.old_password_len = $cookieStore.get("passlen");
     $("body").on("click",function(){
          $scope.dropdown_menu_custom_show = "";
     })
@@ -377,7 +398,39 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
 
 });
 
-app.controller("sideBarCtrl",function($scope, $rootScope){
+app.controller("sideBarCtrl",function($scope, $rootScope,$location){
+    $scope.sideState={
+        "statistics":true,
+        "card":false,
+        "content":false,
+        "camera":false,
+        "reader":false,
+        "eventlog":false,
+        "warn":false,
+        "user":false,
+        "account":false,
+        "location":false,
+        "pollinventory":false,
+        "manualinventory":false
+    }
+    
+    $scope.switch=function(param){
+       // var url=($location.url()).substring(1);
+        // alert("<===地址==>"+url);
+        // alert("123")
+        for(var i in $scope.sideState){
+            if(i==param){
+                $scope.sideState[i]=true;
+            }else{
+                $scope.sideState[i]=false;
+            }
+        }
+        return false;
+
+    }
+    
+    
+    
 
      $scope.open={
          open1:false,
@@ -1111,8 +1164,8 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
             });
         }
         var iotcloud_token = $scope.header_username = $cookieStore.get("iotcloud-token").token;
-        $scope.download_excel = baseUrl.getUrl()+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0&iotcloud_token="+iotcloud_token;
-        $scope.download_txt = baseUrl.getUrl()+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=1&iotcloud_token="+iotcloud_token;
+        $scope.download_excel = baseUrl+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0&iotcloud_token="+iotcloud_token;
+        $scope.download_txt = baseUrl+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=1&iotcloud_token="+iotcloud_token;
 
         $scope.submit_search = function(){
             var order_str = "";
@@ -1451,8 +1504,8 @@ $timeout(function(){
         };
 
          var iotcloud_token = $scope.header_username = $cookieStore.get("iotcloud-token").token;
-        $scope.download_excel =baseUrl.getUrl()+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0&iotcloud_token="+iotcloud_token;
-        $scope.download_txt =baseUrl.getUrl()+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=1&iotcloud_token="+iotcloud_token;
+        $scope.download_excel =baseUrl+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0&iotcloud_token="+iotcloud_token;
+        $scope.download_txt =baseUrl+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=1&iotcloud_token="+iotcloud_token;
 
         $scope.submit_search = function(){
             var order_str = "";
