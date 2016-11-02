@@ -782,6 +782,14 @@
     transition: all linear 200ms; }
   .sideBar .showout.ng-hide {
     opacity: 0; }
+  .sideBar .activeSide {
+    text-decoration: none;
+    background-color: #5F9BDB; }
+    .sideBar .activeSide a {
+      color: #ffffff; }
+  .sideBar .unactive {
+    text-decoration: none;
+    background-color: #ffffff; }
   .sideBar a:hover {
     background: #5F9BDB !important;
     color: #ffffff; }
@@ -1598,7 +1606,7 @@
             color: #337ab7; }
   .main-content .main-detail .main-detail-content {
     width: 100%;
-    min-width: 80px;
+    min-width: 800px;
     background-color: #fff;
     overflow: auto; }
     .main-content .main-detail .main-detail-content .form-group {

@@ -95,7 +95,7 @@ fis.media('prod')
         preprocessor: fis.plugin('annotate'),
         optimizer: fis.plugin('uglify-js')
     })
-    .match('/**(.async).js', {
+    .match('/**(.sync).js', {
         preprocessor: null,
         optimizer: null
     })

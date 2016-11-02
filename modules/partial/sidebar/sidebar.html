@@ -1,41 +1,41 @@
 <div class="sideBar" ng-controller="sideBarCtrl" name="sidebar">
     <ul class="nav nav-pills nav-stacked" >
         <li>
-            <a href="#statistics" class="nav-header collapsed nav_head" data-toggle="collapse">
+            <a href="#statistics" class="nav-header collapsed nav_head" data-toggle="collapse" ng-class="{true:'activeSide',false:'unactive'}[sideState.statistics]" ng-click="switch('statistics')">
                <span class="icon-icon_data"></span>统计数据
             </a>
 
         </li>
 
-        <li ng-class="{true:'deco'}[open.open1]">
-            <a href="#card" class="nav-header nav_head" ng-click="openSide(1)" >
+        <li ng-class="{true:'deco'}[open.open1]" >
+            <a href="#card" class="nav-header nav_head" ng-class="{true:'unactive'}[sideState.card]" ng-click="openSide(1);switch('card')" >
                 <span  ng-class="{true:'icon-icon_up_open',false:'icon-icon_right_open'}[open.open1]"></span>
                 <span class="icon-icon_equipment"></span>
                 设备管理
 
             </a>
-            <ul id="device" class="nav nav-list "  ng-show="open.open1" >
-                <li>
+            <ul id="device" class="nav nav-list "  ng-show="open.open1">
+                <li ng-class="{true:'activeSide',false:'unactive'}[sideState.card]" ng-click="switch('card');">
                     <a href="#card">
                     <span class="icon-icon_RFIDcard"></span>RFID卡
                     </a>
                 </li>
-                <li>
+                <li ng-class="{true:'activeSide',false:'unactive'}[sideState.content]" ng-click="switch('content')">
                     <a href="#content">
                         <span class="icon-icon_RFIDcardcontent"></span>RFID卡数据
                     </a>
                 </li>
-                <li>
+                <li ng-class="{true:'activeSide',false:'unactive'}[sideState.camera]" ng-click="switch('camera')">
                     <a href="#camera">
                         <span class="icon-icon_camera"></span> 摄像头
                     </a>
                 </li>
-                <li>
+                <li ng-class="{true:'activeSide',false:'unactive'}[sideState.reader]" ng-click="switch('reader')">
                     <a href="#reader">
                         <span class="icon-icon_cardreader"></span>读写器
                     </a>
                 </li>
-                <li>
+                <li ng-class="{true:'activeSide',false:'unactive'}[sideState.eventlog]" ng-click="switch('eventlog')">
                     <a href="#eventlog">
                         <span class="icon-icon_eventlog"></span>事件日志
                     </a>
@@ -44,7 +44,7 @@
 
         </li>
 
-        <li >
+        <li ng-class="{true:'activeSide',false:'unactive'}[sideState.warn]" ng-click="switch('warn')">
             <a href="#warn" class="nav-header  nav_head" >
                 <span class="icon-icon_alert"></span>警报管理
             </a>
@@ -52,18 +52,18 @@
         </li>
 
         <li ng-class="{'deco':open.open2,'deco2':open.open2&&open.open3}">
-            <a href="#user" class="nav-header  nav_head" ng-click="openSide(2)">
+            <a href="#user" class="nav-header  nav_head" ng-class="{true:'unactive'}[sideState.user]" ng-click="openSide(2);switch('user')">
                 <span  ng-class="{true:'icon-icon_up_open',false:'icon-icon_right_open'}[open.open2]"></span>
                 <span class="icon-icon_users"></span>
                 用户管理
             </a>
             <ul id="user" class="nav nav-list " ng-show="open.open2">
-                <li>
+                <li ng-class="{true:'activeSide',false:'unactive'}[sideState.user]" ng-click="switch('user')">
                     <a href="#user">
                         <span class="icon-icon_userlist"></span>用户列表
                     </a>
                 </li>
-                <li>
+                <li ng-class="{true:'activeSide',false:'unactive'}[sideState.account]" ng-click="switch('account')">
                     <a href="#account">
                         <span class="icon-icon_user"></span>我的账号
                     </a>
@@ -74,17 +74,17 @@
         </li>
 
         <li ng-class="{true:'deco'}[open.open3]">
-            <a href="#location" class="nav-header nav_head"  ng-click="openSide(3)">
+            <a href="#location" class="nav-header nav_head" ng-class="{true:'unactive'}[sideState.location]"  ng-click="openSide(3);switch('location')">
                 <span  ng-class="{true:'icon-icon_up_open',false:'icon-icon_right_open'}[open.open3]"></span>
                 <span class="icon-icon_warehouse"></span>我的仓库
             </a>
             <ul  class="nav nav-list " ng-show="open.open3" >
-                <li>
+                <li ng-class="{true:'activeSide',false:'unactive'}[sideState.location]" ng-click="switch('location')">
                     <a href="#location">
                         <span class="icon-icon_warehouse_eyesmap"></span>仓库平面图
                     </a>
                 </li>
-                <li >
+                <li ng-class="{true:'activeSide',false:'unactive'}[sideState.storeSet]" ng-click="switch('storeSet')">
                     <a href="#storeSet" >
                         <span class="icon-icon_gear"></span>仓库设置
                     </a>
@@ -94,17 +94,17 @@
 
         </li>
         <li ng-class="{true:'deco'}[open.open4]">
-            <a href="#pollinventory" class="nav-header nav_head"  ng-click="openSide(4)">
+            <a href="#pollinventory" class="nav-header nav_head" ng-class="{true:'unactive'}[sideState.pollinventory]"  ng-click="openSide(4);switch(pollinventory)">
                 <span  ng-class="{true:'icon-icon_up_open',false:'icon-icon_right_open'}[open.open4]"></span>
                 <span class="icon-icon_stock_search"></span>在线管理
             </a>
             <ul  class="nav nav-list " ng-show="open.open4" >
-                <li>
+                <li ng-class="{true:'activeSide',false:'unactive'}[sideState.pollinventory]" ng-click="switch('pollinventory')">
                     <a href="#pollinventory">
                         <span class="icon-icon_realtime_text"></span>轮巡检测
                     </a>
                 </li>
-                <li >
+                <li ng-class="{true:'activeSide',false:'unactive'}[sideState.manualinventory]" ng-click="switch('manualinventory')">
                     <a href="#manualinventory" >
                         <span class="icon-icon_manual_test"></span>手动检测
                     </a>
