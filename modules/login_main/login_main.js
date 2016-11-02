@@ -18,7 +18,7 @@ app.controller("MasterCtrl", function ($scope,$cookieStore) {
 });
 
 app.service("baseUrl",function(){
-    var url="http://211.152.46.42:9011";
+    var url="http://139.196.148.70:9011";
      // var url="http://172.16.83.149:9011";
     return {
         getUrl:function(){
