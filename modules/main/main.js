@@ -1,5 +1,6 @@
 angular.module("RDash",['ui.bootstrap','ui.router','ngCookies','ngDialog','cgBusy','truncate','ui.select','ngSanitize','ngAnimate']);
 require('router');
+require('common/constant');
 require('interceptor/captainlnterceptor');
 require('common/service/listService');
 require('common/service/popService');
@@ -103,9 +104,8 @@ app.config(function($httpProvider){
 
 });
 
-app.service("baseUrl",function(){
-    var url="http://139.196.148.70:9011";
-    // var url="http://172.16.83.149:9011";
+app.service("baseUrl",function(constant){
+    var url=constant.url;
     return {
         getUrl:function(){
             return url;
@@ -1110,9 +1110,9 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
             });
         }
         var iotcloud_token = $scope.header_username = $cookieStore.get("iotcloud-token").token;
-        $scope.download_excel = "http://139.196.148.70:9011/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0&iotcloud_token="+iotcloud_token;
-        $scope.download_txt = "http://139.196.148.70:9011/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=1&iotcloud_token="+iotcloud_token;
-
+        $scope.download_excel = baseUrl.getUrl()+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0&iotcloud_token="+iotcloud_token;
+        $scope.download_txt = baseUrl.getUrl()+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=1&iotcloud_token="+iotcloud_token;
+        
         $scope.submit_search = function(){
             var order_str = "";
             for(var i in $scope.order){
@@ -1450,8 +1450,8 @@ $timeout(function(){
         };
 
          var iotcloud_token = $scope.header_username = $cookieStore.get("iotcloud-token").token;
-        $scope.download_excel = "http://139.196.148.70:9011/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0&iotcloud_token="+iotcloud_token;
-        $scope.download_txt = "http://139.196.148.70:9011/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=1&iotcloud_token="+iotcloud_token;
+        $scope.download_excel =baseUrl.getUrl()+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0&iotcloud_token="+iotcloud_token;
+        $scope.download_txt =baseUrl.getUrl()+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=1&iotcloud_token="+iotcloud_token;
 
         $scope.submit_search = function(){
             var order_str = "";

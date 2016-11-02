@@ -1,6 +1,6 @@
 //"use strict"
 //var scope = ["$scope","$http","$timeout","$uibModal",'baseUrl',"$interval", function($scope, $http, $timeout, $uibModal, baseUrl, $interval) {
-var app = angular.module('Login');
+var app = angular.module('RDash');
 app.register.controller("registerCtrl", function ($scope, $http, $location, $timeout, $interval, $uibModal, $cookieStore, baseUrl, $rootScope, ngDialog) {
     var BaseUrl = baseUrl.getUrl();
     $scope.regstep1 = "reg-step-i reg-step-i-active";

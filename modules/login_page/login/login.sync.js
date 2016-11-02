@@ -1,4 +1,4 @@
-var app = angular.module('Login');
+var app = angular.module('RDash');
 app.register.controller("loginCtr", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope) {
     var BaseUrl = baseUrl.getUrl();
     $scope.loginResponse = "";
