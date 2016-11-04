@@ -142,8 +142,17 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
       if(data.code==200){
         $scope.dataList = data.data;
         $scope.bigTotalItems = data.pageinfo.total_number;
+        
         $scope.total_page = data.pageinfo.total_page;
         $scope.currentPageDataNum = data.data.length;
+          angular.forEach($scope.dataList,function(item){
+              if(item.get_user_role_type_display=="仓库盒子"){
+                 item.role=2;
+              }
+              if(item.get_user_role_type_display=="云仓系统"){
+                  item.role=3;
+              }
+          })
         if($scope.currentPageDataNum == 0)
           $scope.emptyDataListShow = "emptyDataListShow";
         else{

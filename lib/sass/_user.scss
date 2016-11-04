@@ -153,6 +153,7 @@
 						color: #3e4d68;
 					}
 					.rfid-edit,.rfid-delete{
+						padding: 0px!important;
 						display: block;
               			float: right;
               			width: 16px;
@@ -163,11 +164,15 @@
               			//background: url(/lib/img/icon_edit_16_16_06.png);
               			color: #45b6b0;
             		}
+
             		.rfid-delete{
               			//background: url(/lib/img/icon_cancel_16_16_06.png);
               			margin-right: 0;
               			color: #ff6b6b;
             		}
+					.un_rfid-delete,.un_rfid-edit{
+						color:#c1c7cc;
+					}
 				}
 				&:last-child{
 					border-bottom: 0 none;

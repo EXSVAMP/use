@@ -1905,6 +1905,7 @@
             font-size: 14px;
             color: #3e4d68; }
           .user-content .table-content-user li .table-content-user-detail p .rfid-edit, .user-content .table-content-user li .table-content-user-detail p .rfid-delete {
+            padding: 0px !important;
             display: block;
             float: right;
             width: 16px;
@@ -1916,6 +1917,8 @@
           .user-content .table-content-user li .table-content-user-detail p .rfid-delete {
             margin-right: 0;
             color: #ff6b6b; }
+          .user-content .table-content-user li .table-content-user-detail p .un_rfid-delete, .user-content .table-content-user li .table-content-user-detail p .un_rfid-edit {
+            color: #c1c7cc; }
         .user-content .table-content-user li .table-content-user-detail:last-child {
           border-bottom: 0 none; }
   .user-content .emptyDataList p span:first-child {

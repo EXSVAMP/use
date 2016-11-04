@@ -66,7 +66,9 @@ fis.match('*.scss', {
 });
 
 
-
+fis.match('*.{js,css,png,gif,svg}', {
+    useHash: true // 开启 md5 戳
+})
 
 
 
@@ -96,8 +98,8 @@ fis.media('prod')
         optimizer: fis.plugin('uglify-js')
     })
     .match('/**(.sync).js', {
-        preprocessor: null,
-        optimizer: null
+        // preprocessor: fis.plugin('annotate'),
+        optimizer: fis.plugin('uglify-js')
     })
     .match('**.css', {
         optimizer: fis.plugin('clean-css')
@@ -106,9 +108,9 @@ fis.media('prod')
         packTo: "/pkg/vendor.js"
     })
     //所有页面中引用到的bower js资源
-    .match("bower_components/**/*.js", {
-        packTo: "/pkg/vendor.js"
-    })
+    // .match("bower_components/**/*.js", {
+    //     packTo: "/pkg/vendor.js"
+    // })
     //所有页面中引用到的bower css资源
     .match("bower_components/**/*.css", {
         packTo: "/pkg/vendor.css"
