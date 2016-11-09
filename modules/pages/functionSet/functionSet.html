@@ -8,10 +8,10 @@
            <div class="module_header" >公共模块</div>
            <div class="module_header_content">
                <div class="col-lg-3 module_content" ng-repeat="item in dataList_common">
-                   <div class="module_info" ng-class="{true:'open',false:'close'}[item.checked]">
+                   <div class="module_info" ng-class="{true:'open',false:'unopen'}[item.checked]">
                        <div class="desc">{{item.main_event_display}}</div>
                        <div class="checkbox" >
-                           <input type="checkbox" ng-click="item.checked=!item.checked" ng-checked="item.checked"/>
+                           <input type="checkbox" ng-click="item.checked=!item.checked;setCommon(item.main_event,item.checked)" ng-checked="item.checked"/>
                            <label></label>
                        </div>
                    </div>

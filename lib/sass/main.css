@@ -3041,6 +3041,10 @@
           float: left;
           width: 100px;
           position: relative; }
+      .functionSet .main-content .commonModule .module_header_content .module_content .open {
+        color: #5f9bdb; }
+      .functionSet .main-content .commonModule .module_header_content .module_content .unopen {
+        color: #c3ccdb; }
 .functionSet .main-content .detail_function {
   width: 100%;
   min-width: 1100px;
