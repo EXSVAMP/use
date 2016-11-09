@@ -209,7 +209,7 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
 
     window.setInterval(function(){
         getData();
-    },30000);
+    },50000);
 
     $scope.warnShow=function(obj){
         obj.warnflag=true;

@@ -1,5 +1,5 @@
 var app = angular.module('RDash');
-app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction,PageHandle) {
+app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibModal, $cookieStore, baseUrl, $rootScope, url_junction, PageHandle) {
     var urlBase = baseUrl.getUrl();
 
 
@@ -167,15 +167,18 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
         });
     };
     $scope.setPage = function (pageNo) {
-        if(PageHandle.setPageInput($scope.index_sel,$scope.total_page)){
+        if (PageHandle.setPageInput($scope.index_sel, $scope.total_page)) {
             $scope.bigCurrentPage = $scope.index_sel;
             $scope.index_sel = "";
             $scope.submit_search();
-        }else
+        } else
             $scope.index_sel = "";
     };
-    $scope.live = function (appId, storage_list,ip_address) {
-        $scope.ipAddress=ip_address;
+    //MQTT客户端变量
+    var client;
+    var timer_beat;
+    $scope.live = function (appId, storage_list, ip_address) {
+        $scope.ipAddress = ip_address;
         $scope.open_hls_storage = storage_list[0];
         console.log($scope.open_hls_storage);
         $http.post(urlBase + "/api/2/livecontrol/tostorage/" + $scope.open_hls_storage + "/").success(function (dtata) {
@@ -200,32 +203,139 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
             isfullscreen: true//是否双击全屏，默认为true
         });
 
-        //登陆到MQTT的密钥 以后希望从该系统中分发获取,动态的
-        var pub = "pub_4680fb56141e58d6ac477bf0d39e1fb2";
-        var sub = "sub_6e978bbdd650bc1e22614eb93064f670";
+        //登陆到MQTT的密钥 以后希望从该系统中分发获取
+        var pub = "camera";
+        var sub = "123qwe";
+        //订阅的主题；需要GetKey()计算
+        var topic = "exingcai/iot/camera/"
+        //标志位：标记是否已经进行初始化
+        var initDone = 0;
+        //标志位：用来表示是否需要打开定时器发送心跳包
+        var setTimer = true;
+        //定时发送心跳包的定时器变量
 
-        // ROP.Enter(pub,sub);//必须的
-        // clearInterval(timer_beat);
-        // timer_beat = window.setInterval(HeartBeat,20000);
-        // //发送心跳包函数
-        // function HeartBeat()
-        // {
-        //     var jstr =
-        //     {
-        //         appID:appId //appID，用来确定频道位置以后会换成新的标记
-        //
-        //     };
-        //     ROP.Publish(JSON.stringify(jstr),'beat');//发送MQTT指令
-        // }
+        //计算订阅主题的函数
+        function GetKey() {
+            if (appId == null) {
+                setTimer = false;
+                return;
+            }
+            if (appId.indexOf("GZ") >= 0) {
+                topic = topic + "IOTGZ";
+            }
+            else if (appId.indexOf("YT") >= 0) {
+                topic = topic + "IOTYT"
+
+            }
+            else if (appId.indexOf("iot") >= 0) {
+
+                topic = topic + "IOTSH"
+
+            }
+            else {
+                setTimer = false;
+            }
+        }
+
+        //网页一加载就开始运行
+        function Init() {
+
+
+            //获取MQTT密钥
+            GetKey();
+            //连接MQTT
+            InitMqtt();
+            initDone = 1;
+        }
+
+        //初始化MQTT的函数
+        function InitMqtt() {
+
+            client = new Paho.MQTT.Client("211.152.46.42", 8083, "myclientid_" + parseInt(Math.random() * 100, 10));
+            // set callback handlers
+            client.onConnectionLost = onConnectionLost;
+            client.onMessageArrived = onMessageArrived;
+            //client.onSubscribeSuccess = onSubscribeSuccess;
+            //client.onSubscribeFailure = onSubscribeFailure;
+
+            // connect the client
+            client.connect({onSuccess: onConnect, userName: pub, password: sub, mqttVersion: 3});
+
+            // called when the client connects
+            function onConnect() {
+                // Once a connection has been made, make a subscription and send a message.
+                console.log("onConnect");
+            }
+
+            // called when the client loses its connection
+            function onConnectionLost(responseObject) {
+                console.log("responseObject.errorCode:" + responseObject.errorCode);
+                if (responseObject.errorCode !== 0) {
+                    console.log("onConnectionLost:" + responseObject.errorMessage);
+                }
+            }
+
+            // called when a message arrives
+            function onMessageArrived(message) {
+                console.log("onMessageArrived:" + message.payloadString);
+                console.log(message);
+                var data = JSON.parse(message.payloadString);
+                console.log(data);
+            }
+
+            function onSubscribeSuccess() {
+                subscribed = true;
+                console.log("subscribed", subscribed);
+            };
+
+            function onSubscribeFailure(err) {
+                subscribed = false;
+                console.log("subscribe fail. ErrorCode: %s, ErrorMsg: %s", err.errCode, err.errorMessage);
+            };
+
+        }
+
+        function sendMqtt(string) {
+            var message = new Paho.MQTT.Message(string);
+            message.destinationName = topic;
+            client.send(message);
+        }
+
+
+        //发送心跳包函数
+        function HeartBeat() {
+            var jstr =
+            {
+                type: 4120,
+                appID: appId//appID，用来确定频道位置以后会换成新的标记
+            };
+            sendMqtt(JSON.stringify(jstr));
+        }
+
+        //打开直播流
+
+
+        if (initDone == 0) {
+            Init();
+        }
+        var jstr = {type: 4310, appID: appId}
+        // sendMqtt(JSON.stringify(jstr));
+        //打开定时器
+        clearInterval(timer_beat);
+        timer_beat = window.setInterval(HeartBeat, 20000);
+        //20s 的周期发送心跳包
 
 
     };
-    $scope.close=function () {
-        $scope.liveStatus=false;
+    $scope.close = function () {
+        $scope.liveStatus = false;
         //闭流
-        $http.post(urlBase+"/api/2/livecontrol/closestorage/"+$scope.open_hls_storage+"/").success(function(dtata){
-            console.log("<=======闭流成功====>"+$scope.open_hls_storage);
-        }).error(function(){
+        $http.post(urlBase + "/api/2/livecontrol/closestorage/" + $scope.open_hls_storage + "/").success(function (dtata) {
+            console.log("<=======闭流成功====>" + $scope.open_hls_storage);
+            clearInterval(timer_beat);
+            client.disconnect();
+
+        }).error(function () {
             alert("有点错误");
         })
 

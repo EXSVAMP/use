@@ -1,4 +1,4 @@
-<div ng-controller="userCtrl" name="user">
+<div name="user">
 	<script type="text/ng-template" id="myModalContent.html">
     	<div class="modal-header">
         	<h3 class="modal-title"><span class="icon-icon_RFIDcard"></span>{{item.title}}</h3>
@@ -19,7 +19,7 @@
               <input type="password" class="form-control" id="re_password" placeholder="请确认密码" ng-model="re_password">
             </div>
           		<div class="form-group">
-    				<label for="role2">角色:</label> 
+    				<label for="role2">角色:</label>
     				<ui-select ng-model="role2" theme="bootstrap" on-select="roleSel(role2)">
             			<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
             			<ui-select-choices repeat="item in roleList">
@@ -56,7 +56,7 @@
 	<div class="main-content user-content">
 		<form role="form" class="search-bar user-select">
 			<div class="form-group">
-    			<label for="role2">角色:</label> 
+    			<label for="role2">角色:{{roleTemp}}</label>
     			<ui-select ng-model="role2" theme="bootstrap" on-select="roleSel(role2)">
             		<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
             		<ui-select-choices repeat="item in roleList">
@@ -116,8 +116,8 @@
 				<div class="table-content-user-detail">
 					<p>
 						<span class="table-content-user-name">NO:{{item.id}}</span>
-						<span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span>
-						<span class="rfid-edit icon-icon_edit" ng-click="open('md-edit-user','modify',$index)"></span>
+						<span class="btn rfid-delete icon-icon_cancel" ng-class="{true:'un_rfid-delete'}[item.role==2||item.role==3]" ng-disabled="item.role==2||item.role==3"  ng-click="open('md-delete','delete',$index)"></span>
+						<span class="btn rfid-edit icon-icon_edit" ng-class="{true:'un_rfid-edit'}[item.role==2||item.role==3]" ng-disabled="item.role==2||item.role==3"  ng-click="open('md-edit-user','modify',$index)"></span>
 					</p>
 				</div>
 				<div class="table-content-user-detail">
