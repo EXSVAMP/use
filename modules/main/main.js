@@ -414,7 +414,8 @@ app.controller("sideBarCtrl",function($scope, $rootScope,$location){
         "account":false,
         "location":false,
         "pollinventory":false,
-        "manualinventory":false
+        "manualinventory":false,
+        "functionSet":false
     }
     
     $scope.switch=function(param){

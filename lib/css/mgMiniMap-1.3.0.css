@@ -4,11 +4,11 @@
     border: 2px solid #aaa;
     border-radius: 3px;
     box-shadow: 2px 2px 19px #aaa;
-    height: 200px;
+    height: 220px;
     position: fixed;
     right: 10px;
     top: 30px;
-    width: 200px;
+    width: 220px;
     z-index: 30;
 }
 .mgNavigator .mgViewport {
@@ -19,6 +19,7 @@
     opacity: 0.4;
     position: absolute;
     z-index: 31;
+
 }
 .mgResizing {
     border: 1px dotted blue;
@@ -35,7 +36,7 @@
 .mgElement {
     background-color: #eeeeef;
     border: 2px solid #346789;
-    color: black;
+    color:#aaa;
     font-size: 11px;
     height: 100px;
     position: absolute;

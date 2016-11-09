@@ -3025,9 +3025,10 @@
   .functionSet .main-content .commonModule .module_header_content {
     width: 100%;
     overflow: hidden;
-    padding: 25px 20px; }
+    padding: 0px 20px 20px 20px; }
     .functionSet .main-content .commonModule .module_header_content .module_content {
-      padding-right: 20px; }
+      padding-right: 20px;
+      margin-top: 20px; }
       .functionSet .main-content .commonModule .module_header_content .module_content .module_info {
         min-width: 250px;
         height: 80px;
