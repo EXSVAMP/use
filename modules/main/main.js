@@ -234,6 +234,9 @@ app.controller("MasterCtrl",function($scope, $cookieStore, $http, baseUrl, ngDia
 
 app.controller("headerCtrl",function($scope, $cookieStore, $http, $uibModal, baseUrl, ngDialog, $rootScope){
 	var baseUrl = baseUrl.getUrl();
+    // $scope.imgClick=function(){
+    //     screenfull.request();
+    // }
 	$scope.header_username = $cookieStore.get("iotcloud-token").loginName;
 	// $scope.old_password_len = $cookieStore.get("passlen");
     $("body").on("click",function(){
@@ -410,7 +413,8 @@ app.controller("sideBarCtrl",function($scope, $rootScope,$location){
         "account":false,
         "location":false,
         "pollinventory":false,
-        "manualinventory":false
+        "manualinventory":false,
+        "functionSet":false
     }
     
     $scope.switch=function(param){

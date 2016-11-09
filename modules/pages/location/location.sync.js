@@ -6,7 +6,9 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     $scope.message = 'Please Wait...';
     $scope.backdrop = true;
     $scope.promise = null;
-    $scope.fullscreenObj = false
+    $scope.fullscreenObj = false;
+    // $scope.sizeTemp=2;
+    $scope.size=1.0;
     // $scope.warnInfo="";
     var scale_ratio_width = 1;
     var scale_ratio_height = 1;
@@ -36,15 +38,31 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     }
 
 
-   var size=1.0;
+
   $scope.zoomin= function(){
-       size=size-0.1;
+      $scope.size=$scope.size-0.1;
       $scope.set();
    }
   $scope.set=function(){
-      document.body.style.cssText=document.body.style.cssText+';-webkit-transform:scale('+size+');-webkit-transform-origin:0 0;';
+      if($scope.size>=0.2&&$scope.size<=2){
+          document.getElementById("location").style.cssText= document.getElementById("location").style.cssText+';-webkit-transform:scale('+$scope.size+');-webkit-transform-origin:0 0;';
+      }
+   // var miniMap_cssText=$(".mgNavigator").css("cssText");
+   // var  res=miniMap_cssText+';-webkit-transform:scale('+size+');-webkit-transform-origin:0 0;';
+   // $(".mgNavigator").css("cssText",res);
+      if($scope.size==1){
+          // $(".mgNavigator").show();
+      }
+      if($scope.size<0.5){
+          // $(".mgNavigator").hide();
+      }
+      // $scope.size=size;
   }
 
+  $scope.zoomout=function(){
+      $scope.size=$scope.size+0.1;
+      $scope.set();
+  }
 
 
 
@@ -130,6 +148,12 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
             if($(".mgNavigator").length>0){
                 $(".mgNavigator").remove();
             }
+            // if($scope.size==1){
+            //     $(".mgNavigator").show();
+            // }
+            // if($scope.size<0.5){
+            //     $(".mgNavigator").hide();
+            // }
 
             if(data.code==200){
                 $scope.dataList = data.data;
@@ -150,7 +174,17 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
                     })
                     return flag;
                 }
+                //地图保存错误状态
+                $scope.errorState=function(obj,img){
+                    //有异常
+                    if(img.status==2){
+                        obj.error=2;
+                        return false;
+                    }else if(img.status==1){
+                        obj.unerror=1;
+                    }
 
+                }
                 $scope.info=function(list){
                     var  res="";
                     for(var i=0;i<list.length;i++){
@@ -176,9 +210,9 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
                 }
 
                 //$(window).mgMiniMap({elements: '.board_1',liveScroll: true, draggable: true,debug:true,resizable:true});
-                $(window).mgMiniMap({elements: '.board_1',liveScroll: true, draggable: true,debug:true,resizable:true});
+                $(window).mgMiniMap({elements: '.bor',liveScroll: true, draggable: true,debug:true,resizable:true});
                 $(".mgNavigator").append("<div class='minimap-fullscreen' style='position: absolute;top: -60px;right: 0px;width:35px;height:35px;background:#000;text-align:center;cursor:pointer;'><span class='icon-icon_compress icon-icon_expand' id='icon_icon_expand' style='font-size: 32px;color: #fff;'></span></div>");
-               
+
                 $(".minimap-fullscreen").click(function(e){
                     e.preventDefault();
                     e.stopPropagation();
@@ -190,9 +224,9 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
                         $scope.openfull_body();
                         $(window).mgMiniMap("update");
                          $scope.openFull();
-                        
+
                     }
-                }); 
+                });
 
             }else{
                 alert(data.message)
