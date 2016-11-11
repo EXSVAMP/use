@@ -65,92 +65,47 @@
                         </tr>
                     </thead>
                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="normal_func">正常入库</div>
+                        <tr ng-repeat="items in dataList_detail" >
+                            <td ng-class="{'fontstaus':items.status==0,'unfontstaus':items.status==1}">
+                                <div class="normal_func" style="padding: 5px">{{items.sub_event_display}}</div>
                                 <div class="checkbox normal_checkbox" >
-                                    <input type="checkbox" ng-click="item.checked=!item.checked" ng-checked="item.checked"/>
+                                    <input type="checkbox"  ng-click="items.checked=!items.checked;setDetail(items)" ng-checked="items.checked"/>
                                     <label></label>
-                                </div>
+                                </div>{{}}
                             </td>
-                            <td>
-                                <div class="noset">
-                                    <input type="radio"  ng-click="item.checked=!item.checked" ng-checked="item.checked" name="no" class="no"/>缺省
+                            <td ng-class="{'fontstaus':items.status==0,'unfontstaus':items.status==1}">
+                                <div class="noset"  >
+                                    <input type="radio"  ng-disabled="items.status==1" ng-click="items.set_type='0';setDetail(items)"  ng-checked="items.set_type==0;"  name="set_{{$index}}" class="no"/>
                                 </div>
                                 <div class="customset">
-                                    <input type="radio"  ng-click="item.checked=!item.checked" ng-checked="item.checked" name="custom" class="custom"/>自定义
+                                    <input type="radio" ng-disabled="items.status==1" ng-click="items.set_type='1';setDetail(items)" ng-checked="items.set_type==1"   name="set_{{$index}}" class="custom"/>自定义
                                 </div>
                             </td>
-                            <td>
-                                <div class="warn_left">警告灯L1</div>
-                                <div class="warn_right">绿灯闪烁</div>
-                            </td>
-                            <td>
-                                <div class="camera_left">警告灯L1</div>
-                                <div class="camera_right">绿灯闪烁</div>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="abnormal_func">
-                                    异常出入库,已出库的<br>RFID不能合法出入库
-                                </div>
-                                <div class="checkbox normal_checkbox" >
-                                    <input type="checkbox" ng-click="item.checked=!item.checked" ng-checked="item.checked"/>
-                                    <label></label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="noset">
-                                    <input type="radio"  ng-click="item.checked=!item.checked" ng-checked="item.checked" name="abnormal_no" class="no"/>缺省
-                                </div>
-                                <div class="customset">
-                                    <input type="radio"  ng-click="item.checked=!item.checked" ng-checked="item.checked" name="abnormal_custom" class="custom"/>自定义
-                                </div>
-                            </td>
-                            <td>
-                                <div class="abnormal_warn_left">
-                                    <ui-select ng-model="a" theme="bootstrap"
-                                               on-select="a=$select.selected">
-                                        <ui-select-match placeholder="--请选择-">{{$select.selected}}</ui-select-match>
-                                        <ui-select-choices repeat="item in selections">
-                                            <div ng-bind-html="item | highlight: $select.search"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                </div>
-                                <div class="abnormal_warn_right">
-                                    <ui-select ng-model="a" theme="bootstrap"
-                                               on-select="a=$select.selected">
-                                        <ui-select-match placeholder="--请选择-">{{$select.selected}}</ui-select-match>
-                                        <ui-select-choices repeat="item in selections">
-                                            <div ng-bind-html="item | highlight: $select.search"></div>
+                            <td class="light" ng-class="{'fontstaus':items.status==0,'unfontstaus':items.status==1}">
+                                <div class="noset_left">
+                                    <ui-select ng-model="items.light_action"  theme="bootstrap"
+                                               on-select="changeset('light_action',$select.selected.key,items)" ng-disabled="items.status==1||items.set_type==0">
+                                        <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+                                        <ui-select-choices repeat="item.key as (key,item) in light_action_list">
+                                            <div ng-bind-html="item.value | highlight: $select.search"></div>
                                         </ui-select-choices>
                                     </ui-select>
                                 </div>
                             </td>
-                            <td>
-                                <div class="abnormal_camera_left">
-                                    <ui-select ng-model="a" theme="bootstrap"
-                                               on-select="a=$select.selected">
-                                        <ui-select-match placeholder="--请选择-">{{$select.selected}}</ui-select-match>
-                                        <ui-select-choices repeat="item in selections">
-                                            <div ng-bind-html="item | highlight: $select.search"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                </div>
-                                <div class="abnormal_camera_right">
-                                    <ui-select ng-model="a" theme="bootstrap"
-                                               on-select="a=$select.selected">
-                                        <ui-select-match placeholder="--请选择-">{{$select.selected}}</ui-select-match>
-                                        <ui-select-choices repeat="item in selections">
-                                            <div ng-bind-html="item | highlight: $select.search"></div>
+                            <td class="camera" ng-class="{'fontstaus':items.status==0,'unfontstaus':items.status==1}">
+                                <div class="noset_right">
+                                    <ui-select  ng-model="items.camera_action"  theme="bootstrap"
+                                               on-select="changeset('camera_action',$select.selected.key,items)" ng-disabled="items.status==1||items.set_type==0">
+                                        <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
+                                        <ui-select-choices repeat="item.key as (key,item) in camera_action_list">
+                                            <div ng-bind-html="item.value | highlight: $select.search"></div>
                                         </ui-select-choices>
                                     </ui-select>
                                 </div>
                             </td>
 
                         </tr>
+
                    </tbody>
                </table>
            </div>

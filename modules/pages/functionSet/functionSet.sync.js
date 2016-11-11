@@ -1,13 +1,11 @@
 var app = angular.module('RDash');
 app.register.controller("functionSetCtrl", function ($scope, $http, $timeout,$location,baseUrl,listService,global,utils,popService) {
     var urlBase = baseUrl.getUrl();
-
-    $scope.item={};
-    $scope.item.checked=true;
-     $scope.change=function(){
-         alert("123");
-     }
-    $scope.selections=['警报1','警报2','警报3','警报4'];
+    // $scope.selections={};
+    $scope.params={};
+    $scope.light_action_list={};
+    $scope.camera_action_list={};
+    $scope.params.flag=false;
     $scope.search_common=function(){
         $http.get(urlBase+"/api/2/func/mainset").success(function(data){
             $scope.dataList_common=data.data;
@@ -45,6 +43,82 @@ app.register.controller("functionSetCtrl", function ($scope, $http, $timeout,$lo
            }
        });
     }
-    $scope.search_common();
 
+
+   $scope.search_detail=function(){
+        $http.get(urlBase+"/api/2/func/subset").success(function(data){
+                $scope.dataList_detail=data.data;
+             angular.forEach($scope.dataList_detail,function(item){
+                 if(item.status==0){
+                     item.checked=true;
+                 }
+                 if(item.status==1){
+                     item.checked=false;
+                 }
+
+             })
+        }).error(function (data, state) {
+            if (state == 403) {
+                baseUrl.redirect()
+            }
+        });
+   }
+    $scope.choice=function(){
+        $http.get(urlBase+"/api/1/common/choices/?key=sub_event_set").success(function(data){
+            if(data.code==200){
+              $scope.light_action_list=data.data.light_action;
+                $scope.camera_action_list=data.data.camera_action;
+            }
+        })
+    }
+
+
+
+$scope.changeset=function(subject,value,items){
+    if(subject=="light_action"){
+        items.light_action=value;
+    }
+    if(subject=="camera_action"){
+        items.camera_action=value;
+    }
+    // $scope.params.sub_event=items.sub_event;
+    console.log("<=====灯===>"+items.light_action);
+    console.log("<=====相机===>"+items.camera_action);
+     $scope.setDetail(items);
+
+}
+
+
+  $scope.setDetail=function(items){
+      // $scope.params.sub_event=items.sub_event;
+      if(items.checked==false){
+          items.status="1";
+      }
+      if(items.checked==true){
+          items.status="0";
+      }
+
+    $scope.paramsList={
+        "sub_event":items.sub_event,
+        "status":items.status,
+        "set_type":items.set_type,
+        "light_action":items.light_action,
+        "camera_action":items.camera_action,
+    }
+
+      console.log("<=====功能===>"+items.set_type);
+
+      $http.post(urlBase+"/api/2/func/subset",$scope.paramsList).success(function(data){
+          // $scope.search_detail();
+      }).error(function (data, state) {
+          if (state == 403) {
+              baseUrl.redirect()
+          }
+      });
+  }
+
+
+    $scope.search_common();
+    $scope.search_detail();
+    $scope.choice();
 });
