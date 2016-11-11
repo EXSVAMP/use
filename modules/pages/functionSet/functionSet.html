@@ -75,7 +75,7 @@
                             </td>
                             <td ng-class="{'fontstaus':items.status==0,'unfontstaus':items.status==1}">
                                 <div class="noset"  >
-                                    <input type="radio"  ng-disabled="items.status==1" ng-click="items.set_type='0';setDetail(items)"  ng-checked="items.set_type==0;"  name="set_{{$index}}" class="no"/>
+                                    <input type="radio"  ng-disabled="items.status==1" ng-click="items.set_type='0';setDetail(items)"  ng-checked="items.set_type==0;"  name="set_{{$index}}" class="no"/>缺省
                                 </div>
                                 <div class="customset">
                                     <input type="radio" ng-disabled="items.status==1" ng-click="items.set_type='1';setDetail(items)" ng-checked="items.set_type==1"   name="set_{{$index}}" class="custom"/>自定义
