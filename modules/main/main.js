@@ -127,7 +127,6 @@ app.config(function($httpProvider){
 
 app.service("baseUrl",function(constant){
     var url=constant.url;
-    // var url="http://172.16.83.149:9011";
     return {
         getUrl:function(){
             return url;
