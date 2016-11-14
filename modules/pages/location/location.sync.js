@@ -1,6 +1,9 @@
 var app = angular.module('RDash');
-app.register.controller("locationCtrl", function ($scope, $http, $timeout, $interval, $uibModal,baseUrl,$sce,$templateCache,$location) {
+app.register.controller("locationCtrl", function ($scope, $http, $timeout, $interval, $uibModal,baseUrl,$sce,$templateCache,$location,constant) {
     var BaseUrl = baseUrl.getUrl();
+
+
+
     $scope.delay = 0;
     $scope.minDuration = 0;
     $scope.message = 'Please Wait...';
@@ -9,6 +12,7 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     $scope.fullscreenObj = false;
     // $scope.sizeTemp=2;
     $scope.size=1.0;
+    $scope.dataList={};
     // $scope.warnInfo="";
     var scale_ratio_width = 1;
     var scale_ratio_height = 1;
@@ -162,6 +166,25 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
 
                 // console.log($scope.dataList);
 
+
+                // angular.forEach($scope.dataList,function(itemsAll){
+                //
+                //     angular.forEach(itemsAll,function(items,key){
+                //         angular.forEach(items,function(item){
+                //             $scope.itemp=[]
+                //            var o=item.pile_name;
+                //             item[o]=item.goods_list;
+                //             // $scope[hello]=item.goods_list;
+                //             $scope.itemp.push({o:item[hello]});
+                //         })
+                //
+                //     })
+                // })
+
+
+
+
+
                 // 判断警告框
                 $scope.warn=function(list){
                     var flag;
@@ -228,6 +251,7 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
                     }
                 });
 
+
             }else{
                 alert(data.message)
             }
@@ -241,9 +265,9 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
     getData();
 
 
-    window.setInterval(function(){
-        getData();
-    },50000);
+    // window.setInterval(function(){
+    //     getData();
+    // },50000);
 
     $scope.warnShow=function(obj){
         obj.warnflag=true;
@@ -272,7 +296,13 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
         // testSocket.onopen=function (event) {
         //
         // }
-        client = new Paho.MQTT.Client("211.152.46.42", 8083,"myclientid_" + parseInt(Math.random() * 100, 10));
+
+        var websocket_url=constant.websocket_url;
+        var websocket_userName=constant.websocket_userName;
+        var websocket_password=constant.websocket_password;
+        var websocket_port=constant.websocket_port;
+
+        client = new Paho.MQTT.Client(constant.websocket_url,constant.websocket_port,"myclientid_" + parseInt(Math.random() * 100, 10));
         // set callback handlers
         client.onConnectionLost = onConnectionLost;
         client.onMessageArrived = onMessageArrived;
@@ -280,7 +310,7 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
         //client.onSubscribeFailure = onSubscribeFailure;
 
         // connect the client
-        client.connect({onSuccess:onConnect, userName: "iotweb", password: "123qwe!@#", mqttVersion: 3});
+        client.connect({onSuccess:onConnect, userName:constant.websocket_userName, password: constant.websocket_password, mqttVersion: 3});
 
         // called when the client connects
         function onConnect() {
@@ -290,7 +320,12 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
             var store_house_id = localStorage.getItem("storeHouseId");
             console.log("store_house_id:"+store_house_id);
 
-            client.subscribe("exingcai/iot/clould/"+store_house_id+"/eventlog/warning", {onSuccess:onSubscribeSuccess,onFailure:onSubscribeFailure});
+
+
+            client.subscribe("exingcai/iot/clould/storehouse/"+store_house_id+"/eventlog/warning", {onSuccess:onSubscribeSuccess,onFailure:onSubscribeFailure});
+
+
+
 
             // message = new Paho.MQTT.Message("Hello");
             // message.destinationName = "/World";
@@ -309,11 +344,59 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
         function onMessageArrived(message) {
             console.log("onMessageArrived:"+message.payloadString);
             console.log(message);
-            var data=JSON.parse(message.payloadString)
-            var rfid_list=data.rfid_list;
-            var event_feedback_detail_display=data.event_feedback_detail_display;
+            var data_res=JSON.parse(message.payloadString)
 
-            console.log(data);
+            console.log(data_res);
+            // var data_res={
+            //     "pile_name": "0203",
+            //     "status": "2",
+            //     "content": {},
+            //     "name": "0203D",
+            //     "status_display": "无货",
+            //     "id": 137,
+            //     "events":
+            //     {
+            //         "id": 150,
+            //         "event_type": "3",
+            //         "event_type_display": "出库",
+            //         "rfid_reader": 7,
+            //         "camera": 6,
+            //         "description": "[报警]读卡器:[编号:7][序列号:R0002];摄像头:[编号:6][序列号:192.168.11.3];监视到事件:出库;原因:异常出入库,入库监视的RFID不能合法出入库",
+            //         "video_url": "",
+            //         "photo_url": "",
+            //         "event_feedback_type": "1",
+            //         "event_feedback_type_display": "报警",
+            //         "event_feedback_detail": "201",
+            //         "event_feedback_detail_display": "异常出入库,入库监视的RFID不能合法出入库",
+            //         "handle_result": "0",
+            //         "handle_result_display": "未处理",
+            //         "event_datetime": "2016-07-25T15:19:29",
+            //         "camera_ip_address": "192.168.11.3",
+            //         "rfid_reader_serializer": "R0002"
+            //     }
+            //
+            // }
+
+
+            angular.forEach($scope.dataList,function(itemsAll){
+                angular.forEach(itemsAll,function(items){
+                    angular.forEach(items,function(item){
+                        angular.forEach(item.goods_list,function(item_single){
+                            // var arry_temp=[];
+                            // var event_temp=[];
+                            if(item_single.name==data_res.name){
+
+                                item_single.events.unshift(data_res.events);
+                                angular.merge(item_single,data_res);
+
+                            }
+                        })
+
+                    })
+
+                })
+            })
+
         }
 
         function onSubscribeSuccess() {
@@ -327,5 +410,7 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
         };
 
     }
-    // $scope.wsFunc3();
+    $scope.wsFunc3();
+
+
 })

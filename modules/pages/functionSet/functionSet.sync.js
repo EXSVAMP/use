@@ -112,7 +112,7 @@ app.register.controller("functionSetCtrl", function ($scope, $http, $timeout, $l
             }
         });
     }
-
+  
     $scope.search_common();
     $scope.search_detail();
     $scope.choice();

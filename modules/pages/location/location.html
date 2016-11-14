@@ -25,18 +25,17 @@
         </div>
         <div class="goods1">
             <div class="goods_dash" >
-                <div class="goodBoard " ng-repeat="obj in dataList[0].piple_list" >
+                <div class="goodBoard "  ng-repeat="obj in dataList[0].piple_list" ng-model="obj[obj.pile_name]">
+                    <div class="goodBoard_1 bor"  ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
 
-                    <div class="goodBoard_1 bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-
-                        <div  ng-repeat="img in obj.goods_list.slice().reverse() " >
+                        <div  ng-repeat="img in obj.goods_list.slice().reverse() ">
                             <img class="board_1" src="icon-01.svg" ng-show="img.status=='0'" />
                             <img class="board_1" src="icon-03.svg" ng-show="img.status=='1'"/>
                             <img class="board_1" src="icon-04.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
 
                         <img class="tip_1" src="icon-07.svg"/>
-                        <span>{{obj.pile_name}}{{obj.error}}</span>
+                        <span>{{obj.pile_name}}</span>
                     </div>
 
                     <!--警告-->
