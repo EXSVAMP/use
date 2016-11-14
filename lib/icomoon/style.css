@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?vx9f14');
-  src:  url('fonts/icomoon.eot?vx9f14#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?vx9f14') format('truetype'),
-    url('fonts/icomoon.woff?vx9f14') format('woff'),
-    url('fonts/icomoon.svg?vx9f14#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?7b04qj');
+  src:  url('fonts/icomoon.eot?7b04qj#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?7b04qj') format('truetype'),
+    url('fonts/icomoon.woff?7b04qj') format('woff'),
+    url('fonts/icomoon.svg?7b04qj#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,23 +24,41 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-icon_camera:before {
+  content: "\e90b";
+}
+.icon-icon_eventlog:before {
+  content: "\e912";
+}
+.icon-icon_gear:before {
+  content: "\e924";
+}
+.icon-icon_menu_setting:before {
+  content: "\e92c";
+}
+.icon-icon_realtime_text:before {
+  content: "\e92d";
+}
+.icon-icon_user:before {
+  content: "\e92e";
+}
+.icon-icon_userlist:before {
+  content: "\e92f";
+}
+.icon-icon_users:before {
+  content: "\e939";
+}
+.icon-icon_video:before {
+  content: "\e93a";
+}
+.icon-icon_manual_test:before {
+  content: "\e914";
+}
 .icon-icon_warehouse_out:before {
   content: "\e935";
 }
 .icon-icon_change:before {
   content: "\e93c";
-}
-.icon-icon_manual_test:before {
-  content: "\e914";
-}
-.icon-icon_menu_setting:before {
-  content: "\e924";
-}
-.icon-icon_realtime_text:before {
-  content: "\e939";
-}
-.icon-icon_gear:before {
-  content: "\e93a";
 }
 .icon-icon_RFIDcardcontent:before {
   content: "\e93b";
@@ -78,9 +96,6 @@
 .icon-icon_calendar:before {
   content: "\e90a";
 }
-.icon-icon_camera:before {
-  content: "\e90b";
-}
 .icon-icon_cancel:before {
   content: "\e90c";
 }
@@ -98,9 +113,6 @@
 }
 .icon-icon_equipment:before {
   content: "\e911";
-}
-.icon-icon_eventlog:before {
-  content: "\e912";
 }
 .icon-icon_expand:before {
   content: "\e913";
@@ -170,18 +182,6 @@
 }
 .icon-icon_up_open:before {
   content: "\e92b";
-}
-.icon-icon_user:before {
-  content: "\e92c";
-}
-.icon-icon_userlist:before {
-  content: "\e92d";
-}
-.icon-icon_users:before {
-  content: "\e92e";
-}
-.icon-icon_video:before {
-  content: "\e92f";
 }
 .icon-icon_warehouse_complete:before {
   content: "\e930";
