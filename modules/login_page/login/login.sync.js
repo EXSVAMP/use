@@ -13,7 +13,7 @@ app.register.controller("loginCtr", function ($scope, $http, $location, $uibModa
         $scope.person.username = iotcloud_account;
 
     }
-    var iotcloud_token=$cookieStore.getItem("iotcloud-token");
+    var iotcloud_token=$cookieStore.get("iotcloud-token");
     if(iotcloud_token){
         window.location.href = "/index.html";
     }
