@@ -390,6 +390,21 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
             $scope.$digest();
             $(".mgNavigator").remove();
             $(window).mgMiniMap({elements: '.bor', liveScroll: true, draggable: true, debug: true, resizable: true});
+            $(".mgNavigator").append("<div class='minimap-fullscreen' style='position: absolute;top: -60px;right: 0px;width:35px;height:35px;background:#000;text-align:center;cursor:pointer;'><span class='icon-icon_compress icon-icon_expand' id='icon_icon_expand' style='font-size: 32px;color: #fff;'></span></div>");
+            $(".minimap-fullscreen").click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                if ($scope.fullscreenObj) {
+                    $("#body_ele").fullScreen();
+                    $scope.closeFull();
+                } else {
+                    $scope.openfull_body();
+                    $(window).mgMiniMap("update");
+                    $scope.openFull();
+
+                }
+            });
             console.log(data_res);
 
 
