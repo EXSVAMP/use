@@ -11,7 +11,9 @@ app.register.controller("loginCtr", function ($scope, $http, $location, $uibModa
     if(iotcloud_account){
         $scope.remember_account = true;
         $scope.person.username = iotcloud_account;
+        window.location.href = "/index.html";
     }
+
      $scope.login=function(){
         $http.post(BaseUrl+"/api/1/user/login/",$scope.person).success(function(data){
              console.log(data);
