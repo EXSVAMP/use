@@ -784,7 +784,8 @@
     opacity: 0; }
   .sideBar .activeSide {
     text-decoration: none;
-    background-color: #5F9BDB; }
+    background-color: #5F9BDB;
+    color: #ffffff; }
     .sideBar .activeSide a {
       color: #ffffff; }
   .sideBar .unactive {
@@ -3232,6 +3233,8 @@
   float: left;
   width: 50%;
   padding-right: 10px; }
+  .statistics-content .statistics-left .icon-icon_stock_search, .statistics-content .statistics-left .icon-icon_monitor, .statistics-content .statistics-left .icon-icon_adjust_camera, .statistics-content .statistics-left .icon-icon_handheld_machine, .statistics-content .statistics-right .icon-icon_stock_search, .statistics-content .statistics-right .icon-icon_monitor, .statistics-content .statistics-right .icon-icon_adjust_camera, .statistics-content .statistics-right .icon-icon_handheld_machine {
+    margin-right: 8px; }
   .statistics-content .statistics-left .statistics-item, .statistics-content .statistics-right .statistics-item {
     width: 100%;
     height: auto;

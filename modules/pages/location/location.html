@@ -58,7 +58,7 @@
         <div class="goods2_connect" >
             <div class="goods2">
                 <div class="goods_dash">
-                    <div class="goodBoard" ng-repeat="obj in dataList[1].piple_list">
+                    <div class="goodBoard" ng-repeat="obj in dataList[1].piple_list"> {{dash}}
                         <div class="goodBoard_1 bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
 
                             <div  ng-repeat="img in obj.goods_list.slice().reverse() " >
