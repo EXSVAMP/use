@@ -28,7 +28,7 @@ app.register.controller("loginCtr", function ($scope, $http, $location, $uibModa
                  }else{
                     localStorage.removeItem("iotcloud-account");
                  }
-                 window.location.href = "/";
+                 window.location.href = "/index.html";
 
              }else{
                  $scope.showError = true;
