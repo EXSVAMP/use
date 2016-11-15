@@ -11,10 +11,13 @@ app.register.controller("loginCtr", function ($scope, $http, $location, $uibModa
     if(iotcloud_account){
         $scope.remember_account = true;
         $scope.person.username = iotcloud_account;
+
+    }
+    var iotcloud_token=$cookieStore.getItem("iotcloud-token");
+    if(iotcloud_token){
         window.location.href = "/index.html";
     }
-
-     $scope.login=function(){
+    $scope.login=function(){
         $http.post(BaseUrl+"/api/1/user/login/",$scope.person).success(function(data){
              console.log(data);
              if(data.code=='200'){
