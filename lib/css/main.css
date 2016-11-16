@@ -385,8 +385,14 @@ td,th{
     background :#3e4d68;
     font-size: 14px;
     color: #5f9bdb;
-    padding: 0;
+    padding: 0!important;
 }
+
+.header-menu-pos li{
+ padding-left: 20px;
+}
+
+
 
 .header-menu-pos li a{
     font-size: 14px;
@@ -396,8 +402,13 @@ td,th{
 }
 
 .header-menu-pos li a:hover{
-    background: #313d53;
+    background:#313d53;
     color: #fff;
+    text-decoration: none;
+}
+.header-menu-pos li:hover{
+    background:#313d53;
+    color: #fff!important;
     text-decoration: none;
 }
 

@@ -1,3 +1,5 @@
+
+
 <div  class="functionSet" name="functionSet">
     <div class="main-top-bar">
         <p><span class="icon-icon_location"></span>功能设置</p>
@@ -8,7 +10,7 @@
            <div class="module_header" >公共模块</div>
            <div class="module_header_content">
                <div class="col-lg-3 module_content" ng-repeat="item in dataList_common">
-                   <div class="module_info" ng-class="{true:'open',false:'unopen'}[item.checked]">
+                   <div class="module_info {{item.active}}" ng-class="{true:'open',false:'unopen'}[item.checked]"  ng-class="" ng-click="search_detail(item.main_event,item)">
                        <div class="desc">{{item.main_event_display}}</div>
                        <div class="checkbox" >
                            <input type="checkbox" ng-click="item.checked=!item.checked;setCommon(item.main_event,item.checked)" ng-checked="item.checked"/>
@@ -69,9 +71,9 @@
                             <td ng-class="{'fontstaus':items.status==0,'unfontstaus':items.status==1}">
                                 <div class="normal_func" style="padding: 5px">{{items.sub_event_display}}</div>
                                 <div class="checkbox normal_checkbox" >
-                                    <input type="checkbox"  ng-click="items.checked=!items.checked;setDetail(items)" ng-checked="items.checked"/>
+                                    <input type="checkbox"   ng-click="items.checked=!items.checked;setDetail(items)" ng-checked="items.checked"/>
                                     <label></label>
-                                </div>{{}}
+                                </div>
                             </td>
                             <td ng-class="{'fontstaus':items.status==0,'unfontstaus':items.status==1}">
                                 <div class="noset"  >

@@ -22,6 +22,9 @@
          .module_content{
            padding-right:20px;
            margin-top: 20px;
+           .active{
+             border:solid 1px #5f9bdb!important;
+           }
            .module_info{
              min-width: 250px;
              height: 80px;
@@ -29,6 +32,7 @@
              box-shadow: 2px 2px 4px 0 #e8ebf0;
              border: solid 1px #e8ebf0;
              padding: 0px 20px;
+             cursor: pointer;
              .desc{
                display:inline-block;
                float:left;
@@ -247,6 +251,7 @@
     -webkit-transition: 0.4s;
     transition: 0.4s;
   }
+
   .checkbox input {
     position: absolute;
     left: 0;
@@ -264,6 +269,9 @@
   .checkbox input:checked + label:after {
     left:20px;
   }
+  //.checkbox input:checked + label:after {
+  //  left:50px;
+  //}
 
   .checkbox input:checked + label {
     background: #5f9bdb;

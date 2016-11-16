@@ -1,15 +1,20 @@
 var app = angular.module('RDash');
-app.register.controller("functionSetCtrl", function ($scope, $http, $timeout, $location, baseUrl, listService, global, utils, popService) {
+app.register.controller("functionSetCtrl", function ($scope, $http, $timeout, $location, baseUrl, listService, global, utils, popService,$timeout) {
     var urlBase = baseUrl.getUrl();
     // $scope.selections={};
+    $scope.active_event=0;
     $scope.params = {};
     $scope.light_action_list = {};
     $scope.camera_action_list = {};
     $scope.params.flag = false;
+    $scope.dataList_detail={};
     $scope.search_common = function () {
         $http.get(urlBase + "/api/2/func/mainset").success(function (data) {
             $scope.dataList_common = data.data;
             angular.forEach($scope.dataList_common, function (item) {
+                if(item.main_event=="0"){
+                    item.active="active";
+                }
                 if (item.status == 0) {
                     item.checked = true;
                 }
@@ -27,6 +32,7 @@ app.register.controller("functionSetCtrl", function ($scope, $http, $timeout, $l
 
 
     $scope.setCommon = function (main_event, state) {
+
         $scope.main_event = main_event;
         if (state == false) {
             $scope.status = "1";
@@ -34,11 +40,13 @@ app.register.controller("functionSetCtrl", function ($scope, $http, $timeout, $l
         if (state == true) {
             $scope.status = "0";
         }
+
+
         $http.post(urlBase + "/api/2/func/mainset", {
             "main_event": $scope.main_event,
             "status": $scope.status
         }).success(function (data) {
-            $scope.search_common();
+            // $scope.search_common();
         }).error(function (data, state) {
             if (state == 403) {
                 baseUrl.redirect()
@@ -47,24 +55,46 @@ app.register.controller("functionSetCtrl", function ($scope, $http, $timeout, $l
     }
 
 
-    $scope.search_detail = function () {
-        $http.get(urlBase + "/api/2/func/subset").success(function (data) {
-            $scope.dataList_detail = data.data;
+   // $scope.tt="active";
+    $scope.search_detail = function (main_event,item) {
+
+        $scope.active_event=main_event;
+        if(item!==undefined){
+            angular.forEach($scope.dataList_common,function(o){
+                 if(o.main_event==item.main_event){
+                     o.active="active";
+                 }else{
+                     o.active="";
+                 }
+            });
             angular.forEach($scope.dataList_detail, function (item) {
-                if (item.status == 0) {
-                    item.checked = true;
-                }
-                if (item.status == 1) {
                     item.checked = false;
-                }
-
             })
+
+        }
+        
+        $http.get(urlBase + "/api/2/func/subset?main_event="+$scope.active_event).success(function (data) {
+            $scope.dataList_detail = data.data;
+            $timeout(function(){
+                angular.forEach($scope.dataList_detail, function (item) {
+                    if (item.status == 0) {
+                        item.checked = true;
+                    }
+                    if (item.status == 1) {
+                        item.checked = false;
+                    }
+
+                })
+            },100);
+
+
         }).error(function (data, state) {
             if (state == 403) {
                 baseUrl.redirect()
             }
         });
     }
+
     $scope.choice = function () {
         $http.get(urlBase + "/api/1/common/choices/?key=sub_event_set").success(function (data) {
             if (data.code == 200) {
@@ -112,8 +142,8 @@ app.register.controller("functionSetCtrl", function ($scope, $http, $timeout, $l
             }
         });
     }
-  
+    
     $scope.search_common();
-    $scope.search_detail();
+    $scope.search_detail($scope.active_event);
     $scope.choice();
 });

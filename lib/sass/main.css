@@ -344,7 +344,8 @@
 .pop-edit-form-com {
   width: 400px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  padding-bottom: 20px; }
   .pop-edit-form-com label {
     font-size: 12px;
     color: #3e4d68;
@@ -357,6 +358,11 @@
     border: solid 1px #e6e6e6;
     font-size: 12px;
     color: #888888; }
+
+.modal-footer {
+  border: none !important;
+  padding: 0px !important;
+  margin-bottom: 20px; }
 
 .pop-delete-com {
   margin-left: auto;
@@ -651,8 +657,7 @@
 .edit-form-header .repass-form-group {
   margin: auto;
   position: relative;
-  width: 360px;
-  margin-bottom: 20px; }
+  width: 360px; }
 
 .modal-md-edit-header, .modal-md-add-header {
   height: 445px;
@@ -3031,13 +3036,16 @@
     .functionSet .main-content .commonModule .module_header_content .module_content {
       padding-right: 20px;
       margin-top: 20px; }
+      .functionSet .main-content .commonModule .module_header_content .module_content .active {
+        border: solid 1px #5f9bdb !important; }
       .functionSet .main-content .commonModule .module_header_content .module_content .module_info {
         min-width: 250px;
         height: 80px;
         line-height: 80px;
         box-shadow: 2px 2px 4px 0 #e8ebf0;
         border: solid 1px #e8ebf0;
-        padding: 0px 20px; }
+        padding: 0px 20px;
+        cursor: pointer; }
         .functionSet .main-content .commonModule .module_header_content .module_content .module_info .desc {
           display: inline-block;
           float: left;
