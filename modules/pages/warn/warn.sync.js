@@ -1,5 +1,13 @@
 var app = angular.module('RDash');
-app.register.controller("warnCtrl", function ($scope, $http,baseUrl, $timeout,$location,listService,global,PageHandle) {
+app.register.controller("warnCtrl", function ($scope, $http,baseUrl, $timeout,$location,listService,global,PageHandle,sideselect) {
+
+    sideselect.getUrl();
+    
+    
+    // var sideScope = $('div[ng-controller="sideBarCtrl"]').scope();
+    // sideScope.sideState.warn=true;
+    // sideScope.sideState.statistics=false;
+
     listService.init($scope,'/api/1/eventlog/');
     $scope.params.event_feedback_type="1";
     $scope.jumpToPage=0;

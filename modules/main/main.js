@@ -97,26 +97,23 @@ app.factory('PageHandle',function(ngDialog){
         }
     }
 });
-app.service('sideState',function(){
-    $scope.sideState={
-        "statistics":false,
-        "card":false,
-        "content":false,
-        "camera":false,
-        "reader":false,
-        "eventlog":false,
-        "warn":false,
-        "user":false,
-        "account":false,
-        "location":false,
-        "pollinventory":false,
-        "manualinventory":false
-    }
-    return {
-        getState:function(state){
-            
+app.service('sideselect',function($location){
+    var url=$location.url().substring(1);
+    var sideScope = $('div[ng-controller="sideBarCtrl"]').scope();
+    return{
+        getUrl:function(){
+            for(var i in sideScope.sideState){
+                if(i==url){
+                    sideScope.sideState[i]=true;
+                }else{
+                    sideScope.sideState[i]=false;
+                }
+            }
         }
     }
+
+
+
     
 })
 app.config(function($httpProvider){
