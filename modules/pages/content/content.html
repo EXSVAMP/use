@@ -1,7 +1,7 @@
 <div class="RFID_Content" name="content">
     <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
-            <h3 class="modal-title"><span class="icon-icon_RFIDcardcontent"></span>{{item.title}}</h3>
+            <p class="modal-title"><span class="icon-icon_RFIDcardcontent"></span>{{item.title}}</p>
         </div>
         <div class="modal-body row">
             <div ng-show="item.text">{{item.text}}</div>
@@ -40,8 +40,8 @@
         </div>
         <div class="modal-footer">
             <div class="modal-footer-resize-com modal-footer-resize-content">
-                <button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()">确定</button>
-                <button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
+                <button class="btn btn-primary btn-solid-back {{btn_ok_exit}}" type="button" ng-click="ok()">确定</button>
+                <button class="btn btn-warning btn-blank-back {{btn_cancel_exit}}" type="button" ng-click="cancel()">取消</button>
             </div>
         </div>
     </script>

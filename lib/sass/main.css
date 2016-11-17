@@ -345,7 +345,7 @@
   width: 400px;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 20px; }
+  padding-bottom: 5px; }
   .pop-edit-form-com label {
     font-size: 12px;
     color: #3e4d68;
@@ -393,10 +393,22 @@
     font-size: 12px;
     color: #ffffff; }
   .modal-footer-resize-com .btn-blank-back {
-    background-color: #ffffff;
+    background-color: #fff;
     border: solid 1px #5f9bdb;
     font-size: 12px;
     color: #5f9bdb; }
+  .modal-footer-resize-com .btn-ok-exit {
+    background-color: #ffffff;
+    border: solid 1px #ff6b6b;
+    color: #ff6b6b; }
+  .modal-footer-resize-com .btn-cancel-exit {
+    background-color: #5f9bdb;
+    color: #fff; }
+
+.btn-primary {
+  color: #fff;
+  background-color: #5f9bdb;
+  border-color: #5f9bdb; }
 
 .modal-md-delete {
   position: absolute;
@@ -415,6 +427,17 @@
   left: 50%;
   margin-top: -146.5px;
   margin-left: -200px; }
+
+.modal-title {
+  font-size: 18px; }
+  .modal-title span {
+    font-size: 16px;
+    margin-right: 10px; }
+
+.modal-header {
+  min-height: 16.43px;
+  padding: 10px 15px 10px 15px;
+  border-bottom: 1px solid #e5e5e5; }
 
 .ui-select-container .select-item {
   line-height: 20px; }
@@ -1381,14 +1404,14 @@
       top: -38px;
       left: 2px; }
 .camera_Content .icon-icon_edit {
-  font-size: 16px;
+  font-size: 14px;
   color: #45b6b0;
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 5px;
   cursor: pointer; }
 .camera_Content .icon-icon_cancel {
-  font-size: 16px;
+  font-size: 14px;
   color: red;
   margin-top: 5px;
   cursor: pointer; }
@@ -1437,7 +1460,8 @@
       height: 34px;
       border: solid 1px #ccc;
       border-radius: 4px;
-      color: #888888 !important; }
+      color: #888888 !important;
+      padding-left: 10px; }
 
 .camera_modal-footer {
   text-align: center; }
@@ -2981,7 +3005,8 @@
       height: 34px;
       border: solid 1px #ccc;
       border-radius: 4px;
-      color: #888888 !important; }
+      color: #888888 !important;
+      padding-left: 10px; }
     .modal-edit .form-group-selin .errorInfoReg {
       color: red;
       font-size: 12px;

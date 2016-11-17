@@ -283,6 +283,8 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
     };
     
     if(items.method=="modify"){
+        $scope.btn_ok_exit = '';
+        $scope.btn_cancel_exit = '';
         //document.getElementById("repass_form").reset(); 
         $scope.repass_test=false;
         $scope.repass_new=false;
@@ -325,6 +327,7 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
             var confirm_pass = $scope.repass_reconfirm_password;
             if(old_pass && new_pass && confirm_pass == new_pass){
                 $scope.btn_ok_fail = "";
+                
             }else
                 $scope.btn_ok_fail = "btn_ok_fail";
         }
@@ -382,6 +385,8 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
         };
     
     }else if(items.method=="delete"){
+        $scope.btn_ok_exit = 'btn-ok-exit';
+        $scope.btn_cancel_exit ='btn-cancel-exit';
         $scope.ok = function(){
             $http.get(baseUrl+"/api/1/user/logout/").success(function(data){
                 if(data.code=="200"){
@@ -504,12 +509,18 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,ng
         }
         return output
     }
+    if(items.method=="delete"){
+        $scope.btn_ok_exit = 'btn-ok-exit';
+        $scope.btn_cancel_exit ='btn-cancel-exit';
+    }
     if(items.method!="delete"&&items.method!="replace"){
         for(var item in items.choice.data.status){
             $scope.choice[item] = items.choice.data.status[item];
         }
     }
     if(items.method=="modify"){
+        $scope.btn_ok_exit = '';
+        $scope.btn_cancel_exit = '';
         $scope.serial_number = items.data.serial_number;
     }
     $scope.ok = function(){
@@ -747,6 +758,8 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
             $uibModalInstance.close();
         };
     }else if(items.method=="modify"){
+        $scope.btn_ok_exit="";
+        $scope.btn_cancel_exit="";
         $scope.rfid_type_Items = items.scope.rfid_type_Items;
         $scope.rfid_type_Items = $scope.rfid_type_Items.slice(0,$scope.rfid_type_Items.length-1);
         $scope.statusInfo = items.scope.statusInfo;
@@ -810,6 +823,8 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
             $uibModalInstance.close();
         };
     }else if(items.method=="delete"){
+        $scope.btn_ok_exit="btn-ok-exit";
+        $scope.btn_cancel_exit="btn-cancel-exit";
         $scope.rfid_type_Items = items.scope.rfid_type_Items;
         $scope.rfid_type_Items = $scope.rfid_type_Items.slice(0,$scope.rfid_type_Items.length-1);
         $scope.statusInfo = items.scope.statusInfo;
@@ -896,6 +911,8 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
         };
     }else if(items.method=="modify"){
         //$scope.choice = items.choice;
+        $scope.btn_ok_exit="";
+        $scope.btn_cancel_exit="";
         var choiceStr = JSON.stringify(items.choice_hash);
         var choiceArr = JSON.parse(choiceStr);
         $scope.choice = choiceArr;
@@ -945,7 +962,10 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
                 });
         };
     }else if(items.method=="delete"){
+        $scope.btn_ok_exit="btn-ok-exit";
+        $scope.btn_cancel_exit="btn-cancel-exit";
         $scope.ok = function(){
+
             $http.delete(baseUrl+"/api/1/reader/"+$scope.item.data.id+"/").success(function(data){
                 if(data.code=="200"){
                     items.scope.submit_search();
@@ -985,6 +1005,8 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
     }
     var usernameMaxLen = 30;
     if(items.method=="add"){
+        $scope.btn_ok_exit ='';
+        $scope.btn_cancel_exit ='';
         $scope.disAlter = false;
         $scope.role2 = {key:4,value:"其它"};
         $scope.status2 = {key:false,value:"未激活"};
@@ -1046,6 +1068,8 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
 
         };
     }else if(items.method=="modify"){
+        $scope.btn_ok_exit = '';
+        $scope.btn_cancel_exit ='';
         $scope.disAlter = true;
         $scope.role2 = {key:items.data.user_role_type,value:items.data.get_user_role_type_display};
         $scope.role = items.data.user_role_type;
@@ -1087,6 +1111,8 @@ app.controller("ModalUser", function($scope,$uibModalInstance,$http,items,baseUr
                 });
         };
     }else if(items.method=="delete"){
+        $scope.btn_ok_exit = 'btn-ok-exit';
+        $scope.btn_cancel_exit ='btn-cancel-exit';
         $scope.ok = function(){
             $http.delete(baseUrl+"/api/1/user/"+$scope.item.data.id+"/").success(function(data){
                 if(data.code=="200"){

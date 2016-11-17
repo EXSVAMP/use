@@ -206,7 +206,7 @@
   }
   .icon-icon_edit{
     //font-size:18px;
-    font-size: 16px;
+    font-size: 14px;
     color: #45b6b0;
 
     margin-left: 5px;
@@ -217,7 +217,7 @@
   };
   .icon-icon_cancel{
     //font-size:18px;
-    font-size: 16px;
+    font-size: 14px;
     color: red;
     margin-top: 5px;
     cursor: pointer;
@@ -280,6 +280,7 @@
       border: solid 1px #ccc;
     border-radius: 4px;
       color: #888888 !important;
+      padding-left: 10px;
     }
   };
 

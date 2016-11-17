@@ -2,7 +2,7 @@
 
     <script type="text/ng-template" id="myModalContentHeader.html">
     	<div class="modal-header">
-        	<p class="modal-title" style="font-size: 16px"><span ng-class="{false:'icon-icon_password',true:'icon-icon_logout'}[isDel]" style="font-size:16px "></span>{{item.title}}</p>
+        	<p class="modal-title" ><span ng-class="{false:'icon-icon_password',true:'icon-icon_logout'}[isDel]"></span>{{item.title}}</p>
     	</div>
     	<div class="modal-body row">
             <div ng-show="item.text">{{item.text}}</div>
@@ -41,8 +41,8 @@
     	</div>
     	<div class="modal-footer">
       		<div class="modal-footer-resize-com modal-footer-resize-card">
-        		<button class="btn pull-left btn_ok {{btn_ok_fail}}" type="button" ng-click="ok()">确定</button>
-        		<button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
+        		<button class="btn pull-left btn_ok {{btn_ok_fail}} {{btn_ok_exit}}" type="button" ng-click="ok()">确定</button>
+        		<button class="btn btn-warning btn-blank-back {{btn_cancel_exit}}" type="button" ng-click="cancel()">取消</button>
       		</div>
     	</div>
 	</script>

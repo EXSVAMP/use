@@ -45,8 +45,8 @@
     	</div>
     	<div class="modal-footer">
       		<div class="modal-footer-resize-com modal-footer-resize-card">
-        		<button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()">确定</button>
-        		<button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
+        		<button class="btn btn-primary btn-solid-back {{btn_ok_exit}}" type="button" ng-click="ok()">确定</button>
+        		<button class="btn btn-warning btn-blank-back {{btn_cancel_exit}}" type="button" ng-click="cancel()">取消</button>
       		</div>
     	</div>
 	</script>
@@ -56,7 +56,7 @@
 	<div class="main-content user-content">
 		<form role="form" class="search-bar user-select">
 			<div class="form-group">
-    			<label for="role2">角色:{{roleTemp}}</label>
+    			<label for="role2">角色:</label>
     			<ui-select ng-model="role2" theme="bootstrap" on-select="roleSel(role2)">
             		<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
             		<ui-select-choices repeat="item in roleList">
