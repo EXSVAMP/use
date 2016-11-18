@@ -93,7 +93,7 @@
                   </span>
                   <div style="clear:both"></div>
                   <span class="contentBtn">
-                      <button type="button" class="btn copyBtn" id="wms">复制</button>
+                      <button type="button" class="btn copyBtn {{set_active}}" ng-mouseenter="set('wms')" ng-mouseleave="set_reset('wms')" id="wms">复制</button>
                        <button type="button" class="btn resetBtn" ng-click="reset(0)">重置</button>
                   </span>
                 </div>
@@ -114,7 +114,7 @@
                   </span>
                     <div style="clear:both"></div>
                   <span class="contentBtn">
-                      <button type="button" class="btn copyBtn" id="box">复制</button>
+                      <button type="button" class="btn copyBtn {{set_active1}}" ng-mouseenter="set('box')" ng-mouseleave="set_reset('box')" id="box">复制</button>
                        <button type="button" class="btn resetBtn" ng-click="reset(1)">重置</button>
                   </span>
                 </div>

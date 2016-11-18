@@ -24,9 +24,15 @@
 					/*line-height: 34px;*/
 				}
 			}
+			.btn-rfid-search:hover{
+				background-color: #07B1A8;
+			}
 			.btn-rfid-add{
 				background-color: #fc763c;
 				margin-right: 0;
+				&:hover{
+					background-color: #F45714;
+				}
 			}
 		}
 	}

@@ -195,6 +195,10 @@
           text-align: center;
           color: #5f9bdb;
           line-height: 1.8;
+          &:hover{
+            border-color:#1688EC ;
+            color:#1688EC;
+          }
         }
         .btn-next{
           width: 80px;
@@ -205,6 +209,10 @@
           text-align: center;
           color: #ffffff;
           line-height: 1.8;
+          &:hover{
+            background-color:#1688EC;
+          }
+
         }
       }
       

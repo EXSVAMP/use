@@ -392,6 +392,11 @@
     cursor: pointer;
     font-size: 12px;
     color: #ffffff; }
+  .modal-footer-resize-com .btn-solid-back:hover {
+    background-color: #1688EC; }
+  .modal-footer-resize-com .btn-blank-back:hover {
+    border-color: #1688EC;
+    color: #1688EC; }
   .modal-footer-resize-com .btn-blank-back {
     background-color: #fff;
     border: solid 1px #5f9bdb;
@@ -401,14 +406,23 @@
     background-color: #ffffff;
     border: solid 1px #ff6b6b;
     color: #ff6b6b; }
+    .modal-footer-resize-com .btn-ok-exit:hover {
+      background-color: #ffffff;
+      border-color: #EB3E3E;
+      color: #EB3E3E; }
   .modal-footer-resize-com .btn-cancel-exit {
     background-color: #5f9bdb;
     color: #fff; }
+    .modal-footer-resize-com .btn-cancel-exit:hover {
+      background-color: #1688EC;
+      color: #fff; }
 
 .btn-primary {
   color: #fff;
   background-color: #5f9bdb;
   border-color: #5f9bdb; }
+  .btn-primary:hover {
+    border-color: #5f9bdb; }
 
 .modal-md-delete {
   position: absolute;
@@ -487,6 +501,9 @@
   background-color: #45B6B0;
   color: #ffffff;
   border-radius: 4px; }
+  .btn-green:hover {
+    background-color: #07B1A8;
+    color: #ffffff; }
 
 .btn-icon {
   margin-right: 5px; }
@@ -636,6 +653,9 @@
         text-align: center;
         color: #5f9bdb;
         line-height: 1.8; }
+        .login .center form .btns-group .btn-backlogin:hover {
+          border-color: #1688EC;
+          color: #1688EC; }
       .login .center form .btns-group .btn-next {
         width: 80px;
         height: 34px;
@@ -645,6 +665,8 @@
         text-align: center;
         color: #ffffff;
         line-height: 1.8; }
+        .login .center form .btns-group .btn-next:hover {
+          background-color: #1688EC; }
     .login .center form .register_ok {
       width: 160px;
       height: 160px;
@@ -965,6 +987,8 @@
           font-size: 16px;
           color: #fff;
           /*line-height: 34px;*/ }
+        .card-content .card-select .btns-group .btn-rfid-search:hover, .card-content .card-select .btns-group .btn-rfid-add:hover {
+          background-color: #07B1A8; }
   .card-content table.table-content thead tr .dwn-arw-af-card::after, .card-content table.table-content thead tr .up-arw-af-card::after {
     content: "\e928";
     position: absolute;
@@ -1134,6 +1158,8 @@
           font-size: 16px;
           color: #fff;
           /*line-height: 34px;*/ }
+        .content-content .content-select .btns-group .btn-rfid-search:hover {
+          background-color: #07B1A8; }
   .content-content .type-sel-tab-pare {
     width: 100%;
     background-color: #ffffff;
@@ -1318,6 +1344,8 @@
           position: relative;
           top: 2px;
           margin-right: 2px; }
+        .camera_Content .content .function_type_select .btns-group .btn-camera-search:hover {
+          background-color: #07B1A8; }
       .camera_Content .content .function_type_select .btns-group .btn-camera-add {
         width: 80px;
         height: 34px;
@@ -1329,6 +1357,8 @@
           font-size: 16px;
           position: relative;
           top: 2px; }
+        .camera_Content .content .function_type_select .btns-group .btn-camera-add:hover {
+          background-color: #F45714; }
   .camera_Content .content .table-content {
     background-color: #ffffff;
     width: 100%;
@@ -1476,6 +1506,8 @@
       background-color: #5f9bdb;
       margin-left: 3px;
       margin-right: 30px; }
+      .camera_modal-footer .cameraBtn .btn-solid-back:hover {
+        background-color: #1688EC; }
     .camera_modal-footer .cameraBtn .btn-blank-back {
       width: 80px;
       height: 34px;
@@ -1483,13 +1515,23 @@
       background-color: #ffffff;
       border: solid 1px #5f9bdb;
       color: #5f9bdb; }
+      .camera_modal-footer .cameraBtn .btn-blank-back:hover {
+        border-color: #1688EC;
+        color: #1688EC; }
     .camera_modal-footer .cameraBtn .btn-solid-back1 {
       background-color: #ffffff;
       border: solid 1px #ff6b6b;
       color: #ff6b6b; }
+      .camera_modal-footer .cameraBtn .btn-solid-back1:hover {
+        background-color: #ffffff;
+        border-color: #EB3E3E;
+        color: #EB3E3E; }
     .camera_modal-footer .cameraBtn .btn-blank-back1 {
       background-color: #5f9bdb;
       color: #ffffff; }
+      .camera_modal-footer .cameraBtn .btn-blank-back1:hover {
+        background-color: #1688EC;
+        color: #ffffff; }
   .camera_modal-footer .cameraBtn1 {
     margin-top: 0px; }
 
@@ -1720,9 +1762,13 @@
         font-size: 16px;
         color: #fff;
         /*line-height: 34px;*/ }
+    .reader-content .reader-select .btns-group .btn-rfid-search:hover {
+      background-color: #07B1A8; }
     .reader-content .reader-select .btns-group .btn-rfid-add {
       background-color: #fc763c;
       margin-right: 0; }
+      .reader-content .reader-select .btns-group .btn-rfid-add:hover {
+        background-color: #F45714; }
 .reader-content table.table-content thead tr .dwn-arw-af-card::after, .reader-content table.table-content thead tr .up-arw-af-card::after {
   content: "\e928";
   position: absolute;
@@ -1836,9 +1882,13 @@
           font-size: 16px;
           color: #fff;
           /*line-height: 34px;*/ }
+      .user-content .user-select .btns-group .btn-rfid-search:hover {
+        background-color: #07B1A8; }
       .user-content .user-select .btns-group .btn-rfid-add {
         background: #fc763c;
         margin-right: 0; }
+        .user-content .user-select .btns-group .btn-rfid-add:hover {
+          background-color: #F45714; }
   .user-content .condition-sort {
     width: 100%;
     height: 34px;
@@ -2442,6 +2492,8 @@
         font-size: 16px;
         color: #fff;
         /*line-height: 34px;*/ }
+    .poll-content .poll-select .btns-group .btn-rfid-search:hover {
+      background-color: #07B1A8; }
 .poll-content .condition-sort {
   width: 100%;
   height: 34px;
@@ -2667,11 +2719,17 @@
         font-size: 16px;
         color: #fff;
         /*line-height: 34px;*/ }
+    .manual-content .manual-select .btns-group .btn-rfid-search:hover {
+      background-color: #07B1A8; }
     .manual-content .manual-select .btns-group .btn-rfid-add {
       background-color: #fc763c; }
+      .manual-content .manual-select .btns-group .btn-rfid-add:hover {
+        background-color: #F45714; }
     .manual-content .manual-select .btns-group .btn-rfid-inventory {
       background-color: #5f9bdb;
       margin-right: 0; }
+      .manual-content .manual-select .btns-group .btn-rfid-inventory:hover {
+        background-color: #1688EC; }
 .manual-content .condition-sort {
   width: 100%;
   height: 34px;
@@ -2849,6 +2907,8 @@
       font-size: 12px;
       text-align: center;
       color: #ffffff; }
+      .modal-md-info-manual .download-result .download-result-excel:hover, .modal-md-info-manual .download-result .download-result-txt:hover {
+        background-color: #1688EC; }
     .modal-md-info-manual .download-result .download-result-txt {
       float: right; }
 
@@ -2912,6 +2972,9 @@
       border: solid 1px #5f9bdb;
       font-size: 12px;
       color: #5f9bdb; }
+      .storeSet_content .main-content .search-bar .edit .editBtn:hover {
+        border-color: #1688EC;
+        color: #1688EC; }
   .storeSet_content .main-content .search-bar .content {
     margin-top: 36px;
     margin-bottom: 20px; }
@@ -2943,6 +3006,10 @@
         color: #ffffff;
         font-size: 12px;
         margin-right: 30px; }
+      .storeSet_content .main-content .search-bar .content .contentBtn .set_active {
+        background-color: #1688EC; }
+      .storeSet_content .main-content .search-bar .content .contentBtn .set_active1 {
+        background-color: #1688EC; }
       .storeSet_content .main-content .search-bar .content .contentBtn .resetBtn {
         width: 80px;
         height: 32px;
@@ -2950,6 +3017,9 @@
         border: solid 1px #5f9bdb;
         color: #5f9bdb;
         font-size: 12px; }
+        .storeSet_content .main-content .search-bar .content .contentBtn .resetBtn:hover {
+          border-color: #1688EC;
+          color: #1688EC; }
 .storeSet_content .main-content .storeSet .icon-icon_gear {
   font-size: 16px;
   position: relative;

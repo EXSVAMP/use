@@ -129,5 +129,21 @@ app.register.controller("storeSetCtrl", function ($scope, $http, $location, $uib
 
     }
 
-
+   $scope.set=function(obj){
+       if(obj=="wms"){
+           $scope.set_active="set_active";
+       }
+       if(obj=="box"){
+           $scope.set_active1="set_active1";
+       }
+    }
+    $scope.set_reset=function(obj){
+        if(obj=="wms"){
+            $scope.set_active="";
+        }
+        if(obj=="box"){
+            $scope.set_active1="";
+        }
+    }
+ 
 })

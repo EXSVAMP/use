@@ -14,6 +14,10 @@
            border: solid 1px #5f9bdb;
            font-size: 12px;
            color:#5f9bdb;
+           &:hover{
+             border-color: #1688EC;
+             color:#1688EC;
+           }
          }
        }
        .content{
@@ -54,7 +58,15 @@
              color: #ffffff;
              font-size: 12px;
              margin-right:30px;
+
            };
+           .set_active{
+             background-color: #1688EC;
+           };
+           .set_active1{
+             background-color: #1688EC;
+           }
+
            .resetBtn{
              width: 80px;
              height: 32px;
@@ -62,6 +74,10 @@
              border:solid 1px #5f9bdb;
              color: #5f9bdb;
              font-size: 12px;
+             &:hover{
+               border-color: #1688EC;
+               color:#1688EC;
+             }
            }
          }
 
