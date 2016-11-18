@@ -1499,7 +1499,7 @@ $timeout(function(){
         $scope.maxSize = 5;
         //$scope.numbers = [10,20,30,40,50];
         $scope.order = {
-            id: false,
+            id:true,
             rfid_card:false,
             rfid_content:false,
             store_house:false
@@ -1509,6 +1509,11 @@ $timeout(function(){
 
         $scope.switch_order = function(key){
             $scope.order[key] = !$scope.order[key];
+            for(var i in $scope.order){
+                if(i!==key){
+                    $scope.order[i]=false;
+                }
+            }
             $scope.submit_search()
         };
 

@@ -49,7 +49,7 @@ define('pages/pollinventory/pollinventory.sync', function(require, exports, modu
     $scope.numbers = [10,20,30,40,50];
     $scope.numbers2 = [2,3,4,5];
     $scope.order = {
-      id: false,
+      id: true,
       status:false,
       updated_at:false,
       date:false
@@ -89,11 +89,11 @@ define('pages/pollinventory/pollinventory.sync', function(require, exports, modu
     $scope.switch_order = function(key){
       $scope.order[key] = !$scope.order[key];
       //单个排序
-       // for(var i in $scope.order){
-       //   if(i!==key){
-       //     $scope.order[i]=false;
-       //   }
-       // }
+       for(var i in $scope.order){
+         if(i!==key){
+           $scope.order[i]=false;
+         }
+       }
       $scope.submit_search()
     };
 

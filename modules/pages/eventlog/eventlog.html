@@ -71,10 +71,10 @@
        <div style="clear: both"></div>
        <div class="condition-sort">
            <ul class="condition-sort-ul">
-               <li class="condition-sort-li" ng-click="order.id=!order.id;refresh()"><p>编号<span ng-class="order.id?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
-               <li class="condition-sort-li" ng-click="order.event_feedback_type=!order.event_feedback_type;refresh()"><p>事件反馈类型<span ng-class="order.event_feedback_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
-               <li class="condition-sort-li" ng-click="order.event_type=!order.event_type;refresh()"><p>事件类型<span ng-class="order.event_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
-               <li class="condition-sort-li" ng-click="order.event_datetime=!order.event_datetime;refresh()"><p>事件发生时间<span ng-class="order.event_datetime?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
+               <li class="condition-sort-li" ng-click="order.id=!order.id;switch('id');refresh()"><p>编号<span ng-class="order.id?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
+               <li class="condition-sort-li" ng-click="order.event_feedback_type=!order.event_feedback_type;switch('event_feedback_type');refresh()"><p>事件反馈类型<span ng-class="order.event_feedback_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
+               <li class="condition-sort-li" ng-click="order.event_type=!order.event_type;switch('event_type');refresh()"><p>事件类型<span ng-class="order.event_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
+               <li class="condition-sort-li" ng-click="order.event_datetime=!order.event_datetime;switch('event_datetime');refresh()"><p>事件发生时间<span ng-class="order.event_datetime?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
            </ul>
            <table class="table table-pagination table-pagination-sort" >
                <thead>

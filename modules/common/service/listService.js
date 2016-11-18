@@ -9,7 +9,7 @@ app.factory('listService', function ($http,baseUrl,url_junction) {
             $scope.totalPage=0;                                 //总页数
             $scope.page=0;
             $scope.listLoadFlag = 0;                            //列表加载标记0:未加载;1:加载中;2已加载
-            if(!$scope.order)$scope.order = {id:false};         //排序字段,true时带入descent
+            if(!$scope.order)$scope.order = {id:true};         //排序字段,true时带入descent
             $scope.params = {index:1,number:10,descent:''};     //查询条件,页码,每页条数,排序字段
             $scope.refresh=function(page,callback){
 
@@ -31,6 +31,9 @@ app.factory('listService', function ($http,baseUrl,url_junction) {
                         descent+=key;
                     }
                 }
+
+             
+
                 $scope.params.descent=descent;
                 $scope.listLoadFlag = 1;
                 $http.get(baseUrl.getUrl() + url+ url_junction.getQuery($scope.params)).success(function(data){

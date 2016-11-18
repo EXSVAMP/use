@@ -155,7 +155,7 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
             $scope.currentSelTab = status;
             $scope.tabActive[status] = true;
           }
-          $scope.order[status] = {id:false,
+          $scope.order[status] = {id:true,
                                   rfid_id:false,
                                   status:false,
                                   rfid_type:false,
@@ -188,6 +188,14 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
 
   $scope.switch_order = function(key){
     $scope.order[$scope.currentSelTab][key] = !$scope.order[$scope.currentSelTab][key];
+
+    //单个排序
+    for(var i in $scope.order[$scope.currentSelTab]){
+      if(i!==key){
+        $scope.order[$scope.currentSelTab][i]=false;
+      }
+    }
+
     $scope.submit_search($scope.currentSelTab,1);
   };
   $scope.setPage = function() {

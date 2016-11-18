@@ -69,7 +69,7 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
     $scope.numbers = [10,20,30,40,50];
   	$scope.numbers2 = [5,6,7,8,9,10];
     $scope.order = {
-        id: false,
+        id: true,
         status:false,
         updated_at:false,
         date:false
@@ -90,6 +90,11 @@ app.register.controller("manualinventoryCtrl", function ($scope, $http, $locatio
 
     $scope.switch_order = function(key){
         $scope.order[key] = !$scope.order[key];
+        for(var i in $scope.order){
+            if(i!==key){
+                $scope.order[i]=false;
+            }
+        }
         $scope.submit_search()
     };
 

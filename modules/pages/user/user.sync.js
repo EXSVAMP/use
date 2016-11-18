@@ -58,7 +58,7 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
     };
 
     $scope.order={
-        id:false,
+        id:true,
         user_role_type:false,
         is_active:false,
         date_joined:false

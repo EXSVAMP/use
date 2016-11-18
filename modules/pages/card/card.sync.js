@@ -78,7 +78,7 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
     $scope.numbers = [10,20,30,40,50];
   	
     $scope.order = {
-        id: false,
+        id: true,
         serial_number: false,
         status:false,
         updated_at:false,
@@ -91,6 +91,11 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
 
     $scope.switch_order = function(key){
         $scope.order[key] = !$scope.order[key];
+        for(var i in $scope.order){
+            if(i!==key){
+                $scope.order[i]=false;
+            }
+        }
         $scope.submit_search()
     };
 

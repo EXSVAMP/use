@@ -17,10 +17,18 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
         if(data.data.length>0)$scope.showDetail($scope.currentIndex);
     };
     $scope.refresh();
-
+   
     $scope.tabSwitch = 0;
     $scope.detail={};
-
+ 
+    
+    $scope.switch=function(key){
+        for(var i in $scope.order){
+            if(i!==key){
+                $scope.order[i]=false;
+            }
+        }
+    }
     $http.get(baseUrl.getUrl()+'/api/1/common/choices/?key=eventlog').success(function(data){
         if(data.code==200){
             angular.merge($scope.selections,data.data);

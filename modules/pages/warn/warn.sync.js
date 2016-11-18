@@ -13,6 +13,14 @@ app.register.controller("warnCtrl", function ($scope, $http,baseUrl, $timeout,$l
     $scope.jumpToPage=0;
     $scope.refresh();
     $scope.selections={};
+
+    $scope.switch=function(key){
+        for(var i in $scope.order){
+            if(i!==key){
+                $scope.order[i]=false;
+            }
+        }
+    }
     $http.get(baseUrl.getUrl()+'/api/1/common/choices/?key=eventlog').success(function(data){
         if(data.code==200){
             angular.merge($scope.selections,data.data);

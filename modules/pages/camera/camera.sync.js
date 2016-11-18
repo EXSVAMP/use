@@ -57,7 +57,7 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
 
     //排序
     $scope.order = {
-        id: false,
+        id: true,
         serial_number: false,
         func_type: false,
         status: false,
@@ -67,6 +67,11 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
 
     $scope.switch_order = function (key) {
         $scope.order[key] = !$scope.order[key];
+        for(var i in $scope.order){
+            if(i!==key){
+                $scope.order[i]=false;
+            }
+        }
         $scope.submit_search();
     };
 

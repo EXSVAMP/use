@@ -93,7 +93,7 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
     });
 
     $scope.order={
-        id:false,
+        id:true,
         serial_number:false,
         status:false,
         func_type:false,
@@ -112,6 +112,11 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
     }
     $scope.switch_order = function(key){
         $scope.order[key] = !$scope.order[key];
+        for(var i in $scope.order){
+            if(i!==key){
+                $scope.order[i]=false;
+            }
+        }
         $scope.submit_search()
     };
     $scope.setShowNum = function(data){
