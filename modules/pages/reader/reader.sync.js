@@ -23,7 +23,7 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
     $scope.numbers = [10,20,30,40,50];
     $scope.listLoadFlag = 1;
     $scope.params = {};
-
+   $scope.cameraList=[];
     $scope.open = function (size, method,index){
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
@@ -46,6 +46,7 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
                             //status_disable:true,
                             choice:$scope.choice,
                             choice_hash:$scope.choice_hash,
+                            cameraList: $scope.cameraList,
                             scope:$scope
                         }
                     }else{
@@ -56,6 +57,7 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
                             data:$scope.dataList[index],
                             choice:$scope.choice,
                             choice_hash:$scope.choice_hash,
+                            cameraList: $scope.cameraList,
                             scope:$scope
                         }
                     }
@@ -91,9 +93,15 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
             baseUrl.redirect()
         }
     });
+    $http.get(baseUrl.getUrl()+"/api/1/camera/").success(function(data){
+        if(data.code==200){
+            $scope.cameraList=data.data;
+
+        }
+    });
 
     $scope.order={
-        id:true,
+        id:false,
         serial_number:false,
         status:false,
         func_type:false,
@@ -112,11 +120,6 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
     }
     $scope.switch_order = function(key){
         $scope.order[key] = !$scope.order[key];
-        for(var i in $scope.order){
-            if(i!==key){
-                $scope.order[i]=false;
-            }
-        }
         $scope.submit_search()
     };
     $scope.setShowNum = function(data){

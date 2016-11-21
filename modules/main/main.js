@@ -849,9 +849,14 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
     $scope.serial_number = "";
     $scope.storage_names = "";
     $scope.ip_address="";
+    $scope.cameraList=items.cameraList;
+    $scope.cameraId="";
     $scope.cancel = function(){
         $uibModalInstance.dismiss('cancel');
     };
+    $scope.change_camera=function(data){
+        $scope.cameraId=data;
+    }
     $scope.func_typeSelFunc = function(data){
         $scope.func_type = data.key;
         console.log(data.key);
@@ -885,7 +890,8 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
                 serial_number:$scope.serial_number,
                 description:$scope.description,
                 storage_names:$scope.storage_names,
-                ip_address:$scope.ip_address
+                ip_address:$scope.ip_address,
+                camera_id:$scope.cameraId
             });
             if($scope.func_type=="100"){
                 query_url["rfid_reader_id"] = $scope.rfid_reader_id;
@@ -912,6 +918,11 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
         $scope.btn_cancel_exit="";
         var choiceStr = JSON.stringify(items.choice_hash);
         var choiceArr = JSON.parse(choiceStr);
+        $scope.cameraId=parseInt(items.data.camera_id);
+        if(isNaN($scope.cameraId)){
+            $scope.cameraId="";
+        }
+
         $scope.choice = choiceArr;
         for(var temp in choiceArr.func_type){
             if(temp == -1){
@@ -940,7 +951,8 @@ app.controller("ModalReader", function($scope,$uibModalInstance,$http,items,base
                     status: $scope.status,
                     serial_number: $scope.serial_number,
                     description: $scope.description,
-                    ip_address:$scope.ip_address
+                    ip_address:$scope.ip_address,
+                    camera_id:$scope.cameraId
                 });
                 $http.put(baseUrl+"/api/1/reader/"+$scope.item.data.id+"/",query_url).success(function(data){
                     if(data.code=="200"){

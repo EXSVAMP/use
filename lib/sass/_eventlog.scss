@@ -155,14 +155,18 @@
               background-color: rgba(0,0,0,.5);
               height:50px;
               min-width:810px;
-              width: 100%;
+              //width: 100%;
               text-align: right;
+              position: absolute;
               .icon{
                 color:#fff;
                 font-size:32px;
                 line-height: 50px;
+                cursor: pointer;
                 &:hover{
-                  color:#337ab7;
+                  //color:#337ab7;
+                  opacity:0.8;
+                  -moz-opacity: 0.8;
                 }
               }
             };

@@ -51,6 +51,7 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
     $("#detail-img-url").resize(function(){
         $scope.container.width=$("#detail-img-video").width();
         $scope.container.height=$("#detail-img-video").height();
+        $(".img-bottom-bar").width($(".photo_address").width());
     })
     $scope.showDetail=function(index){
         $scope.currentIndex=index;

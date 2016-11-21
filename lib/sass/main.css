@@ -1668,15 +1668,17 @@
         bottom: 20px;
         background-color: rgba(0, 0, 0, 0.5);
         height: 50px;
-        width: 100%;
         min-width: 810px;
-        text-align: right; }
+        text-align: right;
+        position: absolute; }
         .main-content .main-detail .main-detail-tab .detail-img .img-bottom-bar .icon {
           color: #fff;
           font-size: 32px;
-          line-height: 50px; }
+          line-height: 50px;
+          cursor: pointer; }
           .main-content .main-detail .main-detail-tab .detail-img .img-bottom-bar .icon:hover {
-            color: #337ab7; }
+            opacity: 0.8;
+            -moz-opacity: 0.8; }
   .main-content .main-detail .main-detail-content {
     width: 100%;
     min-width: 800px;
@@ -1810,7 +1812,9 @@
     float: left;
     margin-right: 53px;
     width: 360px;
-    margin-right: 0; }
+    margin-right: 0;
+    padding-left: 20px !important;
+    margin-right: 30px !important; }
     .edit-form-reader .form-group label {
       font-size: 12px;
       color: #3e4d68; }
@@ -2229,14 +2233,16 @@
         background-color: rgba(0, 0, 0, 0.5);
         height: 50px;
         min-width: 810px;
-        width: 100%;
-        text-align: right; }
+        text-align: right;
+        position: absolute; }
         .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img .img-bottom-bar .icon {
           color: #fff;
           font-size: 32px;
-          line-height: 50px; }
+          line-height: 50px;
+          cursor: pointer; }
           .eventlog_Content .main-content .eventlog_detail .main-detail-tab .detail-img .img-bottom-bar .icon:hover {
-            color: #337ab7; }
+            opacity: 0.8;
+            -moz-opacity: 0.8; }
   .eventlog_Content .main-content .eventlog_detail .main-detail-content {
     width: 100%;
     min-width: 850px;

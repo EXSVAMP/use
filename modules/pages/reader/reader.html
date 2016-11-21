@@ -6,7 +6,7 @@
     <div class="modal-body row">
         <div ng-show="item.text">{{item.text}}</div>
         <form role="form" class="pop-edit-form-com edit-form-reader" ng-show="item.method=='modify' || item.method=='add'">
-          <div class="form-group form-group-odd">
+          <div class="form-group ">
           <label for="func_type">功能类型:</label> 
           <ui-select ng-model="func_typeSel" theme="bootstrap" on-select="func_typeSelFunc(func_typeSel)">
                 <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
@@ -17,7 +17,7 @@
               </ui-select>
       </div>
       <div class="form-group">
-          <label for="status">读写器状态:</label> 
+          <label for="status">读写器状态:</label>
           <ui-select ng-model="statusSel" theme="bootstrap" on-select="statusSelFunc(statusSel)">
                 <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                 <ui-select-choices repeat="(key,value) in choice['status']">
@@ -26,7 +26,17 @@
                 </ui-select-choices>
               </ui-select>
       </div>
-      <div class="form-group form-group-odd">
+            <div class="form-group">
+                <label for="status">摄像头状态:</label>
+                <ui-select ng-model="cameraId" theme="bootstrap"
+                           on-select="change_camera($select.selected.id)">
+                    <ui-select-match placeholder="--请选择-">{{$select.selected.serial_number}}</ui-select-match>
+                    <ui-select-choices repeat="item.id as item in cameraList">
+                        <div class="select-item">{{item.serial_number}}</div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+      <div class="form-group ">
           <label for="description">读写器描述:</label> 
            <input type="text" class="form-control" id="description" placeholder="描述" ng-model="description">
       </div>
@@ -34,7 +44,7 @@
           <label for="serial_number"><span style="color: red">*</span>序列号:</label>
            <input type="text" class="form-control" id="serial_number" placeholder="序列号" ng-model="serial_number">
       </div>
-      <div class="form-group form-group-odd">
+      <div class="form-group ">
           <label for="ip_address">IP地址:</label> 
            <input type="text" class="form-control" id="ip_address" placeholder="IP地址" ng-model="ip_address">
       </div>
@@ -100,6 +110,7 @@
       				<th ng-click="switch_order('status')"><p>状态<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.status]"></span></p></th>
               <th ng-click="switch_order('func_type')"><p>功能类型<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.func_type]"></span></p></th>
               <th><p>IP地址</p></th>
+               <th><p>摄像头地址</p></th>
               <th><p>描述</p></th>
       				<th ng-click="switch_order('updated_at')"><p>更新时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.updated_at]"></span></p></th>
       				<th ng-click="switch_order('created_at')"><p>创建时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.created_at]"></span</p></span></th>
@@ -121,6 +132,7 @@
       				<td><p>{{item.status_display}}</p></td>
               <td><p>{{item.func_type_display}}</p></td>
               <td><p>{{item.ip_address}}</p></td>
+               <td><p>{{item.camera_ip}}</p></td>
               <td><p>{{item.description}}</p></td>
       				<td><p>{{item.updated_at | time_format}}</p></td>
       				<td><p>{{item.created_at | time_format}}</p></td>

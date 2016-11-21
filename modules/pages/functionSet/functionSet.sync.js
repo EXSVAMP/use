@@ -72,7 +72,9 @@ app.register.controller("functionSetCtrl", function ($scope, $http, $timeout, $l
             })
 
         }
-        
+
+
+
         $http.get(urlBase + "/api/2/func/subset?main_event="+$scope.active_event).success(function (data) {
             $scope.dataList_detail = data.data;
             $timeout(function(){
@@ -94,6 +96,11 @@ app.register.controller("functionSetCtrl", function ($scope, $http, $timeout, $l
             }
         });
     }
+    // $scope.$watch("dataList_detail",function(newValue,oldValue){
+    //     if(newValue===oldValue){
+    //         return;
+    //     }
+    // },true)
 
     $scope.choice = function () {
         $http.get(urlBase + "/api/1/common/choices/?key=sub_event_set").success(function (data) {

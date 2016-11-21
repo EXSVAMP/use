@@ -7,6 +7,7 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
     $("#detail-img-url").resize(function(){
         $scope.container.width=$("#detail-img-video").width();
         $scope.container.height=$("#detail-img-video").height();
+        $(".img-bottom-bar").width($(".photo_address").width());
     })
     $scope.refreshData=function(){
         $http.get(baseUrl.getUrl()+'/api/1/eventlog/'+data.id+"/").success(function(data){
