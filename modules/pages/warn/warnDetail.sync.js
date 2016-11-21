@@ -27,6 +27,10 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
                     $scope.container.width=$("#detail-img-url img").width();
                     $scope.container.height=$("#detail-img-url img").height();
                 }
+                // if(){
+                //
+                // }
+
                  play=jwplayer ( "container" ). setup ({
                     autostart:true,
                     //flashplayer : "/statics/lib/player.swf" ,
