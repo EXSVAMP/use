@@ -106,8 +106,11 @@
                        <a href="javascript:void(0)"><span class="icon icon-icon_video"></span><br/>视频地址</a></li>
                </ul>
                <div class="detail-img detail-img1" ng-show="tabSwitch==0" id="detail-img-url">
-                   <img class="photo_address" ng-src="{{detail.photo_url | img}}"/>
-                   <div class="img-bottom-bar"><a ng-href="{{detail.photo_url}}" class="icon icon-icon_download" download></a><span class="icon icon-icon_expand" ng-click="showImg(detail.photo_url|img)"></span></div>
+                   <img  id="photo_address"  class="photo_address" ng-src="{{detail.photo_url |img}}" ng-click="detail.photo_url?fullScreen():''"/>
+                   <div class="img-bottom-bar" ng-show="detail.photo_url">
+                       <a ng-href="{{detail.photo_url}}" class="icon icon-icon_download" download></a>
+                       <span class="icon icon-icon_expand" ng-click="detail.photo_url?fullScreen():''"></span>
+                   </div>
 
                </div>
                <div class="detail-img" ng-show="tabSwitch==1" id="detail-img-video">

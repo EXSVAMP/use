@@ -66,5 +66,17 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
             play.stop();
         }
     }
+
+    $scope.fullScreen=function(){
+       const target=$("#photo_address")[0];
+        if(screenfull.enabled){
+            screenfull.toggle(target);
+        }
+    }
+
+
+    // $(window).click(function(){
+    //     screenfull.exit();
+    // })
     $scope.refresh();
 });

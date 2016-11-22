@@ -19,7 +19,8 @@
     "fis-parser-node-sass": "^1.0.0",
     "fis-preprocessor-annotate": "*",
     "fis3-hook-module": "*",
-    "fis3-postpackager-loader": "*"
+    "fis3-postpackager-loader": "*",
+    "screenfull": "^3.0.2"
   },
   "author": "zhangtao07",
   "license": "MIT",

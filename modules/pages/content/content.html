@@ -121,8 +121,8 @@
                     <th ng-click="switch_order('goods_location_id')"><p>分配货位<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].goods_location_id]"></span></p></th>
                     <th ng-click="switch_order('rfid_card_id')"><p>RFID硬件卡<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].rfid_card_id]"></span></p></th>
                     <th ng-click="switch_order('updated_at')"><p>更新时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].updated_at]"></span></p></th>
-                    <th ng-click="switch_order('created_at')"><p>创建时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].created_at]"></span</p></span></th>
-                    <th><p>操作</p></th>
+                    <th ng-click="switch_order('created_at')"><p>创建时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order[currentSelTab].created_at]"></span></p></th>
+                    <th ng-show="currentSelTab!='500' && currentSelTab!='600'"><p>操作</p></th>
                 </tr>
             </thead>
             <tbody>
@@ -146,7 +146,7 @@
                     <td><p>{{item.rfid_card.serial_number}}</p></td>
                     <td><p>{{item.updated_at | time_format}}</p></td>
                     <td><p>{{item.created_at | time_format}}</p></td>
-                    <td><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit-content','modify',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
+                    <td ng-show="currentSelTab!='500' && currentSelTab!='600'"><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit-content','modify',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
                 </tr>
             </tbody>
         </table>

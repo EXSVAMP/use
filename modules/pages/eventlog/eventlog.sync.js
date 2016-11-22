@@ -121,7 +121,17 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
         if($scope.detail.video_url){
             play.stop();
         }
+    };
+    $scope.fullScreen=function(){
+        const target=$("#photo_address")[0];
+        if(screenfull.enabled){
+            screenfull.toggle(target);
+        }
+
     }
+    // $('#photo_address').click(function () {
+    //     screenfull.toggle(this);
+    // });
     $scope.setPage = function (pageNo) {
         if(PageHandle.setPageInput($scope.index_sel,$scope.totalPage)){
             $scope.params.index = $scope.index_sel;
