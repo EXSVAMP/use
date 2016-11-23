@@ -220,7 +220,8 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
                     e.stopPropagation();
 
                     if ($scope.fullscreenObj) {
-                        $("#body_ele").fullScreen();
+                        // elem = document.getElementById("body_ele")[0];
+                        screenfull.exit();
                         $scope.closeFull();
                     } else {
                         $scope.openfull_body();
@@ -320,7 +321,14 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
         // called when the client loses its connection
         function onConnectionLost(responseObject) {
             console.log("responseObject.errorCode:" + responseObject.errorCode);
+
             if (responseObject.errorCode !== 0) {
+                this.connect({
+                    onSuccess: onConnect,
+                    userName: constant.websocket_userName,
+                    password: constant.websocket_password,
+                    mqttVersion: 3
+                });
                 console.log("onConnectionLost:" + responseObject.errorMessage);
             }
         }
