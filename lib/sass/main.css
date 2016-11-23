@@ -467,7 +467,8 @@
   color: #3E4D68;
   text-align: center; }
   .emplty-view .icon {
-    font-size: 128px; }
+    font-size: 128px;
+    color: #808CA0; }
   .emplty-view .empty-view-text {
     display: inline-block;
     text-align: left;
@@ -1029,7 +1030,8 @@
       font-size: 16px; }
   .card-content .emptyDataList p span:first-child {
     background: none;
-    font-size: 128px; }
+    font-size: 128px;
+    color: #808CA0; }
   .card-content .emptyDataList p span:last-child {
     margin-top: 35px; }
 
@@ -1225,7 +1227,8 @@
       margin-top: 8px; }
   .content-content .emptyDataList p span:first-child {
     background: none;
-    font-size: 128px; }
+    font-size: 128px;
+    color: #808CA0; }
   .content-content .emptyDataList p span:last-child {
     margin-top: 37px; }
 
@@ -1361,6 +1364,7 @@
           background-color: #F45714; }
   .camera_Content .content .table-content {
     background-color: #ffffff;
+    color: #666666;
     width: 100%;
     min-width: 1000px; }
     .camera_Content .content .table-content thead {
@@ -1424,7 +1428,7 @@
     margin: 100px auto 0 auto; }
     .camera_Content .content .notFound .icon-icon_camera {
       font-size: 128px;
-      color: #3e4d68;
+      color: #808CA0;
       display: inline-block; }
     .camera_Content .content .notFound .notFound_desc {
       display: inline-block;
@@ -1798,7 +1802,8 @@
     margin-top: 8px; }
 .reader-content .emptyDataList p span:first-child {
   background: none;
-  font-size: 128px; }
+  font-size: 128px;
+  color: #808CA0; }
 .reader-content .emptyDataList p span:last-child {
   margin-top: 35px; }
 
@@ -2008,7 +2013,8 @@
           border-bottom: 0 none; }
   .user-content .emptyDataList p span:first-child {
     background: none;
-    font-size: 128px; }
+    font-size: 128px;
+    color: #808CA0; }
   .user-content .emptyDataList p span:last-child {
     margin-top: 35px; }
   .user-content table.table-pagination {
@@ -2314,7 +2320,7 @@
   margin: 100px auto 0 auto; }
   .eventlog_Content .main-content .notFound .icon-icon_eventlog {
     font-size: 128px;
-    color: #3e4d68;
+    color: #808CA0;
     display: inline-block; }
   .eventlog_Content .main-content .notFound .notFound_desc {
     display: inline-block;
@@ -2588,7 +2594,8 @@
     margin-top: 0; }
 .poll-content .emptyDataList p span:first-child {
   background: none;
-  font-size: 128px; }
+  font-size: 128px;
+  color: #808CA0; }
 .poll-content .emptyDataList p span:last-child {
   margin-top: 35px; }
 
@@ -2828,7 +2835,8 @@
     width: auto; }
 .manual-content .emptyDataList p span:first-child {
   background: none;
-  font-size: 128px; }
+  font-size: 128px;
+  color: #808CA0; }
 .manual-content .emptyDataList p span:last-child {
   margin-top: 35px; }
 
