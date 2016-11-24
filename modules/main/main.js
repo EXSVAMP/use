@@ -578,7 +578,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance,$http,ng
 
 });
 
-app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,items,url_junction,ngDialog){
+app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,items,url_junction,ngDialog,validate){
     baseUrl = baseUrl.getUrl();
     scope=items.scope;
     $scope.item=items;
@@ -646,7 +646,30 @@ app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,it
         $scope.storage_names = items.data.storage_names;
         $scope.ip_address=items.data.ip_address;
         $scope.live_address=items.data.live_address;
+        // $scope.$watch('state',function(newValue, oldValue){
+        //     if(newValue===oldValue){
+        //         alert("123");
+        //     }
+        // },true);
+        var func_type_flag=$scope.func_type;
+        var state_flag=$scope.state;
+        var serial_number_flag=$scope.serial_number;
+        var description_flag=$scope.description;
+        var storage_names_flag=$scope.storage_names;
+        var ip_address_flag=$scope.ip_address;
+        var live_address_flag=$scope.live_address;
+
+
         $scope.ok = function(){
+         var flag=validate.getValidate(func_type_flag,$scope.func_type)
+            ||validate.getValidate(state_flag,$scope.state)
+            ||validate.getValidate(serial_number_flag,$scope.serial_number)
+            ||validate.getValidate(description_flag,$scope.description)
+            ||validate.getValidate(storage_names_flag,$scope.storage_names)
+            ||validate.getValidate(ip_address_flag,$scope.ip_address)
+            ||validate.getValidate(live_address_flag,$scope.live_address);
+
+
             $scope.pk = items.data.id;
             var query_url =url_junction.getDict({
                 func_type:$scope.func_type,
@@ -657,11 +680,14 @@ app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,it
                 ip_address:$scope.ip_address,
                 live_address:$scope.live_address
             });
-            $http.put(baseUrl+"/api/1/camera/"+$scope.item.data.id+"/",query_url).success(function(data){
-                if(data.code=="200"){
-                    items.scope.submit_search();
-                }
-            });
+            if(flag){
+                $http.put(baseUrl+"/api/1/camera/"+$scope.item.data.id+"/",query_url).success(function(data){
+                    if(data.code=="200"){
+                        items.scope.submit_search();
+                    }
+                });
+            }
+
             $uibModalInstance.close();
         };
 
@@ -681,7 +707,31 @@ app.controller("ModalCamera", function($scope,$uibModalInstance,$http,baseUrl,it
 
 
 });
-
+app.service("validate",function(){
+    return {
+        getValidate:function(oldValue,newValue){
+                if(oldValue!==newValue){
+                    return true
+                }else{
+                    return false;
+                }
+        }
+    }
+})
+// app.service("validate",function(){
+//     return {
+//         getValidate:function($scope,obj){
+//             $scope.$watch('state',function(newValue, oldValue){
+//                 if(newValue!==oldValue){
+//                     alert(123);
+//                    return true
+//                 }else{
+//                     return false;
+//                 }
+//             },true);
+//         }
+//     }
+// })
 app.controller("ModalStore",function($scope,$uibModalInstance,$http,items,baseUrl,url_junction){
     baseUrl = baseUrl.getUrl();
     $scope.params={};
@@ -721,7 +771,7 @@ app.controller("ModalStore",function($scope,$uibModalInstance,$http,items,baseUr
 
 })
 
-app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,baseUrl){
+app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,baseUrl,validate){
     baseUrl = baseUrl.getUrl();
     $scope.item = items;
     $scope.cancel = function(){
@@ -763,10 +813,13 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
         $scope.rfid_card = items.data.rfid_card.id+"";
         $scope.rfid_type = items.data.rfid_type;
         $scope.currentSelTab = items.data.status;
+        var rfid_typeTemp_flag;
+        var rfid_statusTemp_flag;
         for(var i=0; i< $scope.rfid_type_Items.length; i++){
 
             if(items.scope.rfid_type_Items[i].id == $scope.rfid_type){
                 $scope.rfid_typeTemp = items.scope.rfid_type_Items[i].id;
+                rfid_typeTemp_flag=$scope.rfid_typeTemp;
                 $scope.type = items.scope.rfid_type_Items[i];
                 break;
             }
@@ -774,6 +827,7 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
         for(statusItem in items.scope.statusInfo){
             if(statusItem == $scope.currentSelTab){
                  $scope.rfid_statusTemp = statusItem;
+                rfid_statusTemp_flag=$scope.rfid_statusTemp;
                 //alert(statusItem+","+items.scope.statusInfo[statusItem]);
                 $scope.status = {key:statusItem,value:items.scope.statusInfo[statusItem]};
                 //$scope.status = {key:"200",value: "入库监视"};
@@ -810,13 +864,17 @@ app.controller("ModalContent",function($scope,$uibModalInstance,$http,items,base
         // });
 
         $scope.ok = function(){
-            $http.put(baseUrl+"/api/1/content/"+$scope.item.data.id+"/",{"rfid_type":$scope.rfid_typeTemp,"status": $scope.rfid_statusTemp}).success(function(data){
-                if(data.code=="200"){
-                    items.scope.submit_search($scope.item.scope.currentSelTab, 1);
-                    //items.scope.refresh_stat(true);
-                    items.scope.refresh_stat_search_all();
-                }
-            });
+            var flag=validate.getValidate(rfid_typeTemp_flag,$scope.rfid_typeTemp)
+                     ||validate.getValidate(rfid_statusTemp_flag,$scope.rfid_statusTemp);
+              if(flag){
+                  $http.put(baseUrl+"/api/1/content/"+$scope.item.data.id+"/",{"rfid_type":$scope.rfid_typeTemp,"status": $scope.rfid_statusTemp}).success(function(data){
+                      if(data.code=="200"){
+                          items.scope.submit_search($scope.item.scope.currentSelTab, 1);
+                          //items.scope.refresh_stat(true);
+                          items.scope.refresh_stat_search_all();
+                      }
+                  });
+              }
             $uibModalInstance.close();
         };
     }else if(items.method=="delete"){

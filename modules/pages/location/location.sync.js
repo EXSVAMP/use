@@ -323,7 +323,9 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
             console.log("responseObject.errorCode:" + responseObject.errorCode);
 
             if (responseObject.errorCode !== 0) {
-                this.connect({
+                // client = new Paho.MQTT.Client(constant.websocket_url, constant.websocket_port, "myclientid_" + parseInt(Math.random() * 100, 10));
+
+                client.connect({
                     onSuccess: onConnect,
                     userName: constant.websocket_userName,
                     password: constant.websocket_password,
