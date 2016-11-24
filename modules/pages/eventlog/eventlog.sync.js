@@ -129,6 +129,18 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
         }
 
     }
+    $timeout(function(){
+        $('.date-picker').datepicker({
+            language: 'zh',
+            orientation: "left",
+            todayHighlight: true,
+            autoclose:true,
+            templates:{
+                leftArrow: '<i class="fa fa-angle-left"></i>',
+                rightArrow: '<i class="fa fa-angle-right"></i>'
+            }
+        });
+    });
     // $('#photo_address').click(function () {
     //     screenfull.toggle(this);
     // });
