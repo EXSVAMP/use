@@ -117,11 +117,17 @@
                       color: #45b6b0;
                       background: none;
                        margin-top: 8px;
+                       &:hover{
+                         color:#07B1A8;
+                       }
                   }
                   .rfid-delete{
                       color: #ff6b6b;
                       background: none;
                       margin-top: 8px;
+                      &:hover{
+                        color:#EB3E3E;
+                      }
                   }
           }
         }

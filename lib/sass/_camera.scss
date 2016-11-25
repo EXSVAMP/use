@@ -220,14 +220,20 @@
    margin-right: 5px;
     margin-top: 5px;
     cursor: pointer;
+    &:hover{
+      color:#07B1A8;
+    }
 
   };
   .icon-icon_cancel{
     //font-size:18px;
     font-size: 14px;
-    color: red;
+    color: #FF6B6B;
     margin-top: 5px;
     cursor: pointer;
+    &:hover{
+      color:#EB3E3E;
+    }
   };
 
 
