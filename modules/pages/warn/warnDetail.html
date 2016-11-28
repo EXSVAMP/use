@@ -69,10 +69,10 @@
                     <div class="record-list">
                         <div class="record-item" ng-repeat="record in dataList">
                             <div class="item-row">
-                                <span>处理时间</span><span>{{record.created_at}}</span>
+                                <span>处理时间</span><span>{{record.created_at|time_format}}</span>
                             </div>
                             <div class="item-row">
-                                <span>处理人</span><span>{{record.handle_user}}</span>
+                                <span>处理人</span><span>{{record.handle_user.username}}</span>
                             </div>
                             <div style="clear: both">
                             <div class="item-row">

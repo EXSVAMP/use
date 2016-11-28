@@ -21,11 +21,18 @@ app.factory('popService', function ($uibModal) {
                 },
                 dataObj:function() {
                     return {
-                        id:detail.id,
+                        event_log_id:detail.id,
                         handle_result:detail.handle_result,
                         handle_description:detail.handle_description
                     }
+                },
+                items:function(){
+                    return {
+                        scope:detail.scope
+                    }
                 }
+
+
             }
         });
     }
@@ -34,19 +41,27 @@ app.factory('popService', function ($uibModal) {
     }
 });
 
-app.controller("warnHandlePopCtrl", function ($scope,$http,$uibModalInstance,baseUrl,dataObj,callbackFn) {
+app.controller("warnHandlePopCtrl", function ($scope,$http,$uibModalInstance,baseUrl,dataObj,callbackFn,listService,items) {
     $scope.params = dataObj;
     $scope.handle_results={};
+    var scope=items.scope;
     $http.get(baseUrl.getUrl()+'/api/1/common/choices/?key=eventlog').success(function(data){
         if(data.code==200){
             $scope.handle_results=data.data.handle_result;
         }
     });
     $scope.ok=function(){
-        $http.put(baseUrl.getUrl()+'/api/1/eventlog/'+$scope.params.id+'/',$scope.params).success(function(data){
-            if(callbackFn)callbackFn(data.data);
-            $uibModalInstance.dismiss();
-        }) ;
+        // $http.put(baseUrl.getUrl()+'/api/1/eventlog/'+$scope.params.id+'/',$scope.params).success(function(data){
+        //     if(callbackFn)callbackFn(data.data);
+        //     $uibModalInstance.dismiss();
+
+        $http.post(baseUrl.getUrl()+'/api/1/eventhandlelog/',$scope.params).success(function(data){
+            if(data.code==200){
+                // if(callbackFn)callbackFn(data.data);
+              scope.refresh();
+            }
+        })
+        $uibModalInstance.close();
     }
     $scope.cancel=function(){
         $uibModalInstance.dismiss();

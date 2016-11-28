@@ -13,6 +13,7 @@ app.register.controller("warnDetailCtrl", function ($scope, $http, params,$locat
         $http.get(baseUrl.getUrl()+'/api/1/eventlog/'+data.id+"/").success(function(data){
             if(data.code==200){
                 $scope.detail = data.data;
+                $scope.detail.scope=$scope;
                 // $scope.detail.video_url= "http://o71xixzmn.bkt.clouddn.com/gz0120160616_172743_717000.flv";
                 var rfid_list_display = '';
                 angular.forEach($scope.detail.rfid_list,function(item){
