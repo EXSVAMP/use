@@ -55,6 +55,28 @@ app.register.controller("registerCtrl", function ($scope, $http, $location, $tim
                     $scope.regarrow2 = "/statics/lib/img/icon_arrow_32_32_01 copy.png";
                 }
                 
+            }else{
+                $scope.$watch("information.username",function(newValue,oldValue){
+                    if(newValue){
+                        $scope.validate_username=false;
+                    }else{
+                        $scope.validate_username=true
+                    }
+                });
+                $scope.$watch("information.password",function(newValue,oldValue){
+                    if(newValue){
+                        $scope.validate_password=false;
+                    }else{
+                        $scope.validate_password=true
+                    }
+                });
+                $scope.$watch("information.re_password",function(newValue,oldValue){
+                    if(newValue){
+                        $scope.validate_re_password=false;
+                    }else{
+                        $scope.validate_re_password=true
+                    }
+                })
             }
             // else
             //     ngDialog.open({
@@ -118,8 +140,46 @@ app.register.controller("registerCtrl", function ($scope, $http, $location, $tim
                 $interval(toDo, 1000, 5);
             })
              }
-            //else
-            //     alert("信息填写不全！");
+            // else if(name=="" || address=="" ||connect_username=="" ||connect_info==""){
+            //     ngDialog.open({
+            //         template: '<p style=\"text-align: center\">信息请填写完整</p>',
+            //         plain: true
+            //     });
+            // }
+            else{
+                $scope.$watch("information.name",function(newValue,oldValue){
+                    if(newValue){
+                        $scope.validate_name=false;
+                    }else{
+                        $scope.validate_name=true
+                    }
+                })
+                $scope.$watch("information.address",function(newValue,oldValue){
+                    if(newValue){
+                        $scope.validate_address=false;
+                    }else{
+                        $scope.validate_address=true
+                    }
+                })
+                $scope.$watch("information.connect_username",function(newValue,oldValue){
+                    if(newValue){
+                        $scope.validate_connect_username=false;
+                    }else{
+                        $scope.validate_connect_username=true
+                    }
+                })
+                $scope.$watch("information.connect_info",function(newValue,oldValue){
+                    if(newValue){
+                        $scope.validate_connect_info=false;
+                    }else{
+                        $scope.validate_connect_info=true
+                    }
+                })
+                // // if(!name)$scope.validate_name=true; else $scope.validate_name=false;
+                // if(!address)$scope.validate_address=true; else $scope.validate_address=false;
+                // if(!connect_username)$scope.validate_connect_username=true; else $scope.validate_connect_username=false;
+                // if(!connect_info)$scope.validate_connect_info=true; else $scope.validate_connect_info=false;
+            }
         }
     }
 
