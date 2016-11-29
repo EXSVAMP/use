@@ -446,7 +446,6 @@ app.controller("sideBarCtrl",function($scope, $rootScope,$location){
          
      }
     $scope.openSide=function(status){
-        console.log("123");
         if(status==1){
             $scope.open.open1=!$scope.open.open1;
             $scope.open.open2=false;
