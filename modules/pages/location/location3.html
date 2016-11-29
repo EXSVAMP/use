@@ -198,9 +198,9 @@
             <div class="goodsBoard" ng-repeat="obj in dataList[0].piple_list">
                 <div class="goodsBoard_1 " >
                     <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                        <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                        <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                        <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                        <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                        <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                        <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                     </div>
                     <img class="tip_1" src="icon-07.svg"/>
                     <span>{{obj.pile_name}}</span>
@@ -225,9 +225,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[1].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -252,9 +252,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[2].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -279,9 +279,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[3].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -306,9 +306,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[4].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -333,9 +333,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[5].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -360,9 +360,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[6].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -387,9 +387,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[7].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -414,9 +414,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[8].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -441,9 +441,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[9].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -468,9 +468,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[10].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -495,9 +495,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[11].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -522,9 +522,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[12].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -549,9 +549,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[13].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -576,9 +576,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[14].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -603,9 +603,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[15].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -630,9 +630,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[16].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -657,9 +657,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[17].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -684,9 +684,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[18].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -711,9 +711,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[19].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
@@ -738,9 +738,9 @@
                 <div class="goodsBoard" ng-repeat="obj in dataList[20].piple_list">
                     <div class="goodsBoard_1">
                         <div ng-repeat="img in obj.goods_list.slice().reverse() " class="bor" ng-class="{'error':obj.error==2,'unerror':obj.unerror==1}">
-                            <img class="board_1"  src="icon-02.svg" ng-if="img.status=='0'" />
-                            <img class="board_1"  src="icon-05.svg" ng-if="img.status=='1'" />
-                            <img class="board_1"  src="icon-06.svg" ng-if="img.status=='2'" ng-init="errorState(obj,img)"/>
+                            <img class="board_1"  src="icon-02.svg" ng-show="img.status=='0'" />
+                            <img class="board_1"  src="icon-05.svg" ng-show="img.status=='1'" />
+                            <img class="board_1"  src="icon-06.svg" ng-show="img.status=='2'" ng-init="errorState(obj,img)"/>
                         </div>
                         <img class="tip_1" src="icon-07.svg"/>
                         <span>{{obj.pile_name}}</span>
