@@ -6,5 +6,5 @@ app.constant("constant",{
     websocket_userName:"iotclould",
     websocket_password:"123qwe!@#",
     websocket_port:8083
-
+ 
 })
