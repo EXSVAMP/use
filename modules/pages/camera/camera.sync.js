@@ -314,6 +314,7 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
                 type: 4120,
                 appID: appId//appID，用来确定频道位置以后会换成新的标记
             };
+            // console.log("<====发送心跳包函数======>")
             sendMqtt(JSON.stringify(jstr));
         }
 
