@@ -66,10 +66,13 @@ fis.match('*.scss', {
 });
 
 
-fis.match('*.{js,css,png,gif,svg,html}', {
+fis.match('*.{js,css,png,gif,svg}', {
     useHash: true // 开启 md5 戳
 })
 
+fis.match('sidebar.html', {
+    useHash: true // 开启 md5 戳
+})
 
 
 //打包与css sprite基础配置
