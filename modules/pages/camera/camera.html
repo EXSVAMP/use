@@ -66,7 +66,6 @@
            </div>
        </div>
 
-
     </script>
 
     <div class="main-top-bar">
@@ -76,7 +75,7 @@
         <form role="form" class="function_type_select">
             <div class="form-group form-group-selin">
                 <label for="name">功能类型:</label>
-                <ui-select ng-model="functype" theme="bootstrap"  on-select="select_func_type(functype)">
+                <ui-select ng-model="functype" name="camera_type" theme="bootstrap"  on-select="select_func_type(functype)">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                     <ui-select-choices repeat="item.state as item in func_type_Items">
                         <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -86,7 +85,7 @@
             </div>
             <div class="form-group form-group-selin">
                 <label for="name">摄像头状态:</label>
-                <ui-select ng-model="state" theme="bootstrap" on-select="select_status(state)">
+                <ui-select ng-model="state" name="camera_status" theme="bootstrap" on-select="select_status(state)">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                     <ui-select-choices repeat="item.state as item in status_Items">
                         <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -96,17 +95,16 @@
             </div>
             <div class="form-group form-group-selin">
                 <label for="name">摄像头描述:</label>
-                <input type="text" placeholder="  摄像头描述" class="camera_desc" ng-model="description"/>
+                <input type="text" name="camera_desc" placeholder="  摄像头描述" class="camera_desc" ng-model="description"/>
             </div>
             <div class="form-group form-group-selin">
                 <label for="name">摄像头监视货位:</label>
-                <input type="text" placeholder="  摄像头监视货位" class="camera_monitor" ng-model="storage_names"/>
-
+                <input type="text" name="camera_monitor" placeholder="  摄像头监视货位" class="camera_monitor" ng-model="storage_names"/>
             </div>
             <!--<div style="clear: both"></div>-->
             <div class="btns-group" >
-                 <button type="button" class="btn btn-camera-search" ng-click="submit_search()"><span class="icon-icon_search"></span>搜索</button>
-                 <button type="button" class="btn btn-camera-add" ng-click="open('camera_Modal','add',$index)"><span class="icon-icon_plus"></span>增加</button>
+                 <button type="button" name="camera_search" class="btn btn-camera-search" ng-click="submit_search()"><span class="icon-icon_search"></span>搜索</button>
+                 <button type="button" name="camera_add" class="btn btn-camera-add" ng-click="open('camera_Modal','add',$index)"><span class="icon-icon_plus"></span>增加</button>
             </div>
         </form>
 
@@ -144,7 +142,7 @@
                             <td>{{items.updated_at | time_format}}</td>
                             <td>{{items.created_at | time_format}}</td>
                             <td>
-                                <p><span class="icon-icon_edit"   ng-click="open('camera_Modal','modify',$index)"></span>
+                                <p><span class="icon-icon_edit"  ng-click="open('camera_Modal','modify',$index)"></span>
                                     <span class="icon-icon_cancel" ng-click="open('camera_delete','delete',$index)"></span></p>
                             </td>
                         </tr>
@@ -166,7 +164,7 @@
                     </ui-select> -->
                     <div class="pagination-content">
                         <span class="pagination-tip">每页显示数量</span>
-                        <ui-select ng-model="number" theme="bootstrap" on-select="setShowNum(number)">
+                        <ui-select ng-model="number" name="camera_page_select" theme="bootstrap" on-select="setShowNum(number)">
                             <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
                             <ui-select-choices repeat="item in numbers">
                                 <div ng-bind-html="item"></div>
@@ -179,8 +177,8 @@
                     <uib-pagination items-per-page="number" total-items="bigTotalItems" ng-change="changePage()" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" num-pages="numPages" previous-text="上一页" next-text="下一页"></uib-pagination>
                     <div class="pagination-detail">
                         <span>共{{total_page}}页</span>
-                        <span>跳至<input type="text" ng-model="index_sel"/>页</span>
-                        <span><button ng-click="setPage()">确定</button></span>
+                        <span>跳至<input type="text" name="camera_page" ng-model="index_sel"/>页</span>
+                        <span><button  nmae="camera_submmit" ng-click="setPage()">确定</button></span>
                     </div>
                 </th>
 

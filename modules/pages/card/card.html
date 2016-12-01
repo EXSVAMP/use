@@ -34,7 +34,7 @@
         <form role="form" class="pop-add-form-com add-form-card" ng-show="item.method=='add'">
           <div class="form-group">
             <label for="add_serial">序列号:</label>
-            <input type="text" class="form-control" id="add_serial" placeholder="请填写序列号" ng-model="model" />
+            <input type="text" class="form-control" id="add_serial" name="card_modal_number" placeholder="请填写序列号" ng-model="model" />
           </div>
         </form>
 
@@ -59,8 +59,8 @@
     </div>
     <div class="modal-footer">
       <div class="modal-footer-resize-com modal-footer-resize-card">
-        <button class="btn btn-primary btn-solid-back {{btn_ok_exit}}" type="button" ng-click="ok()">确定</button>
-        <button class="btn btn-warning btn-blank-back {{btn_cancel_exit}}" type="button" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary btn-solid-back {{btn_ok_exit}}" type="button" name="card_modal_submimit" ng-click="ok()">确定</button>
+        <button class="btn btn-warning btn-blank-back {{btn_cancel_exit}}" type="button" name="card_modal_cancle"  ng-click="cancel()">取消</button>
       </div>
     </div>
 </script>
@@ -73,7 +73,7 @@
 			<div class="form-group form-group-selin">
     		<label for="name">状态:</label> 
     		<!-- <ui-select ng-model="state.name" theme="bootstrap"> -->
-        <ui-select ng-model="statusSel" theme="bootstrap" on-select="statusSelFunc(statusSel)">
+        <ui-select ng-model="statusSel" theme="bootstrap" name="card_state" on-select="statusSelFunc(statusSel)">
           <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
           <ui-select-choices repeat="item in state">
             <div ng-bind-html="item.name"></div>
@@ -83,10 +83,10 @@
 			</div>
 			<div class="form-group">
     			<label for="name">序列号:</label> 
-    			 <input type="text" class="form-control" id="serial-search" placeholder="请输入名称" ng-model="serial_search">
+    			 <input type="text" name="card_serialnumber"  class="form-control" id="serial-search" placeholder="请输入名称" ng-model="serial_search">
 			</div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;serial_searchTemp=serial_search;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" name="card_search" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;serial_searchTemp=serial_search;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
 				<!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
 			</div>
 		</form>
@@ -119,8 +119,8 @@
       				<td><p>{{item.created_at | time_format}}</p></td>
       				<td>
                         <p>
-                         <span class="icon-icon_change btn" ng-class="{true:'rfid-edit2',false:'rfid-edit'}[item.status==3||item.status==4]" ng-disabled="item.status==3||item.status==4" ng-click="open('md-edit','replace',$index)"></span>
-                         <span class="btn icon-icon_cancel" ng-class="{true:'rfid-delete2',false:'rfid-delete'}[item.status==3||item.status==4||item.status==1]" ng-disabled="item.status==3||item.status==4||item.status==1" ng-click="open('md-delete','delete',$index)"></span>
+                         <span class="icon-icon_change btn" name="card_edit" ng-class="{true:'rfid-edit2',false:'rfid-edit'}[item.status==3||item.status==4]" ng-disabled="item.status==3||item.status==4" ng-click="open('md-edit','replace',$index)"></span>
+                         <span class="btn icon-icon_cancel" name="card_delete" ng-class="{true:'rfid-delete2',false:'rfid-delete'}[item.status==3||item.status==4||item.status==1]" ng-disabled="item.status==3||item.status==4||item.status==1" ng-click="open('md-delete','delete',$index)"></span>
                        </p>
                     </td>
     			</tr>
@@ -138,7 +138,7 @@
             <th class="pagination-items-per-page">
               <div class="pagination-content">
               <span class="pagination-tip">每页显示数量</span>
-              <ui-select ng-model="number2" theme="bootstrap" on-select="setShowNum(number2)">
+              <ui-select ng-model="number2" card="card_select_page" theme="bootstrap" on-select="setShowNum(number2)">
                 <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
                 <ui-select-choices repeat="item in numbers">
                     <div ng-bind-html="item"></div>
@@ -152,8 +152,8 @@
              </uib-pagination>
               <div class="pagination-detail">
                 <span>共{{total_page}}页</span>
-                <span>跳至<input type="text" ng-model="index_sel"/>页</span>
-                <span><button id="" ng-click="setPage()">确定</button></span>
+                <span>跳至<input type="text" ng-model="index_sel" name="card_page"/>页</span>
+                <span><button id="" name="card_submmit" ng-click="setPage()">确定</button></span>
               </div>
             </th>
 
