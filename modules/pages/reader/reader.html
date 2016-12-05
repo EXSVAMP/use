@@ -8,7 +8,7 @@
         <form role="form" class="pop-edit-form-com edit-form-reader" ng-show="item.method=='modify' || item.method=='add'">
           <div class="form-group ">
           <label for="func_type">功能类型:</label> 
-          <ui-select ng-model="func_typeSel" theme="bootstrap" on-select="func_typeSelFunc(func_typeSel)">
+          <ui-select ng-model="func_typeSel" name="reader_modal_type" theme="bootstrap" on-select="func_typeSelFunc(func_typeSel)">
                 <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                 <ui-select-choices repeat="(key,value) in choice['func_type']">
                     <div ng-bind-html="value.value"></div>
@@ -18,7 +18,7 @@
       </div>
       <div class="form-group">
           <label for="status">读写器状态:</label>
-          <ui-select ng-model="statusSel" theme="bootstrap" on-select="statusSelFunc(statusSel)">
+          <ui-select ng-model="statusSel" name="reader_modal_reader" theme="bootstrap" on-select="statusSelFunc(statusSel)">
                 <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                 <ui-select-choices repeat="(key,value) in choice['status']">
                     <div ng-bind-html="value.value"></div>
@@ -28,7 +28,7 @@
       </div>
             <div class="form-group">
                 <label for="status">摄像头状态:</label>
-                <ui-select ng-model="cameraId" theme="bootstrap"
+                <ui-select ng-model="cameraId" name="reader_modal_camera" theme="bootstrap"
                            on-select="change_camera($select.selected.id)">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.serial_number}}</ui-select-match>
                     <ui-select-choices repeat="item.id as item in cameraList">
@@ -38,15 +38,15 @@
             </div>
       <div class="form-group ">
           <label for="description">读写器描述:</label> 
-           <input type="text" class="form-control" id="description" placeholder="描述" ng-model="description">
+           <input type="text" class="form-control"  name="reader_modal_desc" id="description" placeholder="描述" ng-model="description">
       </div>
       <div class="form-group">
           <label for="serial_number"><span style="color: red">*</span>序列号:</label>
-           <input type="text" class="form-control" id="serial_number" placeholder="序列号" ng-model="serial_number">
+           <input type="text" class="form-control" name="reader_modal_serial" id="serial_number" placeholder="序列号" ng-model="serial_number">
       </div>
       <div class="form-group ">
           <label for="ip_address">IP地址:</label> 
-           <input type="text" class="form-control" id="ip_address" placeholder="IP地址" ng-model="ip_address">
+           <input type="text" class="form-control" name="reader_modal_ip" id="ip_address" placeholder="IP地址" ng-model="ip_address">
       </div>
         </form>
 
@@ -55,8 +55,8 @@
     </div>
     <div class="modal-footer">
       <div class="modal-footer-resize-com modal-footer-resize-reader">
-        <button class="btn btn-primary btn-solid-back {{btn_ok_exit}}" type="button" ng-click="ok()">确定</button>
-        <button class="btn btn-warning btn-blank-back {{btn_cancel_exit}}" type="button" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary btn-solid-back {{btn_ok_exit}}"   name="reader_modal_submmit" type="button" ng-click="ok()">确定</button>
+        <button class="btn btn-warning btn-blank-back {{btn_cancel_exit}}" name="reader_modal_cancel" type="button" ng-click="cancel()">取消</button>
       </div>
     </div>
 </script>
@@ -68,7 +68,7 @@
 		<form role="form" class="search-bar reader-select">
 			<div class="form-group">
     			<label for="func_type">功能类型:</label> 
-    			<ui-select ng-model="func_typeSel" theme="bootstrap" on-select="func_typeSelFunc(func_typeSel)">
+    			<ui-select ng-model="func_typeSel" name="reader_type" theme="bootstrap" on-select="func_typeSelFunc(func_typeSel)">
             		<ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
             		<ui-select-choices repeat="item in choice['func_type']">
               			<div ng-bind-html="item.name"></div>
@@ -78,7 +78,7 @@
 			</div>
       <div class="form-group">
           <label for="status">读写器状态:</label> 
-          <ui-select ng-model="statusSel" theme="bootstrap" on-select="statusSelFunc(statusSel)">
+          <ui-select ng-model="statusSel" name="reader_status" theme="bootstrap" on-select="statusSelFunc(statusSel)">
                 <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                 <!-- <ui-select-choices repeat="(key,value) in choice['status']">
                     <div ng-bind-html="value.value"></div> -->
@@ -90,15 +90,15 @@
       </div>
       <div class="form-group">
           <label for="description">读写器描述:</label> 
-           <input type="text" class="form-control" id="description" placeholder="读写器描述" ng-model="description">
+           <input type="text" class="form-control" name="reader_desc" id="description" placeholder="读写器描述" ng-model="description">
       </div>
 			<div class="form-group">
     			<label for="serial_number">序列号:</label> 
-    			 <input type="text" class="form-control" id="serial_number" placeholder="序列号" ng-model="serial_number">
+    			 <input type="text" class="form-control" name="reader_serial" id="serial_number"  placeholder="序列号" ng-model="serial_number">
 			</div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-rfid-search" ng-click="status=statusTemp;func_type=func_typeTemp;descriptionTemp=description;serial_numberTemp=serial_number;index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
-				<button type="button" class="btn btn-rfid-add" ng-click="open('md-edit-reader','add',$index)"><span class="icon-icon_plus"></span>增加</button>
+				<button type="button" class="btn btn-rfid-search" name="reader_search" ng-click="status=statusTemp;func_type=func_typeTemp;descriptionTemp=description;serial_numberTemp=serial_number;index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-rfid-add" name="reader_add"  ng-click="open('md-edit-reader','add',$index)"><span class="icon-icon_plus"></span>增加</button>
 			</div>
 		</form>
 
@@ -113,7 +113,7 @@
                <th><p>摄像头地址</p></th>
               <th><p>描述</p></th>
       				<th ng-click="switch_order('updated_at')"><p>更新时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.updated_at]"></span></p></th>
-      				<th ng-click="switch_order('created_at')"><p>创建时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.created_at]"></span</p></span></th>
+      				<th ng-click="switch_order('created_at')"><p>创建时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.created_at]"></span></p></span></th>
       				<th><p>操作</p></th>
     			</tr>
   			</thead>
@@ -130,13 +130,17 @@
     				<td><p>{{item.id}}</p></td>
       				<td><p>{{item.serial_number}}</p></td>
       				<td><p>{{item.status_display}}</p></td>
-              <td><p>{{item.func_type_display}}</p></td>
-              <td><p>{{item.ip_address}}</p></td>
-               <td><p>{{item.camera_ip}}</p></td>
-              <td><p>{{item.description}}</p></td>
+                    <td><p>{{item.func_type_display}}</p></td>
+                    <td><p>{{item.ip_address}}</p></td>
+                    <td><p>{{item.camera_ip}}</p></td>
+                    <td><p>{{item.description}}</p></td>
       				<td><p>{{item.updated_at | time_format}}</p></td>
       				<td><p>{{item.created_at | time_format}}</p></td>
-      				<td><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit-reader','replace',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span></p></td>
+      				<td>
+                        <p><span class="rfid-edit icon-icon_edit" name="reader_edit" ng-click="open('md-edit-reader','replace',$index)"></span>
+                            <span class="rfid-delete icon-icon_cancel" name="reader_cancel" ng-click="open('md-delete','delete',$index)"></span>
+                        </p>
+                    </td>
     			</tr>
     		</tbody>
     	</table>
@@ -152,7 +156,7 @@
             <th class="pagination-items-per-page">
               <div class="pagination-content">
               <span class="pagination-tip">每页显示数量</span>
-              <ui-select ng-model="number2" theme="bootstrap" on-select="setShowNum(number2)">
+              <ui-select ng-model="number2" name="reader_page_select" theme="bootstrap" on-select="setShowNum(number2)">
                 <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
                 <ui-select-choices repeat="item in numbers">
                     <div ng-bind-html="item"></div>
@@ -166,8 +170,8 @@
              </uib-pagination>
               <div class="pagination-detail">
                 <span>共{{total_page}}页</span>
-                <span>跳至<input type="text" ng-model="index_sel"/>页</span>
-                <span><button id="" ng-click="setPage()">确定</button></span>
+                <span>跳至<input type="text" name="reader_page" ng-model="index_sel"/>页</span>
+                <span><button id="" name="reader_page_submmit" ng-click="setPage()">确定</button></span>
               </div>
             </th>
 

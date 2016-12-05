@@ -9,7 +9,7 @@
              <form role="form" >
                 <div class="form-group form-group-selin">
                  <label>功能类型:</label>
-                 <ui-select ng-model="func_type" theme="bootstrap"  on-select="select_func_type(func_type)">
+                 <ui-select ng-model="func_type" name="camera_modal_type" theme="bootstrap"  on-select="select_func_type(func_type)">
                      <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                      <ui-select-choices repeat="item.state as item in func_type_Items">
                          <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -19,7 +19,7 @@
              </div>
                  <div class="form-group form-group-selin">
                      <label>状态:</label>
-                     <ui-select ng-model="state" theme="bootstrap" on-select="select_status(state)">
+                     <ui-select ng-model="state"  name="camera_modal_status" theme="bootstrap" on-select="select_status(state)">
                          <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                          <ui-select-choices repeat="item.state as item in status_Items">
                              <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -33,19 +33,19 @@
                  </div>
                  <div class="form-group form-group-selin">
                      <label>描述:</label>
-                     <input type="text" ng-model="description"    placeholder="描述" />
+                     <input type="text" ng-model="description" name="camera_modal_desc"    placeholder="描述" />
                  </div>
                  <div class="form-group form-group-selin">
                      <label>库位:</label>
-                     <input type="text" ng-model="storage_names" placeholder="库位"/>
+                     <input type="text" ng-model="storage_names" name="camera_modal_storage" placeholder="库位"/>
                  </div>
                  <div class="form-group form-group-selin">
                      <label>IP地址:</label>
-                     <input type="text"  ng-model="ip_address" placeholder="IP地址"/>
+                     <input type="text"  ng-model="ip_address" name="camera_modal_ip" placeholder="IP地址"/>
                  </div>
                  <div class="form-group form-group-selin">
                      <label>直播地址:</label>
-                     <input type="text" ng-model="live_address" placeholder="直播地址"/>
+                     <input type="text" ng-model="live_address" name="camera_modal_live" placeholder="直播地址"/>
                  </div>
              </form>
            </div>
@@ -60,8 +60,8 @@
            <div style="clear: both"></div>
            <div class="camera_modal-footer">
                <div class="cameraBtn" ng-class="{'cameraBtn1':modal_delete}">
-                   <button class="btn btn-primary btn-solid-back" ng-class="{'btn-solid-back1':modal_delete}" type="button" ng-click="ok()">确定</button>
-                   <button class="btn btn-warning btn-blank-back" ng-class="{'btn-blank-back1':modal_delete}" type="button" ng-click="cancel()">取消</button>
+                   <button class="btn btn-primary btn-solid-back"  name="camera_modal_submmit"  ng-class="{'btn-solid-back1':modal_delete}" type="button" ng-click="ok()">确定</button>
+                   <button class="btn btn-warning btn-blank-back" name="camera_modal_cancel" ng-class="{'btn-blank-back1':modal_delete}" type="button" ng-click="cancel()">取消</button>
                </div>
            </div>
        </div>
@@ -142,8 +142,8 @@
                             <td>{{items.updated_at | time_format}}</td>
                             <td>{{items.created_at | time_format}}</td>
                             <td>
-                                <p><span class="icon-icon_edit"  ng-click="open('camera_Modal','modify',$index)"></span>
-                                    <span class="icon-icon_cancel" ng-click="open('camera_delete','delete',$index)"></span></p>
+                                <p><span class="icon-icon_edit" name="camera_edit"  ng-click="open('camera_Modal','modify',$index)"></span>
+                                    <span class="icon-icon_cancel" name="camera_cancel"  ng-click="open('camera_delete','delete',$index)"></span></p>
                             </td>
                         </tr>
                         </tbody>
@@ -178,7 +178,7 @@
                     <div class="pagination-detail">
                         <span>共{{total_page}}页</span>
                         <span>跳至<input type="text" name="camera_page" ng-model="index_sel"/>页</span>
-                        <span><button  nmae="camera_submmit" ng-click="setPage()">确定</button></span>
+                        <span><button  name="camera_submmit" ng-click="setPage()">确定</button></span>
                     </div>
                 </th>
 
