@@ -45,8 +45,8 @@
              <div style="clear: both"></div>
              <div class="store_modal-footer">
                  <div class="storeBtn">
-                     <button class="btn btn-primary btn-solid-back"  type="button" ng-click="ok()">保存</button>
-                     <button class="btn btn-warning btn-blank-back"  type="button" ng-click="cancel()">取消</button>
+                     <button class="btn btn-primary btn-solid-back" name="store_modal_submmit"  type="button" ng-click="ok()">保存</button>
+                     <button class="btn btn-warning btn-blank-back" name="store_modal_cancel" type="button" ng-click="cancel()">取消</button>
                  </div>
              </div>
 
@@ -93,8 +93,8 @@
                   </span>
                   <div style="clear:both"></div>
                   <span class="contentBtn">
-                      <button type="button" class="btn copyBtn {{set_active}}" ng-mouseenter="set('wms')" ng-mouseleave="set_reset('wms')" id="wms">复制</button>
-                       <button type="button" class="btn resetBtn" ng-click="reset(0)">重置</button>
+                      <button type="button" name="store_wms_copy" class="btn copyBtn {{set_active}}" ng-mouseenter="set('wms')" ng-mouseleave="set_reset('wms')" id="wms">复制</button>
+                       <button type="button" name="store_wms_reset" class="btn resetBtn" ng-click="reset(0)">重置</button>
                   </span>
                 </div>
             </div>
@@ -114,8 +114,8 @@
                   </span>
                     <div style="clear:both"></div>
                   <span class="contentBtn">
-                      <button type="button" class="btn copyBtn {{set_active1}}" ng-mouseenter="set('box')" ng-mouseleave="set_reset('box')" id="box">复制</button>
-                       <button type="button" class="btn resetBtn" ng-click="reset(1)">重置</button>
+                      <button type="button" name="store_box_copy" class="btn copyBtn {{set_active1}}" ng-mouseenter="set('box')" ng-mouseleave="set_reset('box')" id="box">复制</button>
+                      <button type="button" name="store_box_reset" class="btn resetBtn" ng-click="reset(1)">重置</button>
                   </span>
                 </div>
             </div>

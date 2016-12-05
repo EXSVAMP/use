@@ -14,7 +14,7 @@
           <div class="form-row">
             <div class="date-area">
               <span class="icon-icon_calendar"></span>
-              <input type="text" class="normal date-picker-add"  ng-model="startDate" ng-click="add_click_func()"/>
+              <input type="text" class="normal date-picker-add" name="manual_modal_date"  ng-model="startDate" ng-click="add_click_func()"/>
             </div>
           </div>
         </div>
@@ -23,10 +23,10 @@
         <table class="table table-bordered table-content modal-table-manual" ng-show="item.method=='info'">
           <thead>
             <tr>
-              <th ng-click="switch_order('id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.id]"></span></p></th>
-              <th ng-click="switch_order('rfid_card')"><p>卡号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.rfid_card]"></span></p></th>
-              <th ng-click="switch_order('rfid_content')"><p>RFID分配编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.rfid_content]"></span></p></span></th>
-              <th ng-click="switch_order('store_house')"><p>货位<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.store_house]"></span></p></th>
+              <th name="manual_modal_id" ng-click="switch_order('id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.id]"></span></p></th>
+              <th name="manual_modal_card"  ng-click="switch_order('rfid_card')"><p>卡号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.rfid_card]"></span></p></th>
+              <th name="manual_modal_content" ng-click="switch_order('rfid_content')"><p>RFID分配编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.rfid_content]"></span></p></span></th>
+              <th name="manual_modal_store" ng-click="switch_order('store_house')"><p>货位<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.store_house]"></span></p></th>
               <th><p>检测结果</p></th>
             </tr>
           </thead>
@@ -64,8 +64,8 @@
               </uib-pagination>
               <div class="pagination-detail">
                 <span>共{{total_page}}页</span>
-                  <span>跳至<input type="text" ng-model="index_sel"/>页</span>
-                  <span><button ng-click="setPage()">确定</button></span>
+                  <span>跳至<input type="text" name="manual_modal_page" ng-model="index_sel"/>页</span>
+                  <span><button name="manual_modal_page_submmit" ng-click="setPage()">确定</button></span>
               </div>
             </th>
 
@@ -75,8 +75,8 @@
       </table>
 
       <div class="download-result" ng-show="bigTotalItems>0">
-        <a class="btn btn-primary download-result-excel" ng-href="{{download_excel}}" ><span class="icon-icon_download"></span>下载检测报告(Excel)</a>
-        <a class="btn btn-primary download-result-txt" ng-href="{{download_txt}}" ><span class="icon-icon_download"></span>下载检测报告(Txt)</a>
+        <a class="btn btn-primary download-result-excel" name="download_excel"  ng-href="{{download_excel}}" ><span class="icon-icon_download"></span>下载检测报告(Excel)</a>
+        <a class="btn btn-primary download-result-txt"  name="download_txt"  ng-href="{{download_txt}}" ><span class="icon-icon_download"></span>下载检测报告(Txt)</a>
       </div>
 
       <div class="pop-delete-com pop-delete-com-manual" ng-show="item.method=='delete'"><p><span></span>确定要删除这个检测吗？<br/>注意：删除以后不可以恢复！</p></div>
@@ -87,9 +87,9 @@
     </div>
     <div class="modal-footer" ng-show="item.method!='info'">
       <div class="modal-footer-resize-com modal-footer-resize-manual">
-        <button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()" ng-show="item.method!='inventory'">确定</button>
-        <button class="btn btn-primary btn-solid-back" type="button" ng-click="ok()" ng-show="item.method=='inventory'">立即预约</button>
-        <button class="btn btn-warning btn-blank-back" type="button" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary btn-solid-back" name="manual_modal_submmit" type="button" ng-click="ok()" ng-show="item.method!='inventory'">确定</button>
+        <button class="btn btn-primary btn-solid-back" name="manual_modal_inventory" type="button" ng-click="ok()" ng-show="item.method=='inventory'">立即预约</button>
+        <button class="btn btn-warning btn-blank-back" name="manual_modal_cancel" type="button" ng-click="cancel()">取消</button>
       </div>
     </div>
   </script>
@@ -101,7 +101,7 @@
 		<form role="form" class="search-bar manual-select">
 			<div class="form-group">
     		<label for="name">检测状态:</label> 
-        <ui-select ng-model="statusSel" theme="bootstrap" on-select="statusSelFunc(statusSel)">
+        <ui-select ng-model="statusSel"  name="manual_status"  theme="bootstrap" on-select="statusSelFunc(statusSel)">
           <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
           <ui-select-choices repeat="item in state">
             <div ng-bind-html="item.name"></div>
@@ -113,19 +113,19 @@
         <div class="form-row">
           <div class="date-area">
             <span class="icon-icon_calendar"></span>
-            <input type="text" class="normal date-picker date-picker1" ng-model="startDate"/>
+            <input type="text" name="manual_startDate" class="normal date-picker date-picker1" ng-model="startDate"/>
           </div>
           <span style="margin:0 10px;float:left;position: relative;top:10px;">至</span>
           <div class="date-area">
             <span class="icon-icon_calendar"></span>
-            <input type="text" class="normal date-picker date-picker2" ng-model="endDate"/>
+            <input type="text" name="manual_endDate" class="normal date-picker date-picker2" ng-model="endDate"/>
           </div>
         </div>
       </div>
 			<div class="btns-group">
-				<button type="button" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;startDateTemp=startDate;endDateTemp=endDate;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
-				<button type="button" class="btn btn-rfid-add" ng-click="open('md-edit','add',$index)"><span class="icon-icon_plus"></span>增加</button>
-        <button type="button" class="btn btn-rfid-inventory" ng-click="inventoryImmediately()">立即检测</button>
+				<button type="button" class="btn btn-com-search btn-rfid-search" name="manual_search" ng-click="status=statusTemp;startDateTemp=startDate;endDateTemp=endDate;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" class="btn btn-rfid-add" name="manual_add" ng-click="open('md-edit','add',$index)"><span class="icon-icon_plus"></span>增加</button>
+        <button type="button" class="btn btn-rfid-inventory" name="manual_inventory" ng-click="inventoryImmediately()">立即检测</button>
 			</div>
 		</form>
 
@@ -136,7 +136,7 @@
             <th class="pagination-items-per-page">
                       <div class="pagination-content">
                         <span class="pagination-tip">每页显示数量</span>
-                        <ui-select ng-model="number2" theme="bootstrap" on-select="setShowNum(number2)">
+                        <ui-select ng-model="number2" name="manual_page_select"  theme="bootstrap" on-select="setShowNum(number2)">
                           <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
                           <ui-select-choices repeat="item in numbers">
                               <div ng-bind-html="item"></div>
@@ -154,10 +154,10 @@
 		<table class="table table-bordered table-content">
   			<thead>
     			<tr>
-      				<th ng-click="switch_order('id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.id]"></span></p></th>
-      				<th ng-click="switch_order('status')"><p>检测状态<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.status]"></span></p></th>
-      				<th ng-click="switch_order('date')"><p>检测时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.date]"></span></p></th>
-              <th ng-click="switch_order('updated_at')"><p>更新时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.updated_at]"></span></p></th>
+      				<th name="manual_order_id" ng-click="switch_order('id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.id]"></span></p></th>
+      				<th name="manual_order_status" ng-click="switch_order('status')"><p>检测状态<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.status]"></span></p></th>
+      				<th name="manual_order_date" ng-click="switch_order('date')"><p>检测时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.date]"></span></p></th>
+                    <th name="manual_order_update" ng-click="switch_order('updated_at')"><p>更新时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.updated_at]"></span></p></th>
               <th><p>操作</p></th>
     			</tr>
   			</thead>
@@ -167,9 +167,21 @@
       				<td><p>{{item.status | poll_state}}</p></td>
       				<td><p>{{item.date | time_format}}</p></td>
       				<td><p>{{item.updated_at | time_format}}</p></td>
-      				<td ng-show="item.status == 0"><p><span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','modify',$index)"></span><span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span><!-- <span class="manual_once" ng-click="inventoryOnce(item.store_house,item.id)">立即检测</span> --></p></td>
-              <td ng-show="item.status == 1"><p></p></td>
-              <td ng-show="item.status == 2 || item.status == 3"><p><!-- <span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span> --><span class="rfid-delete rfid-delete-manual icon-icon_information" ng-click="open('md-info-manual','info',$index)"></span><span class="rfid-delete-tip" ng-click="open('md-info-manual','info',$index)">查看结果</span></p></td>
+      				<td ng-show="item.status == 0">
+                        <p>
+                            <span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','modify',$index)"></span>
+                            <span class="rfid-delete icon-icon_cancel" ng-click="open('md-delete','delete',$index)"></span>
+                            <!-- <span class="manual_once" ng-click="inventoryOnce(item.store_house,item.id)">立即检测</span> -->
+                        </p>
+                    </td>
+                    <td ng-show="item.status == 1"><p></p></td>
+                   <td ng-show="item.status == 2 || item.status == 3">
+                       <p>
+                           <!-- <span class="rfid-edit icon-icon_edit" ng-click="open('md-edit','replace',$index)"></span> -->
+                           <span nmae="manual_delete_{{$index}}" class="rfid-delete rfid-delete-manual icon-icon_information" ng-click="open('md-info-manual','info',$index)"></span>
+                           <span name="manual_watch_{{$index}}" class="rfid-delete-tip" ng-click="open('md-info-manual','info',$index)">查看结果</span>
+                       </p>
+                   </td>
     			</tr>
     		</tbody>
     	</table>
@@ -198,8 +210,8 @@
              </uib-pagination>
               <div class="pagination-detail">
                 <span>共{{total_page}}页</span>
-                <span>跳至<input type="text" ng-model="index_sel"/>页</span>
-                <span><button id="" ng-click="setPage()">确定</button></span>
+                <span>跳至<input type="text" name="manual_page" ng-model="index_sel"/>页</span>
+                <span><button id="" name="manual_page_submmit" ng-click="setPage()">确定</button></span>
               </div>
             </th>
 

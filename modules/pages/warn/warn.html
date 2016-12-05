@@ -9,20 +9,20 @@
                 <div class="form-row">
                     <div class="date-area">
                         <span class="icon-icon_calendar"></span>
-                        <input type="text" class="normal date-picker"  data-date-format="yyyy-mm-dd"
+                        <input type="text" class="normal date-picker" name="warn_startDate"  data-date-format="yyyy-mm-dd"
                                ng-model="params.startDate"/>
                     </div>
                     <span style="margin:0 10px;float:left;position: relative;top:10px;">至</span>
                     <div class="date-area">
                         <span class="icon-icon_calendar"></span>
-                        <input type="text" class="normal date-picker"  data-date-format="yyyy-mm-dd"
+                        <input type="text" class="normal date-picker"  name="warn_endDate" data-date-format="yyyy-mm-dd"
                                ng-model="params.endDate"/>
                     </div>
                 </div>
             </div>
             <div class="form-group form-group-selin">
                 <label>警报类型:</label>
-                <ui-select ng-model="params.event_type" theme="bootstrap"
+                <ui-select ng-model="params.event_type" name="warn_type" theme="bootstrap"
                            on-select="params.event_type=$select.selected.key;">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                     <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group form-group-selin">
                 <label>警报反馈:</label>
-                <ui-select ng-model="params.event_feedback_type" theme="bootstrap"
+                <ui-select ng-model="params.event_feedback_type" name="warn_feedback" theme="bootstrap"
                            on-select="params.event_feedback_type=$select.selected.key;">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                     <ui-select-choices repeat="item.key as (key,item) in selections.event_feedback_type">
@@ -42,7 +42,7 @@
             </div>
             <div class="form-group form-group-selin" style="margin-right:35px;">
                 <label>处理结果:</label>
-                <ui-select ng-model="params.handle_result" theme="bootstrap"
+                <ui-select ng-model="params.handle_result" name="warn_handle" theme="bootstrap"
                            on-select="params.handle_result=$select.selected.key;">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                     <ui-select-choices repeat="item.key as (key,item) in selections.handle_result">
@@ -51,7 +51,7 @@
                 </ui-select>
             </div>
             <div class="btns-group">
-                <a type="button" class="btn btn-green" ng-click="refresh()"><span
+                <a type="button" class="btn btn-green" name="warn_search" ng-click="refresh()"><span
                         class="icon-icon_search btn-icon"></span>搜索</a>
                 <!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
             </div>
@@ -60,15 +60,15 @@
         <table class="table table-bordered table-content" ng-show="dataList&&dataList.length>0">
             <thead>
             <tr>
-                <th ng-click="order.id=!order.id;switch('id');refresh();"><p>编号<span
+                <th name="warn_order_id" ng-click="order.id=!order.id;switch('id');refresh();"><p>编号<span
                         ng-class="order.id?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></th>
-                <th ng-click="order.event_type=!order.event_type;switch('event_type');refresh();"  ><p>警报类型<span
+                <th name="warn_order_type" ng-click="order.event_type=!order.event_type;switch('event_type');refresh();"  ><p>警报类型<span
                         ng-class="order.event_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></th>
-                <th ng-click="order.event_feedback_type=!order.event_feedback_type;switch('event_feedback_type');refresh();"><p>警报反馈<span
+                <th name="warn_order_feedback" ng-click="order.event_feedback_type=!order.event_feedback_type;switch('event_feedback_type');refresh();"><p>警报反馈<span
                         ng-class="order.event_feedback_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></th>
-                <th ng-click="order.handle_result=!order.handle_result;switch('handle_result');refresh();"><p>处理结果<span
+                <th name="warn_order_handle"  ng-click="order.handle_result=!order.handle_result;switch('handle_result');refresh();"><p>处理结果<span
                         ng-class="order.handle_result?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></th>
-                <th ng-click="order.event_datetime=!order.event_datetime;switch('event_datetime');refresh();"><p>警报发生时间<span
+                <th name="warn_order_data" ng-click="order.event_datetime=!order.event_datetime;switch('event_datetime');refresh();"><p>警报发生时间<span
                         ng-class="order.event_datetime?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></span>
                 </th>
                 <th><p>操作</p></th>
@@ -81,7 +81,7 @@
                 <td><p>{{item.event_feedback_type_display}}</p></td>
                 <td><p>{{item.handle_result_display}}</p></td>
                 <td><p>{{item.event_datetime |time_format}}</p></td>
-                <td><p><a href="javascript:void(0)" ng-click="jumpToDetail(item)"><span
+                <td><p><a href="javascript:void(0)" name="warn_detail" ng-click="jumpToDetail(item)"><span
                         class="icon-icon_information"></span>查看详情</a></p></td>
             </tr>
             </tbody>
@@ -92,7 +92,7 @@
                 <th class="pagination-items-per-page">
                     <div class="pagination-content">
                         <span class="pagination-tip">每页显示数量</span>
-                        <ui-select ng-model="params.number" theme="bootstrap"
+                        <ui-select ng-model="params.number" name="warn_page_select" theme="bootstrap"
                                    on-select="params.number=$select.selected;refresh();">
                             <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
                             <ui-select-choices repeat="item in selections.numbers">
@@ -104,12 +104,13 @@
                 <th>
                     <uib-pagination items-per-page="params.number" total-items="total" ng-change="refresh()"
                                     ng-model="params.index" max-size="5"
-                                    class="pagination-sm"  force-ellipses="true"
+                                    class="pagination-sm"
+                                    boundary-link-numbers="true"
                                      next-text="下一页" previous-text="上一页"></uib-pagination>
                     <div class="pagination-detail">
                         <span>共{{totalPage}}页</span>
-                        <span>跳至<input type="text" ng-model="index_sel"/>页</span>
-                        <span><button ng-click="setPage()">确定</button></span>
+                        <span>跳至<input type="text" name="warn_page" ng-model="index_sel"/>页</span>
+                        <span><button name="warn_page_submmit" ng-click="setPage()">确定</button></span>
                     </div>
                 </th>
             </tr>

@@ -10,10 +10,10 @@
            <div class="module_header" >公共模块</div>
            <div class="module_header_content">
                <div class="col-lg-3 module_content" ng-repeat="item in dataList_common">
-                   <div class="module_info {{item.active}}" ng-class="{true:'open',false:'unopen'}[item.checked]"  ng-class="" ng-click="search_detail(item.main_event,item)">
+                   <div class="module_info {{item.active}}" ng-class="{true:'open',false:'unopen'}[item.checked]"  name="common_{{$index}}" ng-class="" ng-click="search_detail(item.main_event,item)">
                        <div class="desc">{{item.main_event_display}}</div>
                        <div class="checkbox" >
-                           <input type="checkbox" ng-click="item.checked=!item.checked;setCommon(item.main_event,item.checked)" ng-checked="item.checked"/>
+                           <input type="checkbox"  name="common_check_{{$index}}" ng-click="item.checked=!item.checked;setCommon(item.main_event,item.checked)" ng-checked="item.checked"/>
                            <label></label>
                        </div>
                    </div>
@@ -71,7 +71,7 @@
                             <td ng-class="{'fontstaus':items.status==0,'unfontstaus':items.status==1}">
                                 <div class="normal_func" style="padding: 5px">{{items.sub_event_display}}</div>
                                 <div class="checkbox normal_checkbox" >
-                                    <input type="checkbox"   ng-click="items.checked=!items.checked;setDetail(items)" ng-checked="items.checked"/>
+                                    <input type="checkbox"  name="detail_check_{{$index}}" ng-click="items.checked=!items.checked;setDetail(items)" ng-checked="items.checked"/>
                                     <label></label>
                                 </div>
                             </td>
@@ -85,7 +85,7 @@
                             </td>
                             <td class="light" ng-class="{'fontstaus':items.status==0,'unfontstaus':items.status==1}">
                                 <div class="noset_left">
-                                    <ui-select ng-model="items.light_action"  theme="bootstrap"
+                                    <ui-select ng-model="items.light_action" name="light_action_{{$index}}"  theme="bootstrap"
                                                on-select="changeset('light_action',$select.selected.key,items)" ng-disabled="items.status==1||items.set_type==0">
                                         <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                                         <ui-select-choices repeat="item.key as (key,item) in light_action_list">
@@ -96,7 +96,7 @@
                             </td>
                             <td class="camera" ng-class="{'fontstaus':items.status==0,'unfontstaus':items.status==1}">
                                 <div class="noset_right">
-                                    <ui-select  ng-model="items.camera_action"  theme="bootstrap"
+                                    <ui-select  ng-model="items.camera_action"  name="camera_action_{{$index}}" theme="bootstrap"
                                                on-select="changeset('camera_action',$select.selected.key,items)" ng-disabled="items.status==1||items.set_type==0">
                                         <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                                         <ui-select-choices repeat="item.key as (key,item) in camera_action_list">

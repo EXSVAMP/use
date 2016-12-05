@@ -124,7 +124,7 @@ app.register.controller("locationCtrl", function ($scope, $http, $timeout, $inte
         if ($scope.fullScreenStatus())
             $scope.openFull();
         else
-            $scope.closeFull();
+            $scope.closeFull();4
     }
 
     $(window).on('fullscreenchange', function () {

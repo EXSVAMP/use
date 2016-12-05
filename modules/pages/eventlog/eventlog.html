@@ -6,7 +6,7 @@
        <form role="form" class="search-bar col-flow">
            <div class="form-group form-group-selin">
                <label>事件类型:</label>
-               <ui-select ng-model="params.event_type" theme="bootstrap"
+               <ui-select ng-model="params.event_type"  name="eventlog_type" theme="bootstrap"
                           on-select="params.event_type=$select.selected.key;">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                    <ui-select-choices repeat="item.key as (key,item) in selections.event_type">
@@ -16,11 +16,11 @@
            </div>
            <div class="form-group form-group-selin">
                <label>RFID序列号:</label>
-               <input type="text"  class="form-control" placeholder="请输入名称" ng-model="params.rfid_id">
+               <input type="text"  class="form-control" name="evevntlog_serial" placeholder="请输入名称" ng-model="params.rfid_id">
            </div>
            <div class="form-group form-group-selin">
                <label>读写器:</label>
-               <ui-select  ng-model="params.reader_id" theme="bootstrap"
+               <ui-select  ng-model="params.reader_id" name="eventlog_reader" theme="bootstrap"
                           on-select="params.reader_id=$select.selected.id;" class="reader_select">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.serial_number}}</ui-select-match>
                    <ui-select-choices repeat="item.id as item in reader">
@@ -30,7 +30,7 @@
            </div>
            <div class="form-group form-group-selin">
                <label>摄像头:</label>
-               <ui-select ng-model="params.camera_id" theme="bootstrap"
+               <ui-select ng-model="params.camera_id" name="eventlog_camera" theme="bootstrap"
                           on-select="params.camera_id=$select.selected.id;">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.serial_number}}</ui-select-match>
                    <ui-select-choices repeat="item.id as item in camera">
@@ -40,7 +40,7 @@
            </div>
            <div class="form-group form-group-selin">
                <label>事件反馈:</label>
-               <ui-select ng-model="params.event_feedback_type" theme="bootstrap"
+               <ui-select ng-model="params.event_feedback_type" name="eventlog_feedback" theme="bootstrap"
                           on-select="params.event_feedback_type=$select.selected.key;">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                    <ui-select-choices repeat="item.key as (key,item) in selections.event_feedback_type">
@@ -51,7 +51,7 @@
 
            <div class="form-group form-group-selin">
                <label>处理类型:</label>
-               <ui-select ng-model="params.handle_result" theme="bootstrap"
+               <ui-select ng-model="params.handle_result"  name="eventlog_handle" theme="bootstrap"
                           on-select="params.handle_result=$select.selected.key;">
                    <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
                    <ui-select-choices repeat="item.key as (key,item) in selections.handle_result">
@@ -64,13 +64,13 @@
                <div class="form-row">
                    <div class="date-area">
                        <span class="icon-icon_calendar"></span>
-                       <input type="text" class="normal date-picker"  data-date-format="yyyy-mm-dd"
+                       <input type="text" class="normal date-picker" name="eventlog_startDate"  data-date-format="yyyy-mm-dd"
                               ng-model="params.startDate"/>
                    </div>
                    <span style="margin:0 10px;float:left;position: relative;top:10px;">至</span>
                    <div class="date-area">
                        <span class="icon-icon_calendar"></span>
-                       <input type="text" class="normal date-picker"  data-date-format="yyyy-mm-dd"
+                       <input type="text" class="normal date-picker" name="eventlog_endDate" data-date-format="yyyy-mm-dd"
                               ng-model="params.endDate"/>
                    </div>
                </div>
@@ -86,10 +86,10 @@
        <div style="clear: both"></div>
        <div class="condition-sort">
            <ul class="condition-sort-ul">
-               <li class="condition-sort-li" ng-click="order.id=!order.id;switch('id');refresh()"><p>编号<span ng-class="order.id?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
-               <li class="condition-sort-li" ng-click="order.event_feedback_type=!order.event_feedback_type;switch('event_feedback_type');refresh()"><p>事件反馈类型<span ng-class="order.event_feedback_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
-               <li class="condition-sort-li" ng-click="order.event_type=!order.event_type;switch('event_type');refresh()"><p>事件类型<span ng-class="order.event_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
-               <li class="condition-sort-li" ng-click="order.event_datetime=!order.event_datetime;switch('event_datetime');refresh()"><p>事件发生时间<span ng-class="order.event_datetime?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
+               <li class="condition-sort-li" name="eventlog_order_id" ng-click="order.id=!order.id;switch('id');refresh()"><p>编号<span ng-class="order.id?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
+               <li class="condition-sort-li" name="eventlog_order_feedback" ng-click="order.event_feedback_type=!order.event_feedback_type;switch('event_feedback_type');refresh()"><p>事件反馈类型<span ng-class="order.event_feedback_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
+               <li class="condition-sort-li" name="eventlog_order_type" ng-click="order.event_type=!order.event_type;switch('event_type');refresh()"><p>事件类型<span ng-class="order.event_type?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
+               <li class="condition-sort-li" name="eventlog_order_date" ng-click="order.event_datetime=!order.event_datetime;switch('event_datetime');refresh()"><p>事件发生时间<span ng-class="order.event_datetime?'icon-icon_sort_up':'icon-icon_sort_down'"></span></p></li>
            </ul>
            <table class="table table-pagination table-pagination-sort" >
                <thead>
@@ -97,7 +97,7 @@
                    <th class="pagination-items-per-page">
                        <div class="pagination-content">
                            <span class="pagination-tip">每页显示数量</span>
-                           <ui-select ng-model="params.number" theme="bootstrap" on-select="params.number=$select.selected;refresh();">
+                           <ui-select ng-model="params.number" name="eventlog_page_select" theme="bootstrap" on-select="params.number=$select.selected;refresh();">
                                <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
                                <ui-select-choices repeat="item in selections.numbers">
                                    <div ng-bind-html="item"></div>
@@ -115,9 +115,9 @@
        <div class="eventlog_detail" ng-show="dataList.length>0">
            <div class="main-detail-tab">
                <ul class="nav nav-tabs">
-                   <li class="tab-item" style="margin-left:20px;" ng-class="tabSwitch==0?'active':''" ng-click="tabSwitch=0;replay()">
+                   <li class="tab-item" style="margin-left:20px;" ng-class="tabSwitch==0?'active':''" name="eventlog_photo" ng-click="tabSwitch=0;replay()">
                        <a href="javascript:void(0)"><span class="icon icon-icon_picture"></span><br/>照片地址</a></li>
-                   <li class="tab-item" ng-class="tabSwitch==1?'active':''" ng-click="tabSwitch=1;">
+                   <li class="tab-item" ng-class="tabSwitch==1?'active':''" name="eventlog_video" ng-click="tabSwitch=1;">
                        <a href="javascript:void(0)"><span class="icon icon-icon_video"></span><br/>视频地址</a></li>
                </ul>
                <div class="detail-img detail-img1" ng-show="tabSwitch==0" id="detail-img-url">
@@ -133,8 +133,8 @@
                   <div ng-show="detail.video_url"> <div id="container"></div> </div>
                </div>
                <div class="bottom-bar-group">
-                   <span class="previous-group"  >上一组<span class="icon-icon_arrow_circleleft" ng-class="currentIndex<=0?'noclick':''" ng-disabled="currentIndex<=0" ng-click="currentIndex>0?showDetail(currentIndex-1):''"></span></span>
-                   <span class="next-group">下一组<span class="icon-icon_arrow_circleright" ng-class="currentIndex==dataList.length-1?'noclick':''" ng-click="currentIndex!=dataList.length-1?showDetail(currentIndex+1):''" ></span></span>
+                   <span class="previous-group"  >上一组<span class="icon-icon_arrow_circleleft" name="eventlog_pregroup" ng-class="currentIndex<=0?'noclick':''" ng-disabled="currentIndex<=0" ng-click="currentIndex>0?showDetail(currentIndex-1):''"></span></span>
+                   <span class="next-group">下一组<span class="icon-icon_arrow_circleright" name="eventlog_nextgroup"  ng-class="currentIndex==dataList.length-1?'noclick':''" ng-click="currentIndex!=dataList.length-1?showDetail(currentIndex+1):''" ></span></span>
 
                </div>
 
@@ -175,7 +175,7 @@
                </div>
            </div>
            <div class="main-detail-record">
-               <div class="record-desc" ng-class="{'active':item.id==detail.id}"  ng-repeat="item in dataList" ng-click="showDetail($index)">
+               <div class="record-desc" ng-class="{'active':item.id==detail.id}"  ng-repeat="item in dataList" name="eventlog_record_{{$index}}" ng-click="showDetail($index)">
                     <ul >
                         <li>
                             <span class="number">编号:</span>
@@ -212,8 +212,8 @@
 
                    <div class="pagination-detail">
                        <span>共{{totalPage}}页</span>
-                       <span>跳至<input type="text" ng-model="index_sel"/>页</span>
-                       <span><button ng-click="setPage()">确定</button></span>
+                       <span>跳至<input type="text" name="eventlog_page" ng-model="index_sel"/>页</span>
+                       <span><button name="eventlog_submmit" ng-click="setPage()">确定</button></span>
                    </div>
                </th>
            </tr>
