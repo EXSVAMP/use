@@ -105,15 +105,15 @@
 		<table class="table table-bordered table-content">
   			<thead>
     			<tr>
-      				<th ng-click="switch_order('id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.id]"></span></p></th>
-      				<th ng-click="switch_order('serial_number')"><p>序列号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.serial_number]"></span></p></th>
-      				<th ng-click="switch_order('status')"><p>状态<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.status]"></span></p></th>
-              <th ng-click="switch_order('func_type')"><p>功能类型<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.func_type]"></span></p></th>
-              <th><p>IP地址</p></th>
-               <th><p>摄像头地址</p></th>
-              <th><p>描述</p></th>
-      				<th ng-click="switch_order('updated_at')"><p>更新时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.updated_at]"></span></p></th>
-      				<th ng-click="switch_order('created_at')"><p>创建时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.created_at]"></span></p></span></th>
+      				<th name="reader_order_id" ng-click="switch_order('id')"><p>编号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.id]"></span></p></th>
+      				<th name="reader_order_derial" ng-click="switch_order('serial_number')"><p>序列号<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.serial_number]"></span></p></th>
+      				<th name="reader_order_status" ng-click="switch_order('status')"><p>状态<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.status]"></span></p></th>
+                    <th name="reader_order_type" ng-click="switch_order('func_type')"><p>功能类型<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.func_type]"></span></p></th>
+                    <th><p>IP地址</p></th>
+                    <th><p>摄像头地址</p></th>
+                    <th><p>描述</p></th>
+      				<th name="reader_order_updated" ng-click="switch_order('updated_at')"><p>更新时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.updated_at]"></span></p></th>
+      				<th name="reader_order_created" ng-click="switch_order('created_at')"><p>创建时间<span ng-class="{false:'dwn-arw-af-card',true:'up-arw-af-card'}[order.created_at]"></span></p></span></th>
       				<th><p>操作</p></th>
     			</tr>
   			</thead>

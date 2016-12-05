@@ -111,9 +111,9 @@
                     <table class="table table-bordered table-content" >
                         <thead >
                         <tr>
-                            <th ng-click="switch_order('id')">编号<span  ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.id]"></span></th>
-                            <th ng-click="switch_order('serial_number')">序列号<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.serial_number]"></span></th>
-                            <th ng-click="switch_order('func_type')">功能类型<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.func_type]"></span></th>
+                            <th name="camera_order_id" ng-click="switch_order('id')">编号<span  ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.id]"></span></th>
+                            <th name="camera_order_serial" ng-click="switch_order('serial_number')">序列号<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.serial_number]"></span></th>
+                            <th name="camera_order_type" ng-click="switch_order('func_type')">功能类型<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.func_type]"></span></th>
                             <th>库位地址</th>
                             <th>状态</th>
                             <!--<th>RFID读写器</th>-->
@@ -121,8 +121,8 @@
                             <th>直播地址</th>
 
                             <th>描述</th>
-                            <th  ng-click="switch_order('updated_at')">更新时间<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.updated_at]"></span></th>
-                            <th  ng-click="switch_order('created_at')">创建时间<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.created_at]"></span></th>
+                            <th name="camera_order_updated" ng-click="switch_order('updated_at')">更新时间<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.updated_at]"></span></th>
+                            <th name="camera_order_created"  ng-click="switch_order('created_at')">创建时间<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.created_at]"></span></th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -192,7 +192,7 @@
     <div class="cover" ng-show="liveStatus">
         <div class="cover1">
             <div id="play"></div>
-            <img ng-click="close()" class="closeVideo" src="/lib/img/icon_close.png"/>
+            <img name="close_video" ng-click="close()" class="closeVideo" src="/lib/img/icon_close.png"/>
         </div>
 
     </div>
