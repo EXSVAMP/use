@@ -23,9 +23,9 @@
   };
   .content{
     padding: 20px;
-    .function_type_select{
+    .col-flow{
       height: auto;
-      overflow: hidden;
+      //overflow: hidden;
       border-radius: 4px;
       background-color: #ffffff;
       margin-bottom: 20px;
@@ -35,21 +35,22 @@
         float: left;
         margin-right: 53px;
         width: 250px;
+
         label{
           font-size: 12px;
           color: #3e4d68;
         };
-        .ui-select-search, .ui-select-match {
-          width: 250px !important;
-          //min-width: 146px !important;
-          border-radius: 4px!important;
-        };
-        .ui-select-bootstrap>.ui-select-choices, .ui-select-bootstrap>.ui-select-no-choice {
-          width: 250px!important;
-        };
-        ul.ui-select-choices li {
-          width: 250px;
-        };
+        //.ui-select-search, .ui-select-match {
+        //  width: 250px !important;
+        //  //min-width: 146px !important;
+        //  border-radius: 4px!important;
+        //};
+        //.ui-select-bootstrap>.ui-select-choices, .ui-select-bootstrap>.ui-select-no-choice {
+        //  width: 250px!important;
+        //};
+        //ul.ui-select-choices li {
+        //  width: 250px;
+        //};
         .camera_desc,.camera_monitor{
           width: 250px;
           height: 34px;
@@ -64,7 +65,7 @@
         float: left;
         width: 250px;
         height: 55px;
-        line-height: 70px;
+        line-height: 52px;
         .btn-camera-search{
           width: 80px;
           height: 34px;
@@ -238,6 +239,7 @@
 
 
 };
+
 .modal-md{
    position: absolute;
    top: 50%;

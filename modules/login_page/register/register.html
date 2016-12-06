@@ -34,8 +34,8 @@
             	<span class="errorInfoReg" ng-show="register.regUserpass.$valid&&register.regUserrepass.$valid&&information.re_password!=information.password||validate_re_password">确认密码跟密码不一致</span>
     		</div>
     		<div class="btns-group">
-    			<a href="#/login" class="btn pull-left btn-backlogin">返回登录</a>
-    			<button type="button" class="btn pull-right btn-next" ng-click="goNext(2)">下一步</button>
+    			<a href="#/login" name="btn-backlogin" class="btn pull-left btn-backlogin">返回登录</a>
+    			<button type="button" name="btn-next"   class="btn pull-right btn-next" ng-click="goNext(2)">下一步</button>
     		</div>
     	</div>
     	<div ng-show="register_success==2">
@@ -64,8 +64,8 @@
                 <span class="errorInfoReg" ng-show="register.regCompPhone.$touched&&register.regCompPhone.$invalid||validate_connect_info">仓库联系方式为1-30位</span>
     		</div>
     		<div class="btns-group">
-    			<button type="button" class="btn pull-left btn-backlogin" ng-click="goPre(1)">上一步</button>
-    			<button type="button" class="btn pull-right btn-next" ng-click="goNext(3)">下一步</button>
+    			<button type="button" name="btn-backlogin1" class="btn pull-left btn-backlogin" ng-click="goPre(1)">上一步</button>
+    			<button type="button" name="btn-backlogin3" class="btn pull-right btn-next" ng-click="goNext(3)">下一步</button>
     		</div>
     	</div>
     	<div ng-show="register_success==3">
