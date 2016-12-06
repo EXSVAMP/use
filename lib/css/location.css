@@ -610,12 +610,12 @@ img.tip_2{
 }
 .CupipeDown  img:nth-child(3){
     position: relative;
-    top: -57px;
+    /*top: -57px;*/
     z-index:3
 }
 .CupipeDown  img:nth-child(4){
     position: relative;
-    top: -85px;
+    /*top: -85px;*/
     z-index: 2
 }
 

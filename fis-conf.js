@@ -66,7 +66,7 @@ fis.match('*.scss', {
 });
 
 
-fis.match('*.{js,css,png,gif,svg}', {
+fis.match('*.{js,css,gif,svg}', {
     useHash: true // 开启 md5 戳
 })
 
