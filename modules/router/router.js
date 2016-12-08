@@ -9,6 +9,7 @@ var warnDetail = require("pages/warn/warnDetail");
 var reader = require("pages/reader/reader");
 var user = require("pages/user/user");
 var account = require("pages/account/account");
+var operate=require("pages/user/operate");
 var pollinventory = require("pages/pollinventory/pollinventory");
 var manualinventory = require("pages/manualinventory/manualinventory");
 var location = require("pages/location/location");
@@ -34,6 +35,7 @@ app.config(function ($stateProvider, $urlRouterProvider,$controllerProvider) {
         .state('reader', reader)
         .state('user', user)
         .state('account', account)
+        .state('operate',operate)
         .state('eventlog', eventlog)
         .state('pollinventory', pollinventory)
         .state('manualinventory', manualinventory)

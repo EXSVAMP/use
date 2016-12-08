@@ -506,6 +506,17 @@
     background-color: #07B1A8;
     color: #ffffff; }
 
+.btn-reset {
+  background-color: #ffffff;
+  color: #5F9BDB !important;
+  border-radius: 4px;
+  border-color: #5F9BDB;
+  padding: 6px 20px;
+  margin-left: 20px; }
+  .btn-reset:hover {
+    color: #1688EC !important;
+    border-color: #1688EC; }
+
 .btn-icon {
   margin-right: 5px; }
 
@@ -820,13 +831,13 @@
     top: 2px; }
   .sideBar .icon-icon_RFIDcard, .sideBar .icon-icon_RFIDcardcontent, .sideBar .icon-icon_camera, .sideBar .icon-icon_cardreader,
   .sideBar .icon-icon_eventlog, .sideBar .icon-icon_userlist, .sideBar .icon-icon_user,
-  .sideBar .icon-icon_warehouse_eyesmap, .sideBar .icon-icon_gear, .sideBar .icon-icon_realtime_text, .sideBar .icon-icon_manual_test {
+  .sideBar .icon-icon_warehouse_eyesmap, .sideBar .icon-icon_gear, .sideBar .icon-icon_realtime_text, .sideBar .icon-icon_manual_test, .sideBar .icon-icon_historical_records {
     position: relative;
     top: 2px;
     margin-left: 45px;
     margin-right: 5px; }
   .sideBar .icon-icon_user, .sideBar .icon-icon_userlist, .sideBar .icon-icon_gear, .sideBar .icon-icon_warehouse,
-  .sideBar .icon-icon_stock_search {
+  .sideBar .icon-icon_stock_search.icon-icon_historical_records {
     position: relative;
     top: 2px;
     margin-right: 3px; }
@@ -2143,6 +2154,44 @@
         .account-content .account-content-detail .account-content-detail-li p span.detail-content {
           font-size: 14px;
           color: #3e4d68; }
+
+.operate .table-content {
+  background-color: #ffffff;
+  color: #666666;
+  width: 100%;
+  min-width: 1000px; }
+  .operate .table-content thead {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    color: #666666; }
+    .operate .table-content thead span {
+      font-size: 16px;
+      position: relative;
+      top: 2px;
+      margin-left: 2px; }
+  .operate .table-content a {
+    text-decoration: none !important;
+    cursor: pointer; }
+.operate .search-bar .btns-group {
+  width: 200px !important;
+  margin-left: 10px; }
+.operate .search-bar .form-group {
+  margin-right: 26px; }
+.operate .main-content .notFound {
+  display: table;
+  margin: 100px auto 0 auto; }
+  .operate .main-content .notFound .icon-icon_historical_records {
+    font-size: 128px;
+    color: #808CA0;
+    display: inline-block; }
+  .operate .main-content .notFound .notFound_desc {
+    display: inline-block;
+    font-size: 19px;
+    color: #3e4d68;
+    position: relative;
+    top: -38px;
+    left: 2px; }
 
 .eventlog_Content .main-content .search-bar .form-group {
   width: 20%; }

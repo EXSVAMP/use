@@ -68,7 +68,11 @@
                         <span class="icon-icon_user"></span>我的账号
                     </a>
                 </li>
-
+                <li ng-class="{true:'activeSide',false:'unactive'}[sideState.operate]" ng-click="switch('operate')">
+                    <a href="#operate">
+                        <span class="icon-icon_historical_records"></span>操作记录
+                    </a>
+                </li>
             </ul>
 
         </li>

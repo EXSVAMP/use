@@ -413,6 +413,7 @@ app.controller("sideBarCtrl",function($scope, $rootScope,$location){
         "warn":false,
         "user":false,
         "account":false,
+        "operate":false,
         "location":false,
         "storeSet":false,
         "pollinventory":false,

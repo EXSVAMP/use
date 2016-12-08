@@ -96,14 +96,14 @@ display: inline-block;
 };
   .icon-icon_RFIDcard,.icon-icon_RFIDcardcontent,.icon-icon_camera,.icon-icon_cardreader,
   .icon-icon_eventlog,.icon-icon_userlist,.icon-icon_user,
-  .icon-icon_warehouse_eyesmap,.icon-icon_gear,.icon-icon_realtime_text,.icon-icon_manual_test{
+  .icon-icon_warehouse_eyesmap,.icon-icon_gear,.icon-icon_realtime_text,.icon-icon_manual_test,.icon-icon_historical_records{
     position: relative;
     top:2px;
     margin-left: 45px;
     margin-right: 5px;
   };
   .icon-icon_user,.icon-icon_userlist,.icon-icon_gear,.icon-icon_warehouse,
-  .icon-icon_stock_search{
+  .icon-icon_stock_search.icon-icon_historical_records{
     position: relative;
     top:2px;
     margin-right: 3px;

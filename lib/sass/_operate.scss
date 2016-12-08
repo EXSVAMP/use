@@ -1,0 +1,16 @@
+.operate{
+   @include table_set();
+
+   .search-bar{
+      .btns-group{
+         width:200px!important;
+         margin-left: 10px;
+      }
+      .form-group{
+         margin-right: 26px;
+      }
+   }
+  .main-content{
+     @include search_no_set();
+   }
+}
