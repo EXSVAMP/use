@@ -52,10 +52,10 @@
                 </ui-select>
             </div>
             <div class="btns-group">
-                <button type="button" class="btn btn-green" ng-click="submit_search()">
+                <button type="button" class="btn btn-green" name="operate_search" ng-click="submit_search()">
                     <span class="icon-icon_search btn-icon"></span>搜索
                 </button>
-                <button type="button" class="btn btn-reset" ng-click="reset()">
+                <button type="button" class="btn btn-reset" name="operate_reset" ng-click="reset()">
                    置空
                 </button>
             </div>
@@ -65,12 +65,12 @@
         <table class="table table-bordered table-content">
              <thead>
                <tr>
-                 <th ng-click="switch_order('id')">编号<span  ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.id]"></span></th>
-                 <th ng-click="switch_order('op_person')">操作人<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.op_person]"></span></th>
-                 <th ng-click="switch_order('op_model')">操作对象<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.op_model]"></span></th>
-                 <th ng-click="switch_order('op_type')">操作类型<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.op_type]"></span></th>
+                 <th  name="operate_order_id" ng-click="switch_order('id')">编号<span  ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.id]"></span></th>
+                 <th  name="operate_order_person" ng-click="switch_order('op_person')">操作人<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.op_person]"></span></th>
+                 <th  name="operate_order_model"  ng-click="switch_order('op_model')">操作对象<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.op_model]"></span></th>
+                 <th  name="operate_order_type"   ng-click="switch_order('op_type')">操作类型<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.op_type]"></span></th>
                  <th>操作内容</th>
-                 <th ng-click="switch_order('op_date')">操作时间<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.op_date]"></span></th>
+                 <th  name="operate_order_date"  ng-click="switch_order('op_date')">操作时间<span ng-class="{true:'icon-icon_sort_up',false:'icon-icon_sort_down'}[order.op_date]"></span></th>
                  <th>结果</th>
                  <th>原因</th>
                </tr>
@@ -108,7 +108,7 @@
                     </ui-select> -->
                     <div class="pagination-content">
                         <span class="pagination-tip">每页显示数量</span>
-                        <ui-select ng-model="number" name="camera_page_select" theme="bootstrap" on-select="setShowNum(number)">
+                        <ui-select ng-model="number" name="operate_page_select" theme="bootstrap" on-select="setShowNum(number)">
                             <ui-select-match placeholder="10">{{$select.selected}}</ui-select-match>
                             <ui-select-choices repeat="item in numbers">
                                 <div ng-bind-html="item"></div>
