@@ -22,7 +22,7 @@
             </div>
 
             <div class="form-group form-group-selin">
-                <label>操作人:{{params.op_person}}</label>
+                <label>操作人:</label>
                 <ui-select ng-model="params.op_person"  name="op_person" theme="bootstrap"
                            on-select="params.op_person=$select.selected.key;">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
@@ -32,7 +32,7 @@
                 </ui-select>
             </div>
             <div class="form-group form-group-selin">
-                <label>操作对象:{{params.op_model}}</label>
+                <label>操作对象:</label>
                 <ui-select ng-model="params.op_model"  name="op_model" theme="bootstrap"
                            on-select="params.op_model=$select.selected.id;">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.status}}</ui-select-match>
@@ -42,7 +42,7 @@
                 </ui-select>
             </div>
             <div class="form-group form-group-selin">
-                <label>操作类型:{{params.op_type}}</label>
+                <label>操作类型:</label>
                 <ui-select ng-model="params.op_type"  name="op_type" theme="bootstrap"
                            on-select="params.op_type=$select.selected.id;">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.status}}</ui-select-match>

@@ -125,6 +125,7 @@ app.register.controller("operateCtrl",function($scope, $http, $location,$timeout
         $scope.params.op_person="";
         $scope.params.op_model="";
         $scope.params.op_type="";
+        $scope.submit_search();
     }
     $scope.submit_search();
 
