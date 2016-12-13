@@ -78,7 +78,7 @@
             <tbody>
               <tr ng-repeat="items in dataList">
                   <td>{{items.id}}</td>
-                  <td>{{items.op_person}}</td>
+                  <td>{{items.op_person.username}}</td>
                   <td>{{items.op_model}}</td>
                   <td>{{items.op_type}}</td>
                   <td><span tooltip-placement="bottom" uib-tooltip="{{items.op_content}}">{{items.op_content |characters:10 :true}}</span></td>
