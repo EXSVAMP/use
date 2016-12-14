@@ -8,6 +8,9 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
 
   $scope.query_url_now = "";
 
+   $scope.type={};
+   $scope.write={};
+
   var urlBase=baseUrl.getUrl();
   $scope.open = function (size, method,index){
     var modalInstance = $uibModal.open({
@@ -345,6 +348,22 @@ app.register.controller("contentCtrl", function ($scope, $http, $location, $uibM
     })
 
   };
+
+  $scope.reset=function(){
+    $scope.type = {};
+    $scope.write={};
+    $scope.rfid_id="";
+    $scope.rfid_card_idTemp="";
+    $scope.goods_location_name="";
+    $scope.card_serial_number="";
+    $scope.rfid_idTemp="";
+    $scope.rfid_type="-1";
+    $scope.is_writed="-1";
+    $scope.card_serial_numberTemp="";
+    $scope.goods_location_nameTemp="";
+    $scope.submit_search(0,0);
+  }
+
   //$scope.submit_search(0,0);
 
 });

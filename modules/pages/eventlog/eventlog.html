@@ -59,7 +59,7 @@
                    </ui-select-choices>
                </ui-select>
            </div>
-           <div class="form-group form-group-selin date" style="width:430px;margin-right:20px">
+           <div class="form-group form-group-selin date" style="width:430px;margin-right:0px">
                <label>事件发生时间:</label>
                <div class="form-row">
                    <div class="date-area">
@@ -76,8 +76,12 @@
                </div>
            </div>
            <div class="btns-group eventBtn">
-               <a type="button" class="btn btn-green" ng-click="refresh()"><span
-                       class="icon-icon_search btn-icon"></span>搜索</a>
+               <button type="button" class="btn btn-green" ng-click="refresh()"><span
+                       class="icon-icon_search btn-icon"></span>搜索</button>
+               <button type="button" class="btn btn-reset" ng-click="reset()">置空</button>
+
+
+
            </div>
        </form>
        <!--<form role="form" class="search-bar col-flow">-->

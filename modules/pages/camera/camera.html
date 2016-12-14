@@ -75,7 +75,7 @@
         <form role="form" class="search-bar col-flow">
             <div class="form-group form-group-selin">
                 <label for="name">功能类型:</label>
-                <ui-select ng-model="functype" name="camera_type" theme="bootstrap"  on-select="select_func_type(functype)">
+                <ui-select ng-model="functype.name" name="camera_type" theme="bootstrap"  on-select="select_func_type(functype.name)">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                     <ui-select-choices repeat="item.state as item in func_type_Items">
                         <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -85,7 +85,7 @@
             </div>
             <div class="form-group form-group-selin">
                 <label for="name">摄像头状态:</label>
-                <ui-select ng-model="state" name="camera_status" theme="bootstrap" on-select="select_status(state)">
+                <ui-select ng-model="state.name" name="camera_status" theme="bootstrap" on-select="select_status(state.name)">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                     <ui-select-choices repeat="item.state as item in status_Items">
                         <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -104,7 +104,9 @@
             <!--<div style="clear: both"></div>-->
             <div class="btns-group" >
                  <button type="button" name="camera_search" class="btn btn-camera-search" ng-click="submit_search()"><span class="icon-icon_search"></span>搜索</button>
-                 <button type="button" name="camera_add" class="btn btn-camera-add" ng-click="open('camera_Modal','add',$index)"><span class="icon-icon_plus"></span>增加</button>
+                <button type="button" name="camera_search" class="btn btn-camera-reset" ng-click="reset()">置空</button>
+
+                <button type="button" name="camera_add" class="btn btn-camera-add" ng-click="open('camera_Modal','add',$index)"><span class="icon-icon_plus"></span>增加</button>
             </div>
         </form>
 

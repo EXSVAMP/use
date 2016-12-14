@@ -9,7 +9,7 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
  //    	{ name: '已删除停用', flag:3}
  //    ];
     $scope.state = [];
-
+    $scope.statusSel={};
     $scope.open = function (size, method,index){
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
@@ -86,6 +86,7 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
     };
 
     $scope.statusSelFunc = function(data){
+        
       $scope.statusTemp = data.flag;
     }
 
@@ -194,6 +195,15 @@ app.register.controller("cardCtrl", function ($scope, $http, $location, $uibModa
         	}
     	});
   	}
+
+    $scope.reset=function(){
+        $scope.serial_search="";
+        //$scope.status = "-1";
+        $scope.statusTemp = "-1";
+        $scope.serial_searchTemp = "";
+        $scope.statusSel = {};
+        $scope.submit_search(1,-1);
+    }
 
     $scope.submit_search(1,-1);
 

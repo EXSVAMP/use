@@ -71,9 +71,9 @@
 	<div class="main-content card-content">
 		<form role="form" class="search-bar card-select">
 			<div class="form-group form-group-selin">
-    		<label for="name">状态:</label> 
+    		<label for="name">状态:</label>
     		<!-- <ui-select ng-model="state.name" theme="bootstrap"> -->
-        <ui-select ng-model="statusSel" theme="bootstrap" name="card_state" on-select="statusSelFunc(statusSel)">
+        <ui-select ng-model="statusSel.name" theme="bootstrap" name="card_state" on-select="statusSelFunc(statusSel.name)">
           <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
           <ui-select-choices repeat="item in state">
             <div ng-bind-html="item.name"></div>
@@ -88,6 +88,9 @@
 			<div class="btns-group">
 				<button type="button" name="card_search" class="btn btn-com-search btn-rfid-search" ng-click="status=statusTemp;serial_searchTemp=serial_search;submit_search(1)"><span class="icon-icon_search"></span>搜索</button>
 				<!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
+                <button type="button" class="btn btn-reset" name="operate_reset" ng-click="reset()">
+                    置空
+                </button>
 			</div>
 		</form>
 

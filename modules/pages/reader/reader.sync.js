@@ -24,6 +24,8 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
     $scope.listLoadFlag = 1;
     $scope.params = {};
    $scope.cameraList=[];
+    $scope.func_typeSel={};
+    $scope.statusSel={};
     $scope.open = function (size, method,index){
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
@@ -199,7 +201,19 @@ app.register.controller("readerCtrl", function ($scope, $http, $location, $uibMo
     })
 
     }
-
+    $scope.reset=function(){
+        $scope.func_typeSel={};
+        $scope.statusSel={};
+        $scope.func_type = '-1';
+        $scope.status = "-1";
+        $scope.func_typeTemp = '-1';
+        $scope.statusTemp = "-1";
+        $scope.description = "";
+        $scope.serial_number = "";
+        $scope.descriptionTemp = "";
+        $scope.serial_numberTemp = "";
+        $scope.submit_search();
+    }
     $scope.submit_search();	
 
 })

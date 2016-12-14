@@ -154,4 +154,15 @@ app.register.controller("eventlogCtrl", function ($scope, $http, $timeout,$locat
             $scope.index_sel = "";
     };
     $scope.handleEvent = popService.handleEvent;
+    $scope.reset=function(){
+        $scope.params.event_type="";
+        $scope.params.rfid_id="";
+        $scope.params.reader_id="";
+        $scope.params.camera_id="";
+        $scope.params.event_feedback_type="";
+        $scope.params.handle_result="";
+        $scope.params.startDate="";
+        $scope.params.endDate="";
+        $scope.refresh();
+    }
 });

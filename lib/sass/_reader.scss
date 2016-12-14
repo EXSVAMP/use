@@ -1,4 +1,10 @@
 .reader-content{
+		 .search-bar{
+			 .btns-group{
+				 width:305px!important;
+			 }
+		 }
+
 	.reader-select{
 		display: table;
   		height: auto;
@@ -26,6 +32,21 @@
 			}
 			.btn-rfid-search:hover{
 				background-color: #07B1A8;
+			}
+			.btn-rfid-reset{
+				float: left;
+				width: 80px;
+				height: 34px;
+				border-radius: 4px !important;
+				background-color: #ffffff;
+				margin-right: 30px;
+				font-size: 12px;
+				color: #5F9BDB;
+				border-color:#5F9BDB;
+				&:hover{
+					border-color:#1688EC;
+					color:#1688EC;
+				}
 			}
 			.btn-rfid-add{
 				background-color: #fc763c;

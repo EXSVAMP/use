@@ -9,10 +9,32 @@
           width:195px;
         }
       };
+
+
       .eventBtn{
         margin-right: 0px;
-        width: 0px;
+        width:150px;
+        //width: 0px;
+        .btn-green{
+          margin-right:0px;
+        }
+        .btn-reset{
+          width: 70px;
+        }
+        .btn{
+          margin-top:19px;
+        }
       }
+      @media screen and (min-width:1600px) {
+        .eventBtn{
+          margin-left:20px;
+          width:250px;
+          .btn-green{
+            margin-right:20px;
+          }
+        }
+      };
+
     }
     .condition-sort{
       width: 100%;
@@ -290,6 +312,10 @@
 
 
 }
+
+
+
+
 //.reader_select{
 //  background-color: red;
 //  .dropdown-menu{

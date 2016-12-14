@@ -74,12 +74,14 @@
             		</ui-select-choices>
           		</ui-select>
 			</div>
-			<div class="form-group">
+			<div class="form-group" style="margin-right: 20px;">
     			<label for="username">用户名:</label> 
     			 <input type="text" class="form-control" id="username" name="user_name" placeholder="请输入用户名" ng-model="username">
 			</div>
 			<div class="btns-group">
 				<button type="button" name="user_search" class="btn btn-rfid-search" ng-click="role=roleTemp;status=statusTemp;usernameTemp=username;index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
+				<button type="button" name="user_reset" class="btn btn-reset">置空</button>
+
 				<button type="button" name="user_add" class="btn btn-rfid-add" ng-click="open('md-add-user','add',$index)"><span class="icon-icon_plus"></span>增加</button>
 			</div>
 		</form>

@@ -68,7 +68,7 @@
 		<form role="form" class="search-bar reader-select">
 			<div class="form-group">
     			<label for="func_type">功能类型:</label> 
-    			<ui-select ng-model="func_typeSel" name="reader_type" theme="bootstrap" on-select="func_typeSelFunc(func_typeSel)">
+    			<ui-select ng-model="func_typeSel.name" name="reader_type" theme="bootstrap" on-select="func_typeSelFunc(func_typeSel.name)">
             		<ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
             		<ui-select-choices repeat="item in choice['func_type']">
               			<div ng-bind-html="item.name"></div>
@@ -78,7 +78,7 @@
 			</div>
       <div class="form-group">
           <label for="status">读写器状态:</label> 
-          <ui-select ng-model="statusSel" name="reader_status" theme="bootstrap" on-select="statusSelFunc(statusSel)">
+          <ui-select ng-model="statusSel.name" name="reader_status" theme="bootstrap" on-select="statusSelFunc(statusSel.name)">
                 <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                 <!-- <ui-select-choices repeat="(key,value) in choice['status']">
                     <div ng-bind-html="value.value"></div> -->
@@ -98,7 +98,8 @@
 			</div>
 			<div class="btns-group">
 				<button type="button" class="btn btn-rfid-search" name="reader_search" ng-click="status=statusTemp;func_type=func_typeTemp;descriptionTemp=description;serial_numberTemp=serial_number;index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
-				<button type="button" class="btn btn-rfid-add" name="reader_add"  ng-click="open('md-edit-reader','add',$index)"><span class="icon-icon_plus"></span>增加</button>
+                <button type="button" class="btn btn-rfid-reset" ng-click="reset()">置空</button>
+                <button type="button" class="btn btn-rfid-add" name="reader_add"  ng-click="open('md-edit-reader','add',$index)"><span class="icon-icon_plus"></span>增加</button>
 			</div>
 		</form>
 

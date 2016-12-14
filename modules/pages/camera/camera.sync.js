@@ -14,6 +14,9 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
     $scope.bigCurrentPage = 1;
     $scope.numbers = [10, 20, 30, 40, 50];
 
+    $scope.state={};
+    $scope.functype={};
+
     $http.get(urlBase + "/api/1/common/choices/?key=camera").success(function (data) {
         $scope.func_type_Items = [];
         $scope.status_Items = [];
@@ -346,6 +349,15 @@ app.register.controller("cameraCtrl", function ($scope, $http, $location, $uibMo
         })
 
     };
+    $scope.reset=function(){
+        $scope.state={};
+        $scope.functype={};
+        $scope.status = "-1";
+        $scope.func_type = "-1";
+        $scope.description="";
+        $scope.storage_names="";
+        $scope.submit_search();
+    }
 
 
 })

@@ -52,7 +52,7 @@
         <form role="form" class="search-bar content-select">
             <div class="form-group">
                 <label for="name">RFID卡类型:</label>
-                <ui-select ng-model="type" name="content_type_select" theme="bootstrap"  on-select="changeType(type)">
+                <ui-select ng-model="type.name" name="content_type_select" theme="bootstrap"  on-select="changeType(type.name)">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                     <ui-select-choices repeat="item in rfid_type_Items" style="width:500px">
                         <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -70,7 +70,7 @@
             </div> -->
             <div class="form-group">
                 <label for="name">是否写入:</label>
-                <ui-select ng-model="write"  name="content_write" theme="bootstrap"  on-select="changeWrite(write)">
+                <ui-select ng-model="write.name"  name="content_write" theme="bootstrap"  on-select="changeWrite(write.name)">
                     <ui-select-match placeholder="--请选择-">{{$select.selected.name}}</ui-select-match>
                     <ui-select-choices repeat="item in is_writed_Items" style="width:500px">
                         <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -89,6 +89,9 @@
             <div class="btns-group">
                 <button type="button" name="content_search" class="btn btn-rfid-search" ng-click="rfid_type=rfid_typeTemp;rfid_card_idTemp=rfid_card_id;rfid_idTemp=rfid_id;is_writed=is_writedTemp;card_serial_numberTemp=card_serial_number;goods_location_nameTemp=goods_location_name;submit_search(status,0)"><span class="icon-icon_search"></span>搜索</button>
                 <!-- <button type="button" class="btn btn-rfid-add" ng-click="open('md','add',$index)"><span></span>增加</button> -->
+                <button type="button" class="btn btn-reset" name="operate_reset" ng-click="reset()">
+                    置空
+                </button>
             </div>
         </form>
         <div class="type-sel-tab-pare">

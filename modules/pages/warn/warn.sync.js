@@ -57,4 +57,16 @@ app.register.controller("warnCtrl", function ($scope, $http,baseUrl, $timeout,$l
         }else
             $scope.index_sel = "";
     };
+
+    $scope.reset=function(){
+         $scope.params.startDate="";
+         $scope.params.endDate="";
+         $scope.params.event_type="";
+         $scope.params.event_feedback_type="";
+         $scope.params.handle_result="";
+         $scope.refresh();
+    }
+
+
+
 });
