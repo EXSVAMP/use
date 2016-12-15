@@ -57,7 +57,7 @@
 		<form role="form" class="search-bar user-select">
 			<div class="form-group">
     			<label for="role2">角色:</label>
-    			<ui-select ng-model="role2" name="user_role" theme="bootstrap" on-select="roleSel(role2)">
+    			<ui-select ng-model="role2.value" name="user_role" theme="bootstrap" on-select="roleSel(role2.value)">
             		<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
             		<ui-select-choices repeat="item in roleList">
               			<div ng-bind-html="item.value"></div>
@@ -67,7 +67,7 @@
 			</div>
 			<div class="form-group">
     			<label for="status">状态:</label> 
-    			<ui-select ng-model="status2" name="user_status" theme="bootstrap" on-select="statusSel(status2)">
+    			<ui-select ng-model="status2.value" name="user_status" theme="bootstrap" on-select="statusSel(status2.value)">
             		<ui-select-match placeholder="--请选择-">{{$select.selected.value}}</ui-select-match>
             		<ui-select-choices repeat="item in statusList">
               			<div ng-bind-html="item.value"></div>
@@ -80,7 +80,7 @@
 			</div>
 			<div class="btns-group">
 				<button type="button" name="user_search" class="btn btn-rfid-search" ng-click="role=roleTemp;status=statusTemp;usernameTemp=username;index=1;submit_search()"><span class="icon-icon_search"></span>搜索</button>
-				<button type="button" name="user_reset" class="btn btn-reset">置空</button>
+				<button type="button" name="user_reset" class="btn btn-reset" ng-click="reset()">置空</button>
 
 				<button type="button" name="user_add" class="btn btn-rfid-add" ng-click="open('md-add-user','add',$index)"><span class="icon-icon_plus"></span>增加</button>
 			</div>

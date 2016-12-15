@@ -2215,7 +2215,7 @@
     text-decoration: none !important;
     cursor: pointer; }
 .operate .search-bar .btns-group {
-  width: 170px !important;
+  width: 1px !important;
   margin-left: 10px; }
 .operate .search-bar .form-group {
   margin-right: 17px; }
@@ -2233,6 +2233,8 @@
     position: relative;
     top: -38px;
     left: 2px; }
+.operate .btns-group .btn-reset {
+  margin-left: 20px; }
 
 .eventlog_Content .main-content .search-bar .form-group {
   width: 20%; }

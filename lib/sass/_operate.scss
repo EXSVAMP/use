@@ -3,14 +3,20 @@
 
    .search-bar{
       .btns-group{
-         width:170px!important;
+         width:180px!important;
          margin-left: 10px;
       }
       .form-group{
          margin-right: 17px;
       }
    }
+
   .main-content{
      @include search_no_set();
+   }
+   .btns-group{
+      .btn-reset{
+         margin-left: 20px;
+      }
    }
 }

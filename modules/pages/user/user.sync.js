@@ -17,7 +17,8 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
     $scope.roleList = [{key:0,value:"仓库主管"},{key:1,value:"仓库管理员"},{key:2,value:"仓库盒子"},{key:3,value:"云仓系统"},{key:4,value:"其它"},{key:-1,value:"-------------"}];
     $scope.statusList = [{key:true,value:"激活"},{key:false,value:"未激活"},{key:-1,value:"-------------"}];
     //$scope.listLoadFlag = 1;
-
+    $scope.role2={};
+    $scope.status2={};
     $scope.open = function (size, method,index){
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
@@ -74,6 +75,11 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
     }
     $scope.switch_order = function(key){
         $scope.order[key] = !$scope.order[key];
+        for(var i in $scope.order){
+            if(i!==key){
+                $scope.order[i]=false;
+            }
+        }
         $scope.submit_search()
     };
     $scope.setShowNum = function(data){
@@ -169,7 +175,17 @@ app.register.controller("userCtrl", function ($scope, $http, $location, $uibModa
 
 
     };
-
+    $scope.reset=function(){
+        $scope.role2={};
+        $scope.status2={};
+        $scope.role = "-1";
+        $scope.status = "-1";
+        $scope.roleTemp = "-1";
+        $scope.statusTemp = "-1";
+        $scope.username = "";
+        $scope.usernameTemp = "";
+        $scope.submit_search();
+    }
     $scope.submit_search();	
 
 })
