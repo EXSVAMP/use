@@ -2215,10 +2215,10 @@
     text-decoration: none !important;
     cursor: pointer; }
 .operate .search-bar .btns-group {
-  width: 1px !important;
+  width: 180px !important;
   margin-left: 10px; }
 .operate .search-bar .form-group {
-  margin-right: 17px; }
+  margin-right: 35px; }
 .operate .main-content .notFound {
   display: table;
   margin: 100px auto 0 auto; }

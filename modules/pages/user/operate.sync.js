@@ -6,6 +6,7 @@ app.register.controller("operateCtrl",function($scope, $http, $location,$timeout
     $scope.selections.op_person={"-1":'--------'};
     $scope.selections.op_model=[];
     $scope.selections.op_type=[];
+    $scope.selections.op_res=[];
     $scope.number = "10";
     $scope.maxSize = 5;
     $scope.bigCurrentPage = 1;
@@ -16,14 +17,19 @@ app.register.controller("operateCtrl",function($scope, $http, $location,$timeout
             angular.merge($scope.selections.op_person,data.data.op_person);
                var dataTemp1 = data.data.op_model;
                var dataTemp2 = data.data.op_type;
+               var dataTemp3 = data.data.op_res;
                for(dataItem in dataTemp1){
                    $scope.selections.op_model.push({'id':dataItem,'status':dataTemp1[dataItem]})
                }
                for(dataItem in dataTemp2){
                    $scope.selections.op_type.push({'id':dataItem,'status':dataTemp2[dataItem]})
                }
-               $scope.selections.op_model.push({'id':'-1','status':'--------'})
-               $scope.selections.op_type.push({'id':'-1','status':'--------'})
+               for(dataItem in dataTemp3){
+                   $scope.selections.op_res.push({'id':dataItem,'status':dataTemp3[dataItem]})
+               }
+               $scope.selections.op_model.push({'id':'-1','status':'--------'});
+               $scope.selections.op_type.push({'id':'-1','status':'--------'});
+               $scope.selections.op_res.push({'id':'-1','status':'--------'})
            }
 
     }).error(function (data, state) {
@@ -91,6 +97,7 @@ app.register.controller("operateCtrl",function($scope, $http, $location,$timeout
                 op_person: $scope.params.op_person,
                 op_model: $scope.params.op_model,
                 op_type:$scope.params.op_type,
+                op_res:$scope.params.op_res,
                 descent: order_str,
                 index: $scope.bigCurrentPage,
                 number: $scope.number
@@ -125,6 +132,7 @@ app.register.controller("operateCtrl",function($scope, $http, $location,$timeout
         $scope.params.op_person="";
         $scope.params.op_model="";
         $scope.params.op_type="";
+        $scope.params.op_res="";
         $scope.submit_search();
     }
     $scope.submit_search();
