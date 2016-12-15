@@ -234,7 +234,7 @@ app.controller("headerCtrl",function($scope, $cookieStore, $http, $uibModal, bas
     // $scope.imgClick=function(){
     //     screenfull.request();
     // }
-	$scope.header_username = $cookieStore.get("iotcloud-token").loginName;
+	$scope.header_username = sessionStorage.getItem("loginName");
 	// $scope.old_password_len = $cookieStore.get("passlen");
     $("body").on("click",function(){
          $scope.dropdown_menu_custom_show = "";
@@ -349,7 +349,7 @@ app.controller("ModalHeader", function($scope,$cookieStore, $uibModalInstance,$h
             //console.log($scope.btn_ok_fail);
             if($scope.btn_ok_fail == ""){
                 var data = {
-                    username: $cookieStore.get("iotcloud-token").loginName,
+                    username: sessionStorage.getItem("loginName"),
                     old_password: $scope.repass_old_password,
                     password: $scope.repass_re_password,
                     re_password: $scope.repass_reconfirm_password
@@ -1267,7 +1267,7 @@ app.controller("ModalPollinventory", function($scope,$uibModalInstance,$http,ite
                 }
             });
         }
-        var iotcloud_token = $scope.header_username = $cookieStore.get("iotcloud-token").token;
+        var iotcloud_token = $cookieStore.get("iotcloud-token").token;
         $scope.download_excel = baseUrl+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0&iotcloud_token="+iotcloud_token;
         $scope.download_txt = baseUrl+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=1&iotcloud_token="+iotcloud_token;
 
@@ -1612,7 +1612,7 @@ $timeout(function(){
             $scope.submit_search()
         };
 
-         var iotcloud_token = $scope.header_username = $cookieStore.get("iotcloud-token").token;
+         var iotcloud_token =$cookieStore.get("iotcloud-token").token;
         $scope.download_excel =baseUrl+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=0&iotcloud_token="+iotcloud_token;
         $scope.download_txt =baseUrl+"/api/2/inventory/result/download?schedule_id="+$scope.item.data.id+"&file_type=1&iotcloud_token="+iotcloud_token;
 
